@@ -1,0 +1,588 @@
+2026-09-09 17:50:08 INFO  (LoggingInitialization) Using log config file: jar:file:/E:/ghidra_11.2.1_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-09-09 17:50:08 INFO  (LoggingInitialization) Using log file: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\original-entry.log  
+2026-09-09 17:50:08 INFO  (Preferences) Loading user preferences: C:\Users\IlyaBOT\AppData\Roaming\ghidra\ghidra_11.2.1_PUBLIC\preferences  
+2026-09-09 17:50:08 INFO  (ClassSearcher) Searching for classes...  
+2026-09-09 17:50:09 INFO  (ClassSearcher) Class search complete (1307 ms)  
+2026-09-09 17:50:09 INFO  (SSLContextInitializer) Initializing SSL Context  
+2026-09-09 17:50:10 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-09-09 17:50:10 INFO  (SecureRandomFactory) Random Number Generator initialization complete: SHA1PRNG  
+2026-09-09 17:50:10 INFO  (ApplicationTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-09-09 17:50:10 INFO  (AnalyzeHeadless) Headless startup complete (3664 ms)  
+2026-09-09 17:50:10 INFO  (ClassSearcher) Class searcher loaded 57 extension points (18 false positives)  
+2026-09-09 17:50:10 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-dbgmodel-traceloader\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    I:\SkypeReverse\skypeopensource2\skyserver\tools
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Jython\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-frida\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts  
+2026-09-09 17:50:10 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-09-09 17:50:10 INFO  (HeadlessAnalyzer) Opening existing project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-09 17:50:11 INFO  (HeadlessProject) Opening project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-09 17:50:13 INFO  (HeadlessAnalyzer) REPORT: Processing project file: /Skype-uncompressed.image.bin  
+2026-09-09 17:50:13 INFO  (HeadlessAnalyzer) SCRIPT: I:\SkypeReverse\skypeopensource2\skyserver\tools\InspectSkypeEntry.java  
+2026-09-09 17:50:13 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 00a90ee6  
+2026-09-09 17:50:14 INFO  (GhidraScript) InspectSkypeEntry.java> 
+void FUN_00a90ee6(undefined4 param_1,int param_2)
+
+{
+  if (param_2 == 1) {
+    func_0x00a983b5();
+  }
+  func_0x00a90df0(param_1);
+  return;
+}
+
+  
+2026-09-09 17:50:14 INFO  (HeadlessAnalyzer) SCRIPT: I:\SkypeReverse\skypeopensource2\skyserver\tools\InspectSkypeEntry.java  
+2026-09-09 17:50:14 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 01019fd4  
+2026-09-09 17:50:19 INFO  (GhidraScript) InspectSkypeEntry.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_01019fd4(void)
+
+{
+  char cVar1;
+  undefined uVar2;
+  uint uVar3;
+  int iVar4;
+  int *piVar5;
+  int iVar6;
+  undefined4 *unaff_FS_OFFSET;
+  bool bVar7;
+  bool bVar8;
+  undefined auStack_1ac [260];
+  undefined auStack_a8 [8];
+  undefined4 auStack_a0 [2];
+  undefined4 uStack_98;
+  undefined4 uStack_94;
+  undefined4 uStack_84;
+  undefined4 uStack_80;
+  undefined4 uStack_7c;
+  undefined *puStack_78;
+  undefined4 uStack_74;
+  undefined4 *puStack_70;
+  undefined4 uStack_6c;
+  uint uStack_68;
+  uint uStack_64;
+  uint uStack_60;
+  undefined4 uStack_5c;
+  undefined *puStack_58;
+  undefined *puStack_54;
+  undefined *puStack_50;
+  undefined *puStack_4c;
+  undefined4 uStack_48;
+  undefined *puStack_44;
+  undefined4 uStack_40;
+  undefined4 uStack_3c;
+  undefined4 uStack_38;
+  int iStack_34;
+  undefined4 uStack_30;
+  undefined4 uStack_2c;
+  undefined4 uStack_28;
+  undefined *puStack_24;
+  undefined *puStack_20;
+  
+  iVar6 = 0x35;
+  do {
+    iVar6 = iVar6 + -1;
+  } while (iVar6 != 0);
+  puStack_20 = (undefined *)0x1019ff1;
+  func_0x004080a8();
+  puStack_24 = (undefined *)0x101aa9b;
+  uStack_28 = *unaff_FS_OFFSET;
+  *unaff_FS_OFFSET = &uStack_28;
+  uStack_2c = 1;
+  uStack_30 = 0x101a006;
+  puStack_20 = &stack0xfffffffc;
+  puStack_24 = (undefined *)func_0x00408650();
+  puStack_20 = (undefined *)((uint)puStack_20 & 0xffffff00);
+  uStack_30 = 0x101a01d;
+  func_0x00405ab8();
+  uStack_30 = 0x101a028;
+  func_0x010135cc();
+  uStack_30 = 0x101a044;
+  func_0x004d87c8();
+  uStack_30._0_1_ = 0xb;
+  uStack_30._1_3_ = 0;
+  iStack_34 = 0x101a066;
+  func_0x004d87c8();
+  iStack_34 = 1;
+  uStack_38 = 0x101a072;
+  func_0x004918a8();
+  puStack_24 = (undefined *)uStack_38;
+  puStack_20._0_1_ = 0xf;
+  uStack_38 = 0x101a086;
+  func_0x004918a8();
+  uStack_38 = 0x101a091;
+  func_0x004df2fc();
+  uStack_38 = 0x101a0ad;
+  func_0x004d87c8();
+  uStack_38 = 1;
+  uStack_3c = 0x101a0b4;
+  func_0x00408748();
+  uStack_3c = 0x101a0c1;
+  func_0x004de794();
+  puStack_24 = puStack_44;
+  puStack_20 = (undefined *)CONCAT31(puStack_20._1_3_,0xb);
+  uStack_3c = 0x101a0d0;
+  func_0x004087b0();
+  uStack_3c = 0x101a0da;
+  func_0x004de9cc();
+  uStack_3c = 0x101a0f6;
+  func_0x004d87c8();
+  uStack_3c = 0;
+  uStack_40 = 0x101a105;
+  func_0x004df8d4();
+  iStack_34 = (int)puStack_4c;
+  uStack_30._0_1_ = 0xb;
+  uStack_40 = 0x101a121;
+  func_0x004d87c8();
+  uStack_40 = 0;
+  puStack_44 = (undefined *)0x101a130;
+  func_0x004df8d4();
+  iStack_34 = (int)puStack_50;
+  uStack_30._0_1_ = 0xb;
+  puStack_44 = (undefined *)0x101a14c;
+  func_0x004d87c8();
+  puStack_44 = (undefined *)0x0;
+  uStack_48 = 0x101a15b;
+  func_0x004df8d4();
+  iStack_34 = (int)puStack_54;
+  uStack_30 = CONCAT31(uStack_30._1_3_,0xb);
+  uStack_48 = 0x101a177;
+  func_0x004d87c8();
+  uStack_48 = 0x101a17c;
+  cVar1 = func_0x004db1c4();
+  if (cVar1 != '\0') {
+    uStack_48 = 2;
+    uStack_6c = *_DAT_01056f9c;
+    uStack_68 = uStack_68 & 0xffffff00;
+    uStack_64 = *_DAT_010573e4;
+    uStack_60 = uStack_60 & 0xffffff00;
+    uStack_5c = *_DAT_0105703c;
+    puStack_58 = (undefined *)((uint)puStack_58 & 0xffffff00);
+    puStack_4c = (undefined *)0x101a1be;
+    func_0x004d87c8();
+  }
+  uStack_48 = 0x101a1c3;
+  cVar1 = func_0x004e4d70();
+  if (cVar1 == '\0') {
+    uStack_48 = 0x101a1e7;
+    func_0x004d86f0();
+  }
+  else {
+    uStack_48 = 0x101a1d6;
+    func_0x004d86f0();
+  }
+  *_DAT_01056f0c = 1;
+  *_DAT_01056e84 = 1;
+  uStack_48 = 0x101a206;
+  func_0x00fa0220();
+  bVar7 = true;
+  uStack_48 = 0x101a210;
+  func_0x004063f8();
+  if (!bVar7) {
+    uStack_48 = 0x101a217;
+    func_0x004d93d0();
+  }
+  uStack_48 = 0;
+  puStack_4c = (undefined *)0x101a21e;
+  uVar3 = func_0x00409ea0();
+  puStack_4c = (undefined *)0x101a22d;
+  func_0x0042fc8c();
+  puStack_4c = (undefined *)0x101a232;
+  func_0x010136b0();
+  puStack_4c = (undefined *)0x101a237;
+  cVar1 = func_0x004e4de8();
+  if (cVar1 != '\0') {
+    puStack_4c = (undefined *)0x0;
+    puStack_50 = (undefined *)0x101ac80;
+    puStack_54 = (undefined *)0x101ac88;
+    puStack_58 = (undefined *)0x0;
+    uStack_5c = 0x101a24e;
+    func_0x004092b8();
+    uStack_5c = 0;
+    uStack_60 = 0x101a255;
+    func_0x00408530();
+  }
+  puStack_4c = (undefined *)0x101a264;
+  func_0x00f9f848();
+  puStack_4c = (undefined *)0x101a271;
+  func_0x00406108();
+  puStack_4c = &DAT_0105e1c4;
+  puStack_50 = &DAT_0105e1cc;
+  puStack_54 = &DAT_0105e1d0;
+  puStack_58 = &DAT_0105e1d4;
+  uStack_5c = 0x101a299;
+  func_0x00edd1f0();
+  *(bool *)_DAT_01057558 = (_DAT_0105e1b8 & 8) != 0;
+  if (_DAT_0101acc8 != (_DAT_0101acc4 & _DAT_0105e1b8)) {
+    uStack_5c = 0x101a2d9;
+    func_0x00e10238();
+    uStack_5c = 0;
+    uStack_60 = 0x101a2e0;
+    func_0x00408530();
+  }
+  bVar7 = true;
+  uStack_5c = 0x101a2ec;
+  func_0x004063f8();
+  if (!bVar7) {
+    uStack_5c = 0x101a2fe;
+    func_0x00406108();
+  }
+  uStack_5c = 0;
+  iStack_34 = _DAT_0105e1c8;
+  uStack_30._0_1_ = 0xf;
+  uStack_60 = 0x101a31e;
+  func_0x004d87c8();
+  uStack_60 = 0x101a32a;
+  func_0x00edcbd4();
+  uStack_60 = 0x101a336;
+  iVar6 = func_0x00edc6b8();
+  if (iVar6 == 0) {
+    _DAT_0105e1b8 = _DAT_0105e1b8 & 0xffffffdf;
+  }
+  if ((_DAT_0105e1b8 & 0x10) != 0) {
+    if (_DAT_0105e1d4 == 0) {
+      uStack_60 = 0x101a396;
+      func_0x004d86f0();
+      uStack_60 = 0x101a3a2;
+      func_0x00edcc18();
+    }
+    else {
+      uStack_60 = 0;
+      iStack_34 = _DAT_0105e1d4;
+      uStack_30._0_1_ = 0;
+      uStack_64 = 0x101a373;
+      func_0x004d87c8();
+      uStack_64 = 0x101a385;
+      func_0x00edcc48();
+    }
+    uStack_64 = 0;
+    uStack_68 = 0x101a3a9;
+    func_0x00408530();
+  }
+  uStack_60 = 0x101a3b5;
+  iVar6 = func_0x00edc68c();
+  if ((0 < iVar6) && ((_DAT_0105e1b8 & 0x20) == 0)) {
+    uStack_60 = 0;
+    uStack_64 = 0x101a3d8;
+    iStack_34 = func_0x00edc68c();
+    uStack_30._0_1_ = 0;
+    uStack_64 = 0x101a3f1;
+    func_0x004d87c8();
+    uStack_64 = 0x101a403;
+    iVar6 = func_0x00edcc8c();
+    if ((iVar6 == 0) && (((_DAT_0105e1b8 & 0x20) == 0 && (_DAT_0105e1bc == 0)))) {
+      uStack_60 = 0x101a427;
+      iVar6 = func_0x00edc6b8();
+    }
+    if (iVar6 != 0) {
+      if (_DAT_0105e1bc == 0) {
+        uStack_60 = 0x101a482;
+        func_0x004d86f0();
+        uStack_60 = 0x101a489;
+        func_0x00edc190();
+      }
+      else {
+        uStack_60 = 0;
+        uStack_64 = 0x101a445;
+        func_0x00db75d8();
+        iStack_34 = (int)puStack_78;
+        uStack_30._0_1_ = 0xb;
+        uStack_64 = 0x101a461;
+        func_0x004d87c8();
+        uStack_64 = 0x101a46e;
+        func_0x00edc2c4();
+      }
+      goto LAB_0101a9f8;
+    }
+  }
+  uStack_60 = 0x101a4b4;
+  func_0x00edc564();
+  if ((_DAT_0105e1b8 & 0x20) == 0) {
+    uStack_60 = 0x101a4cd;
+    func_0x00edcbd4();
+    uStack_60 = 0x101a4d9;
+    iVar6 = func_0x00edc68c();
+    if (-1 < iVar6 + -1) {
+      do {
+        uStack_60 = 0x101a4f5;
+        iVar4 = func_0x00edc694();
+        if (*(char *)(iVar4 + 4) != '\0') {
+          uStack_60 = 0x101a50d;
+          iVar4 = func_0x00edc694();
+          uStack_60 = *(int *)(iVar4 + 0x10);
+          uStack_64 = 0x101a51d;
+          iVar4 = func_0x00edc6b4();
+          if (uStack_60 != *(int *)(iVar4 + 0x10)) {
+            uStack_60 = 0;
+            uStack_64 = 0x101a537;
+            iVar4 = func_0x00edc694();
+            iStack_34 = *(int *)(iVar4 + 0x10);
+            uStack_30._0_1_ = 0;
+            uStack_64 = 0x101a553;
+            func_0x004d87c8();
+            uStack_64 = 0x101a561;
+            iVar4 = func_0x00edc694();
+            uStack_64 = *(uint *)(iVar4 + 0x10);
+            uStack_68 = 0x101a571;
+            iVar4 = func_0x00edc6b4();
+            if (*(uint *)(iVar4 + 0x10) < uStack_64) {
+              uStack_64 = 0x101a586;
+              func_0x004d86f0();
+              uStack_64 = 0x101a594;
+              func_0x00edc694();
+              uStack_64 = 0x101a59b;
+              func_0x00edc408();
+            }
+            else {
+              uStack_64 = 0x101a5ac;
+              func_0x004d86f0();
+              uStack_64 = 0;
+              uStack_68 = 0x101a5b3;
+              func_0x00408530();
+            }
+          }
+        }
+        iVar6 = iVar6 + -1;
+      } while (iVar6 != 0);
+    }
+  }
+  if (*_DAT_0105762c != 0) {
+    uStack_60 = 0x101a5ca;
+    func_0x01013568();
+  }
+  if (*_DAT_01056dd0 == '\0') {
+    uStack_60 = 0x101a606;
+    func_0x004036f0();
+    uStack_60 = 0x101a614;
+    func_0x0040c7cc();
+    uStack_60 = 0x101a61c;
+    uStack_60 = func_0x00405d50();
+    uStack_64 = 0x101a622;
+    func_0x004088e0();
+  }
+  else {
+    uStack_60 = 0x101a5de;
+    func_0x0048b834();
+    uStack_60 = 0x101a5e9;
+    func_0x0049117c();
+    uStack_60 = 0x101a5f1;
+    uStack_60 = func_0x004062c4();
+    uStack_64 = 0x101a5f7;
+    func_0x004088f0();
+  }
+  uStack_64 = 0x80000001;
+  uStack_68 = 1;
+  uStack_6c = 0x101a636;
+  func_0x004036f0();
+  uStack_6c = 0x101a647;
+  func_0x004062b4();
+  uStack_6c = 0x101a65c;
+  func_0x00d8340c();
+  uStack_6c = 0x101a668;
+  func_0x00467eec();
+  uStack_6c = 0x101a676;
+  func_0x00469de4();
+  uStack_6c = 0x101a686;
+  func_0x00f8dbe4();
+  puStack_24 = _DAT_00df556c;
+  puStack_20 = (undefined *)_DAT_00f90064;
+  uStack_6c = 0x101a6b3;
+  func_0x004e43ec();
+  uStack_6c = 0x101a6bf;
+  func_0x00e03308();
+  uStack_6c = 0x101a6c9;
+  cVar1 = func_0x004913ec();
+  if (cVar1 == '\0') {
+    if ((_DAT_0105e1b8 & 8) == 0) {
+      uStack_6c = 0x101a6db;
+      piVar5 = (int *)func_0x00d696c0();
+      uStack_6c = 0x101a6ea;
+      (**(code **)(*piVar5 + 0xc))();
+      uStack_6c = uStack_94;
+      puStack_70 = (undefined4 *)0x101a6f6;
+      piVar5 = (int *)func_0x00d696c0();
+      puStack_70 = (undefined4 *)0x101a705;
+      (**(code **)(*piVar5 + 0xc))();
+      puStack_70 = (undefined4 *)uStack_98;
+      uStack_74 = 0x101a711;
+      piVar5 = (int *)func_0x00d696c0();
+      uStack_74 = 0x101a720;
+      (**(code **)(*piVar5 + 0xc))();
+      puStack_70 = (undefined4 *)0x101a72f;
+      func_0x00ddc7f0();
+    }
+    uStack_6c = 1;
+    puStack_70 = (undefined4 *)0x101a736;
+    func_0x00408530();
+  }
+  uStack_6c = 0x101a747;
+  func_0x004e7b70();
+  uStack_6c = 0x101a758;
+  func_0x004679a4();
+  uStack_6c = 0x101a76e;
+  func_0x00d9a42c();
+  uStack_6c = 0x101a786;
+  func_0x00467f04();
+  uStack_6c = 0x101a79e;
+  func_0x00467f04();
+  uStack_6c = 0x101a7a3;
+  func_0x00de7498();
+  uStack_6c = 0x101a7a8;
+  func_0x00481c24();
+  *(undefined *)(*_DAT_01057320 + 0x5b) = 0;
+  if (_DAT_0105e1bc != 0) {
+    uStack_6c = 0x101a7ce;
+    func_0x00db7b30();
+  }
+  bVar7 = false;
+  bVar8 = true;
+  uStack_6c = 0x101a7da;
+  func_0x004063f8();
+  if (bVar7 || bVar8) {
+    if ((_DAT_0105e1b8 & 0x20) != 0) {
+      uStack_6c = 0x101a867;
+      func_0x00edc6b4();
+      uStack_6c = 0x101a876;
+      iVar6 = func_0x00edcc8c();
+      if (iVar6 != 0) goto LAB_0101a886;
+    }
+    uStack_6c = 0x101a886;
+    func_0x00f8b374();
+  }
+  else {
+    uStack_6c = 0;
+    puStack_70 = auStack_a0;
+    uStack_74 = 0x101a7f5;
+    func_0x004de37c();
+    uStack_74 = 0x101a80a;
+    func_0x0040647c();
+    uStack_74 = auStack_a0[0];
+    puStack_78 = auStack_a8;
+    uStack_7c = 0x101a828;
+    func_0x004de37c();
+    uStack_7c = 0x101a83d;
+    func_0x0040647c();
+    puStack_78 = (undefined *)0x101a850;
+    func_0x00f8b4b4();
+  }
+LAB_0101a886:
+  uStack_6c = 0;
+  puStack_70 = (undefined4 *)0x101a89e;
+  puStack_70 = (undefined4 *)func_0x004311c0();
+  uStack_74 = 0xbd1;
+  puStack_78 = (undefined *)0x101a8b0;
+  puStack_78 = (undefined *)func_0x00481c48();
+  uStack_7c = 0x101a8b6;
+  func_0x00409308();
+  if (((_DAT_0105e1b8 & 1) == 0) || (*(char *)(*_DAT_01056ecc + 0x39c) == '\0')) {
+    uVar2 = 0;
+  }
+  else {
+    uVar2 = 1;
+  }
+  *(undefined *)(*_DAT_01056ed8 + 0x490) = uVar2;
+  uStack_7c = 0x101a8f2;
+  func_0x004d86f0();
+  uStack_7c = 0x101a8fe;
+  func_0x0046803c();
+  uStack_7c = 0x101a90d;
+  func_0x004d86f0();
+  uStack_7c = 0x101a91c;
+  func_0x004d86f0();
+  uStack_7c = 0x101a921;
+  func_0x00de7498();
+  uStack_7c = 0x101a926;
+  func_0x00404850();
+  uStack_7c = 0x101a935;
+  func_0x004d86f0();
+  uStack_7c = 0x101a93a;
+  func_0x00eab6fc();
+  uStack_7c = 0x101a93f;
+  func_0x004e4600();
+  uStack_7c = 0;
+  iStack_34 = *(int *)(*_DAT_010572e0 + 8);
+  uStack_30._0_1_ = 0;
+  uStack_80 = 0x101a964;
+  func_0x004d87c8();
+  uStack_80 = 0x101a970;
+  iVar6 = func_0x0046533c();
+  if (-1 < iVar6 + -1) {
+    do {
+      uStack_80 = 1;
+      uStack_84 = 0x101a98a;
+      func_0x00465328();
+      uStack_84 = 0x101a997;
+      func_0x00404730();
+      puStack_24 = auStack_1ac;
+      puStack_20 = (undefined *)CONCAT31(puStack_20._1_3_,4);
+      uStack_84 = 0x101a9b2;
+      func_0x00465328();
+      uStack_84 = 0x101a9bd;
+      func_0x00479ab4();
+      uStack_84 = 0x101a9dc;
+      func_0x004d87c8();
+      iVar6 = iVar6 + -1;
+    } while (iVar6 != 0);
+  }
+  if ((uVar3 & 0x80000000) == 0) {
+    uStack_80 = 0x101a9e9;
+    func_0x00409ea8();
+  }
+  uStack_80 = 0x101a9f8;
+  func_0x004d86f0();
+LAB_0101a9f8:
+  *unaff_FS_OFFSET = uStack_60;
+  puStack_58 = (undefined *)0x101aaa5;
+  uStack_5c = 0x101aa10;
+  func_0x004058b0();
+  uStack_5c = 0x101aa20;
+  func_0x004060e4();
+  uStack_5c = 0x101aa2b;
+  func_0x004058b0();
+  uStack_5c = 0x101aa36;
+  func_0x004060cc();
+  uStack_5c = 0x101aa46;
+  func_0x004058d4();
+  uStack_5c = 0x101aa53;
+  func_0x004060e4();
+  uStack_5c = 0x101aa5b;
+  func_0x004058b0();
+  uStack_5c = 0x101aa68;
+  func_0x004060e4();
+  uStack_5c = 0x101aa75;
+  func_0x004058d4();
+  uStack_5c = 0x101aa7d;
+  func_0x004060cc();
+  uStack_5c = 0x101aa85;
+  func_0x004058b0();
+  uStack_5c = 0x101aa8d;
+  func_0x004060cc();
+  uStack_5c = 0x101aa9a;
+  func_0x004058d4();
+  return;
+}
+
+  
+2026-09-09 17:50:19 INFO  (HeadlessAnalyzer) REPORT: Save succeeded for processed file: /Skype-uncompressed.image.bin  

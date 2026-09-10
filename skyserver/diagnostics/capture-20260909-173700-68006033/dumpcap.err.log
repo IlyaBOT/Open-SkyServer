@@ -1,0 +1,7 @@
+Capturing on 4 interfaces
+File: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\capture-20260909-173700-68006033\skype.pcapng
+Packets captured: 0
+Packets received/dropped on interface 'Сетевое подключение Bluetooth': 0/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (0.0%)
+Packets received/dropped on interface 'Ethernet 2': 0/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (0.0%)
+Packets received/dropped on interface 'Подключение по локальной сети* 11': 0/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (0.0%)
+Packets received/dropped on interface 'Подключение по локальной сети* 10': 0/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (0.0%)

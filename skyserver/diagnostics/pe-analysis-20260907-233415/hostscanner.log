@@ -1,0 +1,451 @@
+2026-09-10 09:58:49 INFO  (LoggingInitialization) Using log config file: jar:file:/E:/ghidra_11.2.1_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-09-10 09:58:49 INFO  (LoggingInitialization) Using log file: skyserver\diagnostics\pe-analysis-20260907-233415\hostscanner.log  
+2026-09-10 09:58:49 INFO  (Preferences) Loading user preferences: C:\Users\IlyaBOT\AppData\Roaming\ghidra\ghidra_11.2.1_PUBLIC\preferences  
+2026-09-10 09:58:49 INFO  (ClassSearcher) Searching for classes...  
+2026-09-10 09:58:50 INFO  (ClassSearcher) Class search complete (1016 ms)  
+2026-09-10 09:58:50 INFO  (SSLContextInitializer) Initializing SSL Context  
+2026-09-10 09:58:50 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-09-10 09:58:51 INFO  (SecureRandomFactory) Random Number Generator initialization complete: SHA1PRNG  
+2026-09-10 09:58:51 INFO  (ApplicationTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-09-10 09:58:52 INFO  (AnalyzeHeadless) Headless startup complete (3098 ms)  
+2026-09-10 09:58:52 INFO  (ClassSearcher) Class searcher loaded 57 extension points (18 false positives)  
+2026-09-10 09:58:52 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-dbgmodel-traceloader\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    I:\SkypeReverse\skypeopensource2\skyserver\tools
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Jython\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-frida\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts  
+2026-09-10 09:58:52 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-09-10 09:58:52 INFO  (HeadlessAnalyzer) Opening existing project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-10 09:58:52 INFO  (HeadlessProject) Opening project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-10 09:58:55 INFO  (HeadlessAnalyzer) REPORT: Processing project file: /Skype-uncompressed.image.bin  
+2026-09-10 09:58:55 INFO  (HeadlessAnalyzer) SCRIPT: I:\SkypeReverse\skypeopensource2\skyserver\tools\InspectSkypeEntry.java  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 00780ac0  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ac0 PUSH EBP  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ac1 MOV EBP,ESP  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ac3 AND ESP,0xfffffff8  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ac6 SUB ESP,0x44  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ac9 MOV EAX,dword ptr [EBP + 0xc]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780acc PUSH EBX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780acd MOV EBX,ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780acf PUSH ESI  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ad0 MOV dword ptr [ESP + 0x20],0x0  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ad8 CMP EAX,dword ptr [EBX + 0x3878]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ade PUSH EDI  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780adf MOV dword ptr [ESP + 0x20],EBX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ae3 JC 0x00780b14  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ae5 PUSH 0xb88638  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780aea PUSH 0xb88638  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780aef PUSH 0x169  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780af4 PUSH 0xcb6fec  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780af9 PUSH 0xcb70b0  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780afe PUSH 0xb89a44  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b03 CALL 0x0051fb30  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b08 ADD ESP,0x18  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b0b POP EDI  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b0c POP ESI  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b0d POP EBX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b0e MOV ESP,EBP  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b10 POP EBP  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b11 RET 0x8  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b14 MOV ECX,dword ptr [EBX + 0x48]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b17 MOV EDX,dword ptr [EBP + 0x8]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b1a MOV dword ptr [EBX + 0x70],ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b1d LEA ECX,[EAX*0x8 + 0x0]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b24 SUB ECX,EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b26 MOV EAX,dword ptr [EBX + 0x3874]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b2c ADD ECX,ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b2e ADD ECX,ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b30 ADD ECX,ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b32 ADD EAX,ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b34 MOV byte ptr [EBX + 0x6f],0x1  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b38 MOV dword ptr [ESP + 0x24],ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b3c MOV ECX,dword ptr [EDX]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b3e LEA EDX,[ECX + -0x1c]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b41 CMP EDX,0x4  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b44 MOV dword ptr [ESP + 0xc],EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b48 JA 0x00780ea9  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780b4e JMP dword ptr [EDX*0x4 + 0x781080]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ea9 PUSH ECX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eaa PUSH 0xc9701c  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eaf LEA ESI,[ESP + 0x1c]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eb3 CALL 0x0051fc20  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eb8 MOV EAX,dword ptr [EAX]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eba ADD ESP,0x8  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ebd TEST EAX,EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ebf JNZ 0x00780ec6  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ec1 MOV EAX,0xb88638  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ec6 PUSH EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ec7 PUSH 0xb89a40  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ecc PUSH 0x1a8  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ed1 PUSH 0xcb6fec  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ed6 PUSH 0xb8975c  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780edb PUSH 0xb89a44  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ee0 CALL 0x0051fb30  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ee5 MOV EAX,dword ptr [ESP + 0x2c]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ee9 ADD ESP,0x18  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eec TEST EAX,EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780eee JZ 0x00780ef7  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ef0 PUSH EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ef1 CALL dword ptr [0x00b5d120]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780ef7 MOV EDX,dword ptr [EBP + 0xc]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780efa CMP EDX,dword ptr [EBX + 0x3878]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f00 JC 0x00780f48  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f02 PUSH 0xb88638  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f07 PUSH 0xb88638  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f0c PUSH 0x1ad  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f11 PUSH 0xcb6fec  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f16 PUSH 0xcb70b0  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f1b PUSH 0xb89a44  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f20 CALL 0x0051fb30  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f25 LEA EAX,[ESP + 0x38]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f29 PUSH 0xcb70b0  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f2e PUSH 0xb89a68  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f33 MOV dword ptr [ESP + 0x40],0x0  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f3b MOV [0x00d19a9c],EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f40 CALL 0x0051fb50  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f45 ADD ESP,0x20  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f48 MOV EAX,dword ptr [EBX + 0x3874]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f4e ADD EAX,dword ptr [ESP + 0x24]  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f52 CMP dword ptr [EAX + 0xc],-0x1  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f56 MOV dword ptr [ESP + 0x24],EAX  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f5a JNZ 0x00780ff9  
+2026-09-10 09:58:55 INFO  (GhidraScript) InspectSkypeEntry.java> 00780f60 MOV ECX,dword ptr [EBP + 0x8]  
+2026-09-10 09:58:56 INFO  (GhidraScript) InspectSkypeEntry.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __thiscall FUN_00780ac0(undefined4 *param_1,int *param_2,uint param_3)
+
+{
+  char cVar1;
+  int *piVar2;
+  int iVar3;
+  undefined4 *puVar4;
+  int iVar5;
+  int unaff_EBX;
+  int iVar6;
+  int unaff_EDI;
+  undefined4 uVar7;
+  int *piVar8;
+  int aiStack_80 [2];
+  undefined4 ***pppuStack_78;
+  undefined4 uStack_74;
+  undefined4 uStack_70;
+  int iStack_6c;
+  undefined4 ***pppuStack_68;
+  undefined4 **ppuStack_64;
+  int iStack_60;
+  int iStack_5c;
+  int iStack_48;
+  undefined4 *puStack_3c;
+  undefined4 *puStack_38;
+  int iStack_34;
+  undefined4 uStack_30;
+  undefined4 uStack_2c;
+  int aiStack_28 [2];
+  undefined4 **appuStack_20 [4];
+  undefined4 uStack_10;
+  
+  iStack_34 = 0;
+  puStack_38 = param_1;
+  if ((uint)param_1[0xe1e] <= param_3) {
+    iStack_5c = 0xb88638;
+    iStack_60 = 0xb88638;
+    ppuStack_64 = (undefined4 **)0x169;
+    pppuStack_68 = (undefined4 ***)0xcb6fec;
+    iStack_6c = 0xcb70b0;
+    uStack_70 = 0xb89a44;
+    uStack_74 = 0x780b08;
+    func_0x0051fb30();
+    return;
+  }
+  param_1[0x1c] = param_1[0x12];
+  iStack_34 = param_3 * 0x38;
+  iStack_5c = param_1[0xe1d] + iStack_34;
+  *(undefined *)((int)param_1 + 0x6f) = 1;
+  switch(*param_2) {
+  case 0x1c:
+    iStack_60 = 0x780b63;
+    func_0x00780030();
+    if (*(int *)(unaff_EBX + 0x14) != 1) {
+      iStack_60 = 0xb88638;
+      ppuStack_64 = (undefined4 **)0xb88638;
+      pppuStack_68 = (undefined4 ***)0x176;
+      iStack_6c = 0xcb6fec;
+      uStack_70 = 0xcb70c0;
+      uStack_74 = 0xb89a44;
+      pppuStack_78 = (undefined4 ***)0x780b94;
+      func_0x0051fb30();
+    }
+    *(undefined4 *)(unaff_EBX + 0x14) = 2;
+    param_1[0x14] = param_1[0x14] + 1;
+    break;
+  case 0x1d:
+    iStack_60 = 0x780bb4;
+    func_0x00780030();
+    if (*(int *)(unaff_EBX + 0x14) != 1) {
+      iStack_60 = 0xb88638;
+      ppuStack_64 = (undefined4 **)0xb88638;
+      pppuStack_68 = (undefined4 ***)0x17d;
+      iStack_6c = 0xcb6fec;
+      uStack_70 = 0xcb70c0;
+      uStack_74 = 0xb89a44;
+      pppuStack_78 = (undefined4 ***)0x780be1;
+      func_0x0051fb30();
+    }
+    *(undefined4 *)(unaff_EBX + 0x14) = 3;
+    param_1[0x14] = param_1[0x14] + 1;
+    iStack_60 = *(undefined4 *)(unaff_EBX + 8);
+    pppuStack_68 = (undefined4 ***)0x780bff;
+    ppuStack_64 = (undefined4 **)((int)param_1 + -0x1b);
+    func_0x00780620();
+    break;
+  default:
+    iStack_60 = 0xc9701c;
+    ppuStack_64 = (undefined4 **)0x780eb8;
+    iStack_5c = *param_2;
+    piVar2 = (int *)func_0x0051fc20();
+    iStack_5c = *piVar2;
+    if (iStack_5c == 0) {
+      iStack_5c = 0xb88638;
+    }
+    iStack_60 = 0xb89a40;
+    ppuStack_64 = (undefined4 **)0x1a8;
+    pppuStack_68 = (undefined4 ***)0xcb6fec;
+    iStack_6c = 0xb8975c;
+    uStack_70 = 0xb89a44;
+    uStack_74 = 0x780ee5;
+    func_0x0051fb30();
+    if (iStack_48 != 0) {
+      ppuStack_64 = (undefined4 **)0x780ef7;
+      (*_DAT_00b5d120)();
+    }
+    break;
+  case 0x1f:
+    iStack_60 = 0x780c12;
+    func_0x00780030();
+    if (*(int *)(unaff_EBX + 0x1c) == 0) {
+      pppuStack_68 = (undefined4 ***)0x187;
+      uStack_70 = 0xcb70d8;
+code_r0x00780c3b:
+      iStack_60 = 0xb88638;
+      ppuStack_64 = (undefined4 **)0xb88638;
+      iStack_6c = 0xcb6fec;
+      uStack_74 = 0xb89a44;
+      pppuStack_78 = (undefined4 ***)0x780c45;
+      func_0x0051fb30();
+    }
+    else {
+      if (*(int *)(unaff_EBX + 0x14) != 4) {
+        pppuStack_68 = (undefined4 ***)0x187;
+        uStack_70 = 0xcb70e0;
+        goto code_r0x00780c3b;
+      }
+      iStack_60 = 6;
+      ppuStack_64 = (undefined4 **)0x21;
+      pppuStack_68 = (undefined4 ***)0x780c9b;
+      iVar3 = func_0x00517e10();
+      if (iVar3 == 0) {
+        pppuStack_68 = (undefined4 ***)0x189;
+        uStack_70 = 0xcb70e8;
+        goto code_r0x00780c3b;
+      }
+      iStack_60 = 2;
+      ppuStack_64 = (undefined4 **)0x11;
+      pppuStack_68 = (undefined4 ***)0x780cc5;
+      cVar1 = func_0x00517e80();
+      if (cVar1 == '\0') {
+        pppuStack_68 = (undefined4 ***)0x18b;
+        uStack_70 = 0xcb70f0;
+        goto code_r0x00780c3b;
+      }
+      iStack_60 = 0;
+      ppuStack_64 = (undefined4 **)0xb;
+      pppuStack_68 = (undefined4 ***)0x780cf2;
+      iVar3 = func_0x00518120();
+      pppuStack_68 = (undefined4 ***)0x0;
+      iStack_6c = 0xc;
+      uStack_70 = 0x780d03;
+      func_0x00518120();
+      uStack_70 = 0;
+      uStack_74 = 0x10;
+      pppuStack_78 = (undefined4 ***)0x780d12;
+      pppuStack_78 = (undefined4 ***)func_0x00518120();
+      aiStack_80[1] = iStack_5c;
+      aiStack_80[0] = iVar3;
+      func_0x0051fc20(0xcb70f8);
+      pppuStack_78 = pppuStack_68;
+      aiStack_80[1] = 0x780d48;
+      func_0x00780030();
+      aiStack_80[1] = 0x780d51;
+      func_0x00510790();
+      iVar3 = iStack_6c;
+      if (((iStack_5c != 0) && (iStack_60 != 0)) && (unaff_EDI != 0)) {
+        aiStack_80[1] = 0x780da4;
+        func_0x00518f10();
+        *(undefined4 *)(iVar3 + 0x14) = 5;
+        break;
+      }
+      aiStack_80[1] = 0xb88638;
+      aiStack_80[0] = 0xb88638;
+      func_0x0051fb30(0xb89a44,0xcb7108,0xcb6fec,0x192);
+    }
+    if (*(int *)(unaff_EBX + 0x1c) != 0) {
+      iStack_60 = 0;
+      pppuStack_68 = (undefined4 ***)0x780c6a;
+      ppuStack_64 = (undefined4 **)*(int *)(unaff_EBX + 0x1c);
+      (**(code **)(*(int *)(*(int *)(*(int *)((int)param_1 + -0xd) + 0x328) + 0x13) + 0x18))();
+    }
+    break;
+  case 0x20:
+    iStack_60 = 0x780dbe;
+    func_0x00780030();
+    if (*(int *)(unaff_EBX + 0x14) != 4) {
+      iStack_60 = 0xb88638;
+      ppuStack_64 = (undefined4 **)0xb88638;
+      pppuStack_68 = (undefined4 ***)0x1a0;
+      iStack_6c = 0xcb6fec;
+      uStack_70 = 0xcb70e0;
+      uStack_74 = 0xb89a44;
+      pppuStack_78 = (undefined4 ***)0x780deb;
+      func_0x0051fb30();
+    }
+    ppuStack_64 = *(undefined4 ***)(unaff_EBX + 0x1c);
+    *(undefined4 *)(unaff_EBX + 0x14) = 3;
+    if (ppuStack_64 == (undefined4 **)0x0) {
+      iStack_60 = 0xb88638;
+      ppuStack_64 = (undefined4 **)0xb88638;
+      pppuStack_68 = (undefined4 ***)0x1a2;
+      iStack_6c = 0xcb6fec;
+      uStack_70 = 0xcb70d8;
+      uStack_74 = 0xb89a44;
+      pppuStack_78 = (undefined4 ***)0x780e1f;
+      func_0x0051fb30();
+    }
+    else {
+      iStack_60 = 0;
+      pppuStack_68 = (undefined4 ***)0x780e3b;
+      (**(code **)(*(int *)(*(int *)(*(int *)((int)param_1 + -0xd) + 0x328) + 0x13) + 0x18))();
+    }
+    param_1 = puStack_3c;
+    iVar3 = 0x5a69ee;
+    iVar6 = 0x1bdc17;
+    iVar5 = 0xe2;
+    do {
+      iVar6 = iVar6 - *(int *)(iVar3 + 8);
+      iVar3 = iVar3 + -1;
+      iVar5 = iVar5 + -1;
+    } while (iVar5 != 0);
+    iStack_60 = *(undefined4 *)(unaff_EBX + 8);
+    ppuStack_64 = (undefined4 **)((0x102bf0ed - iVar6) + (int)puStack_3c);
+    pppuStack_68 = (undefined4 ***)0x780ea7;
+    func_0x00780620();
+  }
+  if ((uint)param_1[0xe1e] <= param_3) {
+    iStack_60 = 0xb88638;
+    ppuStack_64 = (undefined4 **)0xb88638;
+    pppuStack_68 = (undefined4 ***)0x1ad;
+    iStack_6c = 0xcb6fec;
+    uStack_70 = 0xcb70b0;
+    uStack_74 = 0xb89a44;
+    pppuStack_78 = (undefined4 ***)0x780f25;
+    func_0x0051fb30();
+    _DAT_00d19a9c = &puStack_3c;
+    pppuStack_78 = (undefined4 ***)0xcb70b0;
+    aiStack_80[1] = 0xb89a68;
+    puStack_3c = (undefined4 *)0x0;
+    aiStack_80[0] = 0x780f45;
+    func_0x0051fb50();
+  }
+  puStack_38 = (undefined4 *)(param_1[0xe1d] + (int)puStack_38);
+  if (puStack_38[3] != -1) goto LAB_00780ff9;
+  uVar7 = 2;
+  if ((*param_2 == 0x1d) || (*param_2 == 0x20)) {
+    iStack_60 = 0xffffffff;
+    ppuStack_64 = (undefined4 **)0x22;
+    pppuStack_68 = (undefined4 ***)0x780f8c;
+    iVar3 = func_0x00518120();
+    if (iVar3 == 0) {
+LAB_00780fab:
+      uVar7 = 6;
+    }
+    else if (iVar3 == 1) {
+      uVar7 = 5;
+    }
+    else {
+      if (iVar3 != 2) goto LAB_00780fab;
+      param_1[0x15] = param_1[0x15] + 1;
+      uVar7 = 7;
+    }
+  }
+  else if (param_2[9] == 2) {
+    uVar7 = 1;
+  }
+  iStack_34 = puStack_38[1];
+  iVar3 = *(int *)(*(int *)((int)param_1 + -0xd) + 0x340);
+  iStack_60 = 0x780fd5;
+  puStack_38 = (undefined4 *)*puStack_38;
+  puVar4 = (undefined4 *)func_0x0064dd30();
+  *puVar4 = puStack_38;
+  puVar4[1] = iStack_34;
+  *(undefined4 *)((int)puVar4 + 9) = uVar7;
+  iStack_60 = 0;
+  *(undefined4 *)((int)puVar4 + 0x15) = *(undefined4 *)(*(int *)(iVar3 + 0xe) + 0x221);
+  pppuStack_68 = (undefined4 ***)0x780ff9;
+  ppuStack_64 = (undefined4 **)iVar3;
+  FUN_0064c200();
+LAB_00780ff9:
+  aiStack_28[0] = (int)param_1 + -0x1b;
+  puStack_38 = (undefined4 *)0x7816b0;
+  iStack_34 = 0;
+  uStack_30 = 0;
+  uStack_2c = 0;
+  if (aiStack_28[0] == 0) {
+    aiStack_28[0] = 0;
+    aiStack_28[1] = 0;
+    appuStack_20[0] = &puStack_38;
+  }
+  else {
+    iStack_60 = 0x10;
+    ppuStack_64 = &puStack_38;
+    pppuStack_68 = appuStack_20;
+    aiStack_28[1] = 0x10;
+    iStack_6c = 0x781033;
+    func_0x00a90f10();
+  }
+  iStack_60 = 0;
+  ppuStack_64 = (undefined4 **)0x0;
+  uStack_10 = 0x589d60;
+  iVar3 = **(int **)(*(int *)((int)param_1 + -0xd) + 0x3a);
+  piVar2 = aiStack_28;
+  piVar8 = aiStack_80;
+  for (iVar5 = 7; iVar5 != 0; iVar5 = iVar5 + -1) {
+    *piVar8 = *piVar2;
+    piVar2 = piVar2 + 1;
+    piVar8 = piVar8 + 1;
+  }
+  (**(code **)(iVar3 + 0x10))(0xcb7118);
+  return;
+}
+
+  
+2026-09-10 09:58:57 INFO  (HeadlessAnalyzer) REPORT: Save succeeded for processed file: /Skype-uncompressed.image.bin  

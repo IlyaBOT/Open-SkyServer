@@ -1,0 +1,120 @@
+2026-09-07 23:34:41 INFO  (LoggingInitialization) Using log config file: jar:file:/E:/ghidra_11.2.1_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-09-07 23:34:41 INFO  (LoggingInitialization) Using log file: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\ghidra.log  
+2026-09-07 23:34:41 INFO  (Preferences) Loading user preferences: C:\Users\IlyaBOT\AppData\Roaming\ghidra\ghidra_11.2.1_PUBLIC\preferences  
+2026-09-07 23:34:41 INFO  (ClassSearcher) Searching for classes...  
+2026-09-07 23:34:42 INFO  (ClassSearcher) Class search complete (1427 ms)  
+2026-09-07 23:34:43 INFO  (SSLContextInitializer) Initializing SSL Context  
+2026-09-07 23:34:43 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-09-07 23:34:43 INFO  (SecureRandomFactory) Random Number Generator initialization complete: SHA1PRNG  
+2026-09-07 23:34:43 INFO  (ApplicationTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-09-07 23:34:44 INFO  (FileCacheMaintenanceDaemon) Starting cache cleanup: C:\Users\IlyaBOT\AppData\Local\ghidra\fscache2  
+2026-09-07 23:34:44 INFO  (FileCacheMaintenanceDaemon) Finished cache cleanup, estimated storage used: 0  
+2026-09-07 23:34:44 INFO  (AnalyzeHeadless) Headless startup complete (10677 ms)  
+2026-09-07 23:34:44 INFO  (ClassSearcher) Class searcher loaded 57 extension points (18 false positives)  
+2026-09-07 23:34:45 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-dbgmodel-traceloader\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    I:\SkypeReverse\skypeopensource2\skyserver\tools
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Jython\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-frida\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts  
+2026-09-07 23:34:45 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-09-07 23:34:45 INFO  (HeadlessAnalyzer) Creating project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-07 23:34:45 INFO  (DefaultProject) Creating project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-07 23:34:45 INFO  (HeadlessAnalyzer) REPORT: Processing input files:   
+2026-09-07 23:34:45 INFO  (HeadlessAnalyzer)      project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-07 23:34:45 INFO  (HeadlessAnalyzer) IMPORTING: file:///I:/SkypeReverse/skypeopensource2/skyserver/diagnostics/pe-analysis-20260907-233415/Skype-original.exe  
+2026-09-07 23:34:50 INFO  (AutoImporter) Using Loader: Portable Executable (PE)  
+2026-09-07 23:34:50 INFO  (AutoImporter) Using Language/Compiler: x86:LE:32:default:borlanddelphi  
+2026-09-07 23:34:50 INFO  (AutoImporter) Using Library Search Path: [., C:\Windows\SysWOW64, C:\Program Files\Java\jdk-21\bin, C:\Windows\Sun\Java\bin, C:\Windows\system32, C:\Windows, C:\Users\IlyaBOT\.codex\tmp\arg0\codex-arg0AqAFdU, C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler, C:\Program Files (x86)\VMware\VMware Workstation\bin\, C:\Program Files\Common Files\Oracle\Java\javapath, C:\Program Files (x86)\Common Files\Oracle\Java\java8path, C:\Program Files (x86)\Common Files\Oracle\Java\javapath, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0\, C:\Windows\System32\OpenSSH\, C:\Program Files\WireGuard\, C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Program Files\dotnet\, D:\Windows Kits\10\Windows Performance Toolkit\, C:\Program Files\PuTTY\, C:\Program Files\Docker\Docker\resources\bin, C:\Program Files\Git\cmd, C:\Program Files\CMake\bin, C:\platform-tools, C:\Program Files\usbipd-win\, C:\Users\IlyaBOT\.local\bin, C:\Users\IlyaBOT\AppData\Local\Programs\Python\Launcher\, C:\Users\IlyaBOT\AppData\Local\Microsoft\WindowsApps, C:\Users\IlyaBOT\AppData\Local\Programs\Microsoft VS Code\bin, C:\Users\IlyaBOT\.dotnet\tools, C:\ffmpeg\bin, C:\Users\IlyaBOT\AppData\Local\Microsoft\WinGet\Packages\Fastfetch-cli.Fastfetch_Microsoft.Winget.Source_8wekyb3d8bbwe, C:\Users\IlyaBOT\AppData\Local\Python\bin, C:\intelFPGA\20.1\modelsim_ase\win32aloem, C:\Users\IlyaBOT\AppData\Local\Programs\Ollama, c:\Users\IlyaBOT\.vscode\extensions\openai.chatgpt-26.901.22334-win32-x64\bin\windows-x86_64]  
+2026-09-07 23:34:51 INFO  (TLSDirectory) TLS callbacks at 1066010  
+2026-09-07 23:34:57 INFO  (AutoImporter) Additional info:
+Loading file:///I:/SkypeReverse/skypeopensource2/skyserver/diagnostics/pe-analysis-20260907-233415/Skype-original.exe?MD5=6fbbb73be9fb38389ab73f38828a9cac...
+------------------------------------------------
+
+Searching 35 paths for library KERNEL32.DLL...
+Loading file:///C:/Windows/SysWOW64/kernel32.dll?MD5=0edfe6de135977bf758d2a5ec3fc3929...
+Created exports file: C:\Users\IlyaBOT\AppData\Roaming\ghidra\ghidra_11.2.1_PUBLIC\symbols\win32\kernel32.exports
+------------------------------------------------
+
+Applying cached symbols from KERNEL32.DLL
+Linking the External Programs of 'Skype-original.exe' to imported libraries...
+  [KERNEL32.DLL] -> not found in project
+------------------------------------------------
+
+  
+2026-09-07 23:34:57 INFO  (HeadlessAnalyzer) IMPORTING: Loaded 0 additional files  
+2026-09-07 23:35:02 INFO  (HeadlessAnalyzer) SCRIPT: I:\SkypeReverse\skypeopensource2\skyserver\tools\InspectSkypeEntry.java  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 0050f16e  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f16e CLD  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f16f MOV EAX,0x8c705817  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f174 MOV ECX,0x4f92e0  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f179 CMP ECX,0x50f16e  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f17f JNZ 0x0050f187  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f181 ADD ECX,0x27  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f187 XOR byte ptr [ECX],AL  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f189 ROL EAX,0x3  
+2026-09-07 23:35:02 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f18c INC ECX  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f18d CMP ECX,0x50f364  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f193 JNZ 0x0050f179  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f195 POPAD  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f196 AAA  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f197 JO 0x0050f1cb  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f199 POP SS  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f19a MOV CL,0x69  
+2026-09-07 23:35:03 INFO  (GhidraScript) InspectSkypeEntry.java> 0050f19c RETF  
+2026-09-07 23:35:04 WARN  (DecompileCallback) Decompiling 0050f16e, pcode error at 0050f1cb: Unable to resolve constructor at 0050f1cb  
+2026-09-07 23:35:04 INFO  (GhidraScript) InspectSkypeEntry.java> 
+/* WARNING: Control flow encountered bad instruction data */
+
+undefined4 entry(void)
+
+{
+  byte bVar1;
+  uint uVar2;
+  code *pcVar3;
+  byte in_AF;
+  undefined4 in_stack_0000001c;
+  
+  uVar2 = 0x8c705817;
+  pcVar3 = (code *)0x4f92e0;
+  do {
+    if (pcVar3 == entry) {
+      pcVar3 = (code *)0x50f195;
+    }
+    *pcVar3 = (code)((byte)*pcVar3 ^ (byte)uVar2);
+    uVar2 = uVar2 << 3 | uVar2 >> 0x1d;
+    pcVar3 = pcVar3 + 1;
+  } while (pcVar3 != (code *)0x50f364);
+  bVar1 = 9 < ((byte)in_stack_0000001c & 0xf) | in_AF;
+  uVar2 = CONCAT31((int3)((uint)in_stack_0000001c >> 8),(byte)in_stack_0000001c + bVar1 * '\x06') &
+          0xffffff0f;
+  if (!SBORROW4((int)pcVar3,0x50f364)) {
+    return CONCAT22((short)(uVar2 >> 0x10),
+                    CONCAT11((char)((uint)in_stack_0000001c >> 8) + bVar1,(char)uVar2));
+  }
+                    /* WARNING: Bad instruction - Truncating control flow here */
+  halt_baddata();
+}
+
+  
+2026-09-07 23:35:05 INFO  (HeadlessAnalyzer) REPORT: Save succeeded for: /Skype-original.exe (Skype42:/Skype-original.exe)  
+2026-09-07 23:35:05 INFO  (HeadlessAnalyzer) REPORT: Import succeeded  

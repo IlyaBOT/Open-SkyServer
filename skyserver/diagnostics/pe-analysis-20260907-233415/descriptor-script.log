@@ -1,0 +1,77 @@
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR key=953dabff  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +00 = 7f047d00  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +04 = 00400000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +08 = 01848000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +0c = 00be4584  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +10 = 00005ea0  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +14 = 004f92e0  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +18 = 0050f364  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +1c = 686846bc  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +20 = 0d7216ec  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +24 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +28 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +2c = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +30 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +34 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +38 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +3c = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +40 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +44 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +48 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +4c = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +50 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +54 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +58 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +5c = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +60 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +64 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +68 = 00000000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +6c = 00401000  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +70 = 0003e0b8  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +74 = 0050f364  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +78 = 002bb127  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +7c = ea1713df  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +80 = f58b8e05  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> DESCRIPTOR +84 = 1e1b2b16  
+2026-09-07 23:39:33 INFO  DecodeSkypeDescriptor.java> STAGE2 range=004f92e0..0050f364 checksum=0d22e7fc target=0050f110  
+2026-09-07 23:39:33 INFO  InspectSkypeEntry.java> SKYPE_ENTRY 0050f110  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f110 PUSH ESI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f111 PUSH EDI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f112 PUSH EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f113 MOV EBX,ESP  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f115 MOV ESI,ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f117 MOV ECX,0x118  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f11c SUB ESP,ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f11e MOV EDI,ESP  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f120 SHR ECX,0x2  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f123 PUSH ESI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f124 PUSH ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f125 MOVSD.REP ES:EDI,ESI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f127 POP ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f128 POP EDI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f129 XOR EAX,EAX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f12b STOSD.REP ES:EDI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f12d MOV ECX,ESP  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f12f MOV ESI,EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f131 MOV EAX,dword ptr [ESP + 0x10]  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f135 MOV EBX,0x1000  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f13a CMP EAX,EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f13c JC 0x0050f146  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f13e SUB ECX,EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f140 SUB EAX,EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f142 TEST dword ptr [ECX],ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f144 JMP 0x0050f13a  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f146 SUB ECX,EAX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f148 TEST dword ptr [ECX],ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f14a MOV EAX,ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f14c XCHG ESP,ECX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f14e PUSH ESI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f14f PUSH EAX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f150 CALL 0x004f93d0  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f155 POP EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f156 MOV ESP,EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f158 POP EBX  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f159 POP EDI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f15a POP ESI  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f15b INC CL  
+2026-09-07 23:39:34 INFO  InspectSkypeEntry.java> 0050f15d DEC CL  

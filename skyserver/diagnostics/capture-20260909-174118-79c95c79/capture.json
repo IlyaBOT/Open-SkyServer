@@ -1,0 +1,14 @@
+﻿{
+    "ProcessId":  26536,
+    "StartUtc":  "2026-09-09T14:30:04.0623953Z",
+    "ClientPath":  "C:\\Program Files (x86)\\Skype\\Phone\\Skype.exe",
+    "ClientSha256":  "A2E175CE7C9888C125E2B3D4C2343229832BA0D0CD8A8A1CE120CE92624E856C",
+    "Interfaces":  [
+                       "\\Device\\NPF_{054B4E63-FF35-497D-9038-739137484130}",
+                       "\\Device\\NPF_{24C90E4F-6F62-428D-83CC-4A2B39D28F26}",
+                       "\\Device\\NPF_{3B253A93-D5B0-AA01-E5EA-7BE7744FEEEF}",
+                       "\\Device\\NPF_Loopback"
+                   ],
+    "Filter":  "(tcp or udp) and (tcp port 33033 or host 111.221.74.33 or host 193.88.6.13 or host 193.88.8.59 or host 194.165.188.76 or host 194.165.188.79 or host 195.46.253.219 or host 212.8.163.76 or host 64.4.23.141 or host 65.55.223.25 or host 91.190.216.17 or host 91.190.218.40 or (udp port 55562))",
+    "DurationSeconds":  90
+}

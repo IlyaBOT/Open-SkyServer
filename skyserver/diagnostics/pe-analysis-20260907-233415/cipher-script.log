@@ -1,0 +1,27 @@
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> SKYPE_ENTRY 0050eee0  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eee0 SUB ESP,0x20  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eee3 MOV EAX,dword ptr [ECX + 0x14]  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eee6 MOV EDX,dword ptr [ECX + 0x7c]  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eee9 PUSH EBX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eeea PUSH EBP  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eeeb PUSH ESI  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eeec MOV ESI,dword ptr [ECX + 0x18]  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eeef SUB ESI,EAX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eef1 PUSH EDI  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eef2 MOV dword ptr [ESP + 0x18],EDX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eef6 MOV dword ptr [ESP + 0x28],EAX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eefa MOV dword ptr [ESP + 0x2c],ESI  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050eefe MOV EBP,EDX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef00 LEA EDI,[ECX + 0x70]  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef03 MOV dword ptr [ESP + 0x10],0x2  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef0b JMP 0x0050ef10  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef10 MOV ESI,dword ptr [EDI]  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef12 TEST ESI,ESI  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef14 JZ 0x0050ef99  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef1a MOV ECX,ESI  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef1c SHR ECX,0x8  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef1f XOR EAX,EAX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef21 CMP ECX,0x200  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef27 MOV dword ptr [ESP + 0x14],EAX  
+2026-09-07 23:41:21 INFO  InspectSkypeEntry.java> 0050ef2b MOV dword ptr [ESP + 0x1c],ECX  
+2026-09-07 23:41:22 INFO  InspectSkypeEntry.java> SKYPE_ENTRY 004f9970  

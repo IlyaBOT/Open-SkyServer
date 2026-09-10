@@ -1,0 +1,18 @@
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> SKYPE_ENTRY 0050f16e  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f16e CLD  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f16f MOV EAX,0x8c705817  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f174 MOV ECX,0x4f92e0  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f179 CMP ECX,0x50f16e  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f17f JNZ 0x0050f187  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f181 ADD ECX,0x27  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f187 XOR byte ptr [ECX],AL  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f189 ROL EAX,0x3  
+2026-09-07 23:35:02 INFO  InspectSkypeEntry.java> 0050f18c INC ECX  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f18d CMP ECX,0x50f364  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f193 JNZ 0x0050f179  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f195 POPAD  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f196 AAA  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f197 JO 0x0050f1cb  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f199 POP SS  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f19a MOV CL,0x69  
+2026-09-07 23:35:03 INFO  InspectSkypeEntry.java> 0050f19c RETF  

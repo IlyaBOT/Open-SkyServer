@@ -1,0 +1,5 @@
+I:\SkypeReverse\skypeopensource2\skyserver\tests\bin\Release\ProtocolTests.exe
+I:\SkypeReverse\skypeopensource2\skyserver\tests\obj\Release\ProtocolTests.csproj.AssemblyReference.cache
+I:\SkypeReverse\skypeopensource2\skyserver\tests\obj\Release\ProtocolTests.csproj.CoreCompileInputs.cache
+I:\SkypeReverse\skypeopensource2\skyserver\tests\obj\Release\ProtocolTests.exe
+I:\SkypeReverse\skypeopensource2\skyserver\tests\bin\Release\skype_blob_worker.exe

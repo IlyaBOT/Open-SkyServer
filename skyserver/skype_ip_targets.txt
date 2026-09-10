@@ -1,0 +1,10 @@
+# Bootstrap IPs observed from installed Skype 4.2.0.187 on 2026-09-06.
+64.4.23.141
+65.55.223.25
+91.190.216.17
+91.190.218.40
+111.221.74.33
+# Login servers from parse_proto/parse_proto1/debug1.log: *Lib/Connection/LoginServers.
+193.88.6.13
+194.165.188.79
+195.46.253.219

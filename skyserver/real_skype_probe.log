@@ -1,0 +1,481 @@
+skype HostCache probe disabled; pass --include-hostcache-probe for legacy supernode bootstrap capture.
+api listening on 0.0.0.0:33034
+udp probe listening on 0.0.0.0:33033
+auth listening on 0.0.0.0:33033
+tcp probe listening on 0.0.0.0:80
+udp probe listening on 0.0.0.0:12350
+tcp probe listening on 0.0.0.0:443
+tcp probe listening on 0.0.0.0:12350
+tcp probe listening on 0.0.0.0:12351
+tcp probe listening on 0.0.0.0:13392
+tcp probe listening on 0.0.0.0:40001
+udp probe listening on 0.0.0.0:12351
+tcp probe listening on 0.0.0.0:40002
+tcp probe listening on 0.0.0.0:40003
+tcp probe listening on 0.0.0.0:40004
+tcp probe listening on 0.0.0.0:40005
+tcp probe listening on 0.0.0.0:40006
+tcp probe listening on 0.0.0.0:40007
+tcp probe listening on 0.0.0.0:40008
+udp probe listening on 0.0.0.0:13392
+tcp probe listening on 0.0.0.0:40009
+udp probe listening on 91.190.218.40:40001
+tcp probe listening on 0.0.0.0:40010
+udp probe listening on 91.190.216.17:40002
+tcp probe listening on 0.0.0.0:40011
+udp probe listening on 65.55.223.25:40003
+tcp probe listening on 0.0.0.0:40012
+udp probe listening on 64.4.23.141:40004
+tcp probe listening on 0.0.0.0:40013
+udp probe listening on 111.221.74.33:40005
+tcp probe listening on 0.0.0.0:40014
+udp probe listening on 91.190.218.40:40006
+tcp probe listening on 0.0.0.0:40015
+udp probe listening on 91.190.216.17:40007
+tcp probe listening on 0.0.0.0:40016
+udp probe listening on 65.55.223.25:40008
+tcp probe listening on 0.0.0.0:40017
+udp probe listening on 64.4.23.141:40009
+tcp probe listening on 0.0.0.0:40018
+udp probe listening on 111.221.74.33:40010
+tcp probe listening on 0.0.0.0:40019
+udp probe listening on 91.190.218.40:40011
+tcp probe listening on 0.0.0.0:40020
+udp probe listening on 91.190.216.17:40012
+tcp probe listening on 0.0.0.0:40021
+udp probe listening on 65.55.223.25:40013
+tcp probe listening on 0.0.0.0:40022
+udp probe listening on 64.4.23.141:40014
+tcp probe listening on 0.0.0.0:40023
+udp probe listening on 111.221.74.33:40015
+tcp probe listening on 0.0.0.0:40024
+udp probe listening on 91.190.218.40:40016
+tcp probe listening on 0.0.0.0:40025
+udp probe listening on 91.190.216.17:40017
+tcp probe listening on 0.0.0.0:40026
+udp probe listening on 65.55.223.25:40018
+tcp probe listening on 0.0.0.0:40027
+udp probe listening on 64.4.23.141:40019
+tcp probe listening on 0.0.0.0:40028
+udp probe listening on 111.221.74.33:40020
+tcp probe listening on 0.0.0.0:40029
+udp probe listening on 91.190.218.40:40021
+tcp probe listening on 0.0.0.0:40030
+udp probe listening on 91.190.216.17:40022
+tcp probe listening on 0.0.0.0:40031
+udp probe listening on 65.55.223.25:40023
+tcp probe listening on 0.0.0.0:40032
+udp probe listening on 64.4.23.141:40024
+tcp probe listening on 0.0.0.0:40033
+udp probe listening on 111.221.74.33:40025
+tcp probe listening on 0.0.0.0:40034
+udp probe listening on 91.190.218.40:40026
+tcp probe listening on 0.0.0.0:40035
+udp probe listening on 91.190.216.17:40027
+tcp probe listening on 0.0.0.0:40036
+udp probe listening on 65.55.223.25:40028
+udp probe listening on 64.4.23.141:40029
+udp probe listening on 111.221.74.33:40030
+udp probe listening on 91.190.218.40:40031
+udp probe listening on 91.190.216.17:40032
+udp probe listening on 65.55.223.25:40033
+udp probe listening on 64.4.23.141:40034
+udp probe listening on 111.221.74.33:40035
+udp probe listening on 91.190.218.40:40036
+udp probe 172.18.0.1:41164 -> 65.55.223.25:40003 bytes: 22, data 2E 42 02 40 4D DD 1C 3A 68 82 89 9D A1 AB CE 97 0A 53 E0 11 67 F4
+udp probe decrypt failed 172.18.0.1 -> 65.55.223.25:40003 seq=2E42 rnd=404DDD1C expected-crc=3A688289
+udp probe 172.18.0.1:41164 -> 91.190.218.40:40001 bytes: 34, data 2E 44 02 4F B0 BD DD 8A EE A0 F6 9C A5 6C 59 87 31 26 35 CB 47 B8 47 41 08 7E 8C 9B 7B 4C AD FA A5 6C
+udp probe decrypt failed 172.18.0.1 -> 91.190.218.40:40001 seq=2E44 rnd=4FB0BDDD expected-crc=8AEEA0F6
+udp probe 172.18.0.1:41164 -> 91.190.216.17:40002 bytes: 27, data 2E 46 02 88 09 85 6A 84 A4 81 1F F4 86 AA 43 93 E7 F3 7D 8A 10 85 04 E9 DD 30 06
+udp probe decrypt failed 172.18.0.1 -> 91.190.216.17:40002 seq=2E46 rnd=8809856A expected-crc=84A4811F
+udp probe 172.18.0.1:41164 -> 64.4.23.141:40004 bytes: 30, data 2E 48 02 F0 D0 7A 53 3A 0B 9B 2F 84 D9 A2 92 82 33 01 AF 94 EE 4E 48 CB 48 70 92 64 C1 47
+udp probe decrypt failed 172.18.0.1 -> 64.4.23.141:40004 seq=2E48 rnd=F0D07A53 expected-crc=3A0B9B2F
+udp probe 172.18.0.1:41164 -> 111.221.74.33:40005 bytes: 28, data 2E 4A 02 E7 7B 6D E8 26 89 AB C6 45 FB 36 AD 14 25 1C 7C 89 51 2C 75 1C B4 75 7B ED
+udp probe decrypt failed 172.18.0.1 -> 111.221.74.33:40005 seq=2E4A rnd=E77B6DE8 expected-crc=2689ABC6
+tcp probe 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 80, data EC E2 05 B3 16 71 3F 9A 11 1C 1D C1 B7 55 56 A7 1B 30 47 37 4A 51 F2 DC C4 0E EB ED 19 DA 56 3A 4C 17 4A 4F 37 79 0E 8C 12 53 B7 01 B3 31 C3 A8 3C 7D 8A F3 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67, ascii .....q?......UV..0G7JQ........V:L.JO7y...S...1..<}....6....+...g
+tcp probe 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 59, data 21 91 24 49 CB A0 FB 04 A2 3D F7 10 C1 44 B3 06 F2 71 4A 1D 4E A5 FD 19 65 9F 6F 72 CC CB 09 F3 C1 7E 77 CD AF A3 EC 72 71 19 0F 51 EA E9 3C A7 22 AB 60 51 4E E7 6C ED 3A E3 38, ascii !.$I.....=...D...qJ.N...e.or.....~w....rq..Q..<.".`QN.l.:.8
+tcp probe 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 58, data 5F B1 B7 10 F7 87 B5 A7 36 2C 07 66 AC 70 2B A8 4F 16 AC 7F 87 C3 0A BC 6D 51 09 DF A4 58 96 F3 B3 02 0D 7C 03 9C 7A 85 C7 FD BF 61 3F 8C 03 12 94 F5 A2 2B E0 D1 CE 67 EC 6D, ascii _.......6,.f.p+.O.......mQ...X.....|..z....a?......+...g.m
+tcp probe 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 93, data 28 79 F4 79 A1 A1 4B 38 5A CF 7E E1 32 31 5A F0 F2 D6 C5 54 E2 FA C2 D4 B9 13 D6 03 6E 0B AE 40 49 2F E8 C0 4A A4 2A 9C 2D 0D B9 D7 57 DC D5 29 39 16 0F 74 55 82 8B C0 31 AE C7 CC CD 9A C3 98, ascii (y.y..K8Z.~.21Z....T........n..@I/..J.*.-...W..)9..tU...1.......
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53401 dh384-hello bytes: 51, data 74 64 58 7A 22 EC E3 BF E0 A4 FA DF EC C1 8A 76 A9 07 D9 50 9C A0 DB AF 6E 4F 67 7B AB 8D E6 75 7E F7 88 21 3F B2 51 4D 1E 8E 3D BF E0 25 E9 60 09 D2 E7
+tcp probe next 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 8, data FD DA F5 6A CE B2 A5 C3, ascii ...j....
+tcp probe scripted 111.221.74.33:40005 -> 172.18.0.1:53402 dh384-hello bytes: 51, data 7F 17 71 EE C1 42 DC 7D FC 59 CF 39 10 D6 61 A7 75 A8 88 BE BD 1B 7A FA 79 F4 33 CD 18 8A 6D 70 11 9E E5 65 1B 35 4E E4 AD 5B FD C3 2E D6 68 90 04 86 5C
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53399 dh384-hello bytes: 51, data 06 E6 8C 6E 18 E8 EB BC 2F 90 59 93 7F 9C 4F 06 7B 52 D2 EB E7 EB B6 0A 3D 8C A4 D9 98 0E 3E 46 CF 87 56 EB F0 4C FA AC F6 D4 B5 D8 B3 F7 E4 9F 7B 95 92
+tcp probe next 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 8, data BA 5E D6 49 11 CF 22 5A, ascii .^.I.."Z
+tcp probe dh384 client-hash ok 172.18.0.1:53399 -> 64.4.23.141:40004, expected BA 5E D6 49 11 CF 22 5A, got BA 5E D6 49 11 CF 22 5A
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53399 dh384-ack bytes: 8, data CB 6D 31 DC CD 55 A9 74
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53398 dh384-hello bytes: 51, data FC C2 E4 4D B9 D4 20 5C 63 7A 20 06 F6 F6 62 00 CA 48 0C 83 9F A2 85 95 AF DA 61 AD A1 00 20 DC FB AB 7A 7A C8 9B 26 24 7A AB 15 9B 74 F5 14 39 04 E4 14
+tcp probe next 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 8, data 44 FA D1 98 AC E9 CC 5F, ascii D......_
+tcp probe dh384 client-hash ok 172.18.0.1:53398 -> 91.190.218.40:40001, expected 44 FA D1 98 AC E9 CC 5F, got 44 FA D1 98 AC E9 CC 5F
+tcp probe dh384 client-hash ok 172.18.0.1:53401 -> 91.190.216.17:40002, expected FD DA F5 6A CE B2 A5 C3, got FD DA F5 6A CE B2 A5 C3
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53398 dh384-ack bytes: 8, data C3 95 29 51 07 59 E0 FA
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53399 rc4-server-handshake bytes: 42, data EE 63 F4 3E C0 51 10 45 51 82 5C 04 F2 20 2D EA 10 45 51 83 5C 04 F2 23 FE E0 E3 98 FF E5 4F F4 38 69 97 E4 34 34 B8 3F A4 71
+tcp probe next 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 53, data 69 2C 98 0F C4 1B 56 4F BA 56 2C 9A 64 CC 0C 6C D4 C4 7A 66 82 5D A8 0E 8F B4 48 E4 71 38 15 E0 72 B7 23 2D EB 4E 96 5A F3 70 00 39 F0 87 B0 BF 69 C8 CE D1 E6, ascii i,....VO.V,.d..l..zf.]....H.q8..r.#-.N.Z.p.9....i....
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53401 dh384-ack bytes: 8, data 34 25 A6 E6 49 63 B1 79
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53401 rc4-server-handshake bytes: 43, data E7 6E 12 6B 77 BD 4F ED 34 96 AB 27 92 8E CE 50 4F ED 34 97 AB 27 92 8D B0 A5 32 CE 6E BC 50 48 30 9E 1A E5 67 1E 69 3A B7 47 59
+tcp probe rc4-client-handshake 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 53, decrypted 69 2C 98 0F 85 74 00 00 00 01 00 00 00 0F 4D 03 82 8B C0 31 AE C7 CC CD 9A C3 98 29 46 7F 24 45 B2 FB 70 21 DE 37 7C BD CA 33 48 19 76 EF D4 35 E2 6B 20 11 0E
+tcp probe next 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 8, data 9A 4A 65 82 98 FA C4 7B, ascii .Je....{
+tcp probe dh384 client-hash ok 172.18.0.1:53402 -> 111.221.74.33:40005, expected 9A 4A 65 82 98 FA C4 7B, got 9A 4A 65 82 98 FA C4 7B
+tcp probe scripted 111.221.74.33:40005 -> 172.18.0.1:53402 dh384-ack bytes: 8, data F9 56 B7 3E 33 CE 4B 24
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53398 rc4-server-handshake bytes: 39, data 84 AA 8E 7B DD A2 E3 97 ED 9E 0C 9E A4 4C E7 62 E3 97 ED 9F 0C 9E A4 4F 5B 27 80 57 51 21 7C 1C 5A 24 97 8C BE 44 0D
+tcp probe scripted 111.221.74.33:40005 -> 172.18.0.1:53402 rc4-server-handshake bytes: 38, data 45 59 FD 79 8A A0 B8 2F 87 C4 74 BD 57 52 84 43 B8 2F 87 C5 74 BD 57 51 05 58 D5 D2 CE D2 FC 41 07 23 DB 9F 5E D1
+tcp probe next 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 60, data 5C B6 7C 2C 98 ED 6A 73 65 59 CF 9B DB EF 46 43 C9 8B 6C FE 90 1F FE F2 1A 26 7A 46 15 A3 C8 7D 13 8E CF FE F8 80 D8 23 85 23 DD D6 68 9C D9 C9 14 10 42 6C EF 34 44 89 6A 9A 78 0E, ascii \.|,..jseY....FC..l......&zF...}.......#.#..h.....Bl.4D.j.x.
+tcp probe rc4-client-handshake 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 60, decrypted 5C B6 7C 2C 85 AD 00 00 00 01 00 00 00 0F 5B 03 A3 F8 09 A6 5F 84 25 12 DB D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB 30 E1 9E
+tcp probe next 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 27, data 50 B8 70 ED 18 A3 6E 9A D5 34 14 C9 C9 6A 2F C5 7F 2D A8 BF 04 28 94 2C 26 D9 A8, ascii P.p...n..4...j/..-...(.,&..
+tcp probe next 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 68, data D5 0A F9 7D FA F9 83 AF 16 39 F1 AE F1 E9 95 70 8B 76 20 97 65 5B 53 CD 76 94 9D 35 86 51 92 92 B7 31 31 81 62 A7 A8 7E 20 06 B0 E8 F4 C1 72 2E C5 BF D6 D1 7C DC 8B 81 DD D3 C9 A6 4F A5 C5 B7, ascii ...}.....9.....p.v .e[S.v..5.Q...11.b..~ .....r.....|.......O...
+tcp probe rc4-client-handshake 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 68, decrypted D5 0A F9 7D 04 8A 00 00 00 01 00 00 00 0F 6B 03 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA 63 B8 C9 66 1F 44 E5 D2 9B 90 C1 FE D7 9C 5D EA D3 68 B9 96 8F F4 D5 02 0B 40 B1 2E 47 4C 4D 1A 43 18 A9 C6 FF
+tcp probe next 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 27, data 2A FE A5 25 BD 49 D7 09 C0 C7 55 FF FA BA 32 D1 A1 5F 6E 23 AE C6 B2 AC 15 4A E9, ascii *..%.I....U...2.._n#.....J.
+tcp probe rc4-client-data 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 27, decrypted 34 2E 50 15 F2 01 2E 4F 42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-data 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 27, decrypted 34 2E 4E 15 F2 01 2E 4D 42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe next 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 58, data DA 0E D0 A4 84 8B 85 D4 3B EC 39 A1 A0 A9 56 4D FE 24 9A B3 8E 5D 9D EC E1 C5 99 AE 0C C9 09 BC 96 81 AF 5C E9 5B 50 CB 05 D5 74 B1 36 D6 A9 70 55 0C A3 2F E4 B2 92 3E 0B C5, ascii ........;.9...VM.$...].............\.[P...t.6..pU../...>..
+tcp probe rc4-client-handshake 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 58, decrypted DA 0E D0 A4 85 C5 00 00 00 01 00 00 00 0F 57 03 7B F0 A1 5E B7 FC 3D 4A B3 C8 99 F6 6F 54 B5 62 EB A0 91 8E 27 AC 2D 7A 23 78 89 26 DF 04 A5 92 5B 50 81 BE 97 5C 1D AA 93 28
+tcp probe next 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 27, data 34 27 31 D1 99 BD 14 83 57 13 25 D5 AF 48 B4 98 5F 50 E3 C7 9D B0 14 98 65 14 1A, ascii 4'1.....W.%..H.._P......e..
+tcp probe rc4-client-data 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 27, decrypted 34 2E 52 15 F2 01 2E 51 42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:53402 -> 111.221.74.33:40005 len=27 declared=27 crc/seq=2E52 body=21 cmd=F201 prev=2E51 tag=42 payload=42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:53401 -> 91.190.216.17:40002 len=27 declared=27 crc/seq=2E50 body=21 cmd=F201 prev=2E4F tag=42 payload=42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:53398 -> 91.190.218.40:40001 len=27 declared=27 crc/seq=2E4E body=21 cmd=F201 prev=2E4D tag=42 payload=42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe next 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 27, data 52 E8 61 89 99 1E 1D CF 95 96 4B 9A 04 F9 B7 E2 33 0C 0E 2C C2 FF BF 1F 19 FF D9, ascii R.a.......K.....3..,.......
+tcp probe rc4-client-data 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 27, decrypted 34 2E 4C 15 F2 01 2E 4B 42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:53399 -> 64.4.23.141:40004 len=27 declared=27 crc/seq=2E4C body=21 cmd=F201 prev=2E4B tag=42 payload=42 49 B2 1C 6F D2 BA 8B 18 AC 78 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 64.4.23.141:40004 -> 172.18.0.1:53399 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 4B 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53399 rc4-supernode-probe-reply bytes: 147, data 0E FD E0 BD B8 D3 51 B6 E0 94 67 8E 76 E5 1C 45 57 F1 88 2D 45 B7 09 46 00 A2 00 08 37 4B B5 AE CF 13 98 5C E8 A1 EA BB 41 19 E6 34 8E 76 75 27 67 5A BC D9 47 24 FC FC B3 00 4E 2E 42 CC AE BD
+tcp probe next 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 4, data B2 93 B4 7A, ascii ...z
+tcp probe rc4-client-data 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 4, decrypted 07 01 C1 D2
+tcp probe clear 91.190.218.40:40001 -> 172.18.0.1:53398 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 4D 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53398 rc4-supernode-probe-reply bytes: 147, data 02 DB E9 1D 22 88 75 41 18 16 0B 0F 25 F8 C3 98 91 32 0D 20 51 B4 12 FC B8 BB 1B C8 73 0C 76 9D 78 96 BD 21 F5 00 37 CA 95 87 72 51 FC 3B FD EC 6D 44 AB 79 B6 64 43 DD 0C 41 F8 87 D7 F3 D9 D4
+tcp probe next 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 4, data E5 4D AA 32, ascii .M.2
+tcp probe rc4-client-data 172.18.0.1:53398 -> 91.190.218.40:40001 bytes: 4, decrypted 07 01 C1 D2
+tcp probe clear 111.221.74.33:40005 -> 172.18.0.1:53402 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 51 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 111.221.74.33:40005 -> 172.18.0.1:53402 rc4-supernode-probe-reply bytes: 147, data 14 1F 2E E8 8A 8B FD 1D 6A F4 6B 91 02 21 62 83 EF C3 1F 84 37 02 5F AE 97 43 BD 57 5F 57 63 06 5C A8 8E 45 B9 5F 37 D0 A5 00 D4 A7 97 C9 75 91 12 83 CF EA 78 16 3C E8 A9 00 8E F6 90 A3 8D E5
+tcp probe clear 91.190.216.17:40002 -> 172.18.0.1:53401 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 4F 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe next 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 4, data 67 FB 03 E5, ascii g...
+tcp probe rc4-client-data 172.18.0.1:53402 -> 111.221.74.33:40005 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53401 rc4-supernode-probe-reply bytes: 147, data 9C BE 3D 4C 6C 61 7E 61 BC 1F 14 24 D8 A7 16 62 7F C7 8E 67 E0 BA 1F 55 51 83 08 90 91 83 54 AB 1F 11 54 41 71 A6 0C 68 6F 14 56 72 CA 6A EF 57 83 C9 4A 89 CC 5F D3 46 84 86 8C 06 AD 29 0D 79
+tcp probe next 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 4, data A1 95 E4 85, ascii ....
+tcp probe rc4-client-data 172.18.0.1:53401 -> 91.190.216.17:40002 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 11, data B2 DA CF 0E 43 96 AD C8 80 64 FD, ascii ....C....d.
+tcp probe rc4-client-data 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 11, decrypted 14 2E 54 05 82 03 2E 53 42 2D 03
+tcp probe next 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 247, data 79 96 32 26 73 96 54 E2 52 91 35 67 9B D9 25 42 E5 02 C5 4B 84 A9 1E 2A 21 77 D1 5D 90 59 48 57 4C 4C 74 62 79 C3 E8 92 38 91 90 CE A1 48 29 90 48 A4 48 E2 EF 72 7A 52 BF 65 9C 79 7C FE B1 D4, ascii y.2&s.T.R.5g..%B...K...*!w.].YHWLLtby...8....H).H.H..rzR.e.y|...
+tcp probe rc4-client-data 172.18.0.1:53399 -> 64.4.23.141:40004 bytes: 247, decrypted 14 2E 56 06 32 2E 55 42 85 14 C9 D4 03 2E 57 E4 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA A0 55 83 37 0D 5F 83 A3 E2 F3 FA E3 50 B2 9B 6C 38 3A 79 5B 9C 55 B0 60 28 05 47 CE 57 A2 36 64 56 2F DB B3 87 C7 1A 9B 2C 20 F8 27 D2 BA 5E F6 5F B4 3E C8 1D 5B 2D 87 17 9B 47 EB 78 47 36 1A 8E 29 3F 25 82 B0 28 92 47 67 96 D7 44 10 A9 93 B1 8B FF 34 1B E8 A8 67 B6 04 63 50 B8 18 2E 86 17 00
+auth client 172.18.0.1:62545
+udp probe 172.18.0.1:41164 -> 64.4.23.141:40004 bytes: 25, data 2E 59 02 16 D0 88 79 82 27 7B A5 3A 29 DC 58 AB F0 D0 66 DB 6F F2 B5 80 9F
+udp probe decrypt failed 172.18.0.1 -> 64.4.23.141:40004 seq=2E59 rnd=16D08879 expected-crc=82277BA5
+tcp probe 172.18.0.1:61883 -> 193.88.6.13:443 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 172.18.0.1:61884 -> 193.88.6.13:80 bytes: 5, data 16 03 01 00 00, ascii .....
+udp probe 172.18.0.1:41164 -> 91.190.218.40:40001 bytes: 32, data 2E 5B 02 64 64 B0 56 A3 89 CA C9 C5 BE 34 29 A5 AF CB E8 E1 5E 9C 0F 37 3A 70 85 0B B6 72 D5 A3
+udp probe decrypt failed 172.18.0.1 -> 91.190.218.40:40001 seq=2E5B rnd=6464B056 expected-crc=A389CAC9
+udp probe 172.18.0.1:41164 -> 91.190.216.17:40002 bytes: 22, data 2E 5D 02 31 EB D5 4F DB 9E 72 9D 17 CF 3B 34 41 E1 AC 17 F1 2E 9A
+udp probe decrypt failed 172.18.0.1 -> 91.190.216.17:40002 seq=2E5D rnd=31EBD54F expected-crc=DB9E729D
+udp probe 172.18.0.1:41164 -> 111.221.74.33:40005 bytes: 21, data 2E 5F 02 C8 FE 15 B4 F4 BD 18 DA 4C 67 32 43 2E 06 79 20 08 5B
+udp probe decrypt failed 172.18.0.1 -> 111.221.74.33:40005 seq=2E5F rnd=C8FE15B4 expected-crc=F4BD18DA
+udp probe 172.18.0.1:41164 -> 65.55.223.25:40003 bytes: 30, data 2E 61 02 F0 45 C7 95 FF BD 4E 8E BE D4 36 00 26 D8 77 52 50 CF 55 74 C8 68 35 54 62 CC AB
+udp probe decrypt failed 172.18.0.1 -> 65.55.223.25:40003 seq=2E61 rnd=F045C795 expected-crc=FFBD4E8E
+tcp probe 172.18.0.1:52877 -> 195.46.253.219:443 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 172.18.0.1:52878 -> 195.46.253.219:80 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 57, data 33 C7 A5 82 5F F0 6C D7 1E 39 A3 A2 E7 A9 E4 6A 82 2E 51 2F 1A D7 A2 34 F4 82 EE 4B E7 8C F1 66 7D D9 8B 1B A3 E5 0F 59 DE 47 07 FC 32 C4 D6 73 0A 73 88 59 B6 2F 14 75 22, ascii 3..._.l..9.....j..Q/...4...K...f}......Y.G..2..s.s.Y./.u"
+tcp probe 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 101, data 82 E8 F0 2B 02 AD F2 0C 63 52 F8 67 91 5F FA 7F D2 3D F8 BF A0 EB 3B D1 AC 44 1B D8 49 17 CE CC 87 6D 12 11 EB E3 33 DA BC E6 69 91 5A 48 3E 0C 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA 63, ascii ...+....cR.g._...=....;..D..I....m....3...i.ZH>...6....+...g.m.c
+tcp probe 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 58, data 2E F8 80 87 54 9C 7C 4D 9F 08 0E 54 C0 44 98 11 E5 8E 1B D3 29 0A 14 E1 2A 2A BB D7 D7 97 F2 52 7B 33 23 84 37 A9 47 A6 AC 7B 18 37 79 13 11 68 FD 0A 73 88 59 B6 2F 14 75 22, ascii ....T.|M...T.D......)...**.....R{3#.7.G..{.7y..h..s.Y./.u"
+tcp probe 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 108, data 2F FD 59 DD 8F 20 D9 87 D1 9F F2 18 0D A4 11 41 76 1B CD 6F EC 91 E5 F5 A6 7F 15 95 13 89 AC 8C 5B CE 2A A5 57 08 77 6A D5 95 54 F8 4C 47 90 3B 50 81 BE 97 5C 1D AA 93 28 79 56 4F B4 95 C2 CB, ascii /.Y.. .........Av..o............[.*.W.wj..T.LG.;P...\...(yVO....
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:52880 dh384-hello bytes: 51, data 69 F2 81 93 E3 D2 64 9F 88 CE 91 27 CF 71 50 59 3B 61 27 65 72 5E 63 02 DD C4 60 C2 47 89 25 89 96 B5 FD 24 46 78 4C 7C C6 69 28 C6 B1 6D 52 74 F0 DE FE
+tcp probe next 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 8, data 83 03 5B AC 3B 01 C1 99, ascii ..[.;...
+tcp probe dh384 client-hash ok 172.18.0.1:52880 -> 91.190.218.40:40001, expected 83 03 5B AC 3B 01 C1 99, got 83 03 5B AC 3B 01 C1 99
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:52883 dh384-hello bytes: 51, data 71 6F 15 CC AF D7 99 40 DE 33 6A 12 57 D5 6B F3 97 49 48 C5 94 4F 3D 3C 90 F2 9E DE 6A 09 4C C7 56 3F D9 5D 94 3D E6 CE D8 C7 BF CD 42 85 9D 61 EC 0F 47
+tcp probe next 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 8, data 18 BE 58 18 28 7C F7 7A, ascii ..X.(|.z
+tcp probe dh384 client-hash ok 172.18.0.1:52883 -> 65.55.223.25:40003, expected 18 BE 58 18 28 7C F7 7A, got 18 BE 58 18 28 7C F7 7A
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:52883 dh384-ack bytes: 8, data 6B FD AA AD 8B 2C 6C 71
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:52883 rc4-server-handshake bytes: 39, data A5 03 A7 07 C1 24 96 64 1D 8E 4B 90 A7 31 38 DB 96 64 1D 8F 4B 90 A7 32 35 DD 23 0E F2 79 03 5C 3D 3A B9 73 E7 A3 69
+tcp probe next 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 59, data BA 98 A5 C2 DA 49 8D 5B 7F 99 44 C1 F4 CD 07 81 FC B5 78 94 49 1B F7 1A DD 5F 2F 74 56 69 BC A6 57 C7 7E 83 E3 5C 8F FF 70 76 3B 16 61 60 DB 44 5B 99 E1 C0 CD 17 6D A9 3A C5 D9, ascii .....I.[..D.......x.I...._/tVi..W.~..\..pv;.a`.D[.....m.:..
+tcp probe rc4-client-handshake 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 59, decrypted BA 98 A5 C2 84 CB 00 00 00 01 00 00 00 0F 59 03 71 EE 07 0C 0D DA 03 D8 69 86 BF 64 85 F2 3B B0 61 1E 77 BC FD 0A 73 88 59 B6 2F 14 75 22 AB 60 51 4E E7 6C ED 3A E3 38 49 E6 9F
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:52881 dh384-hello bytes: 51, data 14 D7 E4 76 1F 81 B8 40 72 C7 FA E2 AA 6A 8B F1 F1 D9 49 2B 2F 7E 41 10 9B 50 4C AC 18 8D B2 2D 02 87 E3 EA 26 38 B5 DB 89 87 31 E5 D4 4F 25 A5 F2 16 9F
+tcp probe next 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 8, data 88 41 1A ED CA 3C 0C 0E, ascii .A...<..
+tcp probe dh384 client-hash ok 172.18.0.1:52881 -> 91.190.216.17:40002, expected 88 41 1A ED CA 3C 0C 0E, got 88 41 1A ED CA 3C 0C 0E
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:52881 dh384-ack bytes: 8, data AB 9C D0 D9 D0 8D E5 52
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:52882 dh384-hello bytes: 51, data 3B 63 A8 AB C6 C7 92 12 C8 6C 4E B6 9F E8 08 9B 1F 5A 0A 67 CF 06 C3 EA 05 93 6F 7B 48 AC E7 4D C0 65 9A DC A0 AC BC 47 74 C3 82 04 68 55 65 2A 59 33 13
+tcp probe next 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 8, data 10 72 8D CF DC 0F 80 25, ascii .r.....%
+tcp probe dh384 client-hash ok 172.18.0.1:52882 -> 64.4.23.141:40004, expected 10 72 8D CF DC 0F 80 25, got 10 72 8D CF DC 0F 80 25
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:52882 dh384-ack bytes: 8, data E2 53 A7 B3 F0 02 7D 56
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:52882 rc4-server-handshake bytes: 43, data 9F 56 3A 7C E0 42 56 4F 99 DA 59 22 46 9A EC 15 56 4F 99 DB 59 22 46 99 99 F6 EB 30 4F 44 83 34 03 C4 7B 56 31 C5 21 E5 6D C4 8F
+tcp probe next 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 66, data EB 43 88 E2 DD A5 74 30 96 3F 95 B3 85 7E BF CD 65 3E 31 12 38 49 26 89 9F 21 D1 A7 0F 67 42 09 60 2F 59 39 20 7F A5 8D 22 67 9A 22 F5 54 18 7C E7 F2 C5 D0 90 85 7A 11 36 7F 8C 25 15 54 1D BF, ascii .C....t0.?...~..e>1.8I&..!...gB.`/Y9 ..."g.".T.|......z.6..%.T..
+tcp probe rc4-client-handshake 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 66, decrypted EB 43 88 E2 05 6B 00 00 00 01 00 00 00 0F 67 03 11 0E A7 2C AD FA A3 F8 09 A6 5F 84 25 12 DB D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB 30 E1 9E
+tcp probe next 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 27, data 75 6C AF E1 FD B0 C4 35 A3 F4 02 38 FE D0 48 87 E7 56 6B A5 77 E2 CA 85 8C 27 C9, ascii ul.....5...8..H..Vk.w....'.
+tcp probe rc4-client-data 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 27, decrypted 34 2E 67 15 F2 01 2E 66 42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:52882 -> 64.4.23.141:40004 len=27 declared=27 crc/seq=2E67 body=21 cmd=F201 prev=2E66 tag=42 payload=42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 64.4.23.141:40004 -> 172.18.0.1:52882 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 66 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:52882 rc4-supernode-probe-reply bytes: 147, data 81 39 78 97 1E 7B CF 67 14 93 97 07 9C 0B 1B 37 6A 2F 33 F9 3D 2D 71 60 51 6A 86 AE C1 10 98 CE 73 02 CC 81 B2 95 C9 4C D9 CF D5 61 30 4E 35 0F B8 F6 4A FC 52 78 20 7C 78 8A F2 EF 08 06 A9 16
+tcp probe next 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 4, data D7 73 27 8A, ascii .s'.
+tcp probe rc4-client-data 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:52880 dh384-ack bytes: 8, data 84 23 76 C6 D4 00 4B F7
+tcp probe next 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 27, data 40 3A 7B 84 A7 FC 7C 94 68 B8 3F 0E F7 9F F3 5C 37 3D 92 C2 B8 73 34 62 B8 E2 37, ascii @:{...|.h.?....\7=...s4b..7
+tcp probe rc4-client-data 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 27, decrypted 34 2E 63 15 F2 01 2E 62 42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:52883 -> 65.55.223.25:40003 len=27 declared=27 crc/seq=2E63 body=21 cmd=F201 prev=2E62 tag=42 payload=42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 65.55.223.25:40003 -> 172.18.0.1:52883 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 62 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:52883 rc4-supernode-probe-reply bytes: 147, data A9 B8 EF 9A D4 C1 EE 74 81 2E 2E 39 F4 A1 C1 82 EF E8 B6 AD 63 18 57 EA 71 FB 83 AF 78 4B 41 08 FA DF 8E 69 3F AF A3 2F A8 A6 CD 3B A6 9B 69 AC 66 10 4D 8E CD 02 AF B3 DF 62 7B 5E DF 22 D3 17
+tcp probe next 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 4, data 1D 51 65 6B, ascii .Qek
+tcp probe rc4-client-data 172.18.0.1:52883 -> 65.55.223.25:40003 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:52881 rc4-server-handshake bytes: 42, data C4 DC 8B 38 D0 C6 D5 DD 67 23 6D AB F3 C1 7E 5C D5 DD 67 22 6D AB F3 C2 8D 02 21 F8 5F DC 56 70 E6 94 85 75 CC A6 D9 EC DD 41
+tcp probe next 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 89, data FB 01 26 C4 28 20 D7 7B A5 33 37 53 08 55 72 46 CC 6B E4 4C 60 4F D5 30 25 87 6F 6B F0 BD F6 03 42 26 BA 3B 59 23 5C 3C F7 DA AC 6F A7 57 B0 F6 7E B0 81 0A D5 6B F4 31 94 07 79 08 10 77 D7 FD, ascii ..&.( .{.37S.UrF.k.L`O.0%.ok....B&.;Y#\<...o.W..~....k.1..y..w..
+tcp probe rc4-client-handshake 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 89, decrypted FB 01 26 C4 05 65 00 00 00 01 00 00 00 0F 5F 03 1B 10 41 7E 57 1C DD 6A 53 E8 39 16 0F 74 55 82 8B C0 31 AE C7 CC CD 9A C3 98 29 46 7F 24 45 B2 FB 70 21 DE 37 7C BD CA 33 48 19 76 EF D4 34 2E 65 15 F2 01 2E 64 42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 27, decrypted 34 2E 65 15 F2 01 2E 64 42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:52881 -> 91.190.216.17:40002 len=27 declared=27 crc/seq=2E65 body=21 cmd=F201 prev=2E64 tag=42 payload=42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 91.190.216.17:40002 -> 172.18.0.1:52881 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 64 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:52881 rc4-supernode-probe-reply bytes: 147, data DC 18 78 15 55 10 F4 BA 3F 1D EE 4F C0 D5 D5 DD 94 2C 67 F8 85 6D F4 DE F2 82 91 43 E3 18 1B D9 27 C0 29 BC 0E 6E 78 E8 86 E7 AD DA E2 B9 1B 63 D4 86 EF 2B C5 E2 D4 4B 80 FD DF 5C 46 05 5B FE
+tcp probe next 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 4, data DB 6B D8 F7, ascii .k..
+tcp probe rc4-client-data 172.18.0.1:52881 -> 91.190.216.17:40002 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:52880 rc4-server-handshake bytes: 49, data 43 21 67 90 07 36 E1 04 03 CD 5D 3A C8 0A 25 38 E1 04 03 CC 5D 3A C8 09 86 D0 E5 8F 89 62 47 5F BB A6 12 AC 8E C9 F5 76 FC 6F 70 5F 2D 00 6D E2 5C
+tcp probe next 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 92, data 7E A4 C2 3C DE A3 0A B6 A3 E8 8A AF 53 29 3F DD F9 BE 7A DF 25 3B A6 84 BE 51 4F 36 56 68 6D 1D 94 DE 26 0F B0 1E F5 13 39 0C 70 C7 B9 2E 27 C2 35 53 56 3C 2E C4 44 89 8A D4 A1 69 CC 4F EC 18, ascii ~..<........S)?...z.%;...QO6Vhm...&.....9.p...'.5SV<..D....i.O..
+tcp probe rc4-client-handshake 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 92, decrypted 7E A4 C2 3C 84 7D 00 00 00 01 00 00 00 0F 65 03 F3 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA 63 B8 C9 66 1F 44 E5 D2 9B 90 C1 FE D7 9C 5D EA D3 68 B9 96 8F F4 D5 02 0B 40 B1 2E 47 4C 4D 1A 43 34 2E 69 15 F2 01 2E 68 42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 27, decrypted 34 2E 69 15 F2 01 2E 68 42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:52880 -> 91.190.218.40:40001 len=27 declared=27 crc/seq=2E69 body=21 cmd=F201 prev=2E68 tag=42 payload=42 4F 71 CD E6 CA DF 48 09 A2 C8 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 91.190.218.40:40001 -> 172.18.0.1:52880 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 68 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:52880 rc4-supernode-probe-reply bytes: 147, data 80 4A 13 FB A1 BC FF DD 5A 97 11 15 77 4E 45 A4 A4 C2 87 CF 8A BA 41 74 0E EA 73 36 2D ED E6 E1 F3 2B D6 0E 98 3E 3E 44 A1 5B D4 00 B1 D6 C2 59 50 26 75 39 87 1E 22 6D 18 45 6A 9E BD D8 26 6F
+tcp probe next 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 4, data 6F 85 F5 9D, ascii o...
+tcp probe rc4-client-data 172.18.0.1:52880 -> 91.190.218.40:40001 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 260, data 8F 4B 8F 7C 64 C8 78 CF 28 75 96 2E 17 F1 5E 10 90 52 A3 D5 76 9D 0B 06 D3 9C 42 C8 14 1C 66 F4 3A 66 CD 86 CE FD 91 03 78 7D 57 4D 78 F7 94 7D 2D 2A F3 CF DA 32 CF C5 DD 74 7C CA D9 87 92 3C, ascii .K.|d.x.(u....^..R..v.....B...f.:f......x}WMx..}-*...2...t|....<
+tcp probe rc4-client-data 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 260, decrypted E4 03 2E 6B 06 32 2E 6A 42 85 14 C9 E4 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA A0 55 83 37 0D 5F 83 A3 E2 F3 FA E3 50 B2 9B 6C 38 3A 79 5B 9C 55 B0 60 28 05 47 CE 57 A2 36 64 56 2F DB B3 87 C7 1A 9B 2C 20 F8 27 D2 BA 5E F6 5F B4 3E C8 1D 5B 2D 87 17 9B 47 EB 78 47 36 1A 8E 29 3F 25 82 B0 28 92 47 67 96 D7 44 10 A9 93 B1 8B FF 34 1B E8 A8 67 B6 04 63 50 B8 18 2E 86 17 00 C3 20 13
+tcp probe next 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 237, data FF 54 6D 2C 5E 71 5C DB F4 7C D9 B9 A0 71 01 2F E1 EF DC 1D 02 B7 72 97 C9 03 A4 61 69 A4 CB 17 5B AB 29 59 79 2A 02 7C C5 9D DD 0D 7A F9 58 7B 12 72 3C 50 98 96 31 68 0A F2 93 07 11 76 09 9F, ascii .Tm,^q\..|...q./......r....ai...[.)Yy*.|....z.X{.r<P..1h.....v..
+tcp probe rc4-client-data 172.18.0.1:52882 -> 64.4.23.141:40004 bytes: 237, decrypted D6 03 2E 6E E5 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA 9B F3 73 EB 7A 41 5F 4B 4A A4 AF 03 FE B6 3E D8 51 D2 D7 8E A3 92 E9 CB 8D BD 34 74 52 AE 32 06 7F 5B 0C 7E EA 6F F7 67 8D B5 3F 8C 74 D6 A2 F6 56 36 9F 78 DA DC C0 C1 72 5E 80 ED 7F 6F A5 C7 D4 7A 07 29 27 6A 23 22 22 BD 40 51 37 F3 C4 A9 53 80 9B A7 F3 BD C7 F1 BA A9 CD 3A 32 91 48 09 43 14 59 B0 D1 B7 83 24 1A 0F C0 AF F0
+auth session failed: Не удается прочитать данные из транспортного соединения: Попытка установить соединение была безуспешной, т.к. от другого компьютера за требуемое время не получен нужный отклик, или было разорвано уже установленное соединение из-за неверного отклика уже подключенного компьютера.
+auth client 172.18.0.1:63308
+auth dh-client-hello 172.18.0.1:63308 -> 193.88.6.13:33033 bytes: 62, data 19 43 03 C3 90 28 95 4D DA 8D 9A 6A 7F D6 DA 5F 53 09 EA BD 57 85 F2 F4 64 D0 F9 34 FE D9 A1 1F C7 41 A0 C0 74 A7 FC 88 0C B4 F1 1E 79 C2 EE DA D9 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA, ascii .C...(.M...j..._S...W...d..4.....A..t.......y....6....+...g.m.
+auth dh-server-hello 172.18.0.1:63308 -> 193.88.6.13:33033 bytes: 51, data 71 A3 94 DE 70 45 30 8C 0A C9 2C 8D BD 8C 3E 4A 92 43 8F E4 7A 68 EF 76 99 05 E8 FC 37 0B 4F 58 4C 6F 8F E4 E8 66 B4 13 ED 70 2B 30 D4 73 81 46 8F 1B 70, ascii q...pE0...,...>J.C..zh.v....7.OXLo...f...p+0.s.F..p
+client DH hash: 00 2F 18 62 9C 49 73 2E
+expected hash:  00 2F 18 62 9C 49 73 2E
+auth transport selected: stock Skype DH384 ack + direct RC4 login
+auth dh-server-ack 172.18.0.1:63308 -> 193.88.6.13:33033 bytes: 8, data 8B 8C 19 3B 79 3C 2B 99, ascii ...;y<+.
+auth stock login frame 1: 235 bytes, header 16 03 01 00 E6
+auth stock login frame 2: 251 bytes, header 17 03 01 00 F6
+auth stock Skype path reached login frames; sending fake success probe frame
+auth stock-success-encrypted 172.18.0.1:63308 -> 193.88.6.13:33033 bytes: 292, data 8C C0 90 29 DF D3 72 E3 21 A1 A6 9F 64 F1 8D FE F0 0A 09 EC D2 AF 83 08 B7 7F 4A 12 C5 9C F2 43 DA 07 E5 8C DD 7C D2 06 5B 88 B2 0A 60 C8 F0 50 9F C7 17 53 F0 FB 22 C3 8D 0D 51 E4 CF 8B 51 9C, ascii ...)..r.!...d.............J....C.....|..[...`..P...S.."...Q...Q.
+auth client 172.18.0.1:58376
+auth dh-client-hello 172.18.0.1:58376 -> 195.46.253.219:33033 bytes: 5, data 16 03 01 00 00, ascii .....
+short TCP probe from 172.18.0.1:58376: 5 bytes, data 16 03 01 00 00
+auth client 172.18.0.1:63002
+auth dh-client-hello 172.18.0.1:63002 -> 195.46.253.219:33033 bytes: 105, data 2D F7 59 7C 61 64 9D 2D 58 3C 7D DF 7B 32 40 C8 A2 81 E3 2A 41 C5 8C 8F F4 7D 73 8C 4E A0 F5 F0 0F BC 7B A9 8C 61 AB 09 B7 4E FA A8 5E 09 92 50 2F 14 75 22 AB 60 51 4E E7 6C ED 3A E3 38 49 E6, ascii -.Y|ad.-X<}.{2@....*A....}s.N.....{..a...N..^..P/.u".`QN.l.:.8I.
+auth dh-server-hello 172.18.0.1:63002 -> 195.46.253.219:33033 bytes: 51, data 55 64 FB F2 3D E3 73 48 2E F6 BB 21 DE 4A BD 6C 35 31 5D 59 BE 06 B0 57 B3 08 09 36 12 B5 50 6D 49 A6 04 85 BB 47 49 A1 83 72 75 6D A5 0C 8D 41 AD 71 86, ascii Ud..=.sH...!.J.l51]Y...W...6..PmI....GI..rum...A.q.
+auth session failed: Не удается прочитать данные из транспортного соединения: Программа на вашем хост-компьютере разорвала установленное подключение.
+auth client 172.18.0.1:61285
+auth dh-client-hello 172.18.0.1:61285 -> 194.165.188.79:33033 bytes: 5, data 16 03 01 00 00, ascii .....
+short TCP probe from 172.18.0.1:61285: 5 bytes, data 16 03 01 00 00
+udp probe 172.18.0.1:41164 -> 91.190.218.40:40001 bytes: 31, data 2E 70 02 D9 5A 05 18 41 53 6F 76 F4 B6 D6 7F FE 93 57 FF 5D 80 48 66 1C AF 9D 5E 6F 29 6D D0
+udp probe decrypt failed 172.18.0.1 -> 91.190.218.40:40001 seq=2E70 rnd=D95A0518 expected-crc=41536F76
+udp probe 172.18.0.1:41164 -> 91.190.216.17:40002 bytes: 30, data 2E 72 02 A4 70 8E A9 9B 9D 78 7D 86 46 36 F2 7A EE AD E8 10 D1 B8 8D A5 90 BB C0 A2 B3 95
+udp probe decrypt failed 172.18.0.1 -> 91.190.216.17:40002 seq=2E72 rnd=A4708EA9 expected-crc=9B9D787D
+udp probe 172.18.0.1:41164 -> 64.4.23.141:40004 bytes: 33, data 2E 74 02 F4 0A 14 C6 B7 2A A1 D5 73 80 D7 F4 FF BF 3B 43 DC F8 CB 65 41 40 CE B8 EA 30 F6 04 27 B1
+udp probe decrypt failed 172.18.0.1 -> 64.4.23.141:40004 seq=2E74 rnd=F40A14C6 expected-crc=B72AA1D5
+udp probe 172.18.0.1:41164 -> 65.55.223.25:40003 bytes: 35, data 2E 76 02 CD 46 CB A4 F1 B1 B3 A9 42 14 39 FB 58 00 1A 19 3B 3B 44 07 40 26 C9 C0 69 3A 2A D7 9A 49 13 EF
+udp probe decrypt failed 172.18.0.1 -> 65.55.223.25:40003 seq=2E76 rnd=CD46CBA4 expected-crc=F1B1B3A9
+udp probe 172.18.0.1:41164 -> 111.221.74.33:40005 bytes: 33, data 2E 78 02 C5 AC A8 C5 7F A8 2C 7A 58 E3 7B 3B A2 A7 71 19 F4 56 B3 7E E0 C0 9E C0 B5 78 53 70 FE 7C
+udp probe decrypt failed 172.18.0.1 -> 111.221.74.33:40005 seq=2E78 rnd=C5ACA8C5 expected-crc=7FA82C7A
+tcp probe 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 66, data 92 D4 E9 1F B1 BD 98 A2 EC DD 8A 05 81 AF 13 90 3D EA 69 93 3D 27 EC 30 FA A1 C4 29 41 28 D0 EA 73 DE 5C 0E 4C 11 1A 32 8F 54 21 2B A6 6F E4 7D DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E 87, ascii ................=.i.='.0...)A(..s.\.L..2.T!+.o.}..*.....4.BK..n.
+tcp probe 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 52, data A0 8D 7D 59 2C B2 FF 4A 40 41 8C 30 42 FD 3E 9B 48 07 E1 4C 3F D4 08 AC FD 13 6F 6E BD D5 AD 91 B2 76 10 D7 34 D3 95 FA E7 68 BF DD 0A AE C2 F1 D4 35 E2 6B, ascii ..}Y,..J@A.0B.>.H..L?.....on.....v..4....h.......5.k
+tcp probe 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 61, data 74 70 02 26 5A 85 FF 0D 16 9C 71 B5 B9 FD 5C 61 83 C8 2A A0 51 43 88 38 9D 97 2D F0 AE 05 6F 26 BA 06 31 0A 66 9B 7C CF 60 45 09 47 C7 CB 64 07 2A 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E, ascii tp.&Z.....q...\a..*.QC.8..-...o&..1.f.|.`E.G..d.*.....4.BK..n
+tcp probe 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 99, data 83 93 EC 45 4C 23 B3 69 B7 D0 E9 B6 B3 C2 5C B4 05 41 18 11 3D 79 80 F1 1C 78 48 B7 48 49 EF 86 32 F4 CA 75 E6 E6 2C 88 C5 6E 30 8C 7C 15 B2 B7 B9 96 8F F4 D5 02 0B 40 B1 2E 47 4C 4D 1A 43 18, ascii ...EL#.i......\..A..=y...xH.HI..2..u..,..n0.|..........@..GLM.C.
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:65139 dh384-hello bytes: 51, data FA 52 98 30 63 39 8C 67 23 F6 F7 16 62 7A A7 E2 1F 35 AF D6 AE DA 6F D1 95 E3 5D EF 6B B9 40 C1 95 A8 2A 9A 58 CD 9A 5B FD 77 A0 40 3F B8 6F 78 CF CF 35
+tcp probe next 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 8, data 4E FD E2 DB A9 7F 2D D0, ascii N.....-.
+tcp probe dh384 client-hash ok 172.18.0.1:65139 -> 91.190.216.17:40002, expected 4E FD E2 DB A9 7F 2D D0, got 4E FD E2 DB A9 7F 2D D0
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:65141 dh384-hello bytes: 51, data 66 48 97 62 81 9A D8 CF 27 08 AC D1 50 B4 00 87 40 06 17 CD D8 48 02 30 64 B7 EF 50 4C C0 FB B3 06 F6 3E 8B 5E 72 0D FA FC 39 19 0E 0F 3D 7C 03 18 C0 EE
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 8, data 2A 5C 96 42 AE 58 65 35, ascii *\.B.Xe5
+tcp probe dh384 client-hash ok 172.18.0.1:65141 -> 64.4.23.141:40004, expected 2A 5C 96 42 AE 58 65 35, got 2A 5C 96 42 AE 58 65 35
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:65141 dh384-ack bytes: 8, data 88 80 3D A3 14 80 9D C2
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:65141 rc4-server-handshake bytes: 43, data 40 9A 62 8D AE 9A 0A 1B E6 0E F6 0F D5 05 31 B6 0A 1B E6 0F F6 0F D5 06 CC F2 49 3B B5 B3 2D 91 AE B1 6C A4 09 14 16 AB CF 59 31
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 56, data B8 9A 69 32 66 12 A8 85 C4 AC 8E 48 13 27 30 6A 09 DB 73 51 B3 02 A0 E0 87 43 44 1E 4E 84 B7 4D E9 38 EF 60 F7 22 FE B3 DF 98 6D 33 F9 84 4C 15 6E 6C C7 DD 78 16 7F C1, ascii ..i2f......H.'0j..sQ.....CD.N..M.8.`."....m3..L.nl..x...
+tcp probe rc4-client-handshake 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 56, decrypted B8 9A 69 32 05 7B 00 00 00 01 00 00 00 0F 53 03 A1 5E B7 FC 3D 4A B3 C8 99 F6 6F 54 B5 62 EB A0 91 8E 27 AC 2D 7A 23 78 89 26 DF 04 A5 92 5B 50 81 BE 97 5C 1D AA 93 28
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 27, data 1E E4 A1 C6 93 75 0E 06 CA 2B 55 CB DE F1 EB F2 5F CA 1F 1E 23 83 A8 25 75 3F FD, ascii .....u...+U....._...#..%u?.
+tcp probe rc4-client-data 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 27, decrypted 34 2E 7A 15 F2 01 2E 79 42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:65141 -> 64.4.23.141:40004 len=27 declared=27 crc/seq=2E7A body=21 cmd=F201 prev=2E79 tag=42 payload=42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 64.4.23.141:40004 -> 172.18.0.1:65141 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 79 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:65141 rc4-supernode-probe-reply bytes: 147, data 53 DA 5C 12 99 50 53 5F 72 E2 E0 74 3F 22 4E C0 6F 41 94 63 3D 18 7E 7E 95 8D 4C 16 3A 25 FC 59 40 D1 6F AA C4 94 F2 85 01 E1 0A E3 D1 BB 41 68 95 67 68 91 54 40 37 55 F4 78 DC 77 52 72 6B 8F
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 4, data D6 0D 7A FE, ascii ..z.
+tcp probe rc4-client-data 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:65142 dh384-hello bytes: 51, data AB BB 5C 9D 4A 70 D7 9D EC C3 F2 3E 8E 4E CF F1 2E 98 AB 90 9C 9A FA 3B 62 95 E9 7A 71 CE 92 D6 88 09 52 1D B1 DA E2 6A DE 63 BF B7 DD FA 73 53 6B 6B 6A
+tcp probe next 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 8, data DA C6 4C 1A 33 D6 08 B6, ascii ..L.3...
+tcp probe dh384 client-hash ok 172.18.0.1:65142 -> 65.55.223.25:40003, expected DA C6 4C 1A 33 D6 08 B6, got DA C6 4C 1A 33 D6 08 B6
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:65142 dh384-ack bytes: 8, data 4D 44 DB 4B E8 3C C4 51
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:65142 rc4-server-handshake bytes: 37, data D9 B1 F4 18 18 F9 9A DF 02 E4 95 B5 0D 6D 61 E3 9A DF 02 E5 95 B5 0D 6E C7 61 76 70 13 8B BC 99 D3 3F EB DB 11
+tcp probe next 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 68, data 60 F0 57 79 F8 CE 97 60 38 EE 16 68 10 65 96 9B 23 F5 FA 24 16 19 FE 6D B4 8C CD F5 24 E5 EB 22 53 8E 4F 85 AF 39 4F 34 79 2D 73 DF 8B 7C 53 89 29 6A 86 63 D9 F5 B2 04 8A 35 E1 14 6E 5B 8C 9D, ascii `.Wy...`8..h.e..#..$...m....$.."S.O..9O4y-s..|S.)j.c.....5..n[..
+tcp probe rc4-client-handshake 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 68, decrypted 60 F0 57 79 05 56 00 00 00 01 00 00 00 0F 6B 03 B4 95 C2 CB 00 71 EE 07 0C 0D DA 03 D8 69 86 BF 64 85 F2 3B B0 61 1E 77 BC FD 0A 73 88 59 B6 2F 14 75 22 AB 60 51 4E E7 6C ED 3A E3 38 49 E6 9F C4 65 52 1B
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:65140 dh384-hello bytes: 51, data 5F F0 F9 D9 AF 91 DB E5 4B 10 27 8E 9B D2 C8 93 BE 53 A9 8C F0 3F 0A F6 3A 3C 74 9D 98 8E 19 94 D5 FC 87 B6 70 50 AB D7 70 BC 92 7D C8 C5 8B 28 81 06 C3
+tcp probe next 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 8, data C9 44 77 E2 CE 1A 3C 81, ascii .Dw...<.
+tcp probe dh384 client-hash ok 172.18.0.1:65140 -> 91.190.218.40:40001, expected C9 44 77 E2 CE 1A 3C 81, got C9 44 77 E2 CE 1A 3C 81
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:65139 dh384-ack bytes: 8, data 0F A5 B0 A6 DF A3 8B DF
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:65139 rc4-server-handshake bytes: 40, data 6E 0D 4A 78 19 63 B4 01 22 1B CD A6 06 19 F4 18 B4 01 22 1A CD A6 06 1A F9 A4 CA 20 AC D9 81 E1 B3 F1 CF F9 2D 7F 6B 6C
+tcp probe next 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 26, data 82 67 A1 10 13 CF EE FD 88 92 C8 C2 7F B2 00 8D B9 E1 55 F9 9B 2A 46 AB DA B7, ascii .g................U..*F...
+tcp probe rc4-client-handshake 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 26, decrypted 82 67 A1 10 04 41 00 00 00 01 00 00 00 0F 17 03 57 1C DD 6A 53 E8 39 16 0F 74
+tcp probe next 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 27, data 44 CB 64 21 FB E4 2C A1 41 EA D5 85 46 52 07 3C 32 C6 2E DF BC 11 8C 8E 07 44 78, ascii D.d!..,.A...FR.<2........Dx
+tcp probe rc4-client-data 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 27, decrypted 34 2E 7E 15 F2 01 2E 7D 42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:65139 -> 91.190.216.17:40002 len=27 declared=27 crc/seq=2E7E body=21 cmd=F201 prev=2E7D tag=42 payload=42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 91.190.216.17:40002 -> 172.18.0.1:65139 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 7D 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:65140 dh384-ack bytes: 8, data 51 CB DE 07 0B 7B 60 17
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:65139 rc4-supernode-probe-reply bytes: 147, data D8 F5 2B 75 35 40 DD 1D 8A 63 C3 E3 22 45 8C EC 54 43 C8 B3 53 FA 44 D4 85 59 80 AC 93 48 FF AD B8 E3 F3 E1 4A 9D 23 A0 D2 81 EE B1 94 98 3E FB AB 26 A1 F5 45 DE 50 D8 56 D2 D5 A2 A9 D8 6A 98
+tcp probe next 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 4, data 75 82 BB 64, ascii u..d
+tcp probe rc4-client-data 172.18.0.1:65139 -> 91.190.216.17:40002 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:65140 rc4-server-handshake bytes: 50, data D4 5B B3 4D 22 3C 1A 41 45 B9 E1 04 27 07 D1 1F 1A 41 45 B8 E1 04 27 04 88 E4 73 6D 00 8A 5B 0A 77 AD 0F CF 9B 4C 28 C9 5A 38 26 00 51 9E 31 60 30 E3
+tcp probe next 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 75, data 40 CF F6 55 27 1F 26 EE D6 FA A2 8D CE 88 E1 9E E6 DF 78 3C 6E 40 54 44 ED 3A 85 81 84 C4 1B 29 62 12 BE 48 EE 06 5A BE 36 F7 10 8C 3F 74 B2 20 E6 7D 66 00 84 BB A6 FB 15 6F FD 68 9A 16 4A 48, ascii @..U'.&...........x<n@TD.:.....)b..H..Z.6...?t. .}f......o.h..JH
+tcp probe rc4-client-handshake 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 75, decrypted 40 CF F6 55 85 82 00 00 00 01 00 00 00 0F 43 03 C0 31 AE C7 CC CD 9A C3 98 29 46 7F 24 45 B2 FB 70 21 DE 37 7C BD CA 33 48 19 76 EF D4 35 E2 6B 34 2E 80 15 F2 01 2E 7F 42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 27, decrypted 34 2E 80 15 F2 01 2E 7F 42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:65140 -> 91.190.218.40:40001 len=27 declared=27 crc/seq=2E80 body=21 cmd=F201 prev=2E7F tag=42 payload=42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe next 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 27, data 1A E4 A9 07 97 44 B1 52 96 E0 44 C1 A4 AB 3E D8 A9 39 2D 52 4F BE 8A 34 60 5D 5D, ascii .....D.R..D...>..9-RO..4`]]
+tcp probe rc4-client-data 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 27, decrypted 34 2E 7C 15 F2 01 2E 7B 42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:65142 -> 65.55.223.25:40003 len=27 declared=27 crc/seq=2E7C body=21 cmd=F201 prev=2E7B tag=42 payload=42 53 C3 C7 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 65.55.223.25:40003 -> 172.18.0.1:65142 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 7B 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:65142 rc4-supernode-probe-reply bytes: 147, data 00 97 0C F8 D9 6E F2 89 B5 97 47 7F 2B 4B 1D 86 29 DB B5 8A 86 FE 72 4C 6C 27 CE 22 F1 5A EC B0 A3 4F BA E4 83 45 56 C0 48 56 F2 D2 41 9B 1E 10 6A D4 E8 9B B2 0E 32 51 4C 9E 91 F3 D8 52 B1 6C
+tcp probe clear 91.190.218.40:40001 -> 172.18.0.1:65140 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 7F 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:65140 rc4-supernode-probe-reply bytes: 147, data 2D 00 A7 BC D8 BB 14 11 A3 4C 37 98 B3 0B 4A FA 84 63 6F 37 01 CE FC AB 7D 44 38 FC 5A 4F AB A7 68 E0 5B 9D EC 07 9E 02 D4 ED F2 C4 7E EE F3 2E 7A 11 25 EB 88 47 89 56 7E 76 FC F0 59 BE E3 33
+tcp probe next 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 4, data 3F D6 02 F4, ascii ?...
+tcp probe rc4-client-data 172.18.0.1:65140 -> 91.190.218.40:40001 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 4, data 8A 20 8F 39, ascii . .9
+tcp probe rc4-client-data 172.18.0.1:65142 -> 65.55.223.25:40003 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 260, data DD 9E 6B D1 31 C0 DC 9C CB 40 F4 A4 31 7F E6 EA 95 5E 0E 24 72 9A 13 EE 9D 30 CA 1E 10 79 4B EE AE 41 76 D1 A6 54 CE B8 AA AD AD 74 7C 64 DA C7 EC 71 5D E2 3C 09 2D DA A8 38 28 5D F3 CA DA EF, ascii ..k.1....@..1....^.$r....0...yK..Av..T.....t|d...q].<.-..8(]....
+tcp probe rc4-client-data 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 260, decrypted E4 03 2E 82 06 32 2E 81 42 85 14 C9 E4 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA A0 55 83 37 0D 5F 83 A3 E2 F3 FA E3 50 B2 9B 6C 38 3A 79 5B 9C 55 B0 60 28 05 47 CE 57 A2 36 64 56 2F DB B3 87 C7 1A 9B 2C 20 F8 27 D2 BA 5E F6 5F B4 3E C8 1D 5B 2D 87 17 9B 47 EB 78 47 36 1A 8E 29 3F 25 82 B0 28 92 47 67 96 D7 44 10 A9 93 B1 8B FF 34 1B E8 A8 67 B6 04 63 50 B8 18 2E 86 17 00 C3 20 13
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 237, data C9 E3 01 45 BA A1 E5 3C 54 20 E1 94 D4 19 B5 07 11 3A 13 EE 7C 4A 15 BF 41 00 BE BC 67 1A 5E C7 F4 36 8E 32 CE 05 BD 00 F9 AF 55 62 A2 C7 D7 06 F7 A9 01 8D C0 0D 19 1F B8 11 04 DE 0D A6 00 6D, ascii ...E...<T .......:..|J..A...g.^..6.2......Ub...................m
+tcp probe rc4-client-data 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 237, decrypted D6 03 2E 85 E5 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA 9B F3 73 EB 7A 41 5F 4B 4A A4 AF 03 FE B6 3E D8 51 D2 D7 8E A3 92 E9 CB 8D BD 34 74 52 AE 32 06 7F 5B 0C 7E EA 6F F7 67 8D B5 3F 8C 74 D6 A2 F6 56 36 9F 78 DA DC C0 C1 72 5E 80 ED 7F 6F A5 C7 D4 7A 07 29 27 6A 23 22 22 BD 40 51 37 F3 C4 A9 53 80 9B A7 F3 BD C7 F1 BA A9 CD 3A 32 91 48 09 43 14 59 B0 D1 B7 83 24 1A 0F C0 AF F0
+tcp probe next 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 237, data B7 F7 1E EE A1 DC E1 AC 11 91 97 A9 D6 CE 36 9B 83 BE 45 18 45 72 8B 66 A4 4E 8B F8 71 48 8F FB 08 2E 97 D5 E5 97 7B 1C 8A 13 F6 31 8A 74 1A E1 5C 3F E4 BC EB 6C 39 18 F1 D9 07 E8 44 A0 96 E3, ascii ..............6...E.Er.f.N..qH........{....1.t..\?...l9.....D...
+tcp probe rc4-client-data 172.18.0.1:65141 -> 64.4.23.141:40004 bytes: 237, decrypted D6 03 2E 86 E5 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA 9B F3 73 EB 7A 41 5F 4B 4A A4 AF 03 FE B6 3E D8 51 D2 D7 8E A3 92 E9 CB 8D BD 34 74 52 AE 32 06 7F 5B 0C 7E EA 6F F7 67 8D B5 3F 8C 74 D6 A2 F6 56 36 9F 78 DA DD 00 21 47 D1 C2 B0 58 52 55 A6 36 5C 73 18 9F 52 33 35 F4 46 07 35 16 A5 F2 BF E0 4C 66 F5 F7 E5 20 AA 17 4F B5 F6 44 07 BE 29 C7 73 7C F3 0F 9C CD CD 12 75 AA 31 20
+udp probe 172.18.0.1:41164 -> 64.4.23.141:40004 bytes: 34, data 2E 88 02 5F EB 37 20 8B 82 1F A5 89 5B 74 E9 2B 94 A8 B6 A7 21 39 69 42 9F 4D 67 3F 32 46 C7 AA 23 83
+udp probe decrypt failed 172.18.0.1 -> 64.4.23.141:40004 seq=2E88 rnd=5FEB3720 expected-crc=8B821FA5
+udp probe 172.18.0.1:41164 -> 91.190.218.40:40001 bytes: 24, data 2E 8A 02 F8 48 07 11 40 5A 5A D7 75 46 31 70 E0 16 60 C8 8F 9C 12 3C 47
+udp probe decrypt failed 172.18.0.1 -> 91.190.218.40:40001 seq=2E8A rnd=F8480711 expected-crc=405A5AD7
+udp probe 172.18.0.1:41164 -> 91.190.216.17:40002 bytes: 28, data 2E 8C 02 81 1A C8 0E 98 71 B8 AE EF EE F1 2C 44 AA 23 87 58 2F 8D 93 1C BF 59 1F 64
+udp probe decrypt failed 172.18.0.1 -> 91.190.216.17:40002 seq=2E8C rnd=811AC80E expected-crc=9871B8AE
+udp probe 172.18.0.1:41164 -> 65.55.223.25:40003 bytes: 27, data 2E 8E 02 98 56 B2 2C F4 E4 AF 34 83 1D 56 28 C1 8F 0E 49 CC 3F C7 D4 B4 66 24 FD
+udp probe decrypt failed 172.18.0.1 -> 65.55.223.25:40003 seq=2E8E rnd=9856B22C expected-crc=F4E4AF34
+udp probe 172.18.0.1:41164 -> 111.221.74.33:40005 bytes: 25, data 2E 90 02 16 A5 2B AD FF 92 AD A5 13 CF 4F 71 D8 F3 56 E6 E8 8B 74 AF 6E 3A
+udp probe decrypt failed 172.18.0.1 -> 111.221.74.33:40005 seq=2E90 rnd=16A52BAD expected-crc=FF92ADA5
+tcp probe 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 93, data D1 71 B0 75 30 4A 92 80 CF 40 42 2D 32 BC 15 18 8A AC 38 B8 2F 82 9A B0 FC F1 9F 68 30 23 50 FF B1 69 CE 4E 31 96 C0 F0 59 78 DE C2 8C CE 00 1E 6A 53 E8 39 16 0F 74 55 82 8B C0 31 AE C7 CC CD, ascii .q.u0J...@B-2.....8./......h0#P..i.N1...Yx......jS.9..tU...1....
+tcp probe 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 85, data E2 34 F1 25 96 45 51 C4 19 AB 94 CC 8E 35 FE 82 57 53 43 81 E7 91 F9 7E DA 28 66 91 F3 65 67 41 4D DF F8 17 D5 F6 79 B1 40 F7 58 9B 69 61 70 7F B8 C9 66 1F 44 E5 D2 9B 90 C1 FE D7 9C 5D EA D3, ascii .4.%.EQ......5..WSC....~.(f..egAM.....y.@.X.iap...f.D........]..
+tcp probe 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 54, data 52 B2 2A 31 3B AC 42 F5 38 7D E3 D6 AC 9D 5A 3D 3C 41 25 45 7D CA 71 16 F4 2C BA 1A 35 F0 89 48 FA 34 58 61 ED F0 FB 85 22 A6 78 BB 9E 22 6E 80 D9 36 AF 94 F5 A2, ascii R.*1;.B.8}....Z=<A%E}.q..,..5..H.4Xa....".x.."n..6....
+tcp probe 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 81, data DD 30 2C 6D EA 3C 62 31 A1 06 1B 95 DF D5 D9 29 9F 6C AD 81 D3 72 B1 B5 65 34 C7 FB AB 7B 0B 4F 70 9C 01 44 C2 16 47 52 F2 DA CA 64 A9 C6 1F DA BE 97 5C 1D AA 93 28 79 56 4F B4 95 C2 CB 00 71, ascii .0,m.<b1.......).l...r..e4...{.Op..D..GR...d......\...(yVO.....q
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:60910 dh384-hello bytes: 51, data 35 DF A8 A2 59 8E 5B DA C9 9C 7F 2E 99 A5 0B 38 80 25 CF B7 FD A1 55 D7 56 7A 7A F4 97 38 5B 02 0B C3 77 23 92 13 63 D0 A9 96 3F 0D B6 3E 8C 6C BD 42 F7
+tcp probe next 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 8, data B1 26 BE A0 15 64 E5 D5, ascii .&...d..
+tcp probe dh384 client-hash ok 172.18.0.1:60910 -> 91.190.218.40:40001, expected B1 26 BE A0 15 64 E5 D5, got B1 26 BE A0 15 64 E5 D5
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:60910 dh384-ack bytes: 8, data 7F B2 75 89 EF C6 91 7A
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:60911 dh384-hello bytes: 51, data F0 20 62 E7 A4 29 B4 42 69 1E 22 74 A6 17 15 6E A0 DE C3 5F 46 24 59 9F F5 27 71 82 F1 CB 52 BE 66 8C 79 B6 BF D2 72 E4 51 5E 5F 12 09 AA F7 23 B5 7C 98
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:60913 dh384-hello bytes: 51, data 97 CD 75 B6 1C 51 28 FB 42 AC 4F 7B 1E A0 C0 7F 3F 92 5A 5E 4E E5 46 03 95 DB AE D5 8D 27 66 D0 7B 46 73 DE 2A 01 93 1F 6A 49 61 29 69 82 BE 6D 71 24 EE
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 8, data 59 06 0E B1 85 1B 77 D3, ascii Y.....w.
+tcp probe dh384 client-hash ok 172.18.0.1:60913 -> 65.55.223.25:40003, expected 59 06 0E B1 85 1B 77 D3, got 59 06 0E B1 85 1B 77 D3
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:60913 dh384-ack bytes: 8, data C6 ED 4A 3F 40 60 7D 59
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:60910 rc4-server-handshake bytes: 38, data 1D 7C 9D 98 26 02 8B 17 A4 52 30 4D 69 3A 35 20 8B 17 A4 53 30 4D 69 39 C8 2B 74 E3 03 26 73 54 22 5A D5 26 F9 4B
+tcp probe next 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 81, data B1 29 04 FA 64 A5 DE B8 47 56 57 44 6A 88 AF 05 D7 1E 18 D3 72 56 B1 57 9D E4 1D 3E 51 96 EB DF F2 11 75 8E 4C 82 8F 43 88 F3 BB B1 DD AD F5 F8 B5 BA F2 33 3B B4 CB C5 75 3F 10 96 20 A8 A7 A6, ascii .)..d...GVWDj.......rV.W...>Q.....u.L..C...........3;...u?.. ...
+tcp probe rc4-client-handshake 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 81, decrypted B1 29 04 FA 84 A3 00 00 00 01 00 00 00 0F 4F 03 09 A6 5F 84 25 12 DB D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 34 2E 92 15 F2 01 2E 91 42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 27, decrypted 34 2E 92 15 F2 01 2E 91 42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:60910 -> 91.190.218.40:40001 len=27 declared=27 crc/seq=2E92 body=21 cmd=F201 prev=2E91 tag=42 payload=42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:60913 rc4-server-handshake bytes: 42, data 08 F3 2B CB B0 0F 2A 2D B6 03 4B 8E CA 9A BC 85 2A 2D B6 02 4B 8E CA 99 2C 6C 96 B4 B2 4E AB 4E 1B 9C DB FD 31 70 36 18 1A E0
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 88, data E8 30 0A BB 04 F5 90 40 6C 00 38 52 75 D1 5C C6 0E B7 50 7C B2 A1 7D 07 61 D1 0E 86 C0 FA A0 62 28 14 4B 49 98 B5 F0 DF 78 83 47 DE A0 A1 43 D3 16 9E EA F4 0D E4 C7 1C 8A AA 6D BC E9 CE 50 1B, ascii .0.....@l.8Ru.\...P|..}.a......b(.KI....x.G...C...........m...P.
+tcp probe rc4-client-handshake 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 88, decrypted E8 30 0A BB 05 30 00 00 00 01 00 00 00 0F 5D 03 9E F7 3C 7D 8A F3 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA 63 B8 C9 66 1F 44 E5 D2 9B 90 C1 FE D7 9C 5D EA D3 68 B9 96 8F F4 D5 02 34 2E 94 15 F2 01 2E 93 42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 27, decrypted 34 2E 94 15 F2 01 2E 93 42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:60913 -> 65.55.223.25:40003 len=27 declared=27 crc/seq=2E94 body=21 cmd=F201 prev=2E93 tag=42 payload=42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe next 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 8, data 74 08 E3 60 BC 68 41 D7, ascii t..`.hA.
+tcp probe dh384 client-hash ok 172.18.0.1:60911 -> 91.190.216.17:40002, expected 74 08 E3 60 BC 68 41 D7, got 74 08 E3 60 BC 68 41 D7
+tcp probe clear 65.55.223.25:40003 -> 172.18.0.1:60913 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 93 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:60913 rc4-supernode-probe-reply bytes: 147, data 34 DB 0F 64 CB D9 2C 0E 50 88 C1 D8 8B FB B3 CC 1D 17 9D 74 45 BB 7B D2 B8 6A EF 0C 10 C5 14 F6 5F 78 22 5C BD CD D3 74 D0 E9 97 B3 B7 F1 31 6D 0D 7F 33 09 6D 66 5A 1D 27 76 D1 60 9D F3 E8 89
+tcp probe clear 91.190.218.40:40001 -> 172.18.0.1:60910 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 91 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 4, data 90 DA 4D 67, ascii ..Mg
+tcp probe rc4-client-data 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:60911 dh384-ack bytes: 8, data 58 98 BC F4 5E DA 55 3A
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:60911 rc4-server-handshake bytes: 43, data DD 45 8C 35 2D F5 E3 56 E6 95 A1 69 26 C6 54 67 E3 56 E6 94 A1 69 26 C5 2A B8 83 DB DA 8E 9D 07 D5 4B 2C 6E 04 80 23 81 97 6B 2C
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:60912 dh384-hello bytes: 51, data 80 A9 1F B4 36 DA A5 C9 28 BE A3 47 65 C0 15 96 0E 4E 84 3A 6D 6A C2 C2 23 41 1E 93 70 E1 1F 36 55 7C 0B 94 60 9E 9B 84 3F 1A 4D 9B F5 08 E0 78 1E C8 7E
+tcp probe next 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 8, data F9 B5 ED E6 30 75 0F 96, ascii ....0u..
+tcp probe dh384 client-hash ok 172.18.0.1:60912 -> 64.4.23.141:40004, expected F9 B5 ED E6 30 75 0F 96, got F9 B5 ED E6 30 75 0F 96
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:60912 dh384-ack bytes: 8, data 97 FB 7D F8 C2 69 A1 AB
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:60912 rc4-server-handshake bytes: 42, data 88 52 87 A0 58 C7 23 B6 6D A1 48 5D BA 5A 84 AC 23 B6 6D A0 48 5D BA 59 D7 D2 62 BC 90 DE 67 49 E2 58 09 25 A3 6A 50 81 9D 66
+tcp probe next 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 36, data BD 1A 93 FC 02 07 A4 74 CB 7C 09 02 FD 48 AC 39 17 BC 52 8B 66 56 48 25 DB 0D 49 4C 46 A1 CF F2 16 77 A3 7B, ascii .......t.|...H.9..R.fVH%..ILF....w.{
+tcp probe rc4-client-handshake 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 36, decrypted BD 1A 93 FC 85 3D 00 00 00 01 00 00 00 0F 2B 03 B3 C8 99 F6 6F 54 B5 62 EB A0 91 8E 27 AC 2D 7A 23 78 89 26
+tcp probe next 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 27, data 68 39 CA 7D 94 5E FC 6C F7 16 52 E4 77 ED D8 B3 A6 EC D6 C3 FA 7F 3B 90 A1 86 C9, ascii h9.}.^.l..R.w.........;....
+tcp probe rc4-client-data 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 27, decrypted 34 2E 98 15 F2 01 2E 97 42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:60912 -> 64.4.23.141:40004 len=27 declared=27 crc/seq=2E98 body=21 cmd=F201 prev=2E97 tag=42 payload=42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 64.4.23.141:40004 -> 172.18.0.1:60912 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 97 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe next 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 33, data A3 A0 E1 0B 04 C9 F1 A8 6A 95 81 93 22 92 24 8A DF EF 26 D9 9B D0 3A 34 23 F7 FE 68 F5 0C F5 35 6A, ascii ........j...".$...&...:4#..h...5j
+tcp probe rc4-client-handshake 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 33, decrypted A3 A0 E1 0B 05 40 00 00 00 01 00 00 00 0F 25 03 2E 47 4C 4D 1A 43 18 A9 C6 FF A4 C5 32 7B F0 A1 5E
+tcp probe next 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 27, data 08 22 57 D3 B6 C4 BE C7 EF A8 DB 38 D2 06 A1 B7 4F AD 0B 79 26 A1 A8 44 B5 B3 09, ascii ."W........8....O..y&..D...
+tcp probe rc4-client-data 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 27, decrypted 34 2E 96 15 F2 01 2E 95 42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:60911 -> 91.190.216.17:40002 len=27 declared=27 crc/seq=2E96 body=21 cmd=F201 prev=2E95 tag=42 payload=42 54 2F 97 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 91.190.216.17:40002 -> 172.18.0.1:60911 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E 95 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:60910 rc4-supernode-probe-reply bytes: 147, data 51 61 B8 1E 3B 9D 11 9C 27 95 2A 58 66 06 0D 95 2D 5E 34 43 9F CE D0 A6 97 FE 07 58 0E E7 50 01 D4 90 03 5F 91 49 5D 74 9F 96 6F 95 11 4D D6 4D 78 82 3C AD 93 6B A3 F4 2B 26 01 CD 11 A0 1B D6
+tcp probe next 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 4, data BB C0 07 F5, ascii ....
+tcp probe rc4-client-data 172.18.0.1:60910 -> 91.190.218.40:40001 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:60912 rc4-supernode-probe-reply bytes: 147, data 97 15 EF 75 B2 18 CF 33 D6 09 7C A9 C6 64 76 89 5B 3D 1C C6 71 FD EE 35 69 F0 80 F0 2A 27 BA 78 E4 60 DD 22 E8 D0 D3 03 D0 09 42 58 70 69 CF 7B 4D 69 68 75 B2 0C 8D 12 48 4C B6 5A 33 39 A7 E7
+tcp probe next 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 4, data E7 DA 64 40, ascii ..d@
+tcp probe rc4-client-data 172.18.0.1:60912 -> 64.4.23.141:40004 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:60911 rc4-supernode-probe-reply bytes: 147, data 0D 05 D9 CC 9B 57 A6 C0 B5 F4 46 4A 32 B4 53 DB EF 20 B8 09 67 25 31 A9 DD 62 25 2A F1 B0 8B D9 10 E3 94 D2 D6 C2 1A AD DC 34 3A 88 D4 60 E9 41 E5 6D 11 42 D7 B7 FE 83 41 26 9E D6 C6 50 78 0C
+tcp probe next 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 4, data 33 E8 2C A4, ascii 3.,.
+tcp probe rc4-client-data 172.18.0.1:60911 -> 91.190.216.17:40002 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 20, data E8 E2 D2 6E BA 5D EC 21 63 20 B9 05 E7 96 9D 5E F2 DA 0B 95, ascii ...n.].!c .....^....
+tcp probe rc4-client-data 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 20, decrypted 1E 2E 9A 0A E2 02 2E 99 42 B3 79 97 EA D0 B1 5A D6 03 2E 9B
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 470, data 50 29 C3 77 96 B0 C8 44 5D BD 52 22 D4 35 30 F5 4D C6 F1 93 E0 F0 49 22 76 20 90 93 C8 81 E2 1B 69 38 30 EE 0B 70 21 B0 74 14 A1 16 A7 3E 89 03 07 DF 9D BB E5 EB 6D 2B 1C 8B D3 79 5A 29 D4 96, ascii P).w...D].R".50.M.....I"v ......i80..p!.t....>........m+...yZ)..
+tcp probe rc4-client-data 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 470, decrypted E5 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA 9B F3 73 EB 7A 41 5F 4B 4A A4 AF 03 FE B6 3E D8 51 D2 D7 8E A3 92 E9 CB 8D BD 34 74 52 AE 32 06 7F 5B 0C 7E EA 6F F7 67 8D B5 3F 8C 74 D6 A2 F6 56 36 9F 78 DA DC C0 C1 72 5E 80 ED 7F 6F A5 C7 D4 7A 07 29 27 6A 23 22 22 BD 40 51 37 F3 C4 A9 53 80 9B A7 F3 BD C7 F1 BA A9 CD 3A 32 91 48 09 43 14 59 B0 D1 B7 83 24 1A 0F C0 AF F0 FC 41 82 B2
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 237, data 40 95 54 3C 22 72 0B BA EC FD DF AD F1 2E BD 24 DF 16 82 82 90 BB 9C 85 C7 90 14 34 61 E1 DA 13 09 A1 49 9B 9A 61 EE 94 68 46 7B 00 92 72 71 2D 77 72 93 15 5F 6B 91 C0 8D 18 69 B1 D4 32 C9 2A, ascii @.T<"r.........$...........4a.....I..a..hF{..rq-wr.._k....i..2.*
+tcp probe rc4-client-data 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 237, decrypted D6 03 2E 9D E5 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA 9B F3 73 EB 7A 41 5F 4B 4A A4 AF 03 FE B6 3E D8 51 D2 D7 8E A3 92 E9 CB 8D BD 34 74 52 AE 32 06 7F 5B 0C 7E E9 3E 8D 68 8E 5E 06 8D 71 F2 8C FC BF 3A 1B F6 C8 1D 5B 2D 87 17 9B 47 EB 78 47 36 1A 8E 29 3F 3C 67 68 28 92 47 67 96 D7 44 10 A9 93 B1 8B FF 34 1B E8 A8 67 B6 04 63 50 B8 18 2E 86 17 00 C3 20 13 55 C0 9B 17 7A B8 C5
+tcp probe next 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 14, data D2 42 AD BE 2A 29 2C D1 6F FA CD 69 A9 B2, ascii .B..*),.o..i..
+tcp probe rc4-client-data 172.18.0.1:60913 -> 65.55.223.25:40003 bytes: 14, decrypted 1A 2E 9F 08 E2 02 2E 9E 42 B3 79 93 96 A0
+udp probe 172.18.0.1:41164 -> 91.190.218.40:40001 bytes: 21, data 2E A1 02 15 1D EE DF F5 30 BC A1 7F EC D0 C2 E3 EE 0F 54 B4 DB
+udp probe decrypt failed 172.18.0.1 -> 91.190.218.40:40001 seq=2EA1 rnd=151DEEDF expected-crc=F530BCA1
+udp probe 172.18.0.1:41164 -> 64.4.23.141:40004 bytes: 31, data 2E A3 02 5C F8 DE 04 B8 F0 F7 5C 0B CC ED E9 1D 61 06 43 86 7A 3C 4A 91 F0 5A F2 2D D9 8F E7
+udp probe 172.18.0.1:41164 -> 91.190.216.17:40002 bytes: 22, data 2E A5 02 F4 94 3F A5 CD 25 FD FB 22 29 7E 21 1A 32 B7 B0 1E 03 32
+udp probe decrypt failed 172.18.0.1 -> 91.190.216.17:40002 seq=2EA5 rnd=F4943FA5 expected-crc=CD25FDFB
+udp probe decrypt failed 172.18.0.1 -> 64.4.23.141:40004 seq=2EA3 rnd=5CF8DE04 expected-crc=B8F0F75C
+udp probe 172.18.0.1:41164 -> 111.221.74.33:40005 bytes: 27, data 2E A9 02 22 BD 41 50 81 4B 25 7E 83 2C 0C 04 B3 88 93 AF 38 A3 AD 27 98 6A 88 2F
+udp probe decrypt failed 172.18.0.1 -> 111.221.74.33:40005 seq=2EA9 rnd=22BD4150 expected-crc=814B257E
+udp probe 172.18.0.1:41164 -> 65.55.223.25:40003 bytes: 32, data 2E A7 02 B3 D2 73 5B 92 E3 E1 98 81 3D F1 81 7D 78 1C D8 6A C2 75 CA 90 8F A6 66 E0 25 6B 41 2D
+udp probe decrypt failed 172.18.0.1 -> 65.55.223.25:40003 seq=2EA7 rnd=B3D2735B expected-crc=92E3E198
+tcp probe 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 66, data C0 07 A7 B5 CE 99 FE 25 39 65 99 66 5C 4B A0 17 C1 56 35 00 54 F2 1A 76 3F 95 F9 4D 22 F0 1F 18 BA 00 EC BA A9 B7 10 F4 0E 0C F0 C3 22 FD 73 76 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB 30 E1 9E, ascii .......%9e.f\K...V5.T..v?..M"...............".sv...Z.X..?..r.0..
+tcp probe 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 75, data D0 E5 EE 41 3B 95 AA E3 CF 38 02 EE 3F 3B 88 2F 4A FA 74 2B 4B 21 1B 80 4C CE 88 1D 89 84 28 7F 82 34 C9 68 75 36 FF FA 50 47 B7 7B CF CA 13 5D 63 B8 C9 66 1F 44 E5 D2 9B 90 C1 FE D7 9C 5D EA, ascii ...A;....8..?;./J.t+K!..L.....(..4.hu6..PG.{...]c..f.D........].
+tcp probe 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 87, data E2 2A E9 B8 EF 98 DE 36 BC 33 3A 39 E0 C4 31 66 36 FD 51 D4 79 2F 90 5A 0F 54 07 42 72 AF A1 51 F2 3D AB 39 31 B6 68 7C 62 81 6A 50 6F 95 9D E4 74 55 82 8B C0 31 AE C7 CC CD 9A C3 98 29 46 7F, ascii .*.....6.3:9..1f6.Q.y/.Z.T.Br..Q.=.91.h|b.jPo...tU...1.......)F.
+tcp probe 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 85, data 0B 9E CA 95 4E A2 06 F2 88 06 7A 2E 53 2C 36 25 0B 22 75 80 C5 E4 48 BC 9B 7C F9 7E 9B 98 21 3B 34 89 67 47 D5 E1 AB 51 37 A7 55 85 FE 8C A6 B2 D5 02 0B 40 B1 2E 47 4C 4D 1A 43 18 A9 C6 FF A4, ascii ....N.....z.S,6%."u...H..|.~..!;4.gG...Q7.U........@..GLM.C.....
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53399 dh384-hello bytes: 51, data BC 6B D5 9B 1A 9B 56 5B 19 4C 7E 9C E6 E8 03 6D A5 DD 03 E4 4D 81 D4 87 B7 4A 74 01 A5 40 C3 CD EC 93 10 A8 AB F3 83 9C F1 B9 27 F3 16 87 C5 37 F0 1E E4
+tcp probe next 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 8, data 72 B3 41 2C EB 21 EB 6A, ascii r.A,.!.j
+tcp probe dh384 client-hash ok 172.18.0.1:53399 -> 91.190.218.40:40001, expected 72 B3 41 2C EB 21 EB 6A, got 72 B3 41 2C EB 21 EB 6A
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53399 dh384-ack bytes: 8, data C8 C0 63 42 E2 E3 4B 67
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53399 rc4-server-handshake bytes: 37, data 4A FC 3A 6E 66 BA E9 76 A0 27 7B A8 E5 2D 40 AA E9 76 A0 26 7B A8 E5 2E C1 B0 92 AD AD 46 FE 4C 17 49 85 18 D2
+tcp probe next 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 88, data AF 2E 9F 81 A5 6B 7D BE D7 92 9A 0B 8E 3D 7D D6 21 A3 7D 00 B2 72 D8 7D 8B 4D A6 5B 84 14 23 F8 3D 1B F0 D3 91 40 9A 01 30 BE 46 13 F4 15 FF DA 92 1F 3C 10 C1 EC 36 F6 37 88 47 91 72 29 69 1C, ascii .....k}......=}.!.}..r.}.M.[..#.=....@..0.F.......<...6.7.G.r)i.
+tcp probe rc4-client-handshake 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 88, decrypted AF 2E 9F 81 85 BE 00 00 00 01 00 00 00 0F 5D 03 5C 1D AA 93 28 79 56 4F B4 95 C2 CB 00 71 EE 07 0C 0D DA 03 D8 69 86 BF 64 85 F2 3B B0 61 1E 77 BC FD 0A 73 88 59 B6 2F 14 75 22 AB 60 34 2E AB 15 F2 01 2E AA 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 27, decrypted 34 2E AB 15 F2 01 2E AA 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:53399 -> 91.190.218.40:40001 len=27 declared=27 crc/seq=2EAB body=21 cmd=F201 prev=2EAA tag=42 payload=42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53403 dh384-hello bytes: 51, data 48 DD F6 FC 24 2C 5B 1C 9F 3A 65 3B 1E 73 37 01 D7 75 8F A4 A8 FC 94 FD 26 F8 39 4B 6D 2B EB DF 18 58 55 FD C5 93 E2 3C BB E3 A3 26 BD B1 0A 9F 87 8D 42
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:53404 dh384-hello bytes: 51, data FB E9 E3 43 30 DB AF EA F7 5D C9 BD CA 7A 73 7C 6E 63 8B 74 CC 51 AF 99 03 0D D5 F9 12 B4 48 4F 6E 3A 00 1D 91 37 10 8A 87 6C 83 71 B0 9A 5B F0 32 42 96
+tcp probe next 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 8, data 66 13 C8 79 EC C2 91 CC, ascii f..y....
+tcp probe dh384 client-hash ok 172.18.0.1:53404 -> 65.55.223.25:40003, expected 66 13 C8 79 EC C2 91 CC, got 66 13 C8 79 EC C2 91 CC
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:53404 dh384-ack bytes: 8, data 35 DD 62 71 4E 01 E4 11
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53400 dh384-hello bytes: 51, data 44 E2 04 DE 15 9F 79 75 D7 4B A6 73 F2 F2 DA 6A 34 95 4C 7F 43 85 E3 63 F6 C9 DF 7C 3F 7D 94 43 7C A9 48 1A DC 26 70 72 7A 18 17 FB F1 02 48 A9 84 C1 38
+tcp probe next 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 8, data A9 FD 89 87 BD 3F 96 16, ascii .....?..
+tcp probe dh384 client-hash ok 172.18.0.1:53400 -> 91.190.216.17:40002, expected A9 FD 89 87 BD 3F 96 16, got A9 FD 89 87 BD 3F 96 16
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 8, data 10 54 AB C3 F3 CD 98 B4, ascii .T......
+tcp probe dh384 client-hash ok 172.18.0.1:53403 -> 64.4.23.141:40004, expected 10 54 AB C3 F3 CD 98 B4, got 10 54 AB C3 F3 CD 98 B4
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53403 dh384-ack bytes: 8, data 42 66 03 67 E8 11 54 A6
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53400 dh384-ack bytes: 8, data 28 A7 6B 4C B0 A1 7E 4F
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53403 rc4-server-handshake bytes: 45, data CD 1B 9E 10 F1 20 01 41 90 2C 7E E9 58 33 50 CA 01 41 90 2D 7E E9 58 30 EC 16 39 51 54 59 7A 9F 00 41 78 E9 09 E4 DF EB 4D 96 BD B4 4F
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 39, data 2D B4 8E E8 A2 91 06 0D E7 60 66 54 E5 39 97 AB 09 79 B2 E3 ED 94 D4 98 E5 9E 70 BD 62 BF 99 2D B0 9D 5E 66 6E B7 3B, ascii -........`fT.9...y........p.b..-..^fn.;
+tcp probe rc4-client-handshake 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 39, decrypted 2D B4 8E E8 04 39 00 00 00 01 00 00 00 0F 31 03 0F 74 55 82 8B C0 31 AE C7 CC CD 9A C3 98 29 46 7F 24 45 B2 FB 70 21
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 27, data E0 2A C2 12 D8 3B 94 52 19 A2 DA 2B 35 37 EC E3 04 63 56 49 5C 61 12 8B 52 26 0A, ascii .*...;.R...+57...cVI\a..R&.
+tcp probe rc4-client-data 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 27, decrypted 34 2E AF 15 F2 01 2E AE 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-frame 172.18.0.1:53403 -> 64.4.23.141:40004 len=27 declared=27 crc/seq=2EAF body=21 cmd=F201 prev=2EAE tag=42 payload=42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 64.4.23.141:40004 -> 172.18.0.1:53403 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E AE 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53400 rc4-server-handshake bytes: 39, data 69 C1 3F D5 2E BC 76 16 7E 3C 21 63 97 7D D4 D4 76 16 7E 3D 21 63 97 7E 27 84 98 8C 7C EC 62 56 BF F9 F9 E1 05 62 72
+tcp probe next 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 74, data F7 DF 26 DE 61 0D C9 B3 F9 C9 7E B0 E8 3E A4 39 74 79 CA 80 67 C6 07 E5 C1 01 81 C6 02 52 09 54 4D 69 7F 81 0D EF E3 54 66 C8 76 68 14 C4 9C 6E C7 11 8A D5 C3 41 7B EE 37 86 E8 52 4C B0 80 72, ascii ..&.a.....~..>.9ty..g........R.TMi.....Tf.vh...n.....A{.7..RL..r
+tcp probe rc4-client-handshake 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 74, decrypted F7 DF 26 DE 84 37 00 00 00 01 00 00 00 0F 41 03 BD CA 33 48 19 76 EF D4 35 E2 6B 20 11 0E A7 2C AD FA A3 F8 09 A6 5F 84 25 12 DB D0 01 3E 17 34 2E B1 15 F2 01 2E B0 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 27, decrypted 34 2E B1 15 F2 01 2E B0 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:53400 -> 91.190.216.17:40002 len=27 declared=27 crc/seq=2EB1 body=21 cmd=F201 prev=2EB0 tag=42 payload=42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 91.190.216.17:40002 -> 172.18.0.1:53400 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E B0 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.216.17:40002 -> 172.18.0.1:53400 rc4-supernode-probe-reply bytes: 147, data 7D 2D 2B A2 6C 61 9E 09 77 B3 F6 CE 94 7D 49 E6 CE 48 F1 CB FA 33 07 27 E4 DA C9 73 8C 19 EB 46 FD 1C 11 1F B0 4F 42 D3 86 62 B2 A2 F7 10 EB 51 ED 9F B4 E0 0B F5 8F FA 2B D7 6C 6A 96 EC D5 19
+tcp probe next 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 4, data 7F 18 ED CF, ascii ....
+tcp probe rc4-client-data 172.18.0.1:53400 -> 91.190.216.17:40002 bytes: 4, decrypted 07 01 C1 D2
+tcp probe scripted 64.4.23.141:40004 -> 172.18.0.1:53403 rc4-supernode-probe-reply bytes: 147, data 03 F4 1E 6E 83 72 8A 44 6C B0 5D 3D 88 75 F5 73 52 B3 8A D8 87 11 35 82 9D 89 AA 59 3B 81 69 57 95 AA 27 EC 4E 26 02 5F FF 28 8B 7F 16 AF 0E 3A CF 98 CB EE 6C 2F C8 CD 3B 74 6A 7A EB 13 F9 93
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:53404 rc4-server-handshake bytes: 47, data 10 18 E4 F9 13 20 34 1F DD 58 6E 4D 25 88 09 39 34 1F DD 59 6E 4D 25 8B A5 13 46 67 D9 D8 84 28 AA 7D 93 85 DF 0C FC BE 61 07 4A 0D 27 8A B6
+tcp probe next 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 62, data 66 4E A2 4E 5C A5 94 FC DA 6D A6 60 50 EB 71 41 79 C6 39 54 EF 86 CF 20 C9 B2 5D 33 00 C4 BC 22 14 2A 51 0C 74 93 AB 29 7F 0A 49 B2 36 29 55 B4 0B DE 98 A4 DB CD E6 A9 64 E7 81 4B 83 4A, ascii fN.N\....m.`P.qAy.9T... ..]3...".*Q.t..)..I.6)U.........d..K.J
+tcp probe rc4-client-handshake 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 62, decrypted 66 4E A2 4E 04 E7 00 00 00 01 00 00 00 0F 29 03 ED 3A E3 38 49 E6 9F C4 65 52 1B 10 41 7E 57 1C DD 6A 53 34 2E AD 15 F2 01 2E AC 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 27, decrypted 34 2E AD 15 F2 01 2E AC 42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe rc4-client-handshake-trailing-frame 172.18.0.1:53404 -> 65.55.223.25:40003 len=27 declared=27 crc/seq=2EAD body=21 cmd=F201 prev=2EAC tag=42 payload=42 54 9B 67 D0 67 8E 1A 08 06 C7 AD 0B 89 DF 63 D9 CC 51
+tcp probe clear 65.55.223.25:40003 -> 172.18.0.1:53404 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E AC 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 65.55.223.25:40003 -> 172.18.0.1:53404 rc4-supernode-probe-reply bytes: 147, data 52 E7 89 1E BA 3F 73 33 6C AE C1 63 FA 5F 50 1C F9 E3 E6 EB 9A B2 8B 51 3E 04 47 B5 F1 ED 89 24 4F BC 06 0B 65 D5 E6 97 FD 7F E1 A5 31 CE D7 32 9F 0E 59 19 50 71 7E C2 87 8D 87 8D B1 3E 93 DE
+tcp probe next 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 4, data 46 1D 2C BB, ascii F.,.
+tcp probe rc4-client-data 172.18.0.1:53404 -> 65.55.223.25:40003 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 4, data 66 29 24 A5, ascii f)$.
+tcp probe rc4-client-data 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 4, decrypted 07 01 C1 D2
+tcp probe clear 91.190.218.40:40001 -> 172.18.0.1:53399 rc4-supernode-probe-reply bytes: 147, data 4C C1 D1 21 FB 01 2E AA 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 91.190.218.40:40001 -> 172.18.0.1:53399 rc4-supernode-probe-reply bytes: 147, data 48 06 86 A4 8C A3 A0 9E 8B AF A4 A1 3A 74 EB C2 6C A6 F9 E5 5F 1D 31 C6 7F 97 48 13 3C AE 70 DC 11 F2 6D AB B2 C6 BB 88 3D 8F 75 04 FF 1C 12 46 8D 82 26 61 E1 AC 28 69 E8 1A 40 C6 AE 6C 2C 11
+tcp probe next 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 4, data 4D B1 2C F9, ascii M.,.
+tcp probe rc4-client-data 172.18.0.1:53399 -> 91.190.218.40:40001 bytes: 4, decrypted 07 01 C1 D2
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 4, data D7 1F 61 CB, ascii ..a.
+tcp probe rc4-client-data 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 4, decrypted EC 03 2E B2
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 481, data C8 1D CA C3 8D B9 3F AD 5D 51 C3 3A D7 B1 4B 32 F9 AE 07 DA 6F 03 85 68 38 8E 3C 5B 27 04 80 15 B2 37 45 4F 95 7D 24 98 DC 3F 4C AA A2 AB AF E7 88 8B A9 B6 64 51 86 35 6E 9A 50 D5 14 43 07 61, ascii ......?.]Q.:..K2....o..h8.<['....7EO.}$..?L.........dQ.5n.P..C.a
+tcp probe rc4-client-data 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 481, decrypted E5 01 A9 02 42 32 4C 41 55 C6 82 3D 6A 08 AA 9B F3 73 EB 7A 41 5F 4B 4A A4 AF 03 FE B6 3E D8 51 D2 D7 8E A3 92 E9 CB 8D BD 34 74 52 AE 32 06 7F 5B 0C 7E E9 3E 8D 68 8E 5E 06 8D 71 F2 8C FC BF 3A 1B F6 C8 1D 5B 2D 87 17 9B 47 EB 78 47 36 1A 8E 29 3F 3C 67 68 28 92 47 67 96 D7 44 10 A9 93 B1 8B FF 34 1B E8 A8 67 B6 04 63 50 B8 18 2E 86 17 00 C3 20 13 55 C0 9B 17 7A B8 C5 D2 9D EE FD
+tcp probe next 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 238, data 3D 93 AF 76 08 33 80 28 22 D6 8A C1 22 DA 82 E1 AA CA 46 5E 64 A7 07 45 6F A5 8F DF 25 13 8A F5 80 51 18 FE 42 71 60 36 68 BB 2F CF 0B B8 F9 7C F8 62 35 45 77 A3 9A DD 33 03 30 6B B3 B9 43 69, ascii =..v.3.("...".....F^d..Eo...%....Q..Bq`6h./....|.b5Ew...3.0k..Ci
+tcp probe rc4-client-data 172.18.0.1:53403 -> 64.4.23.141:40004 bytes: 238, decrypted D8 03 2E B5 E6 01 A9 02 42 32 4C 41 55 C6 83 87 41 59 2B D5 62 77 94 03 98 9C AF 6F B4 0A CC 40 4C 06 43 B8 23 B9 5F 04 CC 81 F6 6B E2 A2 A3 26 BF C3 A5 F8 6C AF 4E 8B D2 A9 B8 07 F4 74 C9 12 AA 04 59 0D 5D AA D5 52 69 1B 8B BA 01 43 60 AC 66 E9 4C 18 36 5C CF D9 9A E4 5B CF 7F 0B 88 55 CF B1 2C D0 4A 77 7E 59 77 4E DF 5B 1D 2E C8 7F 17 1B 5B 3D 15 5D F2 2B 96 EF 5D 76 1E CE 3E 8B

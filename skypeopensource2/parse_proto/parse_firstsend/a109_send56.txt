@@ -1,0 +1,43 @@
+﻿===
+PARAM send0056
+===
+{
+04-EFEF: 1 bytes
+0000: 7C                                              | |                |
+
+00-00: 02 00 00 00
+00-01: 6D 00 00 00
+00-02: 35 4F 00 00
+05-03: {
+00-01: A9 98 5B A0
+00-03: 0B 00 00 00
+04-04: 47 bytes
+0000: 41 04 00 01 13 00 0F EE B1 E7 D1 04 05 14 41 04 | A.............A. |
+0010: 00 09 D0 B5 BC A1 05 00 0A EF B1 E7 D1 04 00 15 | ................ |
+0020: F6 99 87 C2 0A 00 2E 04 05 2F 41 01 00 02 01    | ........./A....  |
+
+}
+}
+===
+===
+{
+00-01: 13 00 00 00
+00-0F: EE D8 39 4A
+05-14: {
+00-09: D0 1A 2F 54
+00-0A: EF D8 39 4A
+00-15: F6 CC 41 A8
+00-2E: 04 00 00 00
+}
+05-2F: {
+00-02: 01 00 00 00
+}
+}
+===
+
+...
+04:18:53.425 T#2100 ⩧session_manager: [6a41] CS02:20277
+04:18:53.425 T#2100 ⛋#notnowagainplease/$themagicforyou;85a78cecc570b167themagicforyou390358408286b038has_more_to_sync: message_at=0, but no need to crawl as it's clear there's stuff to sync
+04:18:53.425 T#2100 ⛋#notnowagainplease/$themagicforyou;85a78cecc570b167themagicforyou9ccb4fab1fa6a368has_more_to_sync: next is not empty, and we have more, we are at 4a39d8ee
+04:18:53.425 T#2100 ⛋#notnowagainplease/$themagicforyou;85a78cecc570b167themagicforyou9ccb4fab1fa6a368timeslice: exclude_nodeid(9ccb4fab1fa6a368) A:0 B:1 C:0 D:0 E:1 F:0
+04:18:53.425 T#2100 ቱthemagicforyou9ccb4fab1fa6a368

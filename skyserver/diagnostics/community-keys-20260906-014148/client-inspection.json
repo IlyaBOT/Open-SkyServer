@@ -1,0 +1,71 @@
+{
+    "Path":  "C:\\Program Files (x86)\\Skype\\Phone\\Skype.exe",
+    "Version":  "4.2.0.187",
+    "Sha256":  "A2E175CE7C9888C125E2B3D4C2343229832BA0D0CD8A8A1CE120CE92624E856C",
+    "Machine":  332,
+    "Length":  13351304,
+    "KnownPacked":  true,
+    "VerifiedProfileAvailable":  false,
+    "PatternOffsets":  {
+                           "login_big_endian":  [
+
+                                                ],
+                           "login_little_endian":  [
+
+                                                   ],
+                           "credentials_big_endian":  [
+
+                                                      ],
+                           "credentials_little_endian":  [
+
+                                                         ],
+                           "193.88.6.13_ascii":  [
+
+                                                 ],
+                           "193.88.6.13_network":  [
+
+                                                   ],
+                           "194.165.188.79_ascii":  [
+
+                                                    ],
+                           "194.165.188.79_network":  [
+
+                                                      ],
+                           "195.46.253.219_ascii":  [
+
+                                                    ],
+                           "195.46.253.219_network":  [
+
+                                                      ],
+                           "91.190.218.40_ascii":  [
+
+                                                   ],
+                           "91.190.218.40_network":  [
+
+                                                     ],
+                           "91.190.216.17_ascii":  [
+
+                                                   ],
+                           "91.190.216.17_network":  [
+
+                                                     ],
+                           "65.55.223.25_ascii":  [
+
+                                                  ],
+                           "65.55.223.25_network":  [
+
+                                                    ],
+                           "64.4.23.141_ascii":  [
+
+                                                 ],
+                           "64.4.23.141_network":  [
+
+                                                   ],
+                           "111.221.74.33_ascii":  [
+
+                                                   ],
+                           "111.221.74.33_network":  [
+
+                                                     ]
+                       }
+}

@@ -1,0 +1,359 @@
+2026-09-10 09:53:53 INFO  (LoggingInitialization) Using log config file: jar:file:/E:/ghidra_11.2.1_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-09-10 09:53:53 INFO  (LoggingInitialization) Using log file: skyserver\diagnostics\pe-analysis-20260907-233415\hostcache-probe.log  
+2026-09-10 09:53:53 INFO  (Preferences) Loading user preferences: C:\Users\IlyaBOT\AppData\Roaming\ghidra\ghidra_11.2.1_PUBLIC\preferences  
+2026-09-10 09:53:53 INFO  (ClassSearcher) Searching for classes...  
+2026-09-10 09:53:54 INFO  (ClassSearcher) Class search complete (1066 ms)  
+2026-09-10 09:53:54 INFO  (SSLContextInitializer) Initializing SSL Context  
+2026-09-10 09:53:54 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-09-10 09:53:54 INFO  (SecureRandomFactory) Random Number Generator initialization complete: SHA1PRNG  
+2026-09-10 09:53:54 INFO  (ApplicationTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-09-10 09:53:54 INFO  (AnalyzeHeadless) Headless startup complete (2363 ms)  
+2026-09-10 09:53:54 INFO  (ClassSearcher) Class searcher loaded 57 extension points (18 false positives)  
+2026-09-10 09:53:54 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-dbgmodel-traceloader\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    I:\SkypeReverse\skypeopensource2\skyserver\tools
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Jython\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-frida\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts  
+2026-09-10 09:53:54 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-09-10 09:53:54 INFO  (HeadlessAnalyzer) Opening existing project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-10 09:53:55 INFO  (HeadlessProject) Opening project: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-10 09:53:57 INFO  (HeadlessAnalyzer) REPORT: Processing project file: /Skype-uncompressed.image.bin  
+2026-09-10 09:53:57 INFO  (HeadlessAnalyzer) SCRIPT: I:\SkypeReverse\skypeopensource2\skyserver\tools\InspectSkypeEntry.java  
+2026-09-10 09:53:57 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 0064d280  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d280 SUB ESP,0x3c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d283 MOV EAX,[0x00d0a8a0]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d288 XOR EAX,ESP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d28a MOV dword ptr [ESP + 0x34],EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d28e PUSH EBX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d28f PUSH EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d290 PUSH ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d291 PUSH EDI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d292 MOV EDI,ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d294 XOR EBP,EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d296 CMP dword ptr [EDI + 0x127b],EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d29c JZ 0x0064d2a6  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d29e CMP dword ptr [EDI + 0x1307],EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2a4 JNZ 0x0064d2df  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2a6 PUSH 0xb88638  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2ab PUSH 0xb88638  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2b0 PUSH 0x17c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2b5 PUSH 0xc99930  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2ba PUSH 0xc999f8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2bf PUSH 0xb89a44  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2c4 CALL 0x0051fb30  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2c9 ADD ESP,0x18  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2cc POP EDI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2cd POP ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2ce POP EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2cf POP EBX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2d0 MOV ECX,dword ptr [ESP + 0x34]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2d4 XOR ECX,ESP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2d6 CALL 0x00a90c08  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2db ADD ESP,0x3c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2de RET  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2df MOV ESI,dword ptr [EDI + 0xe]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2e2 MOV EBX,dword ptr [0x00d2e924]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2e8 ADD ESI,0x8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2eb CMP EBX,dword ptr [ESI + 0x10]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2ee JC 0x0064d2fd  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2f0 PUSH 0xc84814  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2f5 CALL 0x0051fb50  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2fa ADD ESP,0x4  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d2fd MOV EAX,dword ptr [ESI + 0xc]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d300 MOV ECX,dword ptr [EAX + EBX*0x4]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d303 MOV EDX,dword ptr [ECX]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d305 MOV EAX,dword ptr [EDX + 0x1c]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d308 CALL EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d30a TEST AL,AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d30c JZ 0x0064d3be  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d312 MOV EAX,dword ptr [EDI + 0x127b]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d318 MOV ECX,dword ptr [EDI + 0x127f]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d31e PUSH ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d31f MOVZX ECX,byte ptr [EDI + 0x127c]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d326 MOVZX EDX,AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d329 PUSH EDX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d32a MOVZX EDX,byte ptr [EDI + 0x127d]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d331 PUSH ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d332 PUSH EDX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d333 SHR EAX,0x18  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d336 PUSH EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d337 LEA EAX,[ESP + 0x38]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d33b PUSH 0xc93f74  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d340 PUSH EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d341 CALL 0x00a91bb6  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d346 ADD ESP,0x1c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d349 LEA ECX,[ESP + 0x24]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d34d PUSH ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d34e PUSH 0xc99a00  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d353 MOV EDX,EDI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d355 CALL 0x0052c940  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d35a MOV EDX,dword ptr [EDI + 0x127f]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d360 MOV EAX,dword ptr [EDI + 0x127b]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d366 ADD ESP,0x8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d369 PUSH EDX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d36a PUSH EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d36b MOV EAX,dword ptr [EDI + 0xe]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d36e PUSH EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d36f PUSH 0x1e  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d371 PUSH EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d372 LEA ECX,[EDI + 0x13]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d375 PUSH ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d376 MOV ECX,dword ptr [EAX + 0x338]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d37c LEA EDX,[ESP + 0x2c]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d380 PUSH EDX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d381 PUSH 0x1b  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d383 MOV ESI,0xb886e8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d388 PUSH ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d389 MOV dword ptr [ESP + 0x38],ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d38d MOV dword ptr [ESP + 0x44],EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d391 MOV dword ptr [ESP + 0x40],EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d395 MOV dword ptr [ESP + 0x3c],EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d399 CALL 0x006a74d0  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d39e MOV dword ptr [ESP + 0x14],ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3a2 LEA ESI,[ESP + 0x18]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3a6 CALL 0x004f8d40  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3ab POP EDI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3ac POP ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3ad POP EBP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3ae POP EBX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3af MOV ECX,dword ptr [ESP + 0x34]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3b3 XOR ECX,ESP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3b5 CALL 0x00a90c08  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064d3ba ADD ESP,0x3c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void __fastcall FUN_0064d280(int param_1)
+
+{
+  code *pcVar1;
+  uint uVar2;
+  char cVar3;
+  undefined4 *puVar4;
+  int iVar5;
+  code ***pppcVar6;
+  code **appcStack_70 [3];
+  int iStack_64;
+  uint uStack_60;
+  uint uStack_5c;
+  uint uStack_58;
+  uint uStack_54;
+  undefined *puStack_50;
+  undefined auStack_3c [4];
+  code *pcStack_38;
+  undefined4 uStack_34;
+  undefined4 uStack_30;
+  undefined4 uStack_2c;
+  undefined auStack_28 [32];
+  uint uStack_8;
+  
+  uVar2 = _DAT_00d2e924;
+  uStack_8 = _DAT_00d0a8a0 ^ (uint)auStack_3c;
+  if ((*(int *)(param_1 + 0x127b) == 0) || (*(int *)(param_1 + 0x1307) == 0)) {
+    puStack_50 = (undefined *)0xb88638;
+    uStack_54 = 0xb88638;
+    uStack_58 = 0x17c;
+    uStack_5c = 0xc99930;
+    uStack_60 = 0xc999f8;
+    iStack_64 = 0xb89a44;
+    appcStack_70[2] = (code **)0x64d2c9;
+    func_0x0051fb30();
+    func_0x00a90c08();
+    return;
+  }
+  iVar5 = *(int *)(param_1 + 0xe);
+  if (*(uint *)(iVar5 + 0x18) <= _DAT_00d2e924) {
+    puStack_50 = (undefined *)0xc84814;
+    uStack_54 = 0x64d2fa;
+    func_0x0051fb50();
+  }
+  puStack_50 = (undefined *)0x64d30a;
+  cVar3 = (**(code **)(**(int **)(*(int *)(iVar5 + 0x14) + uVar2 * 4) + 0x1c))();
+  if (cVar3 != '\0') {
+    puStack_50 = *(undefined **)(param_1 + 0x127f);
+    uStack_58 = (uint)*(byte *)(param_1 + 0x127c);
+    uStack_54 = *(uint *)(param_1 + 0x127b) & 0xff;
+    uStack_5c = (uint)*(byte *)(param_1 + 0x127d);
+    uStack_60 = *(uint *)(param_1 + 0x127b) >> 0x18;
+    appcStack_70[2] = (code **)auStack_28;
+    iStack_64 = 0xc93f74;
+    appcStack_70[1] = (code **)0x64d346;
+    func_0x00a91bb6();
+    puStack_50 = auStack_28;
+    uStack_54 = 0xc99a00;
+    uStack_58 = 0x64d35a;
+    func_0x0052c940();
+    puStack_50 = *(undefined **)(param_1 + 0x127f);
+    uStack_54 = *(undefined4 *)(param_1 + 0x127b);
+    uStack_58 = 0;
+    uStack_5c = 0x1e;
+    uStack_60 = 0;
+    iStack_64 = param_1 + 0x13;
+    appcStack_70[0] = *(code ***)(*(int *)(param_1 + 0xe) + 0x338);
+    appcStack_70[2] = &pcStack_38;
+    appcStack_70[1] = (code **)0x1b;
+    pcStack_38 = (code *)0xb886e8;
+    uStack_2c = 0;
+    uStack_30 = 0;
+    uStack_34 = 0;
+    func_0x006a74d0();
+    uStack_5c = 0xb886e8;
+    func_0x004f8d40();
+    iStack_64 = 0x64d3ba;
+    func_0x00a90c08();
+    return;
+  }
+  pcStack_38 = FUN_0064d280;
+  uStack_34 = 0;
+  uStack_30 = 0;
+  uStack_2c = 0;
+  puStack_50 = (undefined *)0x64d3e1;
+  puVar4 = (undefined4 *)func_0x007ceb80();
+  puStack_50 = (undefined *)0x0;
+  uStack_54 = 300000;
+  pcVar1 = *(code **)(**(int **)(*(int *)(param_1 + 0xe) + 0x3a) + 0x10);
+  pppcVar6 = appcStack_70;
+  for (iVar5 = 7; iVar5 != 0; iVar5 = iVar5 + -1) {
+    *pppcVar6 = (code **)*puVar4;
+    puVar4 = puVar4 + 1;
+    pppcVar6 = pppcVar6 + 1;
+  }
+  (*pcVar1)(0xc999dc);
+  appcStack_70[2] = (code **)0x64d418;
+  func_0x00a90c08();
+  return;
+}
+
+  
+2026-09-10 09:53:58 INFO  (HeadlessAnalyzer) SCRIPT: I:\SkypeReverse\skypeopensource2\skyserver\tools\InspectSkypeEntry.java  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 0064b6b0  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064b6b0 MOV ECX,dword ptr [ESP + 0x104]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064b6b7 XOR ECX,ESP  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064b6b9 CALL 0x00a90c08  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064b6be ADD ESP,0x108  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064b6c4 RET  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd40 ADD byte ptr [EAX],AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd42 ADD byte ptr [EAX + -0x77],AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd45 MOV word ptr [EAX + EAX*0x8],FS  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd48 ADD byte ptr [EAX],AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd4a ADD BH,AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd4c TEST byte ptr [ESP + ECX*0x8],AH  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd4f ADD byte ptr [EAX],AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd51 ADD byte ptr [EAX + EAX*0x1],BH  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd54 ADD byte ptr [EAX],AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd56 MOV dword ptr [ESP + 0xc8],0x14  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd61 CALL 0x007382a0  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd66 MOV dword ptr [ESP + 0x14],0xc763e2  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd6e MOV EAX,dword ptr [ESP + 0x14]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd72 MOV AL,byte ptr [EAX + -0x2]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd75 TEST AL,AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd77 JZ 0x0064bf49  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd7d MOV EDI,dword ptr [ESP + 0x14]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd81 MOVZX ECX,byte ptr [EDI + -0x1]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd85 MOVZX EDX,byte ptr [EDI]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd88 MOVZX EBX,byte ptr [EDI + 0x2]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd8c MOVZX ESI,AL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd8f MOVZX EAX,byte ptr [EDI + 0x1]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd93 SHL ESI,0x8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd96 ADD ESI,ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd98 MOVZX ECX,byte ptr [EDI + 0x3]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd9c SHL ESI,0x8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bd9f ADD ESI,EDX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bda1 SHL ESI,0x8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bda4 ADD ESI,EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bda6 SHL EBX,0x8  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bda9 MOV EAX,ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdab ADD EBX,ECX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdad AND EAX,0xff000000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdb2 CMP EAX,0x7f000000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdb7 MOV dword ptr [ESP + 0x30],ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdbb MOV dword ptr [ESP + 0x34],EBX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdbf JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdc1 TEST ESI,ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdc3 JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdc5 CMP EAX,0xa000000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdca JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdcc MOV EDX,ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdce AND EDX,0xfff00000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdd4 CMP EDX,0xac100000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdda JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bddc MOV ECX,ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdde AND ECX,0xffff0000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bde4 CMP ECX,0xc0a80000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdea JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdec TEST EAX,EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdee JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdf0 CMP EAX,0xff000000  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdf5 JZ 0x0064bdff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdf7 CMP EBX,0xffff  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdfd JBE 0x0064be27  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bdff PUSH 0xb88638  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be04 PUSH 0xb88638  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be09 PUSH 0x77  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be0b PUSH 0xc99930  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be10 PUSH 0xc99988  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be15 PUSH 0xb89a44  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be1a CALL 0x0051fb30  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be1f ADD ESP,0x18  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be22 JMP 0x0064bf39  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be27 MOV ECX,dword ptr [ESP + 0xe4]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be2e MOV EDX,dword ptr [ESP + 0xf0]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be35 MOV EAX,ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be37 IMUL EAX,EAX,-0x61c8c933  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be3d SHR EAX,CL  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be3f MOV ECX,dword ptr [EDX + EAX*0x4]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be42 CMP ECX,-0x1  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be45 JZ 0x0064be7c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be47 JMP 0x0064be50  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be50 MOV EDX,dword ptr [ESP + 0xd0]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be57 LEA EDX,[EDX + ECX*0x4]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be5a CMP dword ptr [ECX + EDX*0x1],ESI  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be5d JZ 0x0064be7c  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be5f ADD EAX,0x1  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be62 CMP EAX,dword ptr [ESP + 0xe0]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be69 JL 0x0064be6d  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be6b XOR EAX,EAX  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be6d MOV ECX,dword ptr [ESP + 0xf0]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be74 MOV ECX,dword ptr [ECX + EAX*0x4]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be77 CMP ECX,-0x1  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be7a JNZ 0x0064be50  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be7c MOV EDX,dword ptr [ESP + 0xf0]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be83 CMP dword ptr [EDX + EAX*0x4],-0x1  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be87 JNZ 0x0064bf39  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be8d MOV EAX,dword ptr [ESP + 0x18]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be91 MOV ECX,dword ptr [EAX + 0x3df]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be97 ADD EAX,0x3b  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064be9a CMP ECX,dword ptr [EAX + 0x3a8]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bea0 JC 0x0064beae  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bea2 MOV EDI,dword ptr [ESP + 0x18]  
+2026-09-10 09:53:58 INFO  (GhidraScript) InspectSkypeEntry.java> 0064bea6 ADD EDI,0x3b  
+2026-09-10 09:53:59 INFO  (GhidraScript) InspectSkypeEntry.java> 
+void FUN_0064b6b0(void)
+
+{
+  func_0x00a90c08();
+  return;
+}
+
+  
+2026-09-10 09:54:00 INFO  (HeadlessAnalyzer) REPORT: Save succeeded for processed file: /Skype-uncompressed.image.bin  

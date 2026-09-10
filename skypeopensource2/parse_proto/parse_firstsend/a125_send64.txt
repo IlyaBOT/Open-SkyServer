@@ -1,0 +1,28 @@
+﻿===
+PARAM send0064
+===
+{
+04-EFEF: 2 bytes
+0000: F5 18                                           | ..               |
+
+00-00: 02 00 00 00
+00-01: 6D 00 00 00
+00-02: D9 DB 00 00
+05-03: {
+00-00: 01 00 00 00
+00-01: A9 98 5B A0
+00-02: FB 0B 22 B8
+}
+}
+===
+
+04:18:53.435 T#2100 ⛋#notnowagainplease/$themagicforyou;85a78cecc570b167themagicforyou9ccb4fab1fa6a368
+set_status: WAITING_END->EMPTY
+04:18:53.435 T#2100 ဥ#notnowagainplease/$themagicforyou;85a78cecc570b167ઑ3
+04:18:53.435 T#2100 ဥ#notnowagainplease/$themagicforyou;85a78cecc570b167ઑ3
+04:18:53.435 T#2100 ⛋#notnowagainplease/$themagicforyou;85a78cecc570b167themagicforyou9ccb4fab1fa6a368
+set_status: updated syncing_counter to 4294967295->1
+
+0xFFFFFFFF = 4294967295
+
+

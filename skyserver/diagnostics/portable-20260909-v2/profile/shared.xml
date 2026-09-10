@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config version="1.0" serial="4" timestamp="1788985421.3">
+  <Lib>
+    <BackboneInited>1</BackboneInited>
+    <Localnode>
+      <NodeID>8524CD15E8F86C3E</NodeID>
+    </Localnode>
+    <PropsManager>
+      <PermaProps>4102030E302F342E322E302E3138372F2F00000FF3FF86D506</PermaProps>
+    </PropsManager>
+    <VoiceEng>
+      <MicBoost>
+        <_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>-1</_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>
+      </MicBoost>
+      <MicVolume>
+        <_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>-1</_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>
+      </MicVolume>
+    </VoiceEng>
+  </Lib>
+  <UI>
+    <Login>
+      <SaveCredentials>1</SaveCredentials>
+    </Login>
+  </UI>
+</config>

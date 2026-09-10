@@ -1,0 +1,16 @@
+﻿{
+    "ProcessId":  18052,
+    "StartUtc":  "2026-09-09T20:31:21.3630797Z",
+    "ClientPath":  "I:\\SkypeReverse\\skypeopensource2\\skyserver\\diagnostics\\portable-20260909-v3\\Skype.exe",
+    "ClientSha256":  "35EB279974ACD558B3E3DF30C8A422D76B7F5BDC1C9BE30B32F192704E2C2DB0",
+    "SharedConfigPath":  "I:\\SkypeReverse\\skypeopensource2\\skyserver\\diagnostics\\portable-20260909-v3\\profile\\shared.xml",
+    "ServerIp":  "192.168.1.101",
+    "Interfaces":  [
+                       "\\Device\\NPF_{054B4E63-FF35-497D-9038-739137484130}",
+                       "\\Device\\NPF_{24C90E4F-6F62-428D-83CC-4A2B39D28F26}",
+                       "\\Device\\NPF_{3B253A93-D5B0-AA01-E5EA-7BE7744FEEEF}",
+                       "\\Device\\NPF_Loopback"
+                   ],
+    "Filter":  "(tcp or udp) and (tcp port 33033 or (host 192.168.1.101 and (port 33033 or port 12350 or port 12351 or port 13392 or port 10100 or port 23456)) or host 193.88.6.13 or host 193.88.8.59 or host 194.165.188.76 or host 194.165.188.79 or host 195.46.253.219 or host 212.8.163.76 or (udp port 53924) or (udp port 21166) or (udp port 443))",
+    "DurationSeconds":  180
+}

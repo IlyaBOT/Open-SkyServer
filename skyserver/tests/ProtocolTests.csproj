@@ -1,0 +1,37 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>ProtocolTests</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OutputPath>bin\Release\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Compile Include="CommunityKeysTests.cs" />
+    <Compile Include="NativeLoginTests.cs" />
+    <Compile Include="UdpDestinationTests.cs" />
+    <Compile Include="..\ProbeUdpServer.cs"><Link>ProbeUdpServer.cs</Link></Compile>
+    <Compile Include="NativeCredentialsTests.cs" />
+    <Compile Include="..\NativeCredentials.cs"><Link>NativeCredentials.cs</Link></Compile>
+    <Compile Include="..\SkypeBlobCodec.cs"><Link>SkypeBlobCodec.cs</Link></Compile>
+    <Compile Include="..\NativeLoginRequest.cs"><Link>NativeLoginRequest.cs</Link></Compile>
+    <Compile Include="..\CommunityKeys.cs"><Link>CommunityKeys.cs</Link></Compile>
+    <Compile Include="ProtocolTests.cs" />
+    <Compile Include="..\AuthProtocolServer.cs"><Link>AuthProtocolServer.cs</Link></Compile>
+    <Compile Include="..\SkyDatabase.cs"><Link>SkyDatabase.cs</Link></Compile>
+    <Compile Include="..\SkypeDh384Session.cs"><Link>SkypeDh384Session.cs</Link></Compile>
+    <Compile Include="..\SkypeNativeRc4.cs"><Link>SkypeNativeRc4.cs</Link></Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\skyserver_native\bin\x86\Release\skype_blob_worker.exe">
+      <Link>skype_blob_worker.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
