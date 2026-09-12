@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -39,13 +41,15 @@ namespace SkyServer
 
         private readonly IPAddress bindAddress;
         private readonly int[] ports;
+        private readonly AuthProtocolServer accountServer;
         private readonly List<TcpListener> listeners = new List<TcpListener>();
         private volatile bool stopped;
 
-        public TcpProbeServer(IPAddress bindAddress, int[] ports)
+        public TcpProbeServer(IPAddress bindAddress, int[] ports, AuthProtocolServer accountServer = null)
         {
             this.bindAddress = bindAddress;
             this.ports = ports;
+            this.accountServer = accountServer;
         }
 
         public void Run()
@@ -114,8 +118,8 @@ namespace SkyServer
         {
             using (TcpClient client = (TcpClient)state)
             {
-                client.ReceiveTimeout = 2500;
-                client.SendTimeout = 2500;
+                client.ReceiveTimeout = 10000;
+                client.SendTimeout = 10000;
 
                 IPEndPoint local = (IPEndPoint)client.Client.LocalEndPoint;
                 IPEndPoint remote = (IPEndPoint)client.Client.RemoteEndPoint;
@@ -130,7 +134,7 @@ namespace SkyServer
 
                     if (read > 0 && LooksLikeSkypeFallback(buffer, read))
                     {
-                        RunScriptedFallbackProbe(stream, remote, local, buffer, read);
+                        RunDhBootstrapSession(client, stream, remote, local, buffer, read);
                     }
                 }
                 catch (Exception ex)
@@ -145,6 +149,135 @@ namespace SkyServer
             }
         }
 
+        private void RunDhBootstrapSession(TcpClient client, NetworkStream stream, IPEndPoint remote, IPEndPoint local, byte[] buffer, int read)
+        {
+            while (read < SkypeDh384Session.PublicKeyBytes)
+            {
+                int added = stream.Read(buffer, read, SkypeDh384Session.PublicKeyBytes - read);
+                if (added == 0) throw new EndOfStreamException("Incomplete bootstrap DH hello");
+                read += added;
+            }
+            SkypeDh384Session dh = new SkypeDh384Session(buffer, read);
+            stream.Write(dh.ServerHello, 0, dh.ServerHello.Length);
+            byte[] hash = ReadExactBootstrap(stream, 8);
+            if (!dh.VerifyClientHash(hash, hash.Length)) throw new InvalidDataException("Bootstrap DH hash mismatch");
+            stream.Write(dh.ServerHash, 0, dh.ServerHash.Length);
+            byte[] early = null;
+            // Account RPCs use direct RC4 immediately after DH, even on a
+            // bootstrap port. Node sessions instead wait for an RC4 nonce.
+            if (client.Client.Poll(500000, SelectMode.SelectRead))
+            {
+                early = ReadExactBootstrap(stream, 5);
+                if (accountServer != null && AuthProtocolServer.IsAccountRecordPrefix(dh.SharedSecret, early))
+                {
+                    Console.WriteLine("bootstrap {0} -> {1}: native account RPC transport", remote, local);
+                    accountServer.HandleStockSkypeAuthFrames(stream, client, dh, early, true);
+                    return;
+                }
+            }
+            using (SkypeNativeRc4.Session rc4 = new SkypeNativeRc4.Session())
+            {
+                byte[] handshake;
+                string error;
+                if (!rc4.TryMakeServerHandshake(dh.SharedSecret, out handshake, out error))
+                    throw new InvalidDataException("Bootstrap RC4 setup: " + error);
+                stream.Write(handshake, 0, handshake.Length);
+                byte[] first = new byte[16];
+                int initial = early == null ? 0 : early.Length;
+                if (early != null) Buffer.BlockCopy(early, 0, first, 0, initial);
+                byte[] rest = ReadExactBootstrap(stream, 16 - initial);
+                Buffer.BlockCopy(rest, 0, first, initial, rest.Length);
+                byte[] clear;
+                if (!rc4.TryDecryptClientHandshake(dh.SharedSecret, first, first.Length, out clear, out error))
+                    throw new InvalidDataException("Bootstrap RC4 handshake: " + error);
+                if (clear[6] != 0 || clear[7] != 0 || clear[8] != 0 || clear[9] != 1 ||
+                    clear[10] != 0 || clear[11] != 0 || clear[12] != 0 || clear[15] != 3)
+                    throw new InvalidDataException("Invalid bootstrap RC4 handshake signature");
+                SkypeTcpFrameBuffer framing = new SkypeTcpFrameBuffer();
+                bool garbagePending = true;
+                bool probeReplySent = false;
+                Stopwatch lifetime = Stopwatch.StartNew();
+                string closeReason = "peer-eof";
+                stream.ReadTimeout = 120000;
+                try
+                {
+                    ProcessBootstrapFrames(stream, rc4, remote, local, framing.Append(clear, 14, 2),
+                        ref garbagePending, ref probeReplySent);
+                    while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        if (!rc4.TryDecryptFromClient(buffer, read, out clear, out error))
+                            throw new InvalidDataException("Bootstrap RC4 stream: " + error);
+                        ProcessBootstrapFrames(stream, rc4, remote, local, framing.Append(clear, 0, clear.Length),
+                            ref garbagePending, ref probeReplySent);
+                    }
+                    if (framing.HasPartialFrame) closeReason = "peer-eof-mid-frame";
+                }
+                catch (IOException ex)
+                {
+                    SocketException socket = ex.InnerException as SocketException;
+                    closeReason = socket == null ? "io-error" : socket.SocketErrorCode.ToString();
+                    throw;
+                }
+                finally
+                {
+                    Console.WriteLine("bootstrap session {0} -> {1} closed: {2}, lifetime-ms={3}",
+                        remote, local, closeReason, lifetime.ElapsedMilliseconds);
+                }
+            }
+        }
+
+        private static byte[] ReadExactBootstrap(NetworkStream stream, int count)
+        {
+            byte[] result = new byte[count];
+            int offset = 0;
+            while (offset < count)
+            {
+                int read = stream.Read(result, offset, count - offset);
+                if (read == 0) throw new EndOfStreamException("Incomplete bootstrap handshake");
+                offset += read;
+            }
+            return result;
+        }
+
+        private static void ProcessBootstrapFrames(NetworkStream stream, SkypeNativeRc4.Session rc4,
+            IPEndPoint remote, IPEndPoint local, List<byte[]> frames, ref bool garbagePending, ref bool probeReplySent)
+        {
+            foreach (byte[] frame in frames)
+            {
+                if (garbagePending) { garbagePending = false; continue; }
+                Console.WriteLine("bootstrap frame {0} -> {1}, bytes={2}, data {3}",
+                    remote, local, frame.Length, Hex(frame, 0, Math.Min(frame.Length, 128)));
+                LogSkypeTcpFrame("bootstrap command", remote, local, frame);
+                byte[] reply;
+                if (TryBuildKeepAliveReply(frame, out reply))
+                    SendEncryptedRc4Data(stream, rc4, remote, local, "keepalive-reply", reply);
+                else if (!probeReplySent && TryBuildSupernodeProbeReply(frame, out reply))
+                {
+                    SendEncryptedRc4Data(stream, rc4, remote, local, "bootstrap-reply", reply);
+                    probeReplySent = true;
+                }
+            }
+        }
+
+        internal static bool TryBuildKeepAliveReply(byte[] request, out byte[] reply)
+        {
+            reply = null;
+            if (!LooksLikeSkypeTcpFrame(request) || request[4] != 0x82 || request[5] != 3) return false;
+            byte[] encoded = new byte[request.Length - 8];
+            Buffer.BlockCopy(request, 8, encoded, 0, encoded.Length);
+            int consumed;
+            List<SkypeField> fields = SkypeBlobCodec.Decode(encoded, out consumed);
+            if (consumed != encoded.Length || fields.Count != 1 || fields[0].Type != 0 || fields[0].Id != 0)
+                throw new InvalidDataException("Unexpected keepalive fields");
+            // 0x30 requests observed at 10-second intervals carry an increasing
+            // 0/0 counter. Reply 0x31 echoes it and the request correlation ID.
+            reply = (byte[])request.Clone();
+            WriteUInt16BigEndian(reply, 1, NextServerSequence());
+            reply[4] = 0x8b;
+            return true;
+        }
+
+        // Retained only as a historical capture experiment; never used by live sessions.
         private static void RunScriptedFallbackProbe(NetworkStream stream, IPEndPoint remote, IPEndPoint local, byte[] buffer, int read)
         {
             SkypeDh384Session dh = TryCreateDhSession(buffer, read);

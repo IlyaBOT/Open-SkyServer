@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 
 namespace SkyServer
 {
@@ -18,6 +19,11 @@ namespace SkyServer
         private readonly bool once;
         private readonly bool realSkypeProbe;
         private readonly CommunityKeys communityKeys;
+        private readonly object clientsLock = new object();
+        private readonly HashSet<TcpClient> activeClients = new HashSet<TcpClient>();
+        private TcpListener listener;
+        private volatile bool stopped;
+        internal const int MaximumClients = 32;
 
         public AuthProtocolServer(SkyDatabase database, IPAddress bindAddress, int port, bool once, bool realSkypeProbe)
             : this(database, bindAddress, port, once, realSkypeProbe, null)
@@ -36,28 +42,71 @@ namespace SkyServer
 
         public void Run()
         {
-            TcpListener listener = new TcpListener(bindAddress, port);
-            listener.Start();
-            Console.WriteLine("auth listening on {0}:{1}", bindAddress, port);
-
-            do
+            lock (clientsLock)
             {
-                using (TcpClient client = listener.AcceptTcpClient())
-                {
-                    Console.WriteLine("auth client {0}", client.Client.RemoteEndPoint);
-                    try
-                    {
-                        HandleClient(client);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine("auth session failed: {0}", ex.Message);
-                    }
-                }
+                if (stopped) return;
+                listener = new TcpListener(bindAddress, port);
+                listener.Start();
             }
-            while (!once);
+            Console.WriteLine("auth listening on {0}:{1}", bindAddress, port);
+            try
+            {
+                do
+                {
+                    TcpClient client = listener.AcceptTcpClient();
+                    lock (clientsLock)
+                    {
+                        if (stopped || activeClients.Count >= MaximumClients)
+                        {
+                            client.Close();
+                            continue;
+                        }
+                        activeClients.Add(client);
+                    }
+                    if (once) HandleAcceptedClient(client);
+                    else if (!ThreadPool.QueueUserWorkItem(HandleAcceptedClient, client)) ReleaseClient(client);
+                }
+                while (!once && !stopped);
+            }
+            catch (SocketException) { if (!stopped) throw; }
+            catch (ObjectDisposedException) { if (!stopped) throw; }
+            finally { Stop(); }
+        }
 
-            listener.Stop();
+        internal IPEndPoint ListeningEndpoint
+        {
+            get { lock (clientsLock) return listener == null || stopped ? null : (IPEndPoint)listener.LocalEndpoint; }
+        }
+
+        public void Stop()
+        {
+            lock (clientsLock)
+            {
+                stopped = true;
+                if (listener != null) listener.Stop();
+                foreach (TcpClient client in activeClients) client.Close();
+            }
+        }
+
+        private void HandleAcceptedClient(object state)
+        {
+            TcpClient client = (TcpClient)state;
+            try
+            {
+                Console.WriteLine("auth client {0}", client.Client.RemoteEndPoint);
+                HandleClient(client);
+            }
+            catch (Exception ex)
+            {
+                if (!stopped) Console.WriteLine("auth session failed: {0}", ex.Message);
+            }
+            finally { ReleaseClient(client); }
+        }
+
+        private void ReleaseClient(TcpClient client)
+        {
+            client.Close();
+            lock (clientsLock) activeClients.Remove(client);
         }
 
         private void HandleClient(TcpClient client)
@@ -146,14 +195,18 @@ namespace SkyServer
             Console.WriteLine("sent auth {0} frame", valid ? "success" : "failure");
         }
 
-        private void HandleStockSkypeAuthFrames(NetworkStream stream, TcpClient client, SkypeDh384Session dh)
+        internal void HandleStockSkypeAuthFrames(NetworkStream stream, TcpClient client, SkypeDh384Session dh,
+            byte[] firstEncrypted = null, bool ackAlreadySent = false)
         {
             byte[] serverHash = dh.ServerHash;
-            stream.Write(serverHash, 0, serverHash.Length);
-            LogAuthPacket("auth dh-server-ack", client, serverHash, serverHash.Length);
+            if (!ackAlreadySent)
+            {
+                stream.Write(serverHash, 0, serverHash.Length);
+                LogAuthPacket("auth dh-server-ack", client, serverHash, serverHash.Length);
+            }
 
             Rc4 inbound = Rc4.FromKey(dh.SharedSecret);
-            List<byte[]> frames = ReadDecryptedFrames(stream, inbound, 2);
+            List<byte[]> frames = ReadDecryptedFrames(stream, inbound, 2, firstEncrypted);
             for (int i = 0; i < frames.Count; i++)
             {
                 Console.WriteLine(
@@ -195,6 +248,15 @@ namespace SkyServer
                 Console.WriteLine("auth stock: operation 0x{0:X} {1} response sent ({2} bytes); native login/contacts UI is not confirmed.",
                     request.Operation, request.Operation == 0x139c ? "DB account email" : "community-signed credential", response.Length);
             }
+        }
+
+        internal static bool IsAccountRecordPrefix(byte[] secret, byte[] encrypted)
+        {
+            if (encrypted == null || encrypted.Length < 5) return false;
+            byte[] prefix = (byte[])encrypted.Clone();
+            Rc4.FromKey(secret).Crypt(prefix, 0, prefix.Length);
+            return prefix[0] == 0x16 && prefix[1] == 3 && prefix[2] == 1 &&
+                ((prefix[3] << 8) | prefix[4]) >= 192 && ((prefix[3] << 8) | prefix[4]) <= 16384;
         }
 
         private static LocalAuthRequest ParseLocalAuthFrame(byte[] frame)

@@ -51,6 +51,7 @@
     <Compile Include="SkypeDh384Session.cs" />
     <Compile Include="SkyDatabase.cs" />
     <Compile Include="TcpProbeServer.cs" />
+    <Compile Include="SkypeTcpFrameBuffer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\skyserver_native\bin\x86\Release\skype_blob_worker.exe">

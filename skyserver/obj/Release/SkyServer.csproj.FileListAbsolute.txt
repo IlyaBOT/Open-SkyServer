@@ -12,3 +12,11 @@ I:\SkypeReverse\skypeopensource2\skyserver\bin\Release\skyserver.pdb
 I:\SkypeReverse\skypeopensource2\skyserver\obj\Release\SkyServer.csproj.AssemblyReference.cache
 I:\SkypeReverse\skypeopensource2\skyserver\obj\Release\SkyServer.csproj.CoreCompileInputs.cache
 I:\SkypeReverse\skypeopensource2\skyserver\bin\Release\skype_blob_worker.exe
+I:\Open-SkyServer\skyserver\bin\Release\skype_rc4_helper.dll
+I:\Open-SkyServer\skyserver\bin\Release\skype_blob_worker.exe
+I:\Open-SkyServer\skyserver\bin\Release\skyserver.exe
+I:\Open-SkyServer\skyserver\bin\Release\skyserver.pdb
+I:\Open-SkyServer\skyserver\obj\Release\SkyServer.csproj.AssemblyReference.cache
+I:\Open-SkyServer\skyserver\obj\Release\SkyServer.csproj.CoreCompileInputs.cache
+I:\Open-SkyServer\skyserver\obj\Release\skyserver.exe
+I:\Open-SkyServer\skyserver\obj\Release\skyserver.pdb

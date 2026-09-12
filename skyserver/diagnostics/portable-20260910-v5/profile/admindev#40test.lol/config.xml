@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<config version="1.0" serial="56" timestamp="1789060989.45">
+<config version="1.0" serial="101" timestamp="1789244371.40">
   <Lib>
     <Account>
       <Migration>62</Migration>
@@ -8,14 +8,19 @@
       <CleanupTime>1789049829</CleanupTime>
     </Alerts>
     <Call>
+      <ApplyCF>0</ApplyCF>
       <DPC>41010501410203026563686F313233000003CE9C8BD506</DPC>
       <EmergencyCountry></EmergencyCountry>
     </Call>
     <CentralStorage>
       <LastBackoff>36000</LastBackoff>
-      <LastFailure>1789059628</LastFailure>
+      <LastFailure>1789243252</LastFailure>
       <NeedSync>1</NeedSync>
       <SyncSet>
+        <p>
+          <email>c3f55b03:0</email>
+          <profile>d200b03c:0</profile>
+        </p>
         <u>
           <echo123>9db4df93:0</echo123>
         </u>
@@ -51,17 +56,20 @@
       <LastSearch>1789054158</LastSearch>
     </Notification>
     <PM>
-      <pslut>1789049839</pslut>
+      <pslut>1789242863</pslut>
     </PM>
     <Pic>
       <DisableCookies>0</DisableCookies>
     </Pic>
+    <ProfilePopulated>2</ProfilePopulated>
     <PropsManager>
-      <PermaProps>4106008B20AEF98AD506008920CE9C8BD50600F5010100F8010000FA010000FC0102</PermaProps>
+      <PermaProps>4106008B20AEF98AD506008920CE9C8BD50600F8010000FA010000FC010300F50103</PermaProps>
     </PropsManager>
     <StatsSender>
       <Phase2>
-        <ProposedDelivery>1789063046</ProposedDelivery>
+        <LastCollect>1789242873</LastCollect>
+        <ProposedDelivery>1789252217</ProposedDelivery>
+        <SendSequence>3</SendSequence>
       </Phase2>
     </StatsSender>
     <Video>
@@ -71,7 +79,7 @@
       <DevicePath>usb#vid_345f&#38;pid_2131&#38;mi_00#7&#38;2d60830&#38;0&#38;0000</DevicePath>
     </Video>
     <table_insert_history>
-      <f43fdf0cb1b1d1b4c393cfa0cb41f3a069d11915f4c1632457f583bc89bc50e5>1789137017 14447:5400:1789050617</f43fdf0cb1b1d1b4c393cfa0cb41f3a069d11915f4c1632457f583bc89bc50e5>
+      <_9c224fd7b0fcf9b7be18238304b95edf76ad7b5f387c194ce5b9df71277a9fad>1789330764 10459:21600:1789244364 14447:5400:1789244364 796:28800:1789244364</_9c224fd7b0fcf9b7be18238304b95edf76ad7b5f387c194ce5b9df71277a9fad>
     </table_insert_history>
   </Lib>
   <UI>
@@ -83,20 +91,22 @@
       <FontName>Tahoma</FontName>
       <FontStyle></FontStyle>
     </Chat>
+    <ChromeEnabled>1</ChromeEnabled>
+    <ContactsGrouped>1</ContactsGrouped>
     <Devices>
       <InputName>&#208;&#156;&#208;&#184;&#208;&#186;&#209;&#128;&#208;&#190;&#209;&#132;&#208;&#190;&#208;&#189; (3- Fifine Microphone)</InputName>
       <OutputDevices>
         <_0>
           <Active>1</Active>
-          <Handle>{0.0.0.00000000}.{b81d877d-6c36-4bd1-953f-e76780d32f57}</Handle>
-          <Name>ASUS VG249 (NVIDIA High Definition Audio)</Name>
-          <ProductId>282984607</ProductId>
-        </_0>
-        <_1>
-          <Active>1</Active>
           <Handle>{0.0.0.00000000}.{51b9d01d-ddac-4ee3-8097-2d2c682e6baf}</Handle>
           <Name>&#208;&#148;&#208;&#184;&#208;&#189;&#208;&#176;&#208;&#188;&#208;&#184;&#208;&#186;&#208;&#184; (High Definition Audio Device)</Name>
           <ProductId>283906408</ProductId>
+        </_0>
+        <_1>
+          <Active>1</Active>
+          <Handle>{0.0.0.00000000}.{b81d877d-6c36-4bd1-953f-e76780d32f57}</Handle>
+          <Name>ASUS VG249 (NVIDIA High Definition Audio)</Name>
+          <ProductId>282984607</ProductId>
         </_1>
         <_2>
           <Active>1</Active>
@@ -105,7 +115,7 @@
           <ProductId></ProductId>
         </_2>
       </OutputDevices>
-      <OutputName>ASUS VG249 (NVIDIA High Definition Audio)</OutputName>
+      <OutputName>&#208;&#148;&#208;&#184;&#208;&#189;&#208;&#176;&#208;&#188;&#208;&#184;&#208;&#186;&#208;&#184; (High Definition Audio Device)</OutputName>
       <RecordingDevices>
         <_0>
           <Active>1</Active>
@@ -136,7 +146,7 @@
     <General>
       <Avatar>C:\Users\IlyaBOT\AppData\Roaming\Skype\Pictures\Devil Skype.png</Avatar>
       <AvatarCount>60</AvatarCount>
-      <AvatarLastChanged>46275</AvatarLastChanged>
+      <AvatarLastChanged>46277</AvatarLastChanged>
       <AvatarPath>C:\Users\IlyaBOT\AppData\Roaming\Skype\Pictures\</AvatarPath>
       <CallFrwBasic>1</CallFrwBasic>
       <CallPhonesTimestamp>46275</CallPhonesTimestamp>
@@ -145,16 +155,18 @@
       <ChatsBasic>1</ChatsBasic>
       <ContentPath>C:\Users\IlyaBOT\AppData\Roaming\Skype\Content\</ContentPath>
       <FistWhatsNewGuideVersionStr>4.2.0.187</FistWhatsNewGuideVersionStr>
-      <GettingStartedWizardDisabled>0</GettingStartedWizardDisabled>
-      <GswNumberOfDisplay>1</GswNumberOfDisplay>
+      <GettingStartedWizardDisabled>1</GettingStartedWizardDisabled>
+      <GswNumberOfDisplay>2</GswNumberOfDisplay>
       <HQVideoDevices>
         <_0>USB3 Video</_0>
         <_1>OBS Virtual Camera</_1>
       </HQVideoDevices>
+      <InboxNoticeShown>1</InboxNoticeShown>
       <LastMigrationVersion>4.2.0.187</LastMigrationVersion>
       <LastWhatsNewGuideVersionStr>4.2.0.187</LastWhatsNewGuideVersionStr>
+      <MultiWindowMode>0</MultiWindowMode>
       <MyselfPanelExpanded>1</MyselfPanelExpanded>
-      <PrivacyBasic>1</PrivacyBasic>
+      <PrivacyBasic>0</PrivacyBasic>
       <SmsShowNumber>0</SmsShowNumber>
       <SoundSelectorDir></SoundSelectorDir>
       <Statistics>
@@ -210,14 +222,14 @@
       <_4></_4>
     </LastForwarded>
     <MainWindow>
-      <ConvListWidth>249</ConvListWidth>
+      <ConvListWidth>248</ConvListWidth>
     </MainWindow>
     <MainWindow40>
-      <Height>598</Height>
-      <Maximized>0</Maximized>
+      <Height>1032</Height>
+      <Maximized>1</Maximized>
       <Width>932</Width>
-      <X>477</X>
-      <Y>250</Y>
+      <X>0</X>
+      <Y>0</Y>
     </MainWindow40>
     <Messages>
       <DisplayCallInfo>1</DisplayCallInfo>

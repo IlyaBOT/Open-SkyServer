@@ -68,6 +68,7 @@ namespace SkyServer
 
             ProbeUdpServer udpProbe = null;
             TcpProbeServer tcpProbe = null;
+            AuthProtocolServer authServer = new AuthProtocolServer(database, options.AuthHost, options.AuthPort, options.Once, options.RealSkypeProbe, keys);
             if (options.RealSkypeProbe)
             {
                 Console.WriteLine("stock Skype development probe: --keys-dir enables native RSA/AES password verification and a community-signed credential response. Original client acceptance is unverified; registration, profile and contacts are not implemented.");
@@ -93,13 +94,12 @@ namespace SkyServer
                 udpThread.IsBackground = true;
                 udpThread.Start();
 
-                tcpProbe = new TcpProbeServer(options.AuthHost, BuildTcpProbePorts(options.AuthPort, options.ApiPort, hostCacheEndpoints));
+                tcpProbe = new TcpProbeServer(options.AuthHost, BuildTcpProbePorts(options.AuthPort, options.ApiPort, hostCacheEndpoints), authServer);
                 Thread tcpThread = new Thread(tcpProbe.Run);
                 tcpThread.IsBackground = true;
                 tcpThread.Start();
             }
 
-            AuthProtocolServer authServer = new AuthProtocolServer(database, options.AuthHost, options.AuthPort, options.Once, options.RealSkypeProbe, keys);
             authServer.Run();
 
             if (udpProbe != null)

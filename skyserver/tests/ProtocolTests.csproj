@@ -15,6 +15,8 @@
     <Compile Include="CommunityKeysTests.cs" />
     <Compile Include="NativeLoginTests.cs" />
     <Compile Include="UdpDestinationTests.cs" />
+    <Compile Include="SessionLifetimeTests.cs" />
+    <Compile Include="..\SkypeTcpFrameBuffer.cs"><Link>SkypeTcpFrameBuffer.cs</Link></Compile>
     <Compile Include="..\ProbeUdpServer.cs"><Link>ProbeUdpServer.cs</Link></Compile>
     <Compile Include="NativeCredentialsTests.cs" />
     <Compile Include="..\NativeCredentials.cs"><Link>NativeCredentials.cs</Link></Compile>

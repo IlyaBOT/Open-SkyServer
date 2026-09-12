@@ -21,8 +21,8 @@ static void *bounded_realloc(void *ptr, size_t bytes)
 }
 #define malloc bounded_malloc
 #define realloc bounded_realloc
-#include "../skyauth4_dll/skyauth4_dll/skype/pack-4142.c"
-#include "../skyauth4_dll/skyauth4_dll/skype/unpack-4142.c"
+#include "../skypeopensource2/skyauth4_dll/skyauth4_dll/skype/pack-4142.c"
+#include "../skypeopensource2/skyauth4_dll/skyauth4_dll/skype/unpack-4142.c"
 #undef malloc
 #undef realloc
 

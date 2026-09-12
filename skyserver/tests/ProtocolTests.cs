@@ -33,6 +33,7 @@ internal static class ProtocolTests
             if (File.Exists(databasePath)) throw new IOException("Test database already exists; use a new output directory");
             database = new SkyDatabase(databasePath, sqlite);
             database.EnsureSchema();
+            SessionLifetimeTests.Run(database);
             database.AddAccount("transport.test", "Transport Test", "test-password");
             NativeLoginTests.Run(args[1], database);
 

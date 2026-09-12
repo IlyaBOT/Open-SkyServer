@@ -1,6 +1,6 @@
 /* Independent vectors from the repository's original x86 crypto primitives. */
-#include "../../skyauth4_dll/skyauth4_dll/crypto/sha1.c"
-#include "../../skyauth4_dll/skyauth4_dll/crypto/rijndael.c"
+#include "../../skypeopensource2/skyauth4_dll/skyauth4_dll/crypto/sha1.c"
+#include "../../skypeopensource2/skyauth4_dll/skyauth4_dll/crypto/rijndael.c"
 
 static void print_hex(const unsigned char *data, int length)
 {

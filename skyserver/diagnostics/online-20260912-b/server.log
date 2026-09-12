@@ -1,0 +1,846 @@
+community login RSA-1536/e65537 modulus SHA256: 6599528F02B46C832BE9F9E43383857499BABEF4509583F4DB4D1FD6CCE34B4C
+community credentials RSA-2048/e65537 modulus SHA256: 3EC53E28474914A66F5AE9C73AED66254101A8CF6E8E559EF249E0507C68CAC9
+stock Skype development probe: --keys-dir enables native RSA/AES password verification and a community-signed credential response. Original client acceptance is unverified; registration, profile and contacts are not implemented.
+api listening on 127.0.0.1:33034
+hosts redirects DNS names only. Direct-IP Skype bootstrap/login connections bypass hosts.
+skype HostCache probe listeners disabled; this does not disable the client's supernode role.
+tcp probe listening on 0.0.0.0:80
+udp probe listening on 0.0.0.0:33033
+auth listening on 0.0.0.0:33033
+tcp probe listening on 0.0.0.0:443
+udp probe listening on 0.0.0.0:12350
+tcp probe listening on 0.0.0.0:12350
+udp probe listening on 0.0.0.0:12351
+tcp probe listening on 0.0.0.0:12351
+udp probe listening on 0.0.0.0:13392
+tcp probe listening on 0.0.0.0:13392
+udp probe listening on 0.0.0.0:40001
+tcp probe listening on 0.0.0.0:40001
+tcp probe listening on 0.0.0.0:40002
+tcp probe listening on 0.0.0.0:40003
+udp probe listening on 0.0.0.0:40002
+tcp probe listening on 0.0.0.0:40004
+udp probe listening on 0.0.0.0:40003
+tcp probe listening on 0.0.0.0:40005
+udp probe listening on 0.0.0.0:40004
+tcp probe listening on 0.0.0.0:40006
+udp probe listening on 0.0.0.0:40005
+tcp probe listening on 0.0.0.0:40007
+udp probe listening on 0.0.0.0:40006
+tcp probe listening on 0.0.0.0:40008
+udp probe listening on 0.0.0.0:40007
+tcp probe listening on 0.0.0.0:40009
+udp probe listening on 0.0.0.0:40008
+tcp probe listening on 0.0.0.0:40010
+udp probe listening on 0.0.0.0:40009
+tcp probe listening on 0.0.0.0:40011
+udp probe listening on 0.0.0.0:40010
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 35, data 2B 14 02 37 A9 0D D6 90 DF 45 C8 67 A3 A5 D4 AA AB CB 60 4C 26 FC 16 63 E6 7B C4 87 1D C1 17 80 7A 14 9D
+tcp probe listening on 0.0.0.0:40012
+udp probe listening on 0.0.0.0:40011
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B14 rnd=37A90DD6 iv=7AC683BC crc=ok expected=90DF45C8 actual=90DF45C8 clear 15 DA 01 2B 13 42 B8 48 72 D1 DF F2 0A D1 DF F2 0A D1 DF F2 0A D1 DF F2, ascii ...+.B.Hr...............
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B14
+udp probe listening on 0.0.0.0:40012
+tcp probe listening on 0.0.0.0:40013
+udp probe listening on 0.0.0.0:40013
+tcp probe listening on 0.0.0.0:40014
+udp probe listening on 0.0.0.0:40014
+tcp probe listening on 0.0.0.0:40015
+udp probe listening on 0.0.0.0:40015
+tcp probe listening on 0.0.0.0:40016
+udp probe listening on 0.0.0.0:40016
+tcp probe listening on 0.0.0.0:40017
+udp probe listening on 0.0.0.0:40017
+tcp probe listening on 0.0.0.0:40018
+udp probe listening on 0.0.0.0:40018
+tcp probe listening on 0.0.0.0:40019
+udp probe listening on 0.0.0.0:40019
+udp probe listening on 0.0.0.0:40020
+tcp probe listening on 0.0.0.0:40020
+udp probe listening on 0.0.0.0:40021
+tcp probe listening on 0.0.0.0:40021
+udp probe listening on 0.0.0.0:40022
+tcp probe listening on 0.0.0.0:40022
+udp probe listening on 0.0.0.0:40023
+tcp probe listening on 0.0.0.0:40023
+udp probe listening on 0.0.0.0:40024
+tcp probe listening on 0.0.0.0:40024
+udp probe listening on 0.0.0.0:40025
+tcp probe listening on 0.0.0.0:40025
+udp probe listening on 0.0.0.0:40026
+tcp probe listening on 0.0.0.0:40026
+udp probe listening on 0.0.0.0:40027
+tcp probe listening on 0.0.0.0:40027
+udp probe listening on 0.0.0.0:40028
+tcp probe listening on 0.0.0.0:40028
+udp probe listening on 0.0.0.0:40029
+tcp probe listening on 0.0.0.0:40029
+udp probe listening on 0.0.0.0:40030
+tcp probe listening on 0.0.0.0:40030
+udp probe listening on 0.0.0.0:40031
+tcp probe listening on 0.0.0.0:40031
+udp probe listening on 0.0.0.0:40032
+tcp probe listening on 0.0.0.0:40032
+udp probe listening on 0.0.0.0:40033
+tcp probe listening on 0.0.0.0:40033
+udp probe listening on 0.0.0.0:40034
+tcp probe listening on 0.0.0.0:40034
+udp probe listening on 0.0.0.0:40035
+tcp probe listening on 0.0.0.0:40035
+udp probe listening on 0.0.0.0:40036
+tcp probe listening on 0.0.0.0:40036
+tcp probe 192.168.1.101:63460 -> 192.168.1.101:12350 bytes: 77, data FC 0F 96 03 EF 71 8A 89 A9 F6 11 6F 7A 8E 0C C0 09 E7 8A 77 06 8A DC AA 25 14 DE 8A 72 6D 1E E1 D9 79 2F 8A C8 AE 7D 84 54 9C 35 A7 EC BA 60 4E 8B C0 31 AE C7 CC CD 9A C3 98 29 46 7F 24 45 B2, ascii .....q.....oz......w....%...rm...y/...}.T.5...`N..1.......)F.$E.
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=27, data 34 2B 16 15 F2 01 2B 15 42 45 A8 FE 72 AE 74 AD 98 DC 67 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:63460 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B16 body=21 cmd=F201 prev=2B15 tag=42 payload=42 45 A8 FE 72 AE 74 AD 98 DC 67 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63460 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 15 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63460 bootstrap-reply bytes: 147, data 46 E4 9D 79 98 04 C9 C3 6F A9 FF 64 40 1D DE BE CA 64 28 2D 9B 57 3A 40 E8 DE B3 42 EA 7A B8 B0 32 93 3A EB 0A 55 BE 15 86 7E 18 65 37 71 4B 5E FF C5 F5 50 D5 5C DA 5B EF 7A A4 5A 63 35 5E DD
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=11, data 14 2B 18 05 82 03 2B 17 42 2D 03
+bootstrap command 192.168.1.101:63460 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B18 body=5 cmd=8203 prev=2B17 tag=42 payload=42 2D 03
+auth client 192.168.1.101:63464
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 14 A3 12 05 8B 03 2B 17 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 2A 84 94 4B F6 D7 AD E9 30 8B 6A
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=11, data 14 2B 1A 05 82 03 2B 19 42 2D 61
+bootstrap command 192.168.1.101:63460 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B1A body=5 cmd=8203 prev=2B19 tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 14 A3 13 05 8B 03 2B 19 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data F2 FF AE FC D3 60 B6 2D 84 31 38
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=11, data 14 2B 1C 05 82 03 2B 1B 42 2D BA
+bootstrap command 192.168.1.101:63460 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B1C body=5 cmd=8203 prev=2B1B tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 14 A3 14 05 8B 03 2B 1B 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 54 66 D8 65 B8 7F 9B CB 13 0A DD
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=11, data 14 2B 1E 05 82 03 2B 1D 42 2D D3
+bootstrap command 192.168.1.101:63460 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B1E body=5 cmd=8203 prev=2B1D tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 14 A3 15 05 8B 03 2B 1D 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 11, data 2F 45 88 6D A1 7F 83 06 16 10 BD
+bootstrap frame 192.168.1.101:63460 -> 192.168.1.101:12350, bytes=12, data 16 2B 20 06 82 03 2B 1F 42 33 48 93
+bootstrap command 192.168.1.101:63460 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2B20 body=6 cmd=8203 prev=2B1F tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 12, data 16 A3 16 06 8B 03 2B 1F 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63460 keepalive-reply bytes: 12, data 0F 35 E8 BB 8C 45 D4 AC 12 43 61 61
+auth client 192.168.1.101:63468
+auth dh-client-hello 192.168.1.101:63468 -> 192.168.1.101:33033 bytes: 72, data 90 D5 47 B6 7C CA BA 53 44 A3 A6 4F 91 3C 7A 1C 38 3D 42 03 E4 C6 67 7B BA 93 90 B3 48 33 48 E1 C3 7E 52 EF 60 6A C1 84 5F 2A 32 F5 BC 45 F2 A4 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA 63, ascii ..G.|..SD..O.<z.8=B...g{....H3H..~R.`j.._*2..E....6....+...g.m.c
+auth dh-server-hello 192.168.1.101:63468 -> 192.168.1.101:33033 bytes: 51, data 3D 8E 73 00 E7 40 49 60 A3 B5 54 19 CD 79 31 E2 7C 44 EA 45 71 72 18 93 55 59 C9 86 4B 0D 45 0D F4 F7 1E C2 FC 60 53 78 9D BF ED 5E 9E 8C FF F7 AE 39 9C, ascii =.s..@I`..T..y1.|D.Eqr..UY..K.E......`Sx...^.....9.
+client DH hash: 06 05 87 25 B0 B5 19 8B
+expected hash:  06 05 87 25 B0 B5 19 8B
+auth transport selected: stock Skype DH384 ack + direct RC4 login
+auth dh-server-ack 192.168.1.101:63468 -> 192.168.1.101:33033 bytes: 8, data CF BD 8F 64 36 70 33 97, ascii ...d6p3.
+auth dh-client-hello 192.168.1.101:63464 -> 192.168.1.101:33033 bytes: 5, data 16 03 01 00 00, ascii .....
+short TCP probe from 192.168.1.101:63464: 5 bytes, data 16 03 01 00 00
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 251 bytes, header 17 03 01 00 F6
+auth stock native password verification: valid
+auth stock: operation 0x1399 community-signed credential response sent (292 bytes); native login/contacts UI is not confirmed.
+auth client 192.168.1.101:63472
+tcp probe 192.168.1.101:63471 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:63473 -> 192.168.1.101:12350 bytes: 93, data 6D 77 AF A8 1D D5 CE 5D C6 3C CC 0A D4 32 A3 C7 FD 18 E1 97 A1 D6 35 20 3D 45 64 A3 0F D8 6A 4C F5 5A A7 A1 DB 16 31 CA 06 B8 16 F0 F2 68 ED 55 06 3F E4 05 72 BB 30 E1 9E F7 3C 7D 8A F3 08 D9, ascii mw.....].<...2........5 =Ed...jL.Z....1......h.U.?..r.0...<}....
+bootstrap 192.168.1.101:63473 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 100 bytes, header 17 03 01 00 5F
+tcp probe 192.168.1.101:63473 -> 192.168.1.101:12350 error: Unsupported native operation 0x178E; fields 0:0,0:2,3:4[17],4:5[16]
+tcp probe 127.0.0.1:63475 -> 127.0.0.1:80 bytes: 91, data 47 45 54 20 2F 75 69 2F 30 2F 34 2E 32 2E 30 2E 31 38 37 2E 2F 72 75 2F 75 70 67 72 61 64 65 20 48 54 54 50 2F 31 2E 31 0D 0A 55 73 65 72 2D 41 67 65 6E 74 3A 20 53 6B 79 70 65 20 55 70 67 72, ascii GET /ui/0/4.2.0.187./ru/upgrade HTTP/1.1..User-Agent: Skype Upgr
+tcp probe 127.0.0.1:63476 -> 127.0.0.1:80 bytes: 222, data 47 45 54 20 2F 75 69 2F 30 2F 34 2E 32 2E 30 2E 31 38 37 2E 2F 72 75 2F 67 65 74 6C 61 74 65 73 74 76 65 72 73 69 6F 6E 3F 76 65 72 3D 34 2E 32 2E 30 2E 31 38 37 26 75 68 61 73 68 3D 31 39 39, ascii GET /ui/0/4.2.0.187./ru/getlatestversion?ver=4.2.0.187&uhash=199
+auth client 192.168.1.101:63478
+auth dh-client-hello 192.168.1.101:63478 -> 192.168.1.101:33033 bytes: 104, data D9 90 CC E2 BB 6C 97 A5 05 74 8E D5 17 AB 26 DF FF 34 F1 D6 4D AA B9 05 4B 4A 37 7D 3D CB 66 DD 77 62 BE A3 CA 85 90 4C 3E 12 71 75 19 43 BC F0 57 1C DD 6A 53 E8 39 16 0F 74 55 82 8B C0 31 AE, ascii .....l...t....&..4..M...KJ7}=.f.wb.....L>.qu.C..W..jS.9..tU...1.
+auth dh-server-hello 192.168.1.101:63478 -> 192.168.1.101:33033 bytes: 51, data 68 A8 53 F7 16 F3 C3 F7 85 E0 B0 13 40 7C B0 6B 61 64 03 C0 29 2E 9E 98 5D 0E A2 2B 9B 4D 85 AE D7 CE 69 01 24 66 07 8C B6 36 FB 46 D6 37 68 74 6D 62 4D, ascii h.S.........@|.kad..)...]..+.M....i.$f...6.F.7htmbM
+client DH hash: 6D 3A 4D 0A E4 F4 8F DF
+expected hash:  6D 3A 4D 0A E4 F4 8F DF
+auth transport selected: stock Skype DH384 ack + direct RC4 login
+auth dh-server-ack 192.168.1.101:63478 -> 192.168.1.101:33033 bytes: 8, data AA 28 3E 3E 2A EC DB CA, ascii .(>>*...
+auth stock login frame 1: 246 bytes, header 16 03 01 00 F1
+auth dh-client-hello 192.168.1.101:63472 -> 192.168.1.101:33033 bytes: 5, data 16 03 01 00 00, ascii .....
+short TCP probe from 192.168.1.101:63472: 5 bytes, data 16 03 01 00 00
+auth stock login frame 2: 100 bytes, header 17 03 01 00 5F
+auth stock native password verification: valid
+auth stock: operation 0x139C DB account email response sent (38 bytes); native login/contacts UI is not confirmed.
+tcp probe 192.168.1.101:63488 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:63489 -> 192.168.1.101:12350 bytes: 93, data 4F FC 83 5F C8 74 67 24 25 2A 6B 35 FE 85 7F 33 2E 25 F0 45 FD F3 4D D4 A0 C8 1E A8 C2 3F 27 45 E5 62 AE A6 70 3D FF 51 AB C5 07 14 F2 2D 95 7D F9 D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A 83 58, ascii O.._.tg$%*k5...3.%.E..M......?'E.b..p=.Q.....-.}...4.BK..n...Z.X
+bootstrap 192.168.1.101:63489 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 236 bytes, header 16 03 01 00 E7
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:63489 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+tcp probe 192.168.1.101:63518 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:63519 -> 192.168.1.101:12350 bytes: 54, data 04 04 DE C8 CE 3B D1 46 D1 5B DA 5C 0B 6A 3D 06 CE A3 3F 47 55 DA 25 95 06 20 A0 AB BC 0B 57 43 B9 93 D1 0E 69 EF 35 C0 6D AC 18 A7 F3 66 C6 15 BE 97 5C 1D AA 93, ascii .....;.F.[.\.j=...?GU.%.. ....WC....i.5.m....f....\...
+bootstrap 192.168.1.101:63519 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:63519 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:63460 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31178
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 31, data 2B 22 02 E3 BF E2 BA BD C1 AB ED E0 9F 68 86 0A 17 89 6A 93 AC EB 92 90 58 B0 14 03 88 0D B7
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B22 rnd=E3BFE2BA iv=7B90CBAD crc=ok expected=BDC1ABED actual=BDC1ABED clear 11 DA 01 2B 21 42 B8 1C F2 D3 88 60 D3 D3 88 60 D3 D3 88 60, ascii ...+!B.....`...`...`
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B22
+tcp probe 192.168.1.101:63524 -> 192.168.1.101:12350 bytes: 55, data 7A 5E D7 77 52 41 63 CD A9 12 A0 74 52 68 25 62 83 0A C3 4F 27 FF 77 59 6D 8C 8F C7 AE C7 02 81 7C E3 DC 15 73 25 15 C3 73 B6 38 80 9A B9 4A 24 79 56 4F B4 95 C2 CB, ascii z^.wRAc....tRh%b...O'.wYm.......|...s%..s.8...J$yVO....
+bootstrap frame 192.168.1.101:63524 -> 192.168.1.101:12350, bytes=27, data 34 2B 24 15 F2 01 2B 23 42 54 45 27 D0 67 8C 0C E1 4A 29 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:63524 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B24 body=21 cmd=F201 prev=2B23 tag=42 payload=42 54 45 27 D0 67 8C 0C E1 4A 29 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63524 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 23 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63524 bootstrap-reply bytes: 147, data 4A A4 B3 1B 27 99 E6 2B 89 82 46 4C 81 64 58 1A 40 81 98 31 C9 72 59 8C 8E 9D 4E 00 46 D8 CE 4A 07 3D 62 8E F5 25 F6 2A 06 3D CF 68 E4 2D 0E BC 4A 89 15 4F BE D9 0E 35 04 C8 28 85 17 03 F8 F4
+bootstrap frame 192.168.1.101:63524 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:61692 -> 192.168.1.101:13392 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:61693 -> 192.168.1.101:13392 bytes: 94, data E6 02 74 7E 20 E8 60 8E C1 5E 61 B7 C0 17 7B D4 25 FC 8C 5F FC 69 7E 65 34 8E 59 00 7D 7F EC B6 4E 4C C0 A8 40 F7 11 51 D2 5B 36 DF E3 DC DE 2C F8 09 A6 5F 84 25 12 DB D0 01 3E 17 DC 9D 2A 13, ascii ..t~ .`..^a...{.%.._.i~e4.Y.}...NL..@..Q.[6....,..._.%....>...*.
+bootstrap 192.168.1.101:61693 -> 192.168.1.101:13392: native account RPC transport
+auth stock login frame 1: 237 bytes, header 16 03 01 00 E8
+auth stock login frame 2: 165 bytes, header 17 03 01 00 A0
+tcp probe 192.168.1.101:61693 -> 192.168.1.101:13392 error: Unsupported native operation 0x32D8; fields 0:0,0:2,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:63524 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=24272
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 32, data 2B 26 02 AA 8C DC 3D 86 9E FC 2A 5B 21 73 DC 4F 57 FE 1F 0B 0C 7E BF 35 91 B8 36 76 52 B0 DC 94
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B26 rnd=AA8CDC3D iv=BDC1627D crc=ok expected=869EFC2A actual=869EFC2A clear 12 DA 01 2B 25 42 B8 27 D2 62 AE D1 CF 62 AE D1 CF 62 AE D1 CF, ascii ...+%B.'.b...b...b...
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B26
+tcp probe 192.168.1.101:61697 -> 192.168.1.101:12350 bytes: 102, data F3 EF 83 02 71 20 2F A9 43 2E 02 C0 5B CF 41 21 D5 BD 77 51 21 EC 82 D3 A6 C6 3F 62 35 51 C8 47 20 E6 A7 47 E0 9D 37 18 2C D5 20 4C AD 84 E6 2E 31 AE C7 CC CD 9A C3 98 29 46 7F 24 45 B2 FB 70, ascii ....q /.C...[.A!..wQ!.....?b5Q.G ..G..7.,. L....1.......)F.$E..p
+bootstrap frame 192.168.1.101:61697 -> 192.168.1.101:12350, bytes=27, data 34 2B 28 15 F2 01 2B 27 42 55 67 97 DD A5 FF 9D B4 DF 74 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:61697 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B28 body=21 cmd=F201 prev=2B27 tag=42 payload=42 55 67 97 DD A5 FF 9D B4 DF 74 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:61697 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 27 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:61697 bootstrap-reply bytes: 147, data 9D 14 12 F5 5E 8E E9 38 99 69 1D 5F 79 A2 A6 37 CE 3A 64 30 C9 B3 47 87 7C 79 29 36 63 85 D5 3C F3 59 97 28 5B C5 8A AD DA 52 00 CF 74 AF FD D0 30 5C 5E A8 67 41 10 84 34 C4 03 C2 9B 31 8E E7
+bootstrap frame 192.168.1.101:61697 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:61699 -> 192.168.1.101:12351 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:61700 -> 192.168.1.101:12351 bytes: 97, data 67 3E 77 C1 75 6C E3 B2 34 18 A1 CB AF B4 6E 82 F9 D7 15 03 B5 CE 4E D3 4B CE 97 D5 32 50 07 FE 03 FA 63 C4 86 7E 91 4C CF 79 78 CD F5 5F 78 40 D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B, ascii g>w.ul..4.....n.......N.K...2P....c..~.L.yx.._x@..>...*.....4.BK
+bootstrap 192.168.1.101:61700 -> 192.168.1.101:12351: native account RPC transport
+auth stock login frame 1: 233 bytes, header 16 03 01 00 E4
+auth stock login frame 2: 502 bytes, header 17 03 01 01 F1
+tcp probe 192.168.1.101:61700 -> 192.168.1.101:12351 error: Unsupported native operation 0x2720; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+tcp probe 192.168.1.101:61736 -> 192.168.1.101:13392 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:61737 -> 192.168.1.101:13392 bytes: 105, data 06 F0 3F BD 23 37 D2 E2 38 FA 2A 81 22 CD E6 DA 28 AA 47 37 4D 5A 2E 66 8D BC B1 47 85 13 23 CD C5 99 61 4A 86 99 67 78 38 73 A8 1D 46 F9 6C 18 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B 80, ascii ..?.#7..8.*."...(.G7MZ.f...G..#...aJ..gx8s..F.l..>...*.....4.BK.
+bootstrap 192.168.1.101:61737 -> 192.168.1.101:13392: native account RPC transport
+auth stock login frame 1: 237 bytes, header 16 03 01 00 E8
+auth stock login frame 2: 217 bytes, header 17 03 01 00 D4
+tcp probe 192.168.1.101:61737 -> 192.168.1.101:13392 error: Unsupported native operation 0x32D8; fields 0:0,0:2,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:61697 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30538
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 31, data 2B 2A 02 EE A5 51 F2 38 B1 92 09 C8 DA D0 7A 3C A1 38 A7 71 6C C7 B0 B6 20 55 19 1A A9 69 80
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B2A rnd=EEA551F2 iv=B33E500A crc=ok expected=38B19209 actual=38B19209 clear 11 DA 01 2B 29 42 B8 1C F2 7A 87 38 A0 7A 87 38 A0 7A 87 38, ascii ...+)B...z.8.z.8.z.8
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B2A
+tcp probe 192.168.1.101:60517 -> 192.168.1.101:12350 bytes: 67, data 48 81 46 85 B2 B0 91 3F 1A A8 02 A9 48 21 52 8B C0 7B CD 98 B0 84 3D 4D 32 D4 6D 29 2C AB 84 A9 68 97 DF 97 69 13 9B F5 99 E7 5D AF B4 68 56 39 BF 64 85 F2 3B B0 61 1E 77 BC FD 0A 73 88 59 B6, ascii H.F....?....H!R..{....=M2.m),...h...i.....]..hV9.d..;.a.w...s.Y.
+bootstrap frame 192.168.1.101:60517 -> 192.168.1.101:12350, bytes=27, data 34 2B 2C 15 F2 01 2B 2B 42 56 87 7F DD A5 FF 9D B4 DF 74 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60517 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B2C body=21 cmd=F201 prev=2B2B tag=42 payload=42 56 87 7F DD A5 FF 9D B4 DF 74 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60517 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 2B 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60517 bootstrap-reply bytes: 147, data 51 21 DF 86 AA 0F 15 F0 4A 6F C6 44 7B BD F7 E3 4C 60 34 2E C8 13 51 59 E4 C0 FB 11 E0 A5 5E 19 43 72 14 38 2E 1F A9 68 CC A4 51 6A DC 3F 3A BC 7A 19 BB 34 AC AC CA 4D F5 87 E2 1E FF B1 08 5E
+bootstrap frame 192.168.1.101:60517 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:60519 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60520 -> 192.168.1.101:12350 bytes: 51, data 58 D6 C0 15 31 80 0A C8 C9 3C 7C C6 48 1F 4E 12 E5 B4 CD D3 77 76 73 64 E3 D0 61 7F C2 04 92 33 AF E6 8C 1A C2 92 22 D3 64 7E 4A 36 3E 4B 83 8E 05 72 BB, ascii X...1....<|.H.N.....wvsd..a....3......".d~J6>K...r.
+bootstrap 192.168.1.101:60520 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60520 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60517 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31480
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 27, data 2B 2E 02 CF AA B9 E6 DD 45 E6 AA 02 15 BB 80 DC 42 A5 23 1B E4 0D CF A1 45 E6 C3
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B2E rnd=CFAAB9E6 iv=1D532F49 crc=ok expected=DD45E6AA actual=DD45E6AA clear 0D DA 01 2B 2D 42 B7 F7 14 A5 1C 49 08 A5 1C 49, ascii ...+-B.....I...I
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B2E
+tcp probe 192.168.1.101:60537 -> 192.168.1.101:12350 bytes: 55, data 45 FF 83 65 BF CB B7 E0 1B 49 86 CF EA D1 F5 2B 23 FE 0B 1E C5 B5 77 AE 3C ED 45 2D 4E 99 8E 06 A5 C5 F2 71 F4 BE FB 96 13 2E 35 1A DD 8B CC EA D9 36 AF 94 F5 A2 2B, ascii E..e.....I.....+#.....w.<.E-N......q......5......6....+
+bootstrap frame 192.168.1.101:60537 -> 192.168.1.101:12350, bytes=28, data 36 2B 30 16 F2 01 2B 2F 42 57 2C BB F7 D3 74 AA 40 4C CD 70 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60537 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B30 body=22 cmd=F201 prev=2B2F tag=42 payload=42 57 2C BB F7 D3 74 AA 40 4C CD 70 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60537 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 2F 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60537 bootstrap-reply bytes: 147, data 08 0D 6B A0 90 44 C6 57 59 11 CE 7C 74 39 C2 2B 70 87 79 C3 22 36 D5 29 0A 4A AD 12 42 3C D5 2A 20 08 CE 5F 0C A1 D8 4D BA 81 A6 D7 15 C8 D6 3A 0C D9 7C 64 A5 E3 C7 41 12 0A 71 D5 63 EA A7 A2
+bootstrap frame 192.168.1.101:60537 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:60540 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60541 -> 192.168.1.101:12350 bytes: 103, data 83 F8 9F D9 B4 C9 88 BB 75 F9 C8 20 F4 1C D1 28 2D 31 FA E3 15 6B CF 06 D2 F0 46 AE 25 33 8B 84 50 37 27 10 D2 E1 FB 52 59 95 62 AE 6B 40 75 3E FD 0A 73 88 59 B6 2F 14 75 22 AB 60 51 4E E7 6C, ascii ........u.. ...(-1...k....F.%3..P7'....RY.b.k@u>..s.Y./.u".`QN.l
+bootstrap 192.168.1.101:60541 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 233 bytes, header 16 03 01 00 E4
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60541 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60537 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30891
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 34, data 2B 32 02 6F D5 97 39 2E 3B A5 9D E2 BD 96 73 30 97 09 12 92 28 B9 05 9D 27 F3 A6 E7 4E D0 DC 3B 11 32
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B32 rnd=6FD59739 iv=A7E3E9B1 crc=ok expected=2E3BA59D actual=2E3BA59D clear 14 DA 01 2B 31 42 B8 3D 92 97 6A 13 12 97 6A 13 12 97 6A 13 12 97 6A, ascii ...+1B.=..j...j...j...j
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B32
+tcp probe 192.168.1.101:60477 -> 192.168.1.101:12350 bytes: 70, data A0 63 35 09 5D C6 07 33 D2 AA 43 20 2E FB 30 0E 7F 0D 21 BD 6F EF CE AA 0E B9 83 D1 57 9B 02 5D 95 16 12 4E 5C C9 1A C3 E6 A2 A3 8E E3 EF 82 62 DA 03 D8 69 86 BF 64 85 F2 3B B0 61 1E 77 BC FD, ascii .c5.]..3..C ..0...!.o.......W..]...N\..........b...i..d..;.a.w..
+bootstrap frame 192.168.1.101:60477 -> 192.168.1.101:12350, bytes=28, data 36 2B 34 16 F2 01 2B 33 42 57 71 3D F7 D3 74 AA 40 4C CD 70 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60477 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B34 body=22 cmd=F201 prev=2B33 tag=42 payload=42 57 71 3D F7 D3 74 AA 40 4C CD 70 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60477 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 33 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60477 bootstrap-reply bytes: 147, data C9 84 D6 B9 BD FA 62 19 DE 7E 19 A6 EE 06 C1 85 9D 9B 3F B5 C4 1A FC ED 6D 2E 71 50 5F B2 AE 85 91 46 2A 09 0D B8 6E 3A 6D 3F C3 38 5F 48 B7 AA 82 98 83 96 51 D3 2F DA 30 A1 71 8C 60 E0 F2 CE
+bootstrap frame 192.168.1.101:60477 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:60481 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60482 -> 192.168.1.101:12350 bytes: 105, data 9B A1 EE FE 22 A8 F4 F3 66 1E C7 B5 97 7C 7C D0 2D A7 47 61 C3 D1 83 CB 2F 19 B2 7D 20 F0 65 9E 69 E9 3A 03 DB 3A A0 E8 63 D5 DA 6E 13 57 9D 45 57 1C DD 6A 53 E8 39 16 0F 74 55 82 8B C0 31 AE, ascii ...."...f....||.-.Ga..../..} .e.i.:..:..c..n.W.EW..jS.9..tU...1.
+bootstrap 192.168.1.101:60482 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 235 bytes, header 16 03 01 00 E6
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60482 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60477 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31245
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 20, data 2B 36 02 E9 C2 FC A3 AE 27 9E 33 0F 6B AD 62 7B A9 7C F2 27
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B36 rnd=E9C2FCA3 iv=AE96157C crc=ok expected=AE279E33 actual=AE279E33 clear 06 DA 01 2B 35 42 B7 7B B4, ascii ...+5B.{.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B36
+tcp probe 192.168.1.101:60489 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60491 -> 192.168.1.101:12350 bytes: 60, data 48 01 09 74 9F 32 07 F5 AF 19 13 F0 7C 06 9E DA 8A C5 0F 7C 73 8D 64 2D C5 77 B5 76 C7 42 75 EF BA 03 92 81 1D 13 3F 54 FC FF 55 57 6F 2A DA 50 EF D4 35 E2 6B 20 11 0E A7 2C AD FA, ascii H..t.2......|......|s.d-.w.v.Bu.......?T..UWo*.P..5.k ...,..
+bootstrap 192.168.1.101:60491 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 255 bytes, header 16 03 01 00 FA
+auth stock login frame 2: 110 bytes, header 17 03 01 00 69
+tcp probe 192.168.1.101:60491 -> 192.168.1.101:12350 error: Unsupported native operation 0x1787; fields 0:0,0:2,3:4[17],4:5[16]
+tcp probe 192.168.1.101:60502 -> 192.168.1.101:12350 bytes: 62, data 9F 98 F0 6F 40 C9 A0 36 CF D1 B2 F6 13 99 E6 F3 54 B3 EA CD C7 0C 61 77 76 1C 9F F1 A2 F9 0B 29 11 19 22 97 72 32 F6 FA C7 AE 6C 6A B7 39 6A 29 C5 32 7B F0 A1 5E B7 FC 3D 4A B3 C8 99 F6, ascii ...o@..6........T.....awv......)..".r2....lj.9j).2{..^..=J....
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=28, data 36 2B 38 16 F2 01 2B 37 42 57 B5 BF F7 D3 74 AA 40 4C CD 70 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60502 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B38 body=22 cmd=F201 prev=2B37 tag=42 payload=42 57 B5 BF F7 D3 74 AA 40 4C CD 70 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60502 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 37 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60502 bootstrap-reply bytes: 147, data CA 76 41 94 17 24 F3 53 B0 E7 63 B0 9C E3 34 FD A1 30 93 BC CA EC 45 CE 10 7F 67 7F 95 5D FD 32 B9 2B 32 52 A9 53 0D 28 C1 A9 FA EE 74 F4 4A CA 1E 7A BC F1 EA 79 EE E9 0E E6 76 0E 31 67 D1 EA
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=11, data 14 2B 3A 05 82 03 2B 39 42 2D 03
+bootstrap command 192.168.1.101:60502 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B3A body=5 cmd=8203 prev=2B39 tag=42 payload=42 2D 03
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data 14 A3 17 05 8B 03 2B 39 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data 8A DB 92 D9 90 75 A6 02 C5 71 60
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=11, data 14 2B 3C 05 82 03 2B 3B 42 2D 61
+bootstrap command 192.168.1.101:60502 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B3C body=5 cmd=8203 prev=2B3B tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data 14 A3 18 05 8B 03 2B 3B 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data BA 5E A2 8D 14 EF 73 1D 82 BE 29
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=11, data 14 2B 3E 05 82 03 2B 3D 42 2D BA
+bootstrap command 192.168.1.101:60502 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B3E body=5 cmd=8203 prev=2B3D tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data 14 A3 19 05 8B 03 2B 3D 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data 41 DB E5 D4 D2 97 DA 9C BA DA 86
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=11, data 14 2B 40 05 82 03 2B 3F 42 2D D3
+bootstrap command 192.168.1.101:60502 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B40 body=5 cmd=8203 prev=2B3F tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data 14 A3 1A 05 8B 03 2B 3F 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 11, data C4 CD 21 A2 C4 0F 12 77 0C E6 25
+bootstrap frame 192.168.1.101:60502 -> 192.168.1.101:12350, bytes=12, data 16 2B 42 06 82 03 2B 41 42 33 48 93
+bootstrap command 192.168.1.101:60502 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2B42 body=6 cmd=8203 prev=2B41 tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 12, data 16 A3 1B 06 8B 03 2B 41 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60502 keepalive-reply bytes: 12, data 74 CA 3B 81 AA C9 52 B5 F7 DF E3 1B
+tcp probe 192.168.1.101:60508 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60510 -> 192.168.1.101:12350 bytes: 66, data C1 D9 42 B8 2D BF 57 2B 91 BC C1 C8 E1 41 AC F1 CE 89 71 CC 57 2D FB EC 62 51 65 43 BB 2E D7 A5 88 12 86 0F 9A C1 0E 93 D8 BA 80 BA 34 34 AA 6B 84 25 12 DB D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF, ascii ..B.-.W+.....A....q.W-..bQeC................44.k.%....>...*.....
+bootstrap 192.168.1.101:60510 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 242 bytes, header 16 03 01 00 ED
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60510 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60502 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30496
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 28, data 2B 44 02 7B 69 9C D9 C6 03 BC A2 F8 33 C8 C6 07 AC 8B 1D 98 43 7C D5 78 E8 FE 96 DD
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B44 rnd=7B699CD9 iv=FD0B1D11 crc=ok expected=C603BCA2 actual=C603BCA2 clear 0E DA 01 2B 43 42 B7 FC 52 86 41 F4 64 86 41 F4 64, ascii ...+CB..R.A.d.A.d
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B44
+tcp probe 192.168.1.101:60560 -> 192.168.1.101:12350 bytes: 56, data 96 84 1A 6A CE A3 A1 12 83 23 E4 15 B9 65 61 FE DF 5F 56 A3 E1 ED 5B A2 D2 21 BC AD C4 B0 68 3F DD CC 67 42 B4 8A FF 69 CF 38 DC 6D E1 4E 1E 9A 1E 77 BC FD 0A 73 88 59, ascii ...j.....#...ea.._V...[..!....h?..gB...i.8.m.N...w...s.Y
+bootstrap frame 192.168.1.101:60560 -> 192.168.1.101:12350, bytes=27, data 34 2B 46 15 F2 01 2B 45 42 57 FC 63 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60560 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B46 body=21 cmd=F201 prev=2B45 tag=42 payload=42 57 FC 63 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60560 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 45 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60560 bootstrap-reply bytes: 147, data D3 16 52 E6 26 3D FE 92 E2 F9 1A 53 22 B6 45 64 FD E3 FB 57 43 8E E1 3F F0 90 10 FE 63 8A 3C EC ED 3C AE F7 2F 4B 6E 8C 84 F0 66 02 6B 15 86 9B 16 FD C9 4D D7 F7 64 5C AA 4E B4 D5 E7 2E 07 FD
+bootstrap frame 192.168.1.101:60560 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:60562 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60563 -> 192.168.1.101:12350 bytes: 50, data 86 BF B9 3E 7B 7F F7 32 C1 97 F9 5C C2 F7 A7 30 02 53 CB 04 33 D8 24 16 15 36 B6 17 FC 75 31 51 54 33 A4 93 FB 61 4F 47 13 96 B4 92 76 DB A2 65 A4 C5, ascii ...>{..2...\...0.S..3.$..6...u1QT3...aOG....v..e..
+bootstrap 192.168.1.101:60563 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 241 bytes, header 16 03 01 00 EC
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60563 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60560 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30865
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 34, data 2B 48 02 DA 86 4B 4A 6E 90 AC 71 96 AB 5C 23 3E 70 B6 9F 34 15 7B 41 E8 30 18 61 F3 5A C6 39 D4 CD 59
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B48 rnd=DA864B4A iv=1632753A crc=ok expected=6E90AC71 actual=6E90AC71 clear 14 DA 01 2B 47 42 B8 3D 92 61 02 D9 EB 61 02 D9 EB 61 02 D9 EB 61 02, ascii ...+GB.=.a...a...a...a.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B48
+tcp probe 192.168.1.101:60583 -> 192.168.1.101:12350 bytes: 51, data 6B 56 3E 85 BA C8 4A D7 94 A7 BE 1B DB 46 91 3C 5B A0 44 9E 4B 6A 9D 2B 69 A1 0F 64 1A 15 CD 1D 62 3D 46 6E 91 32 84 61 9C 66 2D D1 FB 7D 0D 9B 2D 7A 23, ascii kV>...J......F.<[.D.Kj.+i..d....b=Fn.2.a.f-..}..-z#
+bootstrap frame 192.168.1.101:60583 -> 192.168.1.101:12350, bytes=27, data 34 2B 4A 15 F2 01 2B 49 42 58 62 E7 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60583 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B4A body=21 cmd=F201 prev=2B49 tag=42 payload=42 58 62 E7 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60583 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 49 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60583 bootstrap-reply bytes: 147, data 56 24 8B D7 13 0D 75 63 C3 D0 29 9C 46 49 40 01 58 83 53 0C 02 ED D8 67 43 69 86 D3 2C 6A AA 35 A5 05 FF 7A 11 97 E5 3F 32 47 AE 6F B9 39 67 2A C2 43 E6 18 7A 3E 81 13 A8 48 2D A7 F8 B7 85 55
+bootstrap frame 192.168.1.101:60583 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:60587 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60588 -> 192.168.1.101:12350 bytes: 62, data 51 28 2E 54 AF C0 68 45 22 CE 21 79 AD 95 6A 3A BA AF C6 C4 84 7C C4 BC 79 FE D2 F0 EB 61 5C 0E 21 29 6C 80 88 D3 F1 34 A8 C3 DC 8A B9 55 28 86 3D 4A B3 C8 99 F6 6F 54 B5 62 EB A0 91 8E, ascii Q(.T..hE".!y..j:.....|..y....a\.!)l....4.....U(.=J....oT.b....
+bootstrap 192.168.1.101:60588 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 237 bytes, header 16 03 01 00 E8
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60588 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+tcp probe 192.168.1.101:60598 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60599 -> 192.168.1.101:12350 bytes: 52, data 27 D2 EA 84 8C B0 85 45 99 3A 61 7D B2 A0 A2 74 54 D6 F0 61 54 F8 D0 F8 8C FB 34 22 DE 1E 00 8E EB C6 22 32 85 69 22 29 34 61 95 6A 06 5E 30 7B 78 89 26 DF, ascii '......E.:a}...tT..aT.....4"......"2.i")4a.j.^0{x.&.
+bootstrap 192.168.1.101:60599 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 239 bytes, header 16 03 01 00 EA
+auth stock login frame 2: 117 bytes, header 17 03 01 00 70
+tcp probe 192.168.1.101:60599 -> 192.168.1.101:12350 error: Unsupported native operation 0x178D; fields 0:0,0:2,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60583 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31393
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 35, data 2B 4C 02 88 39 05 BE 95 15 31 00 3F 36 9A FE CD 79 41 70 1B 15 2C D1 A1 70 26 19 A5 46 AB DB 21 A4 98 A5
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B4C rnd=883905BE iv=CBEFAC99 crc=ok expected=95153100 actual=95153100 clear 15 DA 01 2B 4B 42 B8 48 72 51 F7 47 8C 51 F7 47 8C 51 F7 47 8C 51 F7 47, ascii ...+KB.HrQ.G.Q.G.Q.G.Q.G
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B4C
+tcp probe 192.168.1.101:60600 -> 192.168.1.101:12350 bytes: 96, data 78 B0 2F C3 0B 03 E3 A6 A0 21 61 DC 15 B7 3F 36 A4 50 45 12 28 0C FE 0F 32 05 E9 BA 36 25 01 0C 85 94 A7 97 A8 67 87 8A 32 EF 95 2C AF D9 82 6C D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A 83 58 E9, ascii x./......!a...?6.PE.(...2...6%.......g..2..,...l..4.BK..n...Z.X.
+bootstrap frame 192.168.1.101:60600 -> 192.168.1.101:12350, bytes=27, data 34 2B 4E 15 F2 01 2B 4D 42 58 CF 1D F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60600 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B4E body=21 cmd=F201 prev=2B4D tag=42 payload=42 58 CF 1D F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60600 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 4D 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60600 bootstrap-reply bytes: 147, data 0D 1D 42 B6 3A 5F 27 F7 A0 30 7D 31 FD 7F EC E1 A5 93 E3 C6 66 C6 42 AE 51 63 B8 32 F2 DB E6 49 D1 7B 60 A0 2D C9 46 49 9C 6E A8 8D 4D 0C 41 36 CA 1E CA 80 35 DD 6A 05 9E 8F CC 1B C9 DA CD BC
+bootstrap frame 192.168.1.101:60600 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:62339 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:62340 -> 192.168.1.101:12350 bytes: 110, data 94 49 71 3A 7E 27 42 EB 65 D1 2B 3B 7B D6 65 5A 1D F9 D6 D2 F4 FB 24 43 63 16 F9 85 E8 B9 7F 58 70 57 EE 9F A1 E1 A7 B1 52 5B 49 F2 EF 91 D1 07 93 28 79 56 4F B4 95 C2 CB 00 71 EE 07 0C 0D DA, ascii .Iq:~'B.e.+;{.eZ......$Cc......XpW......R[I......(yVO.....q.....
+bootstrap 192.168.1.101:62340 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 233 bytes, header 16 03 01 00 E4
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:62340 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60600 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=20271
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 24, data 2B 50 02 84 B7 68 10 81 3F EF 2E D6 77 85 01 3C E8 7A 70 8A 46 96 52 CA
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B50 rnd=84B76810 iv=DDAE2910 crc=ok expected=813FEF2E actual=813FEF2E clear 0A DA 01 2B 4F 42 B7 E8 DE 38 55 1E 68, ascii ...+OB...8U.h
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B50
+tcp probe 192.168.1.101:63224 -> 192.168.1.101:12350 bytes: 83, data EF 21 51 D1 08 DE B8 13 1D 4E 1A 4F AD 6A FF E2 4D 05 E7 97 D4 3F C1 DA 58 34 FE 01 04 35 A8 29 8B A1 78 0A A0 FD 4D 07 5E 80 2A B1 91 E8 B8 9C 75 22 AB 60 51 4E E7 6C ED 3A E3 38 49 E6 9F C4, ascii .!Q......N.O.j..M....?..X4...5.)..x...M.^.*.....u".`QN.l.:.8I...
+bootstrap frame 192.168.1.101:63224 -> 192.168.1.101:12350, bytes=27, data 34 2B 52 15 F2 01 2B 51 42 59 16 4E F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:63224 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B52 body=21 cmd=F201 prev=2B51 tag=42 payload=42 59 16 4E F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63224 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 51 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63224 bootstrap-reply bytes: 147, data 04 56 EB 99 D2 08 93 57 08 69 D5 A9 4D A2 25 00 69 82 D4 B3 81 39 45 53 4F F7 80 2A F2 81 E7 E1 77 A9 4B F1 2D 6B 6D 58 55 0F 81 2B 32 74 AC A4 ED E0 7F D8 39 C4 84 03 F3 59 D9 21 48 EF 87 E7
+bootstrap frame 192.168.1.101:63224 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:65457 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:65458 -> 192.168.1.101:12350 bytes: 96, data 89 9D 2A CD BB 99 E3 7D 6F 6D C5 39 4B 64 F3 0C 09 E2 F9 FD 60 B2 EE E1 A0 D7 10 16 AA 43 74 1C 6D 69 5E F2 F2 0B 8B A9 2C 0D AC A3 AE 9E FF 97 B5 62 EB A0 91 8E 27 AC 2D 7A 23 78 89 26 DF 04, ascii ..*....}om.9Kd......`........Ct.mi^.....,........b....'.-z#x.&..
+bootstrap 192.168.1.101:65458 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 263 bytes, header 16 03 01 01 02
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:65458 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:63224 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30553
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 22, data 2B 54 02 71 71 D5 46 F6 2E 48 56 CD 2C AF 17 3A 11 1E 7B 3C CD 88
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B54 rnd=7171D546 iv=A70A0311 crc=ok expected=F62E4856 actual=F62E4856 clear 08 DA 01 2B 53 42 B7 D8 52 20 32, ascii ...+SB..R 2
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B54
+tcp probe 192.168.1.101:65489 -> 192.168.1.101:12350 bytes: 62, data 49 3E 62 00 5C 41 FC 09 42 24 94 5D 00 E1 7B 59 B3 70 13 63 DA 4D 1A 6C ED 74 28 EB 7B 92 A3 5A FE 3F 16 EE C0 32 B6 9D 2B 92 A1 03 1B C8 84 4B 1B 10 41 7E 57 1C DD 6A 53 E8 39 16 0F 74, ascii I>b.\A..B$.]..{Y.p.c.M.l.t(.{..Z.?...2..+......K..A~W..jS.9..t
+bootstrap frame 192.168.1.101:65489 -> 192.168.1.101:12350, bytes=27, data 34 2B 56 15 F2 01 2B 55 42 59 7F AB F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:65489 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B56 body=21 cmd=F201 prev=2B55 tag=42 payload=42 59 7F AB F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:65489 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 55 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:65489 bootstrap-reply bytes: 147, data 1E 42 1D C6 5E C6 A4 8F FB A3 A2 31 FF 1F 45 D9 98 3D A2 59 AB 08 C8 E3 D2 CE 4B 19 EC 6D 6A 8B AB 2B 5B 37 EC F5 84 27 79 FE 21 43 5B 2C A0 54 D6 23 B0 EA FB 13 14 E4 9C 8C 86 E4 57 C2 D6 71
+bootstrap frame 192.168.1.101:65489 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:65496 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:65497 -> 192.168.1.101:12350 bytes: 82, data 82 A0 A7 A5 A2 12 A7 0D E5 A2 14 DF 89 52 3E 97 6A 48 AB C5 3C 28 FA AE A7 0C FC 80 71 73 B7 D7 0F A2 0A 4E 8F AD 12 04 B6 99 73 9E 0C D6 08 9B 65 52 1B 10 41 7E 57 1C DD 6A 53 E8 39 16 0F 74, ascii .............R>.jH..<(......qs.....N......s.....eR..A~W..jS.9..t
+bootstrap 192.168.1.101:65497 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 230 bytes, header 16 03 01 00 E1
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:65497 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:65489 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30798
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 24, data 2B 58 02 C0 75 1D A6 73 E7 6B BA C6 9C A8 12 26 8B AD 59 ED 51 5A 5F 6C
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B58 rnd=C0751DA6 iv=5CD87449 crc=ok expected=73E76BBA actual=73E76BBA clear 0A DA 01 2B 57 42 B7 E8 DE 57 9C 3F E1, ascii ...+WB...W.?.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B58
+tcp probe 192.168.1.101:50676 -> 192.168.1.101:12350 bytes: 96, data 39 23 7D 1B B9 C7 14 55 51 D4 81 B9 57 42 61 C8 20 ED C4 C1 16 BD 2D A5 B5 05 B5 0F 1D DF AA 92 AD 81 FE D9 C4 A7 B0 B5 7B 2E 08 BB D8 49 36 05 6C ED 3A E3 38 49 E6 9F C4 65 52 1B 10 41 7E 57, ascii 9#}....UQ...WBa. .....-.................{....I6.l.:.8I...eR..A~W
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=27, data 34 2B 5A 15 F2 01 2B 59 42 59 E9 08 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:50676 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B5A body=21 cmd=F201 prev=2B59 tag=42 payload=42 59 E9 08 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:50676 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 59 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:50676 bootstrap-reply bytes: 147, data D2 90 2F BD 47 0B FF 12 70 F3 3A 95 A0 E9 86 AD 66 F4 B0 A4 88 45 DF C6 64 76 C4 26 ED 18 55 E5 C5 DE E3 23 99 62 90 05 20 B8 BA C8 44 61 E0 3D A9 73 C0 2F B7 E8 97 5E 92 FE 00 01 18 A3 C0 8C
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=11, data 14 2B 5C 05 82 03 2B 5B 42 2D 03
+bootstrap command 192.168.1.101:50676 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B5C body=5 cmd=8203 prev=2B5B tag=42 payload=42 2D 03
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 14 A3 1C 05 8B 03 2B 5B 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 84 2F FE A3 43 7C 9A 6A 50 8E 48
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=11, data 14 2B 5E 05 82 03 2B 5D 42 2D 61
+bootstrap command 192.168.1.101:50676 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B5E body=5 cmd=8203 prev=2B5D tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 14 A3 1D 05 8B 03 2B 5D 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data D9 D2 9C 32 05 EB 99 9D F8 46 80
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=11, data 14 2B 60 05 82 03 2B 5F 42 2D BA
+bootstrap command 192.168.1.101:50676 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B60 body=5 cmd=8203 prev=2B5F tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 14 A3 1E 05 8B 03 2B 5F 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 26 C3 97 27 BF 38 BC E1 AE E5 51
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=11, data 14 2B 62 05 82 03 2B 61 42 2D D3
+bootstrap command 192.168.1.101:50676 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B62 body=5 cmd=8203 prev=2B61 tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 14 A3 1F 05 8B 03 2B 61 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 11, data 1C C4 59 82 33 E4 CD 79 D2 B5 84
+bootstrap frame 192.168.1.101:50676 -> 192.168.1.101:12350, bytes=12, data 16 2B 64 06 82 03 2B 63 42 33 48 93
+bootstrap command 192.168.1.101:50676 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2B64 body=6 cmd=8203 prev=2B63 tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 12, data 16 A3 20 06 8B 03 2B 63 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:50676 keepalive-reply bytes: 12, data 57 D8 15 80 4D 11 B3 D4 80 75 0B C0
+tcp probe 192.168.1.101:50682 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:50684 -> 192.168.1.101:12350 bytes: 94, data 1B 99 C7 89 2D DE 33 8B C6 F3 5E 13 EB 1E 22 E0 A5 C5 A2 16 D9 2D C6 E8 34 57 51 5C 24 50 8E C0 64 85 77 27 D2 98 A7 C3 C5 56 62 09 61 79 30 C0 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A, ascii ....-.3...^..."......-..4WQ\$P..d.w'.....Vb.ay0......4.BK..n...Z
+bootstrap 192.168.1.101:50684 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 225 bytes, header 16 03 01 00 DC
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:50684 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:50676 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31276
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 29, data 2B 66 02 AE 7C D0 F5 ED 6E B3 14 2E 11 50 36 76 C7 35 D7 D0 6E 60 F1 64 F3 07 D3 AA 96
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B66 rnd=AE7CD0F5 iv=22253688 crc=ok expected=ED6EB314 actual=ED6EB314 clear 0F DA 01 2B 65 42 B8 07 32 E8 8F AA 29 E8 8F AA 29 E8, ascii ...+eB..2...)...).
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B66
+tcp probe 192.168.1.101:57317 -> 192.168.1.101:12350 bytes: 104, data 4B 94 97 90 C3 29 6E 6B 5C 90 C0 B8 53 46 C5 8D 5B 11 24 5E 30 C8 E7 66 8E 7F E4 05 9D 45 CB 96 60 F9 A2 67 34 BF 10 6B 5E 70 2A 83 EB BC EA 78 04 A5 92 5B 50 81 BE 97 5C 1D AA 93 28 79 56 4F, ascii K....)nk\...SF..[.$^0..f.....E..`..g4..k^p*....x...[P...\...(yVO
+bootstrap frame 192.168.1.101:57317 -> 192.168.1.101:12350, bytes=27, data 34 2B 68 15 F2 01 2B 67 42 5A 52 65 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:57317 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B68 body=21 cmd=F201 prev=2B67 tag=42 payload=42 5A 52 65 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:57317 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 67 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:57317 bootstrap-reply bytes: 147, data 8B 49 DD CF 4C DC A8 91 FB 74 D7 82 37 D8 CB F1 46 34 89 0F 2E 6D 49 EA 34 24 1C D9 51 13 05 47 3B 6E A7 7B 34 6D F1 B9 C1 46 18 7E CE 28 69 5C 2D 32 D5 B2 31 C6 02 0C C7 C1 43 2C 0C 1A 63 B4
+bootstrap frame 192.168.1.101:57317 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:57319 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:57320 -> 192.168.1.101:12350 bytes: 48, data 8B C4 AA 8D B7 3C BC 17 CE FB C4 59 7F 3A 3C B9 2A 10 63 49 EB C2 65 3C 79 AC BD 30 E5 A8 05 7B E0 20 AD 0F 0D 76 26 A1 AB 18 0C 60 E9 59 85 E5, ascii .....<.....Y.:<.*.cI..e<y..0...{. ...v&....`.Y..
+bootstrap 192.168.1.101:57320 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:57320 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:57317 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30546
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 33, data 2B 6A 02 EE D9 68 1F AF 38 63 BC 31 9B 21 A5 6B 97 9B 54 FA 04 8C 83 DB 4E C1 3C 4F AB 1F 81 5A 39
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B6A rnd=EED9681F iv=285631DA crc=ok expected=AF3863BC actual=AF3863BC clear 13 DA 01 2B 69 42 B8 32 B2 82 81 63 FB 82 81 63 FB 82 81 63 FB 82, ascii ...+iB.2...c...c...c..
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B6A
+tcp probe 192.168.1.101:49595 -> 192.168.1.101:12350 bytes: 89, data EC C5 1C 24 FB C8 FF 77 B7 1D 1A 9B 97 8D EA 95 7C B4 CF D8 CD D4 42 8C EB 15 BE 0C 23 AB 3B 03 BF A2 AA F4 A4 3C 1A 24 FD B3 3B EE 91 C1 A7 E5 84 25 12 DB D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF, ascii ...$...w........|.....B.....#.;......<.$..;......%....>...*.....
+bootstrap frame 192.168.1.101:49595 -> 192.168.1.101:12350, bytes=27, data 34 2B 6C 15 F2 01 2B 6B 42 5A B8 E9 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:49595 -> 192.168.1.101:12350 len=27 declared=27 crc/seq=2B6C body=21 cmd=F201 prev=2B6B tag=42 payload=42 5A B8 E9 F3 6D AF 3B 94 A3 5F C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:49595 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 6B 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:49595 bootstrap-reply bytes: 147, data 00 49 01 4D 55 64 5A FB 10 63 AE 82 D7 82 B0 88 00 0F 80 B1 97 26 57 4E EB 18 5D E3 47 FC 41 B6 74 0E 06 61 0C FA 94 FF FC CC 67 10 69 50 79 17 25 41 2F 1D B6 0A AC 4F 49 F1 0E 99 B9 8B 8C 3D
+bootstrap frame 192.168.1.101:49595 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:49598 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:49599 -> 192.168.1.101:12350 bytes: 50, data C3 F2 62 50 7F 46 13 97 D2 34 19 5D 53 92 72 C4 04 1D 1C 15 DB 8F F1 F3 2F 7E F3 FD 5D 34 9A 34 D3 9D 1D 79 2B B2 0F 09 4B D0 F4 59 F9 B1 F3 26 4E E7, ascii ..bP.F...4.]S.r........./~..]4.4...y+...K..Y...&N.
+bootstrap 192.168.1.101:49599 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 244 bytes, header 16 03 01 00 EF
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:49599 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:49595 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30569
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 21, data 2B 6E 02 0F CB BE 02 48 9B 6E B5 05 1F 4F D1 54 1E 19 7F 45 B5
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B6E rnd=0FCBBE02 iv=46267090 crc=ok expected=489B6EB5 actual=489B6EB5 clear 07 DA 01 2B 6D 42 B7 C6 C7 AE, ascii ...+mB....
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B6E
+tcp probe 192.168.1.101:49624 -> 192.168.1.101:12350 bytes: 86, data 45 14 F9 4E 6D EA 2F 8B B1 79 AF F4 13 BC 7E 81 ED 1F 2D C9 F8 33 43 B4 74 EC A2 C9 F6 64 3C AE 97 8C 9A 3F E9 F8 53 BC AA 2F F1 68 87 3D 97 54 5E B7 FC 3D 4A B3 C8 99 F6 6F 54 B5 62 EB A0 91, ascii E..Nm./..y....~...-..3C.t....d<....?..S../.h.=.T^..=J....oT.b...
+bootstrap frame 192.168.1.101:49624 -> 192.168.1.101:12350, bytes=28, data 36 2B 70 16 F2 01 2B 6F 42 5A E4 30 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:49624 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B70 body=22 cmd=F201 prev=2B6F tag=42 payload=42 5A E4 30 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:49624 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 6F 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:49624 bootstrap-reply bytes: 147, data F4 70 5A 9A F2 1D BD 11 38 D8 E9 5F E9 0E FC CE F3 B2 40 DE 0D 11 2D 28 92 D3 C4 39 34 42 2A CD 87 24 22 B0 5D E6 78 1A F8 1B 76 55 C1 19 8A 15 C5 10 0D CC 1F 45 A3 3C DA 75 24 B7 27 BB FA F9
+bootstrap frame 192.168.1.101:49624 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:49636 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:49637 -> 192.168.1.101:12350 bytes: 102, data 84 08 A3 73 0E A1 8F 96 48 F5 9B E2 ED A7 7B 1B BB C1 AA FD 26 3F 5A A8 0B 84 5E BD 9F 5F FE 16 36 56 A0 2A 68 F6 68 77 41 9E 5C 51 14 B3 20 8D 79 56 4F B4 95 C2 CB 00 71 EE 07 0C 0D DA 03 D8, ascii ...s....H.....{.....&?Z...^.._..6V.*h.hwA.\Q.. .yVO.....q.......
+bootstrap 192.168.1.101:49637 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 226 bytes, header 16 03 01 00 DD
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:49637 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:49624 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31471
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 32, data 2B 72 02 7D FB 56 5B 0C 3B 99 36 76 B3 D3 D6 5B 86 D3 CE FE 79 87 1C DA 33 AF D6 78 C8 E7 00 96
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B72 rnd=7DFB565B iv=2ED970EE crc=ok expected=0C3B9936 actual=0C3B9936 clear 12 DA 01 2B 71 42 B8 27 D2 29 F2 AE 12 29 F2 AE 12 29 F2 AE 12, ascii ...+qB.'.)...)...)...
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B72
+tcp probe 192.168.1.101:49661 -> 192.168.1.101:12350 bytes: 100, data 21 F8 45 EB 98 E4 CA 98 23 77 E8 BF 1D 1E 2B 83 D7 A9 E6 75 36 01 23 DA EB E0 85 41 17 62 FE 27 8C E0 AB 8D 35 04 2A BC 47 30 D6 73 ED 2D 81 03 E3 38 49 E6 9F C4 65 52 1B 10 41 7E 57 1C DD 6A, ascii !.E.....#w....+....u6.#....A.b.'....5.*.G0.s.-...8I...eR..A~W..j
+bootstrap frame 192.168.1.101:49661 -> 192.168.1.101:12350, bytes=28, data 36 2B 74 16 F2 01 2B 73 42 5B 04 7E 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:49661 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B74 body=22 cmd=F201 prev=2B73 tag=42 payload=42 5B 04 7E 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:49661 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 73 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:49661 bootstrap-reply bytes: 147, data A1 C8 C3 8E C0 D6 54 A2 BA 7E 54 4E 4C 6D 32 74 B7 2B 7B 81 08 0F A0 44 0F 15 75 FD 8C 5C 1D 61 63 D3 42 1A C9 FD F5 8A 99 A5 E2 E4 0F 01 A6 1B 62 B1 B7 F9 BD E8 FB 64 51 51 03 4D B2 BA 50 54
+bootstrap frame 192.168.1.101:49661 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:49676 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:49677 -> 192.168.1.101:12350 bytes: 52, data 0B 73 E7 67 EF 91 2C 1D 97 9F F5 CD BB 45 A9 3F 66 E7 F6 B1 8A 41 83 9D DA 31 24 8F 83 5A 0A 6A D1 55 36 49 87 40 57 2E 3B BA AD C3 E2 CC D7 3D EB A0 91 8E, ascii .s.g..,......E.?f....A...1$..Z.j.U6I.@W.;......=....
+bootstrap 192.168.1.101:49677 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:49677 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:49661 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31329
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 31, data 2B 76 02 7B B2 EB 07 21 D6 5F BC 13 0A 36 F5 30 40 AA CF 58 1E 37 7C C0 D4 4C 10 D9 6B 6C 64
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B76 rnd=7BB2EB07 iv=A7F25AE5 crc=ok expected=21D65FBC actual=21D65FBC clear 11 DA 01 2B 75 42 B8 1C F2 FB B0 28 29 FB B0 28 29 FB B0 28, ascii ...+uB.....()..()..(
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B76
+tcp probe 192.168.1.101:55745 -> 192.168.1.101:12350 bytes: 110, data C7 17 E8 40 B8 45 3D 5B F0 EF 2F E6 B0 D9 CA 01 20 8F FE 7F 75 C7 41 4A C5 A7 EA 16 06 43 C1 50 C8 E7 6C 7C 6C 07 55 F8 92 3B 70 B8 2D F0 45 4F 80 F1 6E 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB, ascii ...@.E=[../..... ...u.AJ.....C.P..l|l.U..;p.-.EO..n...Z.X..?..r.
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=28, data 36 2B 78 16 F2 01 2B 77 42 5B 25 AB 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:55745 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B78 body=22 cmd=F201 prev=2B77 tag=42 payload=42 5B 25 AB 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55745 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 77 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55745 bootstrap-reply bytes: 147, data 84 D6 94 0D 45 FE 16 60 B8 B6 BF 76 EE 5E 78 42 02 92 3A 89 BE 9B D1 C4 98 79 60 AA 39 D3 36 43 DC 3A B3 E8 73 C4 CC 19 29 4A 7F 94 C9 64 54 71 92 C3 9C 32 24 CA 1E EC AD AB 0B 39 72 52 CB 7E
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=11, data 14 2B 7A 05 82 03 2B 79 42 2D 03
+bootstrap command 192.168.1.101:55745 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B7A body=5 cmd=8203 prev=2B79 tag=42 payload=42 2D 03
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 14 A3 21 05 8B 03 2B 79 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data F1 A2 F6 4A B1 6C 7B 1B 3D D6 F3
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=11, data 14 2B 7C 05 82 03 2B 7B 42 2D 61
+bootstrap command 192.168.1.101:55745 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B7C body=5 cmd=8203 prev=2B7B tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 14 A3 22 05 8B 03 2B 7B 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 25 AC DA 3A 06 F0 37 02 FF D4 44
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=11, data 14 2B 7E 05 82 03 2B 7D 42 2D BA
+bootstrap command 192.168.1.101:55745 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B7E body=5 cmd=8203 prev=2B7D tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 14 A3 23 05 8B 03 2B 7D 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 6A AD 83 DF 3C C6 BC 4B 41 4B 8F
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=11, data 14 2B 80 05 82 03 2B 7F 42 2D D3
+bootstrap command 192.168.1.101:55745 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B80 body=5 cmd=8203 prev=2B7F tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 14 A3 24 05 8B 03 2B 7F 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 11, data 74 21 41 DE E3 38 DA 44 CB 66 78
+bootstrap frame 192.168.1.101:55745 -> 192.168.1.101:12350, bytes=12, data 16 2B 82 06 82 03 2B 81 42 33 48 93
+bootstrap command 192.168.1.101:55745 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2B82 body=6 cmd=8203 prev=2B81 tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 12, data 16 A3 25 06 8B 03 2B 81 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55745 keepalive-reply bytes: 12, data 13 80 72 2F 47 78 0D F8 E8 73 97 1F
+tcp probe 192.168.1.101:55749 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:55750 -> 192.168.1.101:12350 bytes: 101, data EA 76 B6 91 8D CB 50 1D D7 1B 4A BB 5C FF 70 67 D0 87 60 90 77 1B F4 0C 2E 72 6E 34 38 92 49 EF 07 F5 C3 B2 B8 AC 4D 56 F3 6E E3 6C 3B 4D 72 8A 36 AF 94 F5 A2 2B E0 D1 CE 67 EC 6D BA 63 B8 C9, ascii .v....P...J.\.pg..`.w....rn48.I.......MV.n.l;Mr.6....+...g.m.c..
+bootstrap 192.168.1.101:55750 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 234 bytes, header 16 03 01 00 E5
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:55750 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:55745 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30875
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 33, data 2B 84 02 4A B1 42 14 B6 BF 41 38 D5 EF 5C 66 D8 3D 86 58 4B 3D 57 78 4E 44 F8 21 81 86 32 85 01 0A
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B84 rnd=4AB14214 iv=BA9E2DDA crc=ok expected=B6BF4138 actual=B6BF4138 clear 13 DA 01 2B 83 42 B8 32 B2 7C B2 EA 8F 7C B2 EA 8F 7C B2 EA 8F 7C, ascii ...+.B.2.|...|...|...|
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B84
+tcp probe 192.168.1.101:55764 -> 192.168.1.101:12350 bytes: 52, data 98 42 B6 8C DD 4D 6E 78 B7 CD A8 5C AC 7D 38 CB 49 2A C6 73 BF 39 42 5D 0D 0B 74 FD FA FF 84 71 86 5D 5A DF D8 B8 7A 0B C2 2F 8E 7A CD 10 B1 6B 0B 40 B1 2E, ascii .B...Mnx...\.}8.I*.s.9B]..t....q.]Z...z../.z...k.@..
+bootstrap frame 192.168.1.101:55764 -> 192.168.1.101:12350, bytes=28, data 36 2B 86 16 F2 01 2B 85 42 5B 45 F8 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:55764 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B86 body=22 cmd=F201 prev=2B85 tag=42 payload=42 5B 45 F8 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:55764 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 85 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:55764 bootstrap-reply bytes: 147, data C1 28 9D D3 FC 5A 5D 94 08 7E 3B 8C 77 9E D3 9E 0F 27 A0 3A 12 CD B6 87 AA 39 BB 1A 7D 44 C0 A7 44 F0 44 7A 3B 70 0F 3B 88 C4 5E ED CD 81 89 7E 8F 58 D1 94 F7 47 62 65 3B F8 E3 93 E2 71 02 30
+bootstrap frame 192.168.1.101:55764 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:55767 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:55768 -> 192.168.1.101:12350 bytes: 103, data F0 3F 14 21 49 D5 5F 18 72 8A 75 B2 70 0B 3D E2 CD E3 AC A6 F5 A1 7E 1F D6 33 27 97 45 CB 22 39 FD B4 B6 8C 45 3D EA E0 1D 14 BB EA 96 A8 37 15 25 12 DB D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34, ascii .?.!I._.r.u.p.=.......~..3'.E."9....E=........7.%....>...*.....4
+bootstrap 192.168.1.101:55768 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 245 bytes, header 16 03 01 00 F0
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:55768 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:55764 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31107
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 21, data 2B 88 02 E3 BF 47 19 C3 26 D9 7F 59 A1 8A 46 EC 3B 3E 3D 56 2B
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B88 rnd=E3BF4719 iv=5946976F crc=ok expected=C326D97F actual=C326D97F clear 07 DA 01 2B 87 42 B7 C6 19 59, ascii ...+.B...Y
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B88
+tcp probe 192.168.1.101:58989 -> 192.168.1.101:12350 bytes: 103, data 36 11 99 FF 8A EB 0C 0C 32 3C 44 ED 41 50 C4 2A 20 C3 4D D5 B8 7C 14 4E 64 A3 E9 02 3D 36 8A E6 88 28 8C 7A 17 D5 8B 7D 60 28 8A 26 E7 3E 46 64 BF 64 85 F2 3B B0 61 1E 77 BC FD 0A 73 88 59 B6, ascii 6.......2<D.AP.* .M..|.Nd...=6...(.z...}`(.&.>Fd.d..;.a.w...s.Y.
+bootstrap frame 192.168.1.101:58989 -> 192.168.1.101:12350, bytes=28, data 36 2B 8A 16 F2 01 2B 89 42 5B 66 46 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:58989 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B8A body=22 cmd=F201 prev=2B89 tag=42 payload=42 5B 66 46 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:58989 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 89 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:58989 bootstrap-reply bytes: 147, data 99 C5 D8 BE A8 1C 72 D5 E4 E2 BF D3 D1 74 19 C0 E5 C5 7F 81 9E 74 66 25 9D 05 8B 92 81 93 91 B6 1C E0 07 49 48 70 7F 72 55 32 E4 1A A4 97 9F 42 F9 67 80 8C D1 CB 71 34 FE 3F 7B 0B DC 04 FA 22
+bootstrap frame 192.168.1.101:58989 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:58999 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:59000 -> 192.168.1.101:12350 bytes: 48, data 76 B3 B2 7F BD 87 36 06 30 24 33 D2 A8 FA 48 FC EB 4A 90 0B C9 B2 91 DC 15 62 D6 69 79 B7 87 A7 F3 77 F3 A7 CA 79 06 ED 86 3D 84 18 91 BF 96 49, ascii v.....6.0$3...H..J.......b.iy....w...y...=.....I
+bootstrap 192.168.1.101:59000 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 239 bytes, header 16 03 01 00 EA
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:59000 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:58989 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30908
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 31, data 2B 8C 02 2B AD 67 E1 1E 80 19 EF FC 1D DD 14 1E BA CC 7F CD 4B A0 E5 74 5D E0 73 20 BD 91 68
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B8C rnd=2BAD67E1 iv=1E3620C0 crc=ok expected=1E8019EF actual=1E8019EF clear 11 DA 01 2B 8B 42 B8 1C F2 E2 27 C9 6B E2 27 C9 6B E2 27 C9, ascii ...+.B....'.k.'.k.'.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B8C
+tcp probe 192.168.1.101:62675 -> 192.168.1.101:12350 bytes: 53, data 67 C4 75 99 5B 1D 2E 3A B4 0E 5C 37 16 E8 5C E0 50 EB 36 2B 3F 00 A2 E9 4A D7 74 10 19 5E 85 8C A0 68 BF 3F 70 06 CC 3A B4 7C 69 AA C6 31 66 9D D2 9B 90 C1 FE, ascii g.u.[..:..\7..\.P.6+?...J.t..^...h.?p..:.|i..1f......
+bootstrap frame 192.168.1.101:62675 -> 192.168.1.101:12350, bytes=28, data 36 2B 8E 16 F2 01 2B 8D 42 5B 86 93 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:62675 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B8E body=22 cmd=F201 prev=2B8D tag=42 payload=42 5B 86 93 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:62675 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 8D 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:62675 bootstrap-reply bytes: 147, data 5A 2C 89 9D E5 16 2A AC 1C 88 1E 80 F1 D1 6D CD 40 F6 8B 5B 70 90 08 99 9A 31 FD 28 E9 F4 8F 93 D2 FA 84 D8 A7 ED BF EE E6 C9 05 E5 47 DF 75 58 BD 39 67 3E CA FE 04 BA 07 46 8C 9E F9 71 D9 21
+bootstrap frame 192.168.1.101:62675 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:62679 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:62680 -> 192.168.1.101:12350 bytes: 92, data 57 98 85 C6 AE FA D8 39 2F 54 05 10 2C 28 12 B8 1B F5 3E 38 DE E1 50 46 63 1E B9 82 F5 59 7C 30 69 27 4C 13 C7 5E 05 43 F1 B7 81 93 86 83 46 A6 6E 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB 30 E1, ascii W......9/T..,(....>8..PFc....Y|0i'L..^.C......F.n...Z.X..?..r.0.
+bootstrap 192.168.1.101:62680 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 223 bytes, header 16 03 01 00 DA
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:62680 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+tcp probe 192.168.1.101:52641 -> 192.168.1.101:13392 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:52642 -> 192.168.1.101:13392 bytes: 50, data 68 CF B5 A7 40 84 DB 71 D8 0E 8E DB B2 0E 9B F8 8E 33 78 B9 DE CF 75 07 D9 EF E7 28 E9 68 EE 53 66 A9 D0 C6 D5 DC 3B 03 71 70 AD 6B D2 76 5A 0D CC CD, ascii h...@..q.........3x...u....(.h.Sf.....;.qp.k.vZ...
+bootstrap 192.168.1.101:52642 -> 192.168.1.101:13392: native account RPC transport
+auth stock login frame 1: 234 bytes, header 16 03 01 00 E5
+auth stock login frame 2: 166 bytes, header 17 03 01 00 A1
+tcp probe 192.168.1.101:52642 -> 192.168.1.101:13392 error: Unsupported native operation 0x32D8; fields 0:0,0:2,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:62675 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30289
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 29, data 2B 90 02 35 61 3B 68 8B 96 2F FC 3C 8B 55 21 11 47 6E ED 3B 72 C4 88 0D F7 02 4A E7 2F
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B90 rnd=35613B68 iv=1A35946E crc=ok expected=8B962FFC actual=8B962FFC clear 0F DA 01 2B 8F 42 B8 07 32 F1 A0 59 AA F1 A0 59 AA F1, ascii ...+.B..2..Y...Y..
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B90
+tcp probe 192.168.1.101:54572 -> 192.168.1.101:12350 bytes: 59, data EE 52 BF 85 FC 56 5E BA ED F9 2B D8 37 2B 94 D7 D9 CE 58 75 A2 0E 47 74 16 BA F6 55 6C 4F EA F7 D7 16 9A E2 34 23 F5 01 5A DC 93 E4 9F 41 FD F5 D6 CF 34 15 42 4B 80 F1 6E 87 8C, ascii .R...V^...+.7+....Xu..Gt...UlO......4#..Z....A....4.BK..n..
+bootstrap frame 192.168.1.101:54572 -> 192.168.1.101:12350, bytes=28, data 36 2B 92 16 F2 01 2B 91 42 5B A6 01 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:54572 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B92 body=22 cmd=F201 prev=2B91 tag=42 payload=42 5B A6 01 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:54572 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 91 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:54572 bootstrap-reply bytes: 147, data AD 5A 63 11 A0 80 1B 69 EE 10 0F 6D 44 98 D7 DF D8 40 10 31 C2 1F 92 E4 D1 8F 00 2F E7 7C AE 36 EA C3 CB 8D 33 7E 92 49 B6 AD 20 FE ED 7F 8A 6F E2 E0 12 49 37 79 F5 4F D5 D7 10 63 A9 1C 14 E1
+bootstrap frame 192.168.1.101:54572 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:63019 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:63020 -> 192.168.1.101:12350 bytes: 85, data 99 88 FD 30 3C B5 E3 BC 3B 4A 9E 1D D6 E5 1A 02 42 5C D6 B2 30 13 DE 25 C9 41 1A 51 77 0E 6F 5E C9 49 54 74 E1 5F 8E 2F 8F A3 E6 FC 4A 60 BB 13 43 18 A9 C6 FF A4 C5 32 7B F0 A1 5E B7 FC 3D 4A, ascii ...0<...;J......B\..0..%.A.Qw.o^.ITt._./....J`..C......2{..^..=J
+bootstrap 192.168.1.101:63020 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 226 bytes, header 16 03 01 00 DD
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:63020 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:54572 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30583
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 33, data 2B 94 02 99 CB 5B 8E 8B 69 FA 7F 71 4F 7D E4 9D 02 23 97 31 7C 7D 1F FD 47 48 02 C2 1F 67 71 85 E9
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2B94 rnd=99CB5B8E iv=39FD63DF crc=ok expected=8B69FA7F actual=8B69FA7F clear 13 DA 01 2B 93 42 B8 32 B2 83 53 D3 87 83 53 D3 87 83 53 D3 87 83, ascii ...+.B.2..S...S...S...
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2B94
+tcp probe 192.168.1.101:60427 -> 192.168.1.101:12350 bytes: 93, data A4 E2 A4 37 0D 65 99 D1 0A DD 3C FC BD B1 38 FC FA EF DE EB E5 63 A4 90 9C D5 07 0C 01 2F 9C 40 F2 E5 E4 98 4A 95 C5 A6 EA 1F DB 4E DC 55 54 11 3C 7D 8A F3 08 D9 36 AF 94 F5 A2 2B E0 D1 CE 67, ascii ...7.e....<...8......c......./.@....J......N.UT.<}....6....+...g
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=28, data 36 2B 96 16 F2 01 2B 95 42 5B C5 6F FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60427 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2B96 body=22 cmd=F201 prev=2B95 tag=42 payload=42 5B C5 6F FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60427 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B 95 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60427 bootstrap-reply bytes: 147, data 37 59 CF 3F C7 18 F2 D7 7E A8 47 FB CA E2 6B 80 2C 1F 95 82 4A AD 32 05 30 42 32 8D 3B 5C 9B 78 14 3D 30 39 E4 81 F8 22 CE 11 FC ED 59 D0 F3 FA 8B 85 53 FD 0A 75 28 37 71 0C 4C CB 87 5D 6A 15
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=11, data 14 2B 98 05 82 03 2B 97 42 2D 03
+bootstrap command 192.168.1.101:60427 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B98 body=5 cmd=8203 prev=2B97 tag=42 payload=42 2D 03
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data 14 A3 26 05 8B 03 2B 97 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data C1 72 AC 39 5A FA 6D BE 2F A3 69
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=11, data 14 2B 9A 05 82 03 2B 99 42 2D 61
+bootstrap command 192.168.1.101:60427 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B9A body=5 cmd=8203 prev=2B99 tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data 14 A3 27 05 8B 03 2B 99 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data E2 57 7A D7 35 9B C0 74 BA 04 B1
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=11, data 14 2B 9C 05 82 03 2B 9B 42 2D BA
+bootstrap command 192.168.1.101:60427 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B9C body=5 cmd=8203 prev=2B9B tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data 14 A3 28 05 8B 03 2B 9B 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data 90 B3 5C F4 B6 07 30 71 ED 10 87
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=11, data 14 2B 9E 05 82 03 2B 9D 42 2D D3
+bootstrap command 192.168.1.101:60427 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2B9E body=5 cmd=8203 prev=2B9D tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data 14 A3 29 05 8B 03 2B 9D 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 11, data C5 04 D6 01 FD 63 88 24 00 01 1B
+bootstrap frame 192.168.1.101:60427 -> 192.168.1.101:12350, bytes=12, data 16 2B A0 06 82 03 2B 9F 42 33 48 93
+bootstrap command 192.168.1.101:60427 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2BA0 body=6 cmd=8203 prev=2B9F tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 12, data 16 A3 2A 06 8B 03 2B 9F 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60427 keepalive-reply bytes: 12, data 1E 6E 65 F0 EA 83 6D 2B 56 70 FB FB
+tcp probe 192.168.1.101:60435 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60436 -> 192.168.1.101:12350 bytes: 90, data 01 85 2B 20 DB 47 DD 14 95 6A 98 A3 08 4F 00 F7 60 61 FF 0E 92 6A 48 1C D4 7C AE 64 05 AD 2B 9F F2 7B 20 3D 45 97 EB 38 D6 60 6F 6F D9 02 85 D2 67 EC 6D BA 63 B8 C9 66 1F 44 E5 D2 9B 90 C1 FE, ascii ..+ .G...j...O..`a...jH..|.d..+..{ =E..8.`oo....g.m.c..f.D......
+bootstrap 192.168.1.101:60436 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 236 bytes, header 16 03 01 00 E7
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60436 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60427 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=32071
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 27, data 2B A2 02 92 E7 69 5C AE BF 9A B9 86 86 0D D3 2E AB 7B 4E 9B 37 29 D0 8D 4C 20 5A
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BA2 rnd=92E7695C iv=E791F670 crc=ok expected=AEBF9AB9 actual=AEBF9AB9 clear 0D DA 01 2B A1 42 B7 F7 14 E4 73 92 64 E4 73 92, ascii ...+.B....s.d.s.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BA2
+tcp probe 192.168.1.101:60460 -> 192.168.1.101:12350 bytes: 68, data FE C2 16 C7 B1 E9 2C A4 32 94 85 88 9B 9F 01 46 3F F1 44 A6 C6 D8 38 DF 5E CC 8B 3F F6 BB EC 82 01 47 81 4C D2 A8 E8 98 7B 8F 0D 63 C2 25 E9 94 4C 4D 1A 43 18 A9 C6 FF A4 C5 32 7B F0 A1 5E B7, ascii ......,.2......F?.D...8.^..?.....G.L....{..c.%..LM.C......2{..^.
+bootstrap frame 192.168.1.101:60460 -> 192.168.1.101:12350, bytes=28, data 36 2B A4 16 F2 01 2B A3 42 5B E6 9C FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60460 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BA4 body=22 cmd=F201 prev=2BA3 tag=42 payload=42 5B E6 9C FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60460 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B A3 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60460 bootstrap-reply bytes: 147, data 18 FA B0 77 A2 0B B0 6F 8E 1A B0 B2 62 C8 82 E7 A2 1B 2A CF 7D B1 EB 10 53 DE 65 65 76 20 5F 5C 8B 07 3B D6 18 91 91 8A 96 35 95 C0 83 26 B6 3A 6D D5 1F F7 5E 75 1E 8B 85 D4 4B 41 67 FC 51 73
+bootstrap frame 192.168.1.101:60460 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:60461 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:60462 -> 192.168.1.101:12350 bytes: 71, data 42 B2 B9 72 7B 94 F8 27 C5 AF 9A C8 75 D1 C8 AE 8C B4 FD 73 0F 61 25 92 1D D4 19 56 9D D7 D8 BA 31 7A 13 54 B1 4A 60 AA 93 01 91 A4 E7 02 D5 B1 C7 CC CD 9A C3 98 29 46 7F 24 45 B2 FB 70 21 DE, ascii B..r{..'....u......s.a%....V....1z.T.J`...............)F.$E..p!.
+bootstrap 192.168.1.101:60462 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 226 bytes, header 16 03 01 00 DD
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:60462 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:60460 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31462
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 22, data 2B A6 02 60 80 0D BF A0 0C BD BF C4 91 8A E8 A0 B6 56 B0 AC 22 1D
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BA6 rnd=60800DBF iv=9A9405C4 crc=ok expected=A00CBDBF actual=A00CBDBF clear 08 DA 01 2B A5 42 B7 D8 9E 08 BB, ascii ...+.B.....
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BA6
+tcp probe 192.168.1.101:64769 -> 192.168.1.101:12350 bytes: 50, data B1 A4 2D 26 FF 6D 70 29 C7 05 7E 6B 55 ED AF 8D E5 31 1A 45 DA 5E CC 07 16 28 77 B3 06 80 FC 64 D9 10 AE 30 97 9D BE B5 95 8F FC 92 DC 4E 89 83 6D BA, ascii ..-&.mp)..~kU....1.E.^...(w....d...0.........N..m.
+bootstrap frame 192.168.1.101:64769 -> 192.168.1.101:12350, bytes=28, data 36 2B A8 16 F2 01 2B A7 42 5C 06 EA 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:64769 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BA8 body=22 cmd=F201 prev=2BA7 tag=42 payload=42 5C 06 EA 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:64769 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B A7 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:64769 bootstrap-reply bytes: 147, data DC 4D D8 26 12 F2 68 96 6A D1 22 63 F0 97 7E 2A 08 A7 03 9E F9 93 10 B2 BA AC 69 DE 14 F2 4A 4B 9E A3 E4 C9 CF 2C 53 7A B1 AE D8 EA 5F 6B 06 96 51 FE CF 79 4F 8E 30 C0 F5 E2 82 09 16 D3 08 7C
+bootstrap frame 192.168.1.101:64769 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:64774 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:64775 -> 192.168.1.101:12350 bytes: 99, data C6 D6 56 5E C4 99 48 C9 E2 A5 47 5B 49 8B E8 87 63 60 76 99 9A E1 38 78 09 EE EF 75 59 E6 F3 4D 6B 47 19 C0 98 C6 F1 4C 2F 60 12 70 79 D7 DC 83 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E 87 8C 8D 5A, ascii ..V^..H...G[I...c`v...8x...uY..MkG.....L/`.py........4.BK..n...Z
+bootstrap 192.168.1.101:64775 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 241 bytes, header 16 03 01 00 EC
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:64775 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:64769 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31470
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 20, data 2B AA 02 DE 09 2A C3 52 69 80 11 44 5D AB 0B 75 6E 26 E9 EC
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BAA rnd=DE092AC3 iv=6ECB9D00 crc=ok expected=52698011 actual=52698011 clear 06 DA 01 2B A9 42 B7 7B F3, ascii ...+.B.{.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BAA
+tcp probe 192.168.1.101:64790 -> 192.168.1.101:12350 bytes: 90, data 2C 19 CF BC B0 F8 5B C8 D4 11 A8 0F FF 1A 6F 4F 43 81 C9 6F 9E 2A 74 12 F2 92 37 8E EA 44 AD E2 4B 44 C1 AB 85 BD 24 F8 2A 1B E0 85 F7 67 91 B7 6D BA 63 B8 C9 66 1F 44 E5 D2 9B 90 C1 FE D7 9C, ascii ,.....[.......oOC..o.*t...7..D..KD....$.*....g..m.c..f.D........
+bootstrap frame 192.168.1.101:64790 -> 192.168.1.101:12350, bytes=28, data 36 2B AC 16 F2 01 2B AB 42 5C 28 17 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:64790 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BAC body=22 cmd=F201 prev=2BAB tag=42 payload=42 5C 28 17 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:64790 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B AB 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:64790 bootstrap-reply bytes: 147, data F6 FA 8D ED 89 3D 03 85 0A 00 F2 44 53 02 20 47 49 84 E8 67 0F 82 EA 47 41 5A F2 48 DC D4 F7 CD 08 2B 15 99 2F 4D C2 87 61 4E F0 21 A0 67 61 37 56 8D 85 BF 2B A2 B1 DF D4 CF 09 7F 07 81 CE B7
+bootstrap frame 192.168.1.101:64790 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:64795 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:64796 -> 192.168.1.101:12350 bytes: 104, data 11 27 17 E9 F6 95 8A 11 9F 33 9A 1F 16 AC 4C E0 0D 85 B0 F8 61 8E 6B 62 22 2F F2 92 EB EC EA 09 2D 46 33 61 F2 5B B4 00 44 78 60 A3 62 71 26 BC 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B 80 F1 6E, ascii .'.......3....L.....a.kb"/......-F3a.[..Dx`.bq&....*.....4.BK..n
+bootstrap 192.168.1.101:64796 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 228 bytes, header 16 03 01 00 DF
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:64796 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:64790 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31604
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 34, data 2B AE 02 3B B8 19 D6 9C 6D A0 A7 F3 50 96 B0 0F C0 E2 DB 67 B3 2F 1E 29 C9 67 E6 D5 A4 F4 2D EB BB B7
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BAE rnd=3BB819D6 iv=04183942 crc=ok expected=9C6DA0A7 actual=9C6DA0A7 clear 14 DA 01 2B AD 42 B8 3D 92 94 99 33 C1 94 99 33 C1 94 99 33 C1 94 99, ascii ...+.B.=...3...3...3...
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BAE
+tcp probe 192.168.1.101:64810 -> 192.168.1.101:12350 bytes: 53, data 89 AE 83 83 3C 70 2C 74 B6 3E D6 26 D4 07 85 CF AC 31 34 58 D0 5F B7 14 60 3F 41 A5 29 46 6C AC 2B 34 48 F5 CF 1E 9E 6D EF C3 A2 C7 30 41 73 05 9D 2A 13 A8 F9, ascii ....<p,t.>.&.....14X._..`?A.)Fl.+4H....m....0As..*...
+bootstrap frame 192.168.1.101:64810 -> 192.168.1.101:12350, bytes=28, data 36 2B B0 16 F2 01 2B AF 42 5C 48 64 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:64810 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BB0 body=22 cmd=F201 prev=2BAF tag=42 payload=42 5C 48 64 FC 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:64810 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B AF 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:64810 bootstrap-reply bytes: 147, data 31 84 25 62 FF 07 17 1A 83 88 D6 4D 22 E1 E8 B5 54 5E 45 E2 43 4C CD 41 28 CA C1 92 D8 01 EC 01 FE 97 58 81 8E 3D B1 17 2C 66 2E B9 B7 F9 51 6A 27 6D FE 11 B7 33 95 75 FF 41 58 C0 15 C4 5C 4D
+bootstrap frame 192.168.1.101:64810 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:64818 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:64819 -> 192.168.1.101:12350 bytes: 98, data 17 BE 44 B4 E6 2F 50 00 C4 06 BB 39 35 C5 84 6C B3 C2 3B AE ED FF C0 EA DA 32 8D 33 A9 46 57 E3 E6 7C 1E 06 74 1E D7 E9 FB 2B A6 6D 2D 86 DD DE 66 1F 44 E5 D2 9B 90 C1 FE D7 9C 5D EA D3 68 B9, ascii ..D../P....95..l..;......2.3.FW..|..t....+.m-...f.D........]..h.
+bootstrap 192.168.1.101:64819 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 228 bytes, header 16 03 01 00 DF
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:64819 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:64810 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30508
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 25, data 2B B2 02 E0 B7 C7 2B FB CA 5A 49 67 F0 9C 72 DA 20 9C 73 CD BE 7A 08 DB AC
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BB2 rnd=E0B7C72B iv=C5D80F98 crc=ok expected=FBCA5A49 actual=FBCA5A49 clear 0B DA 01 2B B1 42 B7 ED 9A CE BC D9 F7 CE, ascii ...+.B........
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BB2
+tcp probe 192.168.1.101:52967 -> 192.168.1.101:12350 bytes: 88, data 80 11 46 CE D9 90 86 E1 85 49 E7 D2 FB FE D5 D8 42 23 F8 51 21 A1 FD 12 CD 53 A1 13 D8 F7 EB 4A 70 23 2E 01 0E C1 AE 29 99 86 5D D3 7E 6E 8B F3 CD 9A C3 98 29 46 7F 24 45 B2 FB 70 21 DE 37 7C, ascii ..F......I......B#.Q!....S.....Jp#.....)..].~n......)F.$E..p!.7|
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=28, data 36 2B B4 16 F2 01 2B B3 42 5C 68 B2 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:52967 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BB4 body=22 cmd=F201 prev=2BB3 tag=42 payload=42 5C 68 B2 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52967 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B B3 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52967 bootstrap-reply bytes: 147, data 1E 26 E5 46 6E 8C 65 7B EE BA D2 BD 25 65 D2 A8 6B AE 18 C6 2C 0F 7C F0 05 A5 B7 3D E3 DA C0 43 8F 72 04 2A 9D 22 FD 2A DE C6 9D E1 5D 78 CA DC 70 5D DD 2E 9E 3D BD 8C 09 58 D6 41 AD F2 6C CA
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=11, data 14 2B B6 05 82 03 2B B5 42 2D 03
+bootstrap command 192.168.1.101:52967 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BB6 body=5 cmd=8203 prev=2BB5 tag=42 payload=42 2D 03
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 14 A3 2B 05 8B 03 2B B5 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 37 A1 EB 0F 2E 95 4B B3 A2 37 22
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=11, data 14 2B B8 05 82 03 2B B7 42 2D 61
+bootstrap command 192.168.1.101:52967 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BB8 body=5 cmd=8203 prev=2BB7 tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 14 A3 2C 05 8B 03 2B B7 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 35 AE 61 7E AE 94 0B DA 9A 00 55
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=11, data 14 2B BA 05 82 03 2B B9 42 2D BA
+bootstrap command 192.168.1.101:52967 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BBA body=5 cmd=8203 prev=2BB9 tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 14 A3 2D 05 8B 03 2B B9 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data CA F1 4A A0 9A 07 26 B2 BD 83 B1
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=11, data 14 2B BC 05 82 03 2B BB 42 2D D3
+bootstrap command 192.168.1.101:52967 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BBC body=5 cmd=8203 prev=2BBB tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 14 A3 2E 05 8B 03 2B BB 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 11, data 48 72 86 75 BB 2A 52 63 6A C5 BE
+bootstrap frame 192.168.1.101:52967 -> 192.168.1.101:12350, bytes=12, data 16 2B BE 06 82 03 2B BD 42 33 48 93
+bootstrap command 192.168.1.101:52967 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2BBE body=6 cmd=8203 prev=2BBD tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 12, data 16 A3 2F 06 8B 03 2B BD 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52967 keepalive-reply bytes: 12, data 37 DD 8D 8C B7 AB C6 BE A6 16 E7 15
+tcp probe 192.168.1.101:52976 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:52977 -> 192.168.1.101:12350 bytes: 111, data 77 95 2D 3C 4F 63 34 2D C4 A7 3D 1F 77 BB 48 08 62 D0 1C 41 BD BA 07 8C CC A3 92 6D BA E0 A4 09 9D FF 07 E2 17 6C BA 8B 73 01 EF B3 69 F8 9F 74 45 B2 FB 70 21 DE 37 7C BD CA 33 48 19 76 EF D4, ascii w.-<Oc4-..=.w.H.b..A.......m.........l..s...i..tE..p!.7|..3H.v..
+bootstrap 192.168.1.101:52977 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 230 bytes, header 16 03 01 00 E1
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:52977 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:52967 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30545
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 29, data 2B C0 02 DC AC 3A 8F 5F 74 32 14 80 BF 04 67 49 94 16 58 15 67 48 C2 BA AB B6 73 1C 51
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BC0 rnd=DCAC3A8F iv=38F59A2B crc=ok expected=5F743214 actual=5F743214 clear 0F DA 01 2B BF 42 B8 07 32 B8 FA CE 49 B8 FA CE 49 B8, ascii ...+.B..2...I...I.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BC0
+tcp probe 192.168.1.101:52993 -> 192.168.1.101:12350 bytes: 110, data F9 67 6E D4 F3 30 22 48 B1 E7 36 E4 1A 86 70 96 9F 1E CC A1 C2 2B 32 AB B4 C1 5B 06 C1 77 A5 B8 03 20 5D 8F 42 D4 DB F3 6C 7E E1 A3 DF 11 2D B7 19 76 EF D4 35 E2 6B 20 11 0E A7 2C AD FA A3 F8, ascii .gn..0"H..6...p......+2...[..w... ].B...l~....-..v..5.k ...,....
+bootstrap frame 192.168.1.101:52993 -> 192.168.1.101:12350, bytes=28, data 36 2B C2 16 F2 01 2B C1 42 5C 88 20 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:52993 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BC2 body=22 cmd=F201 prev=2BC1 tag=42 payload=42 5C 88 20 7C 25 53 4A 46 14 C1 44 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:52993 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B C1 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:52993 bootstrap-reply bytes: 147, data 8D FE 6B 47 75 48 88 D8 E6 79 6C A3 ED 64 31 5B 38 9E 61 8D 1C 5D BC DD 1E 7E FD 25 27 37 0D 1B CF 7E 4A B6 B8 01 5C CA 4B 6A B4 28 6F C8 AD D6 E3 5F E3 6E 4C 1E 17 BF DC 67 3D 93 B6 45 92 06
+bootstrap frame 192.168.1.101:52993 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:52994 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:52995 -> 192.168.1.101:12350 bytes: 90, data B6 D8 22 4A 7F 73 FE 54 40 74 F2 8F 10 96 A7 F0 4F F1 3A 23 5C 08 38 D4 8C 89 70 2D 97 DA E8 16 86 07 45 E5 F7 E2 B9 6E A0 25 1E 4F DC 6A EB 1A D0 01 3E 17 DC 9D 2A 13 A8 F9 D6 CF 34 15 42 4B, ascii .."J.s.T@t......O.:#\.8...p-......E....n.%.O.j....>...*.....4.BK
+bootstrap 192.168.1.101:52995 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 228 bytes, header 16 03 01 00 DF
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:52995 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:52993 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=32181
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 32, data 2B C4 02 2D 7F 80 89 85 FE D6 F9 48 13 0C 47 F2 2A E2 F3 30 1D C7 5A 7B 5C 3F 8D B7 FC 0F 3C 5A
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BC4 rnd=2D7F8089 iv=4644B77A crc=ok expected=85FED6F9 actual=85FED6F9 clear 12 DA 01 2B C3 42 B8 27 D2 E5 5B 20 34 E5 5B 20 34 E5 5B 20 34, ascii ...+.B.'..[ 4.[ 4.[ 4
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BC4
+tcp probe 192.168.1.101:53022 -> 192.168.1.101:12350 bytes: 95, data 2C 14 73 D1 E4 78 75 10 17 43 84 BB C2 5C 4A 79 1A 8A 0A 7D 39 5A 28 0D DB 9D 55 A7 7B A6 82 2D E3 84 AC 58 81 DA 63 BE 15 DB A2 29 86 B0 6F 6D 4E E7 6C ED 3A E3 38 49 E6 9F C4 65 52 1B 10 41, ascii ,.s..xu..C...\Jy...}9Z(...U.{..-...X..c....)..omN.l.:.8I...eR..A
+bootstrap frame 192.168.1.101:53022 -> 192.168.1.101:12350, bytes=28, data 36 2B C6 16 F2 01 2B C5 42 5C 92 89 FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:53022 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BC6 body=22 cmd=F201 prev=2BC5 tag=42 payload=42 5C 92 89 FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:53022 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B C5 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:53022 bootstrap-reply bytes: 147, data FF 64 15 33 98 B3 15 AA 1B ED C5 96 51 BC 16 85 DD AA 1D 44 91 C9 07 4F 1D 20 AF BF E4 E8 C7 27 4E A1 F8 5A AE C3 D7 10 09 13 3D 6D 28 7C C4 00 2A E4 76 67 5B 96 52 82 26 29 0D 8C 0E B5 37 14
+bootstrap frame 192.168.1.101:53022 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:64566 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:64567 -> 192.168.1.101:12350 bytes: 93, data 78 36 F6 A9 91 12 0C 21 70 5D D0 82 4C CD 2D 31 15 92 F9 6D 3A 88 1F C4 65 47 29 51 F8 70 CC 92 F6 6C EE 28 81 17 A6 D3 05 9F 47 AA C7 9F 00 C6 C5 32 7B F0 A1 5E B7 FC 3D 4A B3 C8 99 F6 6F 54, ascii x6.....!p]..L.-1...m:...eG)Q.p...l.(......G......2{..^..=J....oT
+bootstrap 192.168.1.101:64567 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 230 bytes, header 16 03 01 00 E1
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:64567 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:53022 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=31596
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 27, data 2B C8 02 99 C4 5F 00 E6 7D 25 BC F4 DC 00 70 E2 8F 40 7C 43 92 5E 45 28 C2 48 52
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BC8 rnd=99C45F00 iv=B829D74B crc=ok expected=E67D25BC actual=E67D25BC clear 0D DA 01 2B C7 42 B7 F7 14 D7 3F 95 D2 D7 3F 95, ascii ...+.B....?...?.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BC8
+tcp probe 192.168.1.101:63227 -> 192.168.1.101:12350 bytes: 51, data D6 60 C3 7D 58 4E B3 6D B0 73 FF 96 2C 95 77 86 BE 9D D8 EB D7 2A 26 61 0D E6 86 F8 97 C4 B8 85 0A 92 0A C1 3C EF FE D9 C2 12 74 69 18 C5 D0 7C 0A 73 88, ascii .`.}XN.m.s..,.w......*&a............<.....ti...|.s.
+bootstrap frame 192.168.1.101:63227 -> 192.168.1.101:12350, bytes=28, data 36 2B CA 16 F2 01 2B C9 42 5C 9C 55 FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:63227 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BCA body=22 cmd=F201 prev=2BC9 tag=42 payload=42 5C 9C 55 FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:63227 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B C9 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:63227 bootstrap-reply bytes: 147, data E3 F0 34 21 3A B9 AC F4 F7 82 43 99 7A DD 93 FC 9C 07 36 E4 A6 F1 3C 6F 6D 29 18 09 8F 01 E0 BE 1F 6E 58 7B F0 75 B7 48 8B 50 2B 81 50 7F ED 42 8C 84 40 BA 5B 25 47 8A C9 31 BE 04 AD 46 58 F5
+bootstrap frame 192.168.1.101:63227 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:63235 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:63236 -> 192.168.1.101:12350 bytes: 110, data BF 79 80 FB 94 11 BF 34 BF 73 30 6D 60 92 AE 02 D1 C9 D3 13 41 35 09 68 6C 4A 70 A8 E7 DC 39 FE 3C C9 F5 27 C3 1F D8 AB A8 A1 A2 02 DB 47 BA B2 9C 5D EA D3 68 B9 96 8F F4 D5 02 0B 40 B1 2E 47, ascii .y.....4.s0m`.......A5.hlJp...9.<..'.........G...]..h.......@..G
+bootstrap 192.168.1.101:63236 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 237 bytes, header 16 03 01 00 E8
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:63236 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+bootstrap session 192.168.1.101:63227 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=30706
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 21, data 2B CC 02 79 86 8B B0 1F 4A D5 44 90 60 43 F2 B9 B2 19 46 DC 93
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BCC rnd=79868BB0 iv=D70994AC crc=ok expected=1F4AD544 actual=1F4AD544 clear 07 DA 01 2B CB 42 B7 C6 68 95, ascii ...+.B..h.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BCC
+tcp probe 192.168.1.101:64685 -> 192.168.1.101:12350 bytes: 105, data 61 68 08 BC 93 AD 3F 03 C7 E0 A5 86 53 56 D9 D2 01 9B 47 AD A0 EA 1D 8C 43 A9 DA E3 3E 2F 59 EC EB DE 46 1E 25 8D D5 D2 43 0A C1 D9 F6 56 C5 A5 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB 30 E1 9E F7, ascii ah....?.....SV....G.....C...>/Y...F.%...C....V....Z.X..?..r.0...
+bootstrap frame 192.168.1.101:64685 -> 192.168.1.101:12350, bytes=28, data 36 2B CE 16 F2 01 2B CD 42 5C A5 DF FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:64685 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BCE body=22 cmd=F201 prev=2BCD tag=42 payload=42 5C A5 DF FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:64685 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B CD 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:64685 bootstrap-reply bytes: 147, data E5 FD 00 D9 8D 07 DC D4 34 1E C0 E2 14 ED 3E E1 81 E3 C8 04 AD 16 D6 3E 1C A1 30 BC E4 F1 4D C5 AD 74 6F 75 B6 E2 B8 EF 3C C9 43 AF 98 63 07 C2 95 E3 1E 5F 54 E7 29 0B 74 E1 D9 51 F5 9E 16 AB
+bootstrap frame 192.168.1.101:64685 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+tcp probe 192.168.1.101:64687 -> 192.168.1.101:12350 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:64688 -> 192.168.1.101:12350 bytes: 52, data B7 71 AA CA B8 AB E5 C7 A6 CA 41 60 0D 23 4D 8F 01 AC C7 B6 D7 03 8E 3D 2A 4E 8B 5F F8 64 83 DD 6B B8 AF 2D D9 D8 BE 8F 54 53 CF E2 4A E5 5B 75 7E 57 1C DD, ascii .q........A`.#M........=*N._.d..k..-....TS..J.[u~W..
+bootstrap 192.168.1.101:64688 -> 192.168.1.101:12350: native account RPC transport
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 114 bytes, header 17 03 01 00 6D
+tcp probe 192.168.1.101:64688 -> 192.168.1.101:12350 error: Unsupported native operation 0x2B08; fields 0:0,0:2,0:7,3:4[17],4:5[16]
+tcp probe 192.168.1.101:64691 -> 192.168.1.101:13392 bytes: 5, data 16 03 01 00 00, ascii .....
+tcp probe 192.168.1.101:64692 -> 192.168.1.101:13392 bytes: 85, data 01 D3 2E 0C EA E2 FA 0F 64 AB 32 0C 9A 60 9A BF 5F 62 C0 5F D1 0C BE C3 6D 25 38 73 AB 74 50 DC 77 59 51 42 EC 28 B6 22 4E 7D DC A0 9D 61 5E 57 3D 4A B3 C8 99 F6 6F 54 B5 62 EB A0 91 8E 27 AC, ascii ........d.2..`.._b._....m%8s.tP.wYQB.(."N}...a^W=J....oT.b....'.
+tcp probe 192.168.1.101:64692 -> 192.168.1.101:13392 error: Не удается прочитать данные из транспортного соединения: Удаленный хост принудительно разорвал существующее подключение.
+bootstrap session 192.168.1.101:64685 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=12898
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 24, data 2B D0 02 FA E8 E4 60 30 B6 FD 99 D2 A4 42 78 EF C0 04 8B EA 88 A2 0A BF
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BD0 rnd=FAE8E460 iv=4EA8135B crc=ok expected=30B6FD99 actual=30B6FD99 clear 0A DA 01 2B CF 42 B7 E8 DE 47 32 78 E9, ascii ...+.B...G2x.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BD0
+tcp probe 192.168.1.101:60665 -> 192.168.1.101:12350 bytes: 88, data 76 4E 84 E0 E5 DE E8 A2 B5 56 4F AF BA 2C 45 38 29 44 77 E5 2D EA C4 27 47 B4 20 39 6F 19 09 C4 CB 8F 89 D2 AC A3 37 DB B9 10 AF 1C 41 65 7C 2C F1 6E 87 8C 8D 5A 83 58 E9 06 3F E4 05 72 BB 30, ascii vN.......VO..,E8)Dw.-..'G. 9o.........7.....Ae|,.n...Z.X..?..r.0
+bootstrap frame 192.168.1.101:60665 -> 192.168.1.101:12350, bytes=28, data 36 2B D2 16 F2 01 2B D1 42 5C AC 51 FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60665 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BD2 body=22 cmd=F201 prev=2BD1 tag=42 payload=42 5C AC 51 FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60665 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B D1 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60665 bootstrap-reply bytes: 147, data E1 8A 8E D7 72 F0 A3 4C C6 2F 0F 84 3C D2 A4 67 A3 5B C4 C1 29 C9 34 C5 56 4B DF 74 0B E4 A2 20 45 2A 11 89 21 61 DF 90 EB 53 2C C0 B3 9C 3D 15 AB C7 08 BA B3 34 F5 E4 5A 46 26 3E 06 D8 BB FE
+bootstrap frame 192.168.1.101:60665 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+auth client 192.168.1.101:60666
+auth client 192.168.1.101:60667
+auth dh-client-hello 192.168.1.101:60667 -> 192.168.1.101:33033 bytes: 65, data B7 90 08 24 07 C2 8E 05 82 17 A6 F1 54 58 26 35 81 67 39 B6 EA 12 DD 3E 9F 50 0D AD B3 B3 53 F4 97 46 66 D3 68 FD 5A 51 56 70 2F 54 E5 42 F4 3F 73 88 59 B6 2F 14 75 22 AB 60 51 4E E7 6C ED 3A, ascii ...$........TX&5.g9....>.P....S..Ff.h.ZQVp/T.B.?s.Y./.u".`QN.l.:
+auth dh-server-hello 192.168.1.101:60667 -> 192.168.1.101:33033 bytes: 51, data 49 DB 9F 27 1E AD 81 5E 4C 9F D5 2A 57 7E 89 AA B7 C3 D6 39 03 CC E4 FC 1F F0 83 95 DE 7E 1A 32 2D AF 30 40 22 5D 64 0B 39 D4 FC C5 01 66 89 67 5F C5 8B, ascii I..'...^L..*W~.....9.........~.2-.0@"]d.9....f.g_..
+client DH hash: 7B 5C 23 5D FD DD 25 EC
+expected hash:  7B 5C 23 5D FD DD 25 EC
+auth transport selected: stock Skype DH384 ack + direct RC4 login
+auth dh-server-ack 192.168.1.101:60667 -> 192.168.1.101:33033 bytes: 8, data 7D F5 96 47 59 3D 10 6E, ascii }..GY=.n
+auth stock login frame 1: 227 bytes, header 16 03 01 00 DE
+auth stock login frame 2: 251 bytes, header 17 03 01 00 F6
+auth dh-client-hello 192.168.1.101:60666 -> 192.168.1.101:33033 bytes: 5, data 16 03 01 00 00, ascii .....
+short TCP probe from 192.168.1.101:60666: 5 bytes, data 16 03 01 00 00
+auth stock native password verification: rejected or not provisioned
+bootstrap session 192.168.1.101:60665 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=18805
+udp probe 192.168.1.101:21166 -> 192.168.1.101:12350 bytes: 24, data 2B D4 02 11 9A 06 D4 0E 41 59 FC BE A7 BE D4 A9 A1 89 73 EB CB 31 FF B9
+udp probe decrypted 192.168.1.101/0.0.0.0 -> 192.168.1.101:12350 seq=2BD4 rnd=119A06D4 iv=2AB866B8 crc=ok expected=0E4159FC actual=0E4159FC clear 0A DA 01 2B D3 42 B7 E8 DE 18 DC 25 CC, ascii ...+.B.....%.
+udp probe opener 192.168.1.101:12350 -> 192.168.1.101/0.0.0.0 da01-no-reply seq=2BD4
+tcp probe 192.168.1.101:60678 -> 192.168.1.101:12350 bytes: 51, data 05 E6 6F 58 6A 0C 6A 2E 1B 5B 06 E0 5C 38 75 8E AC 97 6D 29 4C B8 F4 2E B4 2A 76 18 AD 29 68 F7 2A E0 7F 4F 7E FC 09 95 93 92 BE E1 BE D1 6C 47 1C DD 6A, ascii ..oXj.j..[..\8u...m)L....*v..)h.*..O~.........lG..j
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=28, data 36 2B D6 16 F2 01 2B D5 42 5C B3 CB FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+bootstrap command 192.168.1.101:60678 -> 192.168.1.101:12350 len=28 declared=28 crc/seq=2BD6 body=22 cmd=F201 prev=2BD5 tag=42 payload=42 5C B3 CB FE DC A2 11 49 0F D1 97 C4 DF 93 A0 47 9F DF 3F
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60678 bootstrap-reply bytes: 147, data 4C C1 D1 21 FB 01 2B D5 41 06 00 0B 34 00 0C EC D1 93 D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 2C 01 06 21 00 D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 02 41 07 05 01 41 02 00 00
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60678 bootstrap-reply bytes: 147, data F7 A2 14 54 4A 16 26 64 B7 23 B8 BB ED 1A E9 BE BE 75 9B 7E 70 DC 02 AC 88 10 32 41 78 E5 5C CC 0C 15 7D 3E 90 C0 7D 7D 4A C8 06 89 E0 39 A1 1C D3 2E 64 60 84 91 44 EC B3 3A E3 92 BB 52 15 42
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=4, data 07 01 C1 D2
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=11, data 14 2B D8 05 82 03 2B D7 42 2D 03
+bootstrap command 192.168.1.101:60678 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BD8 body=5 cmd=8203 prev=2BD7 tag=42 payload=42 2D 03
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data 14 A3 30 05 8B 03 2B D7 42 2D 03
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data CB E4 CD 3D 06 9F 46 AE 66 8E 9C
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=11, data 14 2B DA 05 82 03 2B D9 42 2D 61
+bootstrap command 192.168.1.101:60678 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BDA body=5 cmd=8203 prev=2BD9 tag=42 payload=42 2D 61
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data 14 A3 31 05 8B 03 2B D9 42 2D 61
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data C1 FE 0B 2F AF 51 A4 DF 92 60 93
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=11, data 14 2B DC 05 82 03 2B DB 42 2D BA
+bootstrap command 192.168.1.101:60678 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BDC body=5 cmd=8203 prev=2BDB tag=42 payload=42 2D BA
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data 14 A3 32 05 8B 03 2B DB 42 2D BA
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data 5F EA BB 89 80 1C EB FA E1 2B 48
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=11, data 14 2B DE 05 82 03 2B DD 42 2D D3
+bootstrap command 192.168.1.101:60678 -> 192.168.1.101:12350 len=11 declared=11 crc/seq=2BDE body=5 cmd=8203 prev=2BDD tag=42 payload=42 2D D3
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data 14 A3 33 05 8B 03 2B DD 42 2D D3
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 11, data F4 70 5F C5 EE E0 1B B3 BF 2D EE
+bootstrap frame 192.168.1.101:60678 -> 192.168.1.101:12350, bytes=12, data 16 2B E0 06 82 03 2B DF 42 33 48 93
+bootstrap command 192.168.1.101:60678 -> 192.168.1.101:12350 len=12 declared=12 crc/seq=2BE0 body=6 cmd=8203 prev=2BDF tag=42 payload=42 33 48 93
+tcp probe clear 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 12, data 16 A3 34 06 8B 03 2B DF 42 33 48 93
+tcp probe scripted 192.168.1.101:12350 -> 192.168.1.101:60678 keepalive-reply bytes: 12, data 69 20 66 DA 4B 62 31 7E 77 65 FA F2
+bootstrap session 192.168.1.101:60678 -> 192.168.1.101:12350 closed: peer-eof, lifetime-ms=1614
+tcp probe 127.0.0.1:60607 -> 127.0.0.1:80 bytes: 510, data 47 45 54 20 2F 75 69 2F 30 2F 34 2E 32 2E 30 2E 31 38 37 2E 2F 72 75 2F 70 61 73 73 77 6F 72 64 72 65 6D 69 6E 64 65 72 3F 75 73 65 72 6E 61 6D 65 3D 61 64 6D 69 6E 64 65 76 40 74 65 73 74 2E, ascii GET /ui/0/4.2.0.187./ru/passwordreminder?username=admindev@test.
+tcp probe 127.0.0.1:63942 -> 127.0.0.1:80 bytes: 510, data 47 45 54 20 2F 75 69 2F 30 2F 34 2E 32 2E 30 2E 31 38 37 2E 2F 72 75 2F 70 61 73 73 77 6F 72 64 72 65 6D 69 6E 64 65 72 3F 75 73 65 72 6E 61 6D 65 3D 61 64 6D 69 6E 64 65 76 40 74 65 73 74 2E, ascii GET /ui/0/4.2.0.187./ru/passwordreminder?username=admindev@test.
+tcp probe 127.0.0.1:52905 -> 127.0.0.1:80 bytes: 510, data 47 45 54 20 2F 75 69 2F 30 2F 34 2E 32 2E 30 2E 31 38 37 2E 2F 72 75 2F 70 61 73 73 77 6F 72 64 72 65 6D 69 6E 64 65 72 3F 75 73 65 72 6E 61 6D 65 3D 61 64 6D 69 6E 64 65 76 40 74 65 73 74 2E, ascii GET /ui/0/4.2.0.187./ru/passwordreminder?username=admindev@test.
+tcp probe 127.0.0.1:54225 -> 127.0.0.1:80 bytes: 536, data 47 45 54 20 2F 75 69 2F 30 2F 34 2E 32 2E 30 2E 31 38 37 2E 2F 72 75 2F 70 61 73 73 77 6F 72 64 72 65 6D 69 6E 64 65 72 3F 75 73 65 72 6E 61 6D 65 3D 61 64 6D 69 6E 64 65 76 40 74 65 73 74 2E, ascii GET /ui/0/4.2.0.187./ru/passwordreminder?username=admindev@test.

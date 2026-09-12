@@ -1,0 +1,651 @@
+2026-09-12 22:58:31 INFO  (LoggingInitialization) Using log config file: jar:file:/E:/ghidra_11.2.1_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-09-12 22:58:31 INFO  (LoggingInitialization) Using log file: skyserver\diagnostics\pe-analysis-20260907-233415\transport-periodic-20260912.log  
+2026-09-12 22:58:31 INFO  (Preferences) Loading user preferences: C:\Users\IlyaBOT\AppData\Roaming\ghidra\ghidra_11.2.1_PUBLIC\preferences  
+2026-09-12 22:58:31 INFO  (ClassSearcher) Searching for classes...  
+2026-09-12 22:58:32 INFO  (ClassSearcher) Class search complete (1085 ms)  
+2026-09-12 22:58:32 INFO  (SSLContextInitializer) Initializing SSL Context  
+2026-09-12 22:58:32 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-09-12 22:58:32 INFO  (SecureRandomFactory) Random Number Generator initialization complete: SHA1PRNG  
+2026-09-12 22:58:32 INFO  (ApplicationTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-09-12 22:58:32 INFO  (AnalyzeHeadless) Headless startup complete (2414 ms)  
+2026-09-12 22:58:33 INFO  (ClassSearcher) Class searcher loaded 57 extension points (18 false positives)  
+2026-09-12 22:58:33 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-dbgmodel-traceloader\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\PDB\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Jython\ghidra_scripts
+    I:\Open-SkyServer\skyserver\tools
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Debug\Debugger-agent-frida\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    E:\ghidra_11.2.1_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts  
+2026-09-12 22:58:33 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-09-12 22:58:33 INFO  (HeadlessAnalyzer) Opening existing project: I:\Open-SkyServer\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-12 22:58:33 INFO  (HeadlessProject) Opening project: I:\Open-SkyServer\skyserver\diagnostics\pe-analysis-20260907-233415\Skype42  
+2026-09-12 22:58:35 INFO  (HeadlessAnalyzer) REPORT: Processing project file: /Skype-uncompressed.image.bin  
+2026-09-12 22:58:36 INFO  (HeadlessAnalyzer) SCRIPT: I:\Open-SkyServer\skyserver\tools\InspectSkypeEntry.java  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> SKYPE_ENTRY 00643a40  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a40 SUB ESP,0x74  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a43 PUSH EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a44 PUSH EBP  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a45 MOV EBP,dword ptr [ESP + 0x84]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a4c PUSH ESI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a4d PUSH EDI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a4e XOR EBX,EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a50 XOR EDI,EDI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a52 LEA ESI,[EBX + 0x64]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a55 MOV ECX,EBP  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a57 MOV dword ptr [ESP + 0x14],EDI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a5b CALL 0x00517d60  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a60 TEST EAX,EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a62 JBE 0x00644132  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a68 PUSH 0x64  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a6a MOV EAX,EDI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a6c MOV EDX,EBP  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a6e CALL 0x00517dc0  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a73 CMP dword ptr [EAX],0x5  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a76 PUSH 0xb88638  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a7b JZ 0x00643aa3  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a7d PUSH 0xb88638  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a82 PUSH 0x449  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a87 PUSH 0xc98d14  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a8c PUSH 0xc98f38  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a91 PUSH 0xb89a44  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a96 CALL 0x0051fb30  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a9b ADD ESP,0x18  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643a9e JMP 0x00644117  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643aa3 MOV EAX,dword ptr [EAX + 0x8]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643aa6 PUSH 0x66  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643aa8 MOV dword ptr [ESP + 0x18],EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643aac CALL 0x00518410  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ab1 MOV EBP,EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ab3 CMP EBP,EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ab5 MOV dword ptr [ESP + 0x55],EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ab9 JZ 0x00643af8  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643abb CMP byte ptr [EBP],0x0  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643abf JZ 0x00643af8  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ac1 LEA EDX,[EAX + 0x1]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ac4 MOV CL,byte ptr [EAX]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ac6 ADD EAX,0x1  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ac9 TEST CL,CL  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643acb JNZ 0x00643ac4  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643acd SUB EAX,EDX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643acf LEA EDI,[ESP + 0x54]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ad3 MOV ESI,EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ad5 CALL 0x00525720  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ada MOV EDI,dword ptr [ESP + 0x55]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ade LEA EAX,[ESI + 0x1]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ae1 PUSH EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ae2 PUSH EBP  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ae3 PUSH EDI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ae4 CALL 0x00a90f10  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643ae9 ADD ESP,0xc  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643aec CMP EDI,EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643aee MOV dword ptr [ESP + 0x59],ESI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643af2 JZ 0x00643af8  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643af4 CMP ESI,EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643af6 JNZ 0x00643b2d  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643af8 PUSH 0xb88638  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643afd PUSH 0xb88638  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b02 PUSH 0x44d  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b07 PUSH 0xc98d14  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b0c PUSH 0xc98f40  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b11 PUSH 0xb89a44  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b16 CALL 0x0051fb30  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b1b MOV EBX,dword ptr [ESP + 0x6d]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b1f MOV EBP,dword ptr [0x00b5d120]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b25 ADD ESP,0x18  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b28 JMP 0x006440fb  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b2d PUSH EDI  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b2e LEA ECX,[ESP + 0x1c]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b32 PUSH ECX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b33 XOR EAX,EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b35 MOV dword ptr [ESP + 0x50],EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b39 MOV dword ptr [ESP + 0x54],EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b3d MOV dword ptr [ESP + 0x58],EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b41 CALL 0x0051b190  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b46 LEA EDX,[ESP + 0x18]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b4a PUSH EDX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b4b PUSH 0x10  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b4d LEA EAX,[ESP + 0x6c]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b51 PUSH EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b52 CALL 0x00529ad0  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b57 MOV ECX,dword ptr [ESP + 0x50]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b5b MOV EDI,EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b5d MOV EBP,dword ptr [EDI + 0x4]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b60 XOR EAX,EAX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b62 CMP ECX,EBX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b64 JBE 0x00643b89  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b66 CMP EAX,ECX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b68 MOV EBX,dword ptr [ESP + 0x48]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b6c LEA ESI,[EBX + 0x4]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b6f JNC 0x00643b75  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b71 MOV EDX,dword ptr [ESI]  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b73 JMP 0x00643b77  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b75 XOR EDX,EDX  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b77 CMP EDX,EBP  
+2026-09-12 22:58:36 INFO  (GhidraScript) InspectSkypeEntry.java> 00643b79 JZ 0x00643c1e  
+2026-09-12 22:58:38 INFO  (GhidraScript) InspectSkypeEntry.java> 
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00643a40(void)
+
+{
+  undefined4 *puVar1;
+  char cVar2;
+  int iVar3;
+  int *piVar4;
+  char *pcVar5;
+  char *pcVar6;
+  int iVar7;
+  undefined4 *puVar8;
+  undefined *puVar9;
+  undefined4 uVar10;
+  int iVar11;
+  uint uVar12;
+  int *piVar13;
+  int unaff_EBP;
+  code *pcVar14;
+  char **ppcVar15;
+  uint uVar16;
+  int iStack_f0;
+  char **ppcStack_ec;
+  undefined **ppuStack_e8;
+  uint *puStack_e4;
+  undefined4 uStack_e0;
+  int *piStack_dc;
+  int **ppiStack_d8;
+  uint uStack_d4;
+  undefined4 uStack_d0;
+  int *piStack_cc;
+  undefined *puStack_c8;
+  uint *puStack_c4;
+  int iStack_c0;
+  char **ppcStack_bc;
+  int *piStack_b8;
+  uint uStack_b4;
+  int iStack_b0;
+  int iStack_ac;
+  int *piStack_a8;
+  int iStack_a4;
+  undefined4 uStack_a0;
+  undefined *puStack_9c;
+  char *pcStack_98;
+  undefined *puStack_94;
+  int iStack_90;
+  int iStack_8c;
+  undefined4 uStack_88;
+  uint uStack_74;
+  int iStack_70;
+  int iStack_5c;
+  int iStack_58;
+  uint uStack_54;
+  int iStack_50;
+  undefined4 uStack_48;
+  undefined4 uStack_44;
+  int iStack_40;
+  undefined4 uStack_3b;
+  undefined4 uStack_37;
+  undefined4 uStack_33;
+  undefined3 uStack_2f;
+  
+  uVar16 = 0;
+  iStack_70 = 0;
+  uStack_88 = 0x643a60;
+  iVar3 = func_0x00517d60();
+  if (iVar3 != 0) {
+    do {
+      uStack_88 = 100;
+      iStack_8c = 0x643a73;
+      piVar4 = (int *)func_0x00517dc0();
+      iStack_8c = 0xb88638;
+      if (*piVar4 == 5) {
+        iVar3 = piVar4[2];
+        iStack_90 = 0x66;
+        puStack_94 = (undefined *)0x643ab1;
+        pcVar5 = (char *)func_0x00518410();
+        uStack_3b = (undefined *)0x0;
+        if ((pcVar5 == (char *)0x0) || (*pcVar5 == '\0')) {
+LAB_00643af8:
+          puStack_94 = (undefined *)0xb88638;
+          pcStack_98 = (char *)0xb88638;
+          puStack_9c = (undefined *)0x44d;
+          uStack_a0 = 0xc98d14;
+          iStack_a4 = 0xc98f40;
+          piStack_a8 = (int *)0xb89a44;
+          iStack_ac = 0x643b1b;
+          func_0x0051fb30();
+          iVar7 = uStack_33;
+          pcVar14 = _DAT_00b5d120;
+        }
+        else {
+          pcVar6 = pcVar5;
+          do {
+            cVar2 = *pcVar6;
+            pcVar6 = pcVar6 + 1;
+          } while (cVar2 != '\0');
+          iVar7 = (int)pcVar6 - (int)(pcVar5 + 1);
+          puStack_94 = (undefined *)0x643ada;
+          func_0x00525720();
+          puVar9 = uStack_3b;
+          puStack_94 = (undefined *)(iVar7 + 1);
+          puStack_9c = uStack_3b;
+          uStack_a0 = 0x643ae9;
+          pcStack_98 = pcVar5;
+          func_0x00a90f10();
+          uStack_37 = iVar7;
+          if ((puVar9 == (undefined *)0x0) || (iVar7 == 0)) goto LAB_00643af8;
+          puStack_94 = puVar9;
+          pcStack_98 = &stack0xffffff88;
+          uStack_48 = 0;
+          uStack_44 = 0;
+          iStack_40 = 0;
+          puStack_9c = (undefined *)0x643b46;
+          func_0x0051b190();
+          puStack_9c = &stack0xffffff80;
+          uStack_a0 = 0x10;
+          iStack_a4 = (int)&uStack_37 + 3;
+          piStack_a8 = (int *)0x643b57;
+          puVar8 = (undefined4 *)func_0x00529ad0();
+          uVar16 = 0;
+          if (uStack_54 != 0) {
+            piVar4 = (int *)(iStack_5c + 4);
+            if (uStack_54 == 0) {
+              iVar7 = 0;
+              goto LAB_00643b77;
+            }
+            do {
+              iVar7 = *piVar4;
+LAB_00643b77:
+              if (iVar7 == puVar8[1]) {
+                if (uVar16 != 0xffffffff) {
+                  puVar1 = (undefined4 *)(iStack_5c + uVar16 * 0x1c);
+                  *puVar1 = *puVar8;
+                  puVar1[1] = puVar8[1];
+                  puVar1[2] = puVar8[2];
+                  if (puVar8 + 3 != puVar1 + 3) {
+                    piStack_a8 = (int *)puVar8[3];
+                    iStack_ac = 0x643c55;
+                    func_0x0051b000();
+                  }
+                  piStack_a8 = (int *)puVar8[6];
+                  iStack_ac = 0x643c67;
+                  func_0x0051dfc0();
+                  goto LAB_00643b95;
+                }
+                break;
+              }
+              uVar16 = uVar16 + 1;
+              piVar4 = piVar4 + 7;
+            } while (uVar16 < uStack_54);
+          }
+          piStack_a8 = &iStack_5c;
+          iStack_ac = 0x643b95;
+          func_0x00528210();
+LAB_00643b95:
+          pcVar14 = _DAT_00b5d120;
+          iStack_ac = CONCAT31(uStack_2f,uStack_33._3_1_);
+          if (iStack_ac != 0) {
+            iStack_b0 = 0x643ba6;
+            (*_DAT_00b5d120)();
+          }
+          iStack_ac = CONCAT31((undefined3)uStack_37,uStack_3b._3_1_);
+          if (iStack_ac != 0) {
+            iStack_b0 = 0x643bb1;
+            (*pcVar14)();
+          }
+          iStack_ac = CONCAT31((undefined3)uStack_33,uStack_37._3_1_);
+          if (iStack_ac != 0) {
+            iStack_b0 = 0x643bbc;
+            (*pcVar14)();
+          }
+          if (iStack_90 != 0) {
+            iStack_ac = iStack_90;
+            iStack_b0 = 0x643bc7;
+            (*pcVar14)();
+          }
+          if (iStack_8c != 0) {
+            iStack_ac = iStack_8c;
+            iStack_b0 = 0x643bd2;
+            (*pcVar14)();
+          }
+          iStack_ac = 0xb88638;
+          iStack_b0 = 0x65;
+          uStack_b4 = 0x643be2;
+          uStack_b4 = func_0x00518410();
+          piStack_b8 = &iStack_90;
+          ppcStack_bc = (char **)0x643bef;
+          func_0x0051b190();
+          ppcStack_bc = &pcStack_98;
+          iStack_c0 = 0x14;
+          puStack_c4 = &uStack_54;
+          puStack_c8 = (undefined *)0x643c00;
+          puVar8 = (undefined4 *)func_0x00529ad0();
+          uVar16 = 0;
+          if (uStack_74 != 0) {
+            piVar4 = (int *)(unaff_EBP + 4);
+            if (uStack_74 == 0) {
+              iVar7 = 0;
+              goto LAB_00643c6e;
+            }
+            do {
+              iVar7 = *piVar4;
+LAB_00643c6e:
+              if (iVar7 == puVar8[1]) {
+                if (uVar16 != 0xffffffff) {
+                  puVar1 = (undefined4 *)(unaff_EBP + uVar16 * 0x1c);
+                  *puVar1 = *puVar8;
+                  puVar1[1] = puVar8[1];
+                  puVar1[2] = puVar8[2];
+                  if (puVar8 + 3 != puVar1 + 3) {
+                    puStack_c8 = (undefined *)puVar8[3];
+                    piStack_cc = (int *)0x643d4c;
+                    func_0x0051b000();
+                  }
+                  puStack_c8 = (undefined *)puVar8[6];
+                  piStack_cc = (int *)0x643d5e;
+                  func_0x0051dfc0();
+                  goto LAB_00643c8c;
+                }
+                break;
+              }
+              uVar16 = uVar16 + 1;
+              piVar4 = piVar4 + 7;
+            } while (uVar16 < uStack_74);
+          }
+          puStack_c8 = &stack0xffffff84;
+          piStack_cc = (int *)0x643c8c;
+          func_0x00528210();
+LAB_00643c8c:
+          pcVar14 = _DAT_00b5d120;
+          if (iStack_50 != 0) {
+            piStack_cc = (int *)iStack_50;
+            uStack_d0 = 0x643c9d;
+            (*_DAT_00b5d120)();
+          }
+          if (iStack_58 != 0) {
+            piStack_cc = (int *)iStack_58;
+            uStack_d0 = 0x643ca8;
+            (*pcVar14)();
+          }
+          if (uStack_54 != 0) {
+            piStack_cc = (int *)uStack_54;
+            uStack_d0 = 0x643cb3;
+            (*pcVar14)();
+          }
+          if (piStack_a8 != (int *)0x0) {
+            piStack_cc = piStack_a8;
+            uStack_d0 = 0x643cbe;
+            (*pcVar14)();
+          }
+          if (iStack_a4 != 0) {
+            piStack_cc = (int *)iStack_a4;
+            uStack_d0 = 0x643cc9;
+            (*pcVar14)();
+          }
+          piStack_cc = (int *)0xb88638;
+          uStack_d0 = 0x67;
+          uStack_d4 = 0x643cd9;
+          uStack_d4 = func_0x00518410();
+          ppiStack_d8 = &piStack_a8;
+          piStack_dc = (int *)0x643ce6;
+          func_0x0051b190();
+          piStack_dc = &iStack_b0;
+          uStack_e0 = 0x28;
+          puStack_e4 = &uStack_74;
+          ppuStack_e8 = (undefined **)0x643cf7;
+          puVar8 = (undefined4 *)func_0x00529ad0();
+          puVar9 = (undefined *)0x0;
+          if (puStack_94 != (undefined *)0x0) {
+            piVar4 = (int *)(puStack_9c + 4);
+            if (puStack_94 == (undefined *)0x0) {
+              iVar7 = 0;
+              goto LAB_00643d65;
+            }
+            do {
+              iVar7 = *piVar4;
+LAB_00643d65:
+              if (iVar7 == puVar8[1]) {
+                if (puVar9 != (undefined *)0xffffffff) {
+                  puVar1 = (undefined4 *)(puStack_9c + (int)puVar9 * 0x1c);
+                  *puVar1 = *puVar8;
+                  puVar1[1] = puVar8[1];
+                  puVar1[2] = puVar8[2];
+                  if (puVar8 + 3 != puVar1 + 3) {
+                    ppuStack_e8 = (undefined **)puVar8[3];
+                    ppcStack_ec = (char **)0x643e43;
+                    func_0x0051b000();
+                  }
+                  ppuStack_e8 = (undefined **)puVar8[6];
+                  ppcStack_ec = (char **)0x643e55;
+                  func_0x0051dfc0();
+                  goto LAB_00643d83;
+                }
+                break;
+              }
+              puVar9 = puVar9 + 1;
+              piVar4 = piVar4 + 7;
+            } while (puVar9 < puStack_94);
+          }
+          ppuStack_e8 = &puStack_9c;
+          ppcStack_ec = (char **)0x643d83;
+          func_0x00528210();
+LAB_00643d83:
+          pcVar14 = _DAT_00b5d120;
+          if (iStack_70 != 0) {
+            ppcStack_ec = (char **)iStack_70;
+            iStack_f0 = 0x643d94;
+            (*_DAT_00b5d120)();
+          }
+          if (iVar3 != 0) {
+            iStack_f0 = 0x643d9f;
+            ppcStack_ec = (char **)iVar3;
+            (*pcVar14)();
+          }
+          if (uStack_74 != 0) {
+            ppcStack_ec = (char **)uStack_74;
+            iStack_f0 = 0x643daa;
+            (*pcVar14)();
+          }
+          if (iStack_c0 != 0) {
+            ppcStack_ec = (char **)iStack_c0;
+            iStack_f0 = 0x643db5;
+            (*pcVar14)();
+          }
+          if (ppcStack_bc != (char **)0x0) {
+            ppcStack_ec = ppcStack_bc;
+            iStack_f0 = 0x643dc0;
+            (*pcVar14)();
+          }
+          ppcStack_ec = (char **)0xb88638;
+          iStack_f0 = 0x68;
+          iVar3 = func_0x00518410();
+          func_0x0051b190();
+          puVar8 = (undefined4 *)func_0x00529ad0(&puStack_94,0x2c,&puStack_c8);
+          uVar16 = 0;
+          if (uStack_b4 != 0) {
+            ppcVar15 = ppcStack_bc + 1;
+            if (uStack_b4 == 0) {
+              pcVar5 = (char *)0x0;
+              goto LAB_00643e5c;
+            }
+            do {
+              pcVar5 = *ppcVar15;
+LAB_00643e5c:
+              if (pcVar5 == (char *)puVar8[1]) {
+                if (uVar16 != 0xffffffff) {
+                  ppcVar15 = ppcStack_bc + uVar16 * 7;
+                  *ppcVar15 = (char *)*puVar8;
+                  ppcVar15[1] = (char *)puVar8[1];
+                  ppcVar15[2] = (char *)puVar8[2];
+                  if ((char **)(puVar8 + 3) != ppcVar15 + 3) {
+                    func_0x0051b000((char *)puVar8[3]);
+                  }
+                  func_0x0051dfc0(puVar8[6]);
+                  goto LAB_00643e7a;
+                }
+                break;
+              }
+              uVar16 = uVar16 + 1;
+              ppcVar15 = ppcVar15 + 7;
+            } while (uVar16 < uStack_b4);
+          }
+          func_0x00528210(&ppcStack_bc);
+LAB_00643e7a:
+          pcVar14 = _DAT_00b5d120;
+          if (iStack_90 != 0) {
+            (*_DAT_00b5d120)(iStack_90);
+          }
+          if (pcStack_98 != (char *)0x0) {
+            (*pcVar14)(pcStack_98);
+          }
+          if (puStack_94 != (undefined *)0x0) {
+            (*pcVar14)(puStack_94);
+          }
+          if (ppiStack_d8 != (int **)0x0) {
+            (*pcVar14)(ppiStack_d8);
+          }
+          if (uStack_d4 != 0) {
+            (*pcVar14)(uStack_d4);
+          }
+          uVar10 = func_0x00518410(0x69,0xb88638);
+          func_0x0051b190(&ppiStack_d8,uVar10);
+          piVar4 = (int *)func_0x00529ad0(&uStack_b4,0x30,&uStack_e0);
+          uVar16 = 0;
+          if (uStack_d4 != 0) {
+            piVar13 = piStack_dc + 1;
+            if (uStack_d4 == 0) {
+              iVar7 = 0;
+              goto LAB_00643f53;
+            }
+            do {
+              iVar7 = *piVar13;
+LAB_00643f53:
+              if (iVar7 == piVar4[1]) {
+                if (uVar16 != 0xffffffff) {
+                  piVar13 = piStack_dc + uVar16 * 7;
+                  *piVar13 = *piVar4;
+                  piVar13[1] = piVar4[1];
+                  piVar13[2] = piVar4[2];
+                  if (piVar4 + 3 != piVar13 + 3) {
+                    func_0x0051b000(piVar4[3]);
+                  }
+                  func_0x0051dfc0(piVar4[6]);
+                  goto LAB_00643f71;
+                }
+                break;
+              }
+              uVar16 = uVar16 + 1;
+              piVar13 = piVar13 + 7;
+            } while (uVar16 < uStack_d4);
+          }
+          func_0x00528210(&piStack_dc);
+LAB_00643f71:
+          pcVar14 = _DAT_00b5d120;
+          if (iStack_b0 != 0) {
+            (*_DAT_00b5d120)(iStack_b0);
+          }
+          if (piStack_b8 != (int *)0x0) {
+            (*pcVar14)(piStack_b8);
+          }
+          if (uStack_b4 != 0) {
+            (*pcVar14)(uStack_b4);
+          }
+          if (iStack_f0 != 0) {
+            (*pcVar14)(iStack_f0);
+          }
+          if (ppcStack_ec != (char **)0x0) {
+            (*pcVar14)(ppcStack_ec);
+          }
+          iVar7 = CONCAT13((undefined)uStack_d0,uStack_d4._1_3_);
+          func_0x0051b190(&ppuStack_e8,iVar7);
+          piVar4 = piStack_a8;
+          if (*(int *)(piStack_a8[1] + 0x3c4) == 0) {
+            piVar13 = (int *)0x0;
+          }
+          else {
+            piVar13 = (int *)(*(int *)(piStack_a8[1] + 0x3c4) + 0x4b);
+          }
+          iVar11 = (**(code **)(*piVar13 + 0xc))(&iStack_f0,1);
+          if (&iStack_c0 != (int *)0x0) {
+            (*pcVar14)(&iStack_c0);
+          }
+          if (iVar3 != 0) {
+            (*pcVar14)(iVar3);
+          }
+          iVar3 = *(int *)(*(int *)(piVar4[2] + 0xe) + 0x3f4);
+          if (iVar3 == 0) {
+            puVar8 = (undefined4 *)0x0;
+          }
+          else {
+            puVar8 = (undefined4 *)(iVar3 + 0x17);
+          }
+          (**(code **)*puVar8)();
+          iVar3 = func_0x007a3420();
+          if (iVar3 == 0) {
+            iVar3 = *(int *)(*(int *)(piVar4[2] + 0xe) + 0x3c4);
+            if (iVar3 == 0) {
+              piVar4 = (int *)0x0;
+            }
+            else {
+              piVar4 = (int *)(iVar3 + 0x17);
+            }
+            (**(code **)(*piVar4 + 0x94))(iVar11,&iStack_f0,1,1);
+          }
+          if (iVar11 == 0) {
+            func_0x0051fb30(0xb89a44,0xc98d2c,0xc98d14,0x461,0xb88638,0xb88638);
+          }
+          else {
+            uVar10 = func_0x00518120(0x6a,0xffffffff,0,0);
+            func_0x00642360(iVar11,uVar10);
+          }
+          func_0x004f87c0(0);
+          if (iStack_40 != 0) {
+            iStack_8c = iStack_40;
+            iStack_90 = 0x6440fb;
+            (*pcVar14)();
+          }
+        }
+        if (iVar7 != 0) {
+          iStack_90 = 0x644102;
+          iStack_8c = iVar7;
+          (*pcVar14)();
+        }
+        uStack_33 = 0;
+      }
+      else {
+        iStack_90 = 0xb88638;
+        puStack_94 = (undefined *)0x449;
+        pcStack_98 = (char *)0xc98d14;
+        puStack_9c = (undefined *)0xc98f38;
+        uStack_a0 = 0xb89a44;
+        iStack_a4 = 0x643a9b;
+        func_0x0051fb30();
+        uStack_74 = uVar16;
+      }
+      uVar16 = uStack_74 + 1;
+      iStack_8c = 0x64412a;
+      uStack_74 = uVar16;
+      uVar12 = func_0x00517d60();
+    } while (uVar16 < uVar12);
+  }
+  return;
+}
+
+  
+2026-09-12 22:58:39 INFO  (HeadlessAnalyzer) REPORT: Save succeeded for processed file: /Skype-uncompressed.image.bin  
