@@ -126,6 +126,39 @@ internal static class NativeLoginTests
             using (NativeLoginRequest largeId = NativeLoginRequest.Parse(record1,
                 Protect(LoginPayload(digest, clientKey, 0x1399, false, UInt32.MaxValue), material), keys))
                 Check(largeId.RequestId == UInt32.MaxValue, "full-width request identifier");
+            byte[] listRequest = Protect(LoginPayload(digest, null, 0x178e, false, 3), material);
+            using (NativeLoginRequest lists = NativeLoginRequest.Parse(record1, listRequest, keys))
+                Check(lists.Operation == 0x178e && lists.ClientPublicKey == null, "contact index has no credential modulus");
+            byte[] expectedLists = NativeCredentials.ContactListsPayload(true, 3);
+            int headerSize;
+            List<SkypeField> listHeader = SkypeBlobCodec.Decode(expectedLists, out headerSize);
+            Check(SkypeBlobCodec.Required(listHeader, 0, 1).Number == 0x1450, "CBL status differs from login status");
+            Check(SkypeBlobCodec.Required(listHeader, 0, 2).Number == 3, "CBL correlation identifier");
+            byte[] listBody = new byte[expectedLists.Length - headerSize];
+            Buffer.BlockCopy(expectedLists, headerSize, listBody, 0, listBody.Length);
+            List<SkypeField> listFields = SkypeBlobCodec.Decode(listBody, out consumed);
+            Check(consumed == listBody.Length && listFields.Count == 1 &&
+                SkypeBlobCodec.Required(SkypeBlobCodec.Required(listFields, 5, 0x38).Children, 0, 7).Number == 1,
+                "CBL owner-local collection identifier");
+            ProtocolTests.RunCommunityTransport("4.2 contact index uses verified DB contacts", keys, record1, listRequest, null,
+                expectedLists.Length + 7, delegate(byte[] response) {
+                    byte[] cipherText = new byte[response.Length - 7];
+                    Buffer.BlockCopy(response, 5, cipherText, 0, cipherText.Length);
+                    Check(Equal(CommunityKeys.LoginAesCtr(CommunityKeys.DeriveLoginAesKey(material), cipherText, 1), expectedLists),
+                        "CBL response contents");
+                });
+            ProtocolTests.RunCommunityTransport("4.2 contact index rejects wrong password", keys, record1,
+                Protect(LoginPayload(new byte[16], null, 0x178e, false, 3), material), null);
+            Execute(database, "DELETE FROM contacts WHERE owner_login='native.test';");
+            byte[] emptyLists = NativeCredentials.ContactListsPayload(false, 3);
+            Check(Equal(emptyLists, Hex("41020001D0280002034100")), "empty CBL wire fixture");
+            ProtocolTests.RunCommunityTransport("4.2 contact index reflects an empty database list", keys, record1, listRequest, null,
+                emptyLists.Length + 7, delegate(byte[] response) {
+                    byte[] cipherText = new byte[response.Length - 7];
+                    Buffer.BlockCopy(response, 5, cipherText, 0, cipherText.Length);
+                    Check(Equal(CommunityKeys.LoginAesCtr(CommunityKeys.DeriveLoginAesKey(material), cipherText, 1), emptyLists),
+                        "CBL reads current database state");
+                });
             Reject(delegate { NativeLoginRequest.Parse(record1, Protect(LoginPayload(digest, clientKey, 0x1399, false, 0), material), keys); },
                 "zero request identifier");
             ProtocolTests.RunCommunityTransport("4.2 email query rejects wrong password", keys, record1,
@@ -151,11 +184,14 @@ internal static class NativeLoginTests
                 Buffer.BlockCopy(compressed, 0, shortPacket, 0, count);
                 Reject(delegate { int used; SkypeBlobCodec.Decode(shortPacket, out used); }, "truncated 42 exchange " + count);
             }
+            NativeContactSyncTests.Run(database, keys, record1, digest, material);
             Execute(database, "UPDATE accounts SET is_active=0 WHERE login='native.test';");
             Check(!database.ValidateNativePasswordHash("native.test", digest), "inactive native account");
             database.RemoveAccount("native.test");
             Check(Query(database, "SELECT COUNT(*) FROM native_password_verifiers WHERE login='native.test';").Trim() == "0", "native verifier cascades on removal");
             Check(Query(database, "SELECT COUNT(*) FROM account_profiles WHERE login='native.test';").Trim() == "0", "email cascades on removal");
+            Check(Query(database, "SELECT COUNT(*) FROM native_documents WHERE login='native.test';").Trim() == "0", "native documents cascade on removal");
+            Check(Query(database, "SELECT COUNT(*) FROM native_document_versions WHERE login='native.test';").Trim() == "0", "document version cascades on removal");
             Console.WriteLine("PASS native login tests: original 42 layout, RSA/AES/CRC parsing, salted DB verifiers, migration, signed response and rejection paths. No real-client login is claimed.");
         }
         finally

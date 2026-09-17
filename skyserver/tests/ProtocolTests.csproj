@@ -14,6 +14,10 @@
     <Reference Include="System.Xml" />
     <Compile Include="CommunityKeysTests.cs" />
     <Compile Include="NativeLoginTests.cs" />
+    <Compile Include="NativeContactSyncTests.cs" />
+    <Compile Include="NativeDirectorySearchTests.cs" />
+    <Compile Include="..\NativeDirectorySearch.cs"><Link>NativeDirectorySearch.cs</Link></Compile>
+    <Compile Include="..\NativeContactSync.cs"><Link>NativeContactSync.cs</Link></Compile>
     <Compile Include="UdpDestinationTests.cs" />
     <Compile Include="SessionLifetimeTests.cs" />
     <Compile Include="..\SkypeTcpFrameBuffer.cs"><Link>SkypeTcpFrameBuffer.cs</Link></Compile>

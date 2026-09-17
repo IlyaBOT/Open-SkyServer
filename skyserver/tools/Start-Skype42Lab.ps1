@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)][string]$Directory,
+    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9_-]{0,63}$')][string]$ProfileName = 'profile',
     [string]$Username,
     [string]$Password
 )
@@ -17,7 +18,7 @@ if ([string]::IsNullOrEmpty($Username) -ne [string]::IsNullOrEmpty($Password)) {
 foreach ($value in @($Username, $Password)) {
     if ($value -match '[\x00-\x20"\\]') { throw 'This lab launcher does not accept whitespace, quotes, or slashes in command-line credentials.' }
 }
-$profile = Join-Path $Directory 'profile'
+$profile = Join-Path $Directory $ProfileName
 if (-not (Test-Path -LiteralPath $profile)) {
     $acl = New-Object Security.AccessControl.DirectorySecurity
     $acl.SetAccessRuleProtection($true, $false)

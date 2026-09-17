@@ -14,6 +14,7 @@ namespace SkyServer
         public byte[] AesKey;
         public uint Operation;
         public uint RequestId;
+        public List<SkypeField> Metadata;
 
         public static NativeLoginRequest Parse(byte[] keyRecord, byte[] loginRecord, CommunityKeys keys)
         {
@@ -44,8 +45,6 @@ namespace SkyServer
                 request.Operation = operation;
                 // 4.2 account_manager_t at VA 005A8191 submits 0x1399;
                 // the later reconstructed client uses 0x13a3 with the same fields.
-                if (operation != 0x1399 && operation != 0x13a3 && operation != 0x139c)
-                    throw new InvalidDataException("Unsupported native operation 0x" + operation.ToString("X") + "; fields " + DescribeFields(account));
                 // The live client increments 0/2 between account RPCs (1 for
                 // login, 2 for email). Preserve it in the response envelope.
                 request.RequestId = SkypeBlobCodec.Required(account, 0, 2).Number;
@@ -59,7 +58,12 @@ namespace SkyServer
                 Buffer.BlockCopy(clear, consumed, metadata, 0, metadata.Length);
                 List<SkypeField> client = SkypeBlobCodec.Decode(metadata, out consumed);
                 if (consumed != metadata.Length) throw new InvalidDataException("Trailing client metadata");
-                if (operation == 0x139c) return request;
+                request.Metadata = client;
+                if (operation != 0x1399 && operation != 0x13a3 && operation != 0x139c && operation != 0x178e &&
+                    operation != 0x1788 && operation != 0x1789 && operation != 0x178a && operation != 0x178b && operation != 0x178c && operation != 0x1792 && operation != 0x4278)
+                    throw new InvalidDataException("Unsupported native operation 0x" + operation.ToString("X") +
+                        "; account fields " + DescribeFields(account) + "; metadata fields " + DescribeFields(client));
+                if (operation != 0x1399 && operation != 0x13a3) return request;
                 request.ClientPublicKey = SkypeBlobCodec.Required(client, 4, 0x21).Bytes;
                 if (request.ClientPublicKey.Length != 128 || (request.ClientPublicKey[0] & 0x80) == 0 || (request.ClientPublicKey[127] & 1) == 0)
                     throw new InvalidDataException("Expected a 1024-bit odd client RSA modulus");
@@ -115,6 +119,16 @@ namespace SkyServer
         {
             if (PasswordDigest != null) Array.Clear(PasswordDigest, 0, PasswordDigest.Length);
             if (AesKey != null) Array.Clear(AesKey, 0, AesKey.Length);
+            if (Metadata != null) ClearFields(Metadata);
+        }
+
+        private static void ClearFields(List<SkypeField> fields)
+        {
+            foreach (SkypeField field in fields)
+            {
+                if (field.Bytes != null) Array.Clear(field.Bytes, 0, field.Bytes.Length);
+                if (field.Children != null) ClearFields(field.Children);
+            }
         }
     }
 }

@@ -125,10 +125,20 @@ namespace SkyServer
             }), requestId);
         }
 
-        private static byte[] AccountResponse(byte[] body, uint requestId)
+        internal static byte[] ContactListsPayload(bool hasContacts, uint requestId)
+        {
+            // 4.2 VA 005A4514 consumes repeated 5/38 lists and requests
+            // their nonzero 0/7 identifier via 0x1792. One owner-local list.
+            List<SkypeField> lists = new List<SkypeField>();
+            if (hasContacts) lists.Add(new SkypeField { Type = 5, Id = 0x38,
+                Children = new List<SkypeField> { Number(7, 1) } });
+            return AccountResponse(SkypeBlobCodec.Encode(lists), requestId, 0x1450);
+        }
+
+        internal static byte[] AccountResponse(byte[] body, uint requestId, uint status = 0x1068)
         {
             if (requestId == 0) throw new InvalidDataException("Zero native response identifier");
-            byte[] header = SkypeBlobCodec.Encode(new List<SkypeField> { Number(1, 0x1068), Number(2, requestId) });
+            byte[] header = SkypeBlobCodec.Encode(new List<SkypeField> { Number(1, status), Number(2, requestId) });
             byte[] result = new byte[header.Length + body.Length];
             Buffer.BlockCopy(header, 0, result, 0, header.Length);
             Buffer.BlockCopy(body, 0, result, header.Length, body.Length);

@@ -44,6 +44,8 @@
     <Compile Include="SkypeBlobCodec.cs" />
     <Compile Include="NativeLoginRequest.cs" />
     <Compile Include="NativeCredentials.cs" />
+    <Compile Include="NativeContactSync.cs" />
+    <Compile Include="NativeDirectorySearch.cs" />
     <Compile Include="ProbeUdpServer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SkypeNativeRc4.cs" />

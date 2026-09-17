@@ -62,6 +62,27 @@ CREATE TABLE IF NOT EXISTS account_profiles (
     FOREIGN KEY(login) REFERENCES accounts(login) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS native_document_versions (
+    login TEXT PRIMARY KEY,
+    revision INTEGER NOT NULL DEFAULT 1 CHECK(revision BETWEEN 1 AND 4294967295),
+    FOREIGN KEY(login) REFERENCES accounts(login) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS native_documents (
+    login TEXT NOT NULL,
+    name TEXT NOT NULL,
+    checksum INTEGER NOT NULL,
+    body TEXT NOT NULL,
+    PRIMARY KEY(login,name),
+    UNIQUE(login,checksum),
+    FOREIGN KEY(login) REFERENCES accounts(login) ON DELETE CASCADE
+);
+
+CREATE TRIGGER IF NOT EXISTS native_documents_quota BEFORE INSERT ON native_documents
+WHEN NOT EXISTS(SELECT 1 FROM native_documents WHERE login=NEW.login AND name=NEW.name)
+AND (SELECT COUNT(*) FROM native_documents WHERE login=NEW.login)>=1024
+BEGIN SELECT RAISE(ABORT,'Native document quota reached'); END;
+
 CREATE TABLE IF NOT EXISTS sessions (
     token TEXT PRIMARY KEY,
     login TEXT NOT NULL,
@@ -84,6 +105,8 @@ CREATE TABLE IF NOT EXISTS messages (
 CREATE INDEX IF NOT EXISTS idx_contacts_owner ON contacts(owner_login);
 CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient_login, id);
 ");
+            foreach (string owner in SplitLines(Query("SELECT DISTINCT c.owner_login FROM contacts c JOIN accounts a ON a.login=c.owner_login WHERE a.is_active=1 ORDER BY c.owner_login;")))
+                EnsureNativeContactDocuments(owner);
         }
 
         public void AddAccount(string login, string displayName, string password)
@@ -259,6 +282,46 @@ CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient
             return new Account { Login = parts[0], DisplayName = parts.Length > 1 ? parts[1] : parts[0] };
         }
 
+        internal List<Account> SearchNativeDirectory(List<NativeDirectoryTerm> terms)
+        {
+            if (terms == null || terms.Count == 0 || terms.Count > 8)
+                throw new InvalidDataException("Expected 1..8 directory filters");
+            List<string> predicates = new List<string>();
+            foreach (NativeDirectoryTerm term in terms)
+            {
+                NativeDirectorySearch.ValidateTerm(term);
+                string column = term.Property == 0 ? "a.login" : term.Property == 1 ? "COALESCE(p.email,'')" : "a.display_name";
+                string value = Sql(term.Text);
+                if (term.Comparison == 0) predicates.Add(column + "=" + value + " COLLATE NOCASE");
+                else if (term.Comparison == 5) predicates.Add("substr(" + column + ",1,length(" + value + "))=" + value + " COLLATE NOCASE");
+                else predicates.Add("instr(lower(" + column + "),lower(" + value + "))>0");
+            }
+            // Hex encodes result columns so tabs/newlines in existing profiles
+            // cannot become sqlite CLI record separators. No private fields leave DB.
+            string rows = Query("SELECT hex(a.login),hex(a.display_name) FROM accounts a LEFT JOIN account_profiles p ON p.login=a.login " +
+                "WHERE a.is_active=1 AND " + String.Join(" AND ", predicates.ToArray()) + " ORDER BY a.login COLLATE NOCASE,a.login LIMIT 20;");
+            List<Account> matches = new List<Account>();
+            foreach (string row in SplitLines(rows))
+            {
+                string[] columns = SplitRow(row);
+                if (columns.Length != 2) throw new InvalidDataException("Invalid directory database row");
+                Account account = new Account { Login = DecodeHexText(columns[0]), DisplayName = DecodeHexText(columns[1]) };
+                if (Encoding.UTF8.GetByteCount(account.Login) > 128 || Encoding.UTF8.GetByteCount(account.DisplayName) > 512 ||
+                    account.Login.IndexOf('\0') >= 0 || account.DisplayName.IndexOf('\0') >= 0)
+                    throw new InvalidDataException("Directory profile exceeds native wire limits");
+                matches.Add(account);
+            }
+            return matches;
+        }
+
+        private static string DecodeHexText(string hex)
+        {
+            if ((hex.Length & 1) != 0) throw new InvalidDataException("Invalid hex text length");
+            byte[] bytes = new byte[hex.Length / 2];
+            for (int i = 0; i < bytes.Length; i++) bytes[i] = Byte.Parse(hex.Substring(i * 2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+            return new UTF8Encoding(false, true).GetString(bytes);
+        }
+
         public List<Account> GetContacts(string ownerLogin)
         {
             List<Account> contacts = new List<Account>();
@@ -274,6 +337,93 @@ CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient
             }
 
             return contacts;
+        }
+
+        internal void EnsureNativeContactDocuments(string login)
+        {
+            lock (syncRoot)
+            {
+                NativeDocumentSnapshot snapshot = GetNativeDocuments(login);
+                foreach (Account contact in GetContacts(login))
+                {
+                    string name = "u/" + contact.Login;
+                    if (snapshot.Documents.Exists(delegate(NativeDocument document) { return document.Name == name; })) continue;
+                    byte[] body = NativeContactSync.ContactDocument(contact);
+                    PutNativeDocument(login, name, body, NativeLoginRequest.Crc(body, body.Length));
+                }
+            }
+        }
+
+        internal NativeDocumentSnapshot GetNativeDocuments(string login)
+        {
+            lock (syncRoot)
+            {
+                if (GetAccount(login) == null) throw new InvalidOperationException("Account does not exist");
+                // One SELECT gives a consistent revision + document snapshot even
+                // when another server process commits an upload concurrently.
+                string output = Query("SELECT COALESCE(v.revision,1),d.name,d.checksum,d.body FROM accounts a " +
+                    "LEFT JOIN native_document_versions v ON v.login=a.login LEFT JOIN native_documents d ON d.login=a.login " +
+                    "WHERE a.login=" + Sql(login) + " AND a.is_active=1 ORDER BY d.name;");
+                NativeDocumentSnapshot snapshot = new NativeDocumentSnapshot();
+                foreach (string line in SplitLines(output))
+                {
+                    string[] row = SplitRow(line);
+                    snapshot.Revision = UInt32.Parse(row[0], CultureInfo.InvariantCulture);
+                    if (row.Length >= 4 && row[1].Length != 0)
+                        snapshot.Documents.Add(new NativeDocument { Name = row[1],
+                            Checksum = UInt32.Parse(row[2], CultureInfo.InvariantCulture), Body = Convert.FromBase64String(row[3]) });
+                }
+                if (snapshot.Revision == 0) throw new InvalidOperationException("Account is unavailable");
+                return snapshot;
+            }
+        }
+
+        internal uint PutNativeDocument(string login, string name, byte[] body, uint checksum)
+        {
+            NativeContactSync.ValidateDocument(name, body, checksum);
+            lock (syncRoot)
+            {
+                NativeDocumentSnapshot snapshot = GetNativeDocuments(login);
+                bool replacing = false;
+                foreach (NativeDocument document in snapshot.Documents)
+                {
+                    if (document.Name == name) replacing = true;
+                    else if (document.Checksum == checksum)
+                        throw new InvalidDataException("Native document checksum collision");
+                }
+                if (!replacing && snapshot.Documents.Count >= 1024) throw new InvalidDataException("Native document quota reached");
+                string encoded = Convert.ToBase64String(body);
+                // Serialize the mutation and revision bump in SQLite; acknowledge
+                // only after COMMIT. Retried identical uploads keep their version.
+                string output = Query("BEGIN IMMEDIATE; INSERT OR IGNORE INTO native_document_versions(login) VALUES (" + Sql(login) + ");" +
+                    "UPDATE native_document_versions SET revision=revision+1 WHERE login=" + Sql(login) +
+                    " AND NOT EXISTS(SELECT 1 FROM native_documents WHERE login=" + Sql(login) + " AND name=" + Sql(name) +
+                    " AND checksum=" + checksum.ToString(CultureInfo.InvariantCulture) + " AND body=" + Sql(encoded) + ");" +
+                    "UPDATE native_documents SET checksum=" + checksum.ToString(CultureInfo.InvariantCulture) + ",body=" + Sql(encoded) +
+                    " WHERE login=" + Sql(login) + " AND name=" + Sql(name) + ";" +
+                    "INSERT INTO native_documents(login,name,checksum,body) SELECT " + Sql(login) + "," + Sql(name) + "," +
+                    checksum.ToString(CultureInfo.InvariantCulture) + "," + Sql(encoded) + " WHERE NOT EXISTS(SELECT 1 FROM native_documents WHERE login=" +
+                    Sql(login) + " AND name=" + Sql(name) + ");" +
+                    "SELECT revision FROM native_document_versions WHERE login=" + Sql(login) + "; COMMIT;");
+                return UInt32.Parse(output.Trim(), CultureInfo.InvariantCulture);
+            }
+        }
+
+        internal uint RemoveNativeDocument(string login, string name)
+        {
+            NativeContactSync.ValidateName(name);
+            lock (syncRoot)
+            {
+                if (GetAccount(login) == null) throw new InvalidOperationException("Account does not exist");
+                string output = Query("BEGIN IMMEDIATE; INSERT OR IGNORE INTO native_document_versions(login) VALUES (" + Sql(login) + ");" +
+                    "UPDATE native_document_versions SET revision=revision+1 WHERE login=" + Sql(login) +
+                    " AND EXISTS(SELECT 1 FROM native_documents WHERE login=" + Sql(login) + " AND name=" + Sql(name) + ");" +
+                    "DELETE FROM native_documents WHERE login=" + Sql(login) + " AND name=" + Sql(name) + ";" +
+                    (name.StartsWith("u/", StringComparison.Ordinal) ? "DELETE FROM contacts WHERE owner_login=" + Sql(login) +
+                        " AND contact_login=" + Sql(name.Substring(2)) + ";" : "") +
+                    "SELECT revision FROM native_document_versions WHERE login=" + Sql(login) + "; COMMIT;");
+                return UInt32.Parse(output.Trim(), CultureInfo.InvariantCulture);
+            }
         }
 
         public string CreateSession(string login)
@@ -398,7 +548,7 @@ CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient
             {
                 ProcessStartInfo psi = new ProcessStartInfo();
                 psi.FileName = sqlitePath;
-                psi.Arguments = QuoteArg(dbPath) + " -batch -noheader -tabs";
+                psi.Arguments = QuoteArg(dbPath) + " -batch -bail -noheader -tabs";
                 psi.UseShellExecute = false;
                 psi.RedirectStandardInput = true;
                 psi.RedirectStandardOutput = true;

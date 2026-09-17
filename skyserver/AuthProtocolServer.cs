@@ -234,8 +234,14 @@ namespace SkyServer
                 Console.WriteLine("auth stock native password verification: {0}", valid ? "valid" : "rejected or not provisioned");
                 if (!valid) return;
                 byte[] payload;
-                if (request.Operation == 0x139c)
+                if (request.Operation == 0x4278)
+                    payload = NativeDirectorySearch.Respond(request, database);
+                else if (request.Operation == 0x139c)
                     payload = NativeCredentials.EmailPayload(database.GetAccountEmail(request.Username), request.RequestId);
+                else if (request.Operation == 0x178e)
+                    payload = NativeCredentials.ContactListsPayload(database.GetContacts(request.Username).Count != 0, request.RequestId);
+                else if ((request.Operation >= 0x1788 && request.Operation <= 0x178c) || request.Operation == 0x1792)
+                    payload = NativeContactSync.Respond(request, database);
                 else
                 {
                     byte[] credential = NativeCredentials.Issue(communityKeys, request.Username, request.ClientPublicKey, DateTime.UtcNow);
@@ -245,8 +251,11 @@ namespace SkyServer
                 Rc4 outbound = Rc4.FromKey(IncrementFirstByte(dh.SharedSecret));
                 outbound.Crypt(response, 0, response.Length);
                 stream.Write(response, 0, response.Length);
-                Console.WriteLine("auth stock: operation 0x{0:X} {1} response sent ({2} bytes); native login/contacts UI is not confirmed.",
-                    request.Operation, request.Operation == 0x139c ? "DB account email" : "community-signed credential", response.Length);
+                Console.WriteLine("auth stock: operation 0x{0:X} {1} response sent ({2} bytes).",
+                    request.Operation, request.Operation == 0x4278 ? "DB directory" : request.Operation == 0x139c ? "DB account email" :
+                        request.Operation == 0x178e ? "DB contact list index" :
+                        (request.Operation >= 0x1788 && request.Operation <= 0x178c) || request.Operation == 0x1792 ?
+                        "DB native document" : "community-signed credential", response.Length);
             }
         }
 

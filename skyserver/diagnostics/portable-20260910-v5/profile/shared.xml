@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<config version="1.0" serial="40" timestamp="1789244529.42">
+<config version="1.0" serial="70" timestamp="1789427195.137">
   <Lib>
     <Access>
       <Cookies>4100</Cookies>
@@ -7,14 +7,18 @@
     </Access>
     <Connection>
       <Bandwidth>
-        <CurSlotLength>1214</CurSlotLength>
+        <CurSlotLength>7629</CurSlotLength>
+        <InHistory>251,263</InHistory>
+        <OutHistory>278,332</OutHistory>
       </Bandwidth>
       <DisablePort80>0</DisablePort80>
+      <DisableSupernode>1</DisableSupernode>
       <Firewall>
         <TcpInHistory>1431655765</TcpInHistory>
         <UdpInHistory>1431655765</UdpInHistory>
-        <UdpOutHistory>-1431655808</UdpOutHistory>
+        <UdpOutHistory>1431633920</UdpOutHistory>
       </Firewall>
+      <ForceSupernode>0</ForceSupernode>
       <HostCache>4101050041050200C0A80165303E0001040002A2DCAED1060003A2DCAED106000400</HostCache>
       <LastIP>1963140551</LastIP>
       <LastProbingFailed>1</LastProbingFailed>
@@ -23,11 +27,16 @@
         <ContraProbeResults></ContraProbeResults>
         <PreviousNatType>4</PreviousNatType>
         <UsedIPList>
-          <_1789243392>A8AB</_1789243392>
+          <_1789423616>A8AB</_1789423616>
         </UsedIPList>
       </NatTracker>
       <Port>21166</Port>
+      <SearchServers>192.168.1.101:12350</SearchServers>
     </Connection>
+    <ContactSearch>
+      <ForceServer>1</ForceServer>
+      <UseServer>1</UseServer>
+    </ContactSearch>
     <Localnode>
       <NodeID>B9353A9F07F0E3CF</NodeID>
     </Localnode>
@@ -41,7 +50,7 @@
         <_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>-1</_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>
       </MicBoost>
       <MicVolume>
-        <_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>41</_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>
+        <_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>38</_.7B0.2E0.2E1.2E00000000.7D.2E.7B9babe96b-bd5d-4642-a6e7-51d99462d23c.7D>
       </MicVolume>
       <SpeakerVolume>70</SpeakerVolume>
     </VoiceEng>
@@ -50,7 +59,7 @@
     <Devices>
       <InputName>&#208;&#156;&#208;&#184;&#208;&#186;&#209;&#128;&#208;&#190;&#209;&#132;&#208;&#190;&#208;&#189; (3- Fifine Microphone)</InputName>
       <OutputName>&#208;&#148;&#208;&#184;&#208;&#189;&#208;&#176;&#208;&#188;&#208;&#184;&#208;&#186;&#208;&#184; (High Definition Audio Device)</OutputName>
-      <RingingName></RingingName>
+      <RingingName>&#208;&#148;&#208;&#184;&#208;&#189;&#208;&#176;&#208;&#188;&#208;&#184;&#208;&#186;&#208;&#184; (High Definition Audio Device)</RingingName>
     </Devices>
     <General>
       <UpdatefileETag></UpdatefileETag>
