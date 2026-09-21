@@ -21,6 +21,7 @@ internal static class CommunityKeysTests
             Generate(directory, "login", 1536);
             Generate(directory, "credentials", 2048);
             CommunityKeys keys = CommunityKeys.Load(directory);
+            NativeSignedRecordTests.Run(keys);
             byte[] material = new byte[192];
             for (int i = 0; i < material.Length; i++) material[i] = (byte)i;
             material[0] = 1;

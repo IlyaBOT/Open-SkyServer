@@ -94,7 +94,7 @@ namespace SkyServer
                 udpThread.IsBackground = true;
                 udpThread.Start();
 
-                tcpProbe = new TcpProbeServer(options.AuthHost, BuildTcpProbePorts(options.AuthPort, options.ApiPort, hostCacheEndpoints), authServer);
+                tcpProbe = new TcpProbeServer(options.AuthHost, BuildTcpProbePorts(options.AuthPort, options.ApiPort, hostCacheEndpoints), authServer, keys);
                 Thread tcpThread = new Thread(tcpProbe.Run);
                 tcpThread.IsBackground = true;
                 tcpThread.Start();

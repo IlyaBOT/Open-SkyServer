@@ -44,6 +44,8 @@
     <Compile Include="SkypeBlobCodec.cs" />
     <Compile Include="NativeLoginRequest.cs" />
     <Compile Include="NativeCredentials.cs" />
+    <Compile Include="NativeSignedRecord.cs" />
+    <Compile Include="NativeRecordDirectory.cs" />
     <Compile Include="NativeContactSync.cs" />
     <Compile Include="NativeDirectorySearch.cs" />
     <Compile Include="ProbeUdpServer.cs" />
@@ -54,6 +56,8 @@
     <Compile Include="SkyDatabase.cs" />
     <Compile Include="TcpProbeServer.cs" />
     <Compile Include="SkypeTcpFrameBuffer.cs" />
+    <Compile Include="SkypeNodeFrame.cs" />
+    <Compile Include="NativeNodeDirectory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\skyserver_native\bin\x86\Release\skype_blob_worker.exe">

@@ -35,6 +35,41 @@ internal static class SessionLifetimeTests
         catch (InvalidDataException) { rejected = true; }
         if (!rejected) throw new Exception("Oversized length accepted");
 
+        byte[] bootstrap = { 0x14, 0x25, 0x1c, 5, 0xf2, 1, 0x25, 0x1b, 0x42, 0x2d, 3 };
+        ushort? lastSequence = null;
+        foreach (IPEndPoint peer in new[] { new IPEndPoint(IPAddress.Parse("192.168.1.101"), 51001),
+            new IPEndPoint(IPAddress.Loopback, 51002) })
+        foreach (int port in new[] { 80, 12350, 40021, 65535 })
+        {
+            IPEndPoint local = new IPEndPoint(IPAddress.Loopback, port);
+            byte[] response;
+            if (!TcpProbeServer.TryBuildCommand30Reply(bootstrap, peer, local, out response)) throw new Exception("Bootstrap reply missing");
+            List<byte[]> replies = new SkypeTcpFrameBuffer().Append(response, 0, response.Length);
+            if (replies.Count != 1) throw new Exception("Historical BCM inventory must not be advertised");
+            byte[] first = replies[0];
+            SkypeNodeFrame parsed = SkypeNodeFrame.Decode(first);
+            if (parsed.Commands.Count != 1 || parsed.Commands[0].Code != 0x1f)
+                throw new Exception("Unexpected bootstrap announcement");
+            if (lastSequence == parsed.Sequence) throw new Exception("Bootstrap frame sequence reused");
+            lastSequence = parsed.Sequence;
+            if (first[6] != bootstrap[6] || first[7] != bootstrap[7]) throw new Exception("Bootstrap request ID lost");
+            byte[] fields = new byte[first.Length - 8];
+            Buffer.BlockCopy(first, 8, fields, 0, fields.Length);
+            int consumed;
+            List<SkypeField> decoded = SkypeBlobCodec.Decode(fields, out consumed);
+            byte[] endpoint = SkypeBlobCodec.Required(decoded, 2, 0x11).Bytes;
+            if (SkypeBlobCodec.Required(decoded, 0, 0x10).Number != (uint)port)
+                throw new Exception("Historical parent port leaked into bootstrap");
+            if (first[3] != fields.Length + 2 || first[4] != 0xfb || first[5] != 1)
+                throw new Exception("Bootstrap body length/command mismatch");
+            if (consumed != fields.Length || new IPAddress(new byte[] { endpoint[0], endpoint[1], endpoint[2], endpoint[3] }).ToString() != peer.Address.ToString() ||
+                ((endpoint[4] << 8) | endpoint[5]) != peer.Port) throw new Exception("Historical endpoint leaked into bootstrap");
+        }
+        byte[] ignored;
+        if (TcpProbeServer.TryBuildCommand30Reply(packet, new IPEndPoint(IPAddress.Loopback, 1234),
+            new IPEndPoint(IPAddress.Loopback, 12350), out ignored))
+            throw new Exception("Non-bootstrap request accepted as parent registration");
+
         AuthProtocolServer server = new AuthProtocolServer(database, IPAddress.Loopback, 0, false, true);
         Exception failure = null;
         Thread worker = new Thread(delegate() { try { server.Run(); } catch (Exception ex) { failure = ex; } });

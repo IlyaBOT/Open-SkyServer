@@ -24,6 +24,12 @@ internal static class ProtocolTests
     {
         try
         {
+            if (args.Length == 1 && args[0] == "--node-only")
+            {
+                SkypeNodeFrameTests.Run();
+                NativeNodeDirectoryTests.Run();
+                return 0;
+            }
             if (args.Length != 2) throw new ArgumentException("Usage: ProtocolTests.exe sqlite3.exe output-directory");
             sqlite = args[0];
             Directory.CreateDirectory(args[1]);
@@ -34,8 +40,11 @@ internal static class ProtocolTests
             database = new SkyDatabase(databasePath, sqlite);
             database.EnsureSchema();
             SessionLifetimeTests.Run(database);
+            SkypeNodeFrameTests.Run();
+            NativeNodeDirectoryTests.Run();
             database.AddAccount("transport.test", "Transport Test", "test-password");
             NativeLoginTests.Run(args[1], database);
+            MessageStorageTests.Run(databasePath, sqlite);
 
             Run("reconstructed valid DB password", false, false, "test-password", 0, false, false, 292, 1, null);
             Run("reconstructed wrong DB password", false, false, "wrong-password", 0, false, false, 21, 0, null);

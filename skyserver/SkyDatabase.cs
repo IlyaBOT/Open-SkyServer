@@ -284,22 +284,43 @@ CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient
 
         internal List<Account> SearchNativeDirectory(List<NativeDirectoryTerm> terms)
         {
-            if (terms == null || terms.Count == 0 || terms.Count > 8)
-                throw new InvalidDataException("Expected 1..8 directory filters");
+            if (terms == null || terms.Count == 0 || terms.Count > 15)
+                throw new InvalidDataException("Expected 1..8 directory filters and optional OR separators");
+            List<string> alternatives = new List<string>();
             List<string> predicates = new List<string>();
+            int filters = 0;
             foreach (NativeDirectoryTerm term in terms)
             {
                 NativeDirectorySearch.ValidateTerm(term);
+                if (term.Property == 17)
+                {
+                    if (predicates.Count == 0) throw new InvalidDataException("Empty directory OR branch");
+                    alternatives.Add("(" + String.Join(" AND ", predicates.ToArray()) + ")");
+                    predicates.Clear();
+                    continue;
+                }
+                if (++filters > 8) throw new InvalidDataException("Too many directory filters");
                 string column = term.Property == 0 ? "a.login" : term.Property == 1 ? "COALESCE(p.email,'')" : "a.display_name";
                 string value = Sql(term.Text);
-                if (term.Comparison == 0) predicates.Add(column + "=" + value + " COLLATE NOCASE");
+                // Email CW tests membership in the email list. Our schema stores
+                // one address, so it must never become a partial-address search.
+                if (term.Comparison == 0 || term.Property == 1) predicates.Add(column + "=" + value + " COLLATE NOCASE");
                 else if (term.Comparison == 5) predicates.Add("substr(" + column + ",1,length(" + value + "))=" + value + " COLLATE NOCASE");
-                else predicates.Add("instr(lower(" + column + "),lower(" + value + "))>0");
+                else
+                {
+                    // Community name matching uses space-delimited words. CW
+                    // matches whole words, CP their prefixes, not interior text.
+                    string words = "' '||lower(replace(replace(replace(" + column + ",char(9),' '),char(10),' '),char(13),' '))||' '";
+                    foreach (string word in term.Text.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+                        predicates.Add("instr(" + words + ",' '||lower(" + Sql(word) + ")" + (term.Comparison == 8 ? "||' '" : "") + ")>0");
+                }
             }
+            if (predicates.Count == 0) throw new InvalidDataException("Empty directory OR branch");
+            alternatives.Add("(" + String.Join(" AND ", predicates.ToArray()) + ")");
             // Hex encodes result columns so tabs/newlines in existing profiles
             // cannot become sqlite CLI record separators. No private fields leave DB.
             string rows = Query("SELECT hex(a.login),hex(a.display_name) FROM accounts a LEFT JOIN account_profiles p ON p.login=a.login " +
-                "WHERE a.is_active=1 AND " + String.Join(" AND ", predicates.ToArray()) + " ORDER BY a.login COLLATE NOCASE,a.login LIMIT 20;");
+                "WHERE a.is_active=1 AND (" + String.Join(" OR ", alternatives.ToArray()) + ") ORDER BY a.login COLLATE NOCASE,a.login LIMIT 20;");
             List<Account> matches = new List<Account>();
             foreach (string row in SplitLines(rows))
             {
@@ -449,10 +470,10 @@ CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient
                 throw new InvalidOperationException("recipient is not in contact list");
             }
 
-            Execute("INSERT INTO messages(sender_login, recipient_login, body, created_utc) VALUES (" +
-                Sql(senderLogin) + ", " + Sql(recipientLogin) + ", " + Sql(body) + ", " + Sql(Now()) + ");");
-            return ToLong(QuerySingle("SELECT MAX(id) FROM messages WHERE sender_login = " + Sql(senderLogin) +
-                " AND recipient_login = " + Sql(recipientLogin) + ";"), 0);
+            // Retrieve the ID on the inserting connection, not MAX(id) from a
+            // second process which may already see a concurrent message.
+            return ToLong(QuerySingle("INSERT INTO messages(sender_login, recipient_login, body, created_utc) VALUES (" +
+                Sql(senderLogin) + ", " + Sql(recipientLogin) + ", " + Sql(body) + ", " + Sql(Now()) + "); SELECT last_insert_rowid();"), 0);
         }
 
         public List<MessageRecord> ReceiveMessages(string recipientLogin, string peerLogin)
@@ -553,13 +574,20 @@ CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login, recipient
                 psi.RedirectStandardInput = true;
                 psi.RedirectStandardOutput = true;
                 psi.RedirectStandardError = true;
+                psi.StandardOutputEncoding = new UTF8Encoding(false);
+                psi.StandardErrorEncoding = new UTF8Encoding(false);
                 psi.CreateNoWindow = true;
 
                 using (Process process = Process.Start(psi))
                 {
-                    process.StandardInput.WriteLine("PRAGMA foreign_keys=ON;");
-                    process.StandardInput.WriteLine(sql);
-                    process.StandardInput.Close();
+                    // SQLite's CLI expects UTF-8, not the Windows console code
+                    // page. .NET 4 has no ProcessStartInfo.StandardInputEncoding.
+                    using (StreamWriter input = new StreamWriter(process.StandardInput.BaseStream, new UTF8Encoding(false, true)))
+                    {
+                        input.WriteLine(".timeout 5000");
+                        input.WriteLine("PRAGMA foreign_keys=ON;");
+                        input.WriteLine(sql);
+                    }
 
                     string output = process.StandardOutput.ReadToEnd();
                     string error = process.StandardError.ReadToEnd();

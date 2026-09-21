@@ -10,6 +10,7 @@ namespace SkyServer
         public uint Property;
         public uint Comparison;
         public string Text;
+        public uint? Number;
     }
 
     internal static class NativeDirectorySearch
@@ -31,8 +32,10 @@ namespace SkyServer
                 uint comparison = SkypeBlobCodec.Required(field.Children, 0, 0x22).Number;
                 Console.WriteLine("native directory term: property={0}, comparison={1}, fields={2}",
                     property, comparison, NativeLoginRequest.DescribeFields(field.Children));
-                terms.Add(new NativeDirectoryTerm { Property = property, Comparison = comparison,
-                    Text = new UTF8Encoding(false, true).GetString(SkypeBlobCodec.Required(field.Children, 3, 0x23).Bytes) });
+                NativeDirectoryTerm term = new NativeDirectoryTerm { Property = property, Comparison = comparison };
+                if (property == 17) term.Number = SkypeBlobCodec.Required(field.Children, 0, 0x23).Number;
+                else term.Text = new UTF8Encoding(false, true).GetString(SkypeBlobCodec.Required(field.Children, 3, 0x23).Bytes);
+                terms.Add(term);
             }
             List<Account> matches = database.SearchNativeDirectory(terms);
             List<SkypeField> results = new List<SkypeField>();
@@ -52,14 +55,24 @@ namespace SkyServer
 
         internal static void ValidateTerm(NativeDirectoryTerm term)
         {
+            // VA 00646920 inserts property 3/value 0 between alternatives;
+            // VA 00643530 maps that property to wire ID 17.
+            if (term != null && term.Property == 17)
+            {
+                if (term.Comparison != 0 || term.Number != 0 || term.Text != null)
+                    throw new InvalidDataException("Unsupported directory logical operator");
+                return;
+            }
             if (term == null || String.IsNullOrWhiteSpace(term.Text) || Encoding.UTF8.GetByteCount(term.Text) > 254)
                 throw new InvalidDataException("Invalid directory query length");
+            if (term.Number.HasValue) throw new InvalidDataException("Expected a directory string value");
             foreach (char c in term.Text)
                 if (Char.IsControl(c)) throw new InvalidDataException("Control character in directory query");
-            if (term.Property > 2 || (term.Comparison != 0 && term.Comparison != 5 && term.Comparison != 8))
+            bool supported = term.Property == 0 && (term.Comparison == 0 || term.Comparison == 5) ||
+                term.Property == 1 && (term.Comparison == 0 || term.Comparison == 8) ||
+                term.Property == 2 && (term.Comparison == 0 || term.Comparison == 5 || term.Comparison == 8 || term.Comparison == 9);
+            if (!supported)
                 throw new InvalidDataException("Unsupported directory filter: property=" + term.Property + ", comparison=" + term.Comparison);
-            if (term.Property == 1 && term.Comparison != 0)
-                throw new InvalidDataException("Email discovery requires an exact address");
         }
     }
 }

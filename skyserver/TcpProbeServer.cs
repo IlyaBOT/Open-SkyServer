@@ -42,14 +42,16 @@ namespace SkyServer
         private readonly IPAddress bindAddress;
         private readonly int[] ports;
         private readonly AuthProtocolServer accountServer;
+        private readonly NativeRecordDirectory recordDirectory;
         private readonly List<TcpListener> listeners = new List<TcpListener>();
         private volatile bool stopped;
 
-        public TcpProbeServer(IPAddress bindAddress, int[] ports, AuthProtocolServer accountServer = null)
+        public TcpProbeServer(IPAddress bindAddress, int[] ports, AuthProtocolServer accountServer = null, CommunityKeys keys = null)
         {
             this.bindAddress = bindAddress;
             this.ports = ports;
             this.accountServer = accountServer;
+            this.recordDirectory = new NativeRecordDirectory(keys);
         }
 
         public void Run()
@@ -239,19 +241,37 @@ namespace SkyServer
             return result;
         }
 
-        private static void ProcessBootstrapFrames(NetworkStream stream, SkypeNativeRc4.Session rc4,
+        private void ProcessBootstrapFrames(NetworkStream stream, SkypeNativeRc4.Session rc4,
             IPEndPoint remote, IPEndPoint local, List<byte[]> frames, ref bool garbagePending, ref bool probeReplySent)
         {
             foreach (byte[] frame in frames)
             {
                 if (garbagePending) { garbagePending = false; continue; }
+                SkypeNodeFrame parsed = SkypeNodeFrame.Decode(frame);
+                if (parsed.IsAcknowledgment) continue;
+                bool acknowledge = false;
+                foreach (SkypeNodeCommand command in parsed.Commands)
+                {
+                    Console.WriteLine("bootstrap decoded {0} seq={1:X4} command=0x{2:X} flags={3} request={4} fields={5}",
+                        remote, parsed.Sequence, command.Code, command.Flags,
+                        command.RequestId.HasValue ? command.RequestId.Value.ToString("X4") : "none", DescribeNodeFields(command.Fields));
+                    acknowledge |= command.Flags == 1;
+                    SkypeNodeCommand recordReply = recordDirectory.Handle(command, DateTime.UtcNow);
+                    if (recordReply != null)
+                        SendEncryptedRc4Data(stream, rc4, remote, local, "directory-record-reply",
+                            SkypeNodeFrame.Encode(NextServerSequence(), recordReply));
+                    SkypeNodeCommand slotReply = NativeNodeDirectory.SlotReply(command, local);
+                    if (slotReply != null)
+                        SendEncryptedRc4Data(stream, rc4, remote, local, "slot-directory-reply",
+                            SkypeNodeFrame.Encode(NextServerSequence(), slotReply));
+                }
+                if (acknowledge)
+                    SendEncryptedRc4Data(stream, rc4, remote, local, "node-transport-ack", SkypeNodeFrame.Acknowledge(parsed.Sequence));
                 Console.WriteLine("bootstrap frame {0} -> {1}, bytes={2}, data {3}",
                     remote, local, frame.Length, Hex(frame, 0, Math.Min(frame.Length, 128)));
                 LogSkypeTcpFrame("bootstrap command", remote, local, frame);
                 byte[] reply;
-                if (TryBuildKeepAliveReply(frame, out reply))
-                    SendEncryptedRc4Data(stream, rc4, remote, local, "keepalive-reply", reply);
-                else if (!probeReplySent && TryBuildSupernodeProbeReply(frame, out reply))
+                if (!probeReplySent && TryBuildSupernodeProbeReply(frame, remote, local, out reply))
                 {
                     SendEncryptedRc4Data(stream, rc4, remote, local, "bootstrap-reply", reply);
                     probeReplySent = true;
@@ -259,22 +279,32 @@ namespace SkyServer
             }
         }
 
-        internal static bool TryBuildKeepAliveReply(byte[] request, out byte[] reply)
+        private static string DescribeNodeFields(List<SkypeField> fields, int depth = 0)
         {
-            reply = null;
-            if (!LooksLikeSkypeTcpFrame(request) || request[4] != 0x82 || request[5] != 3) return false;
-            byte[] encoded = new byte[request.Length - 8];
-            Buffer.BlockCopy(request, 8, encoded, 0, encoded.Length);
-            int consumed;
-            List<SkypeField> fields = SkypeBlobCodec.Decode(encoded, out consumed);
-            if (consumed != encoded.Length || fields.Count != 1 || fields[0].Type != 0 || fields[0].Id != 0)
-                throw new InvalidDataException("Unexpected keepalive fields");
-            // 0x30 requests observed at 10-second intervals carry an increasing
-            // 0/0 counter. Reply 0x31 echoes it and the request correlation ID.
-            reply = (byte[])request.Clone();
-            WriteUInt16BigEndian(reply, 1, NextServerSequence());
-            reply[4] = 0x8b;
-            return true;
+            StringBuilder result = new StringBuilder();
+            foreach (SkypeField field in fields)
+            {
+                if (result.Length > 2048) { result.Append(" ..."); break; }
+                if (result.Length != 0) result.Append(',');
+                result.Append(field.Type).Append('/').Append(field.Id.ToString("X"));
+                if (field.Type == 0) result.Append('=').Append(field.Number);
+                else if (field.Type == 5 && depth < 3)
+                    result.Append('{').Append(DescribeNodeFields(field.Children, depth + 1)).Append('}');
+                else if (field.Type == 5) result.Append('{').Append(field.Children.Count).Append('}');
+                else if (field.Type == 6)
+                {
+                    result.Append('[');
+                    for (int i = 0; i < Math.Min(field.Bytes.Length, 64); i += 4)
+                    {
+                        if (i != 0) result.Append(',');
+                        result.Append(BitConverter.ToUInt32(field.Bytes, i));
+                    }
+                    if (field.Bytes.Length > 64) result.Append("...");
+                    result.Append(']');
+                }
+                else result.Append('[').Append(field.Bytes.Length).Append(']');
+            }
+            return result.ToString();
         }
 
         // Retained only as a historical capture experiment; never used by live sessions.
@@ -374,7 +404,7 @@ namespace SkyServer
                             LogSkypeTcpFrame("tcp probe rc4-client-handshake-trailing-frame", remote, local, trailingFrame);
 
                             byte[] clearReply;
-                            if (TryBuildSupernodeProbeReply(trailingFrame, out clearReply))
+                            if (TryBuildSupernodeProbeReply(trailingFrame, remote, local, out clearReply))
                             {
                                 SendEncryptedRc4Data(stream, rc4, remote, local, "rc4-supernode-probe-reply", clearReply);
                                 supernodeProbeReplySent = true;
@@ -392,7 +422,7 @@ namespace SkyServer
                             LogSkypeTcpFrame("tcp probe rc4-client-frame", remote, local, decrypted);
 
                             byte[] clearReply;
-                            if (TryBuildSupernodeProbeReply(decrypted, out clearReply))
+                            if (TryBuildSupernodeProbeReply(decrypted, remote, local, out clearReply))
                             {
                                 SendEncryptedRc4Data(stream, rc4, remote, local, "rc4-supernode-probe-reply", clearReply);
                                 supernodeProbeReplySent = true;
@@ -476,7 +506,7 @@ namespace SkyServer
             }
         }
 
-        private static bool TryBuildSupernodeProbeReply(byte[] request, out byte[] reply)
+        private static bool TryBuildSupernodeProbeReply(byte[] request, IPEndPoint remote, IPEndPoint local, out byte[] reply)
         {
             reply = null;
             if (!LooksLikeSkypeTcpFrame(request))
@@ -488,7 +518,7 @@ namespace SkyServer
             byte commandLo = request[5];
             if (commandHi == 0xF2 && commandLo == 0x01)
             {
-                return TryBuildCommand30Reply(request, out reply);
+                return TryBuildCommand30Reply(request, remote, local, out reply);
             }
 
             if (commandHi != 0xCA || commandLo != 0x04)
@@ -510,37 +540,52 @@ namespace SkyServer
             return true;
         }
 
-        private static bool TryBuildCommand30Reply(byte[] request, out byte[] reply)
+        internal static bool TryBuildCommand30Reply(byte[] request, IPEndPoint remote, IPEndPoint local, out byte[] reply)
         {
             reply = null;
-            if (!LooksLikeSkypeTcpFrame(request))
+            if (!LooksLikeSkypeTcpFrame(request) || request[4] != 0xf2 || request[5] != 1)
             {
                 return false;
             }
 
             ushort requestSequence = ReadUInt16BigEndian(request, 6);
 
-            byte[] publicIpHeader = FromHex("4C C1");
             byte[] publicIpReply = FromHex(
                 "D1 21 FB 01 00 00 41 06 00 0B 34 00 0C EC D1 93 " +
                 "D0 05 02 11 75 03 25 C7 06 94 00 10 D5 B8 02 00 " +
                 "2C 01 06 21 00");
 
-            byte[] nodeInfoReply = FromHex(
-                "D4 01 C1 D2 08 59 41 01 00 09 ED C3 92 13 5B F9 " +
-                "02 41 07 05 01 41 02 00 00 02 00 01 BA D2 81 D5 " +
-                "01 05 01 41 02 00 00 03 00 01 E7 9C FB 6E 05 01 " +
-                "41 02 00 00 04 00 01 02 05 01 41 02 00 00 05 00 " +
-                "01 2A 05 01 41 02 00 00 80 02 00 01 9B D0 C0 0B " +
-                "05 01 41 02 00 00 81 02 00 01 EB AA E6 44 05 01 " +
-                "41 02 00 00 06 00 01 8E E6 A8 CC 01");
-
-            WriteUInt16BigEndian(publicIpReply, 4, requestSequence);
-
-            reply = new byte[publicIpHeader.Length + publicIpReply.Length + nodeInfoReply.Length];
-            Buffer.BlockCopy(publicIpHeader, 0, reply, 0, publicIpHeader.Length);
-            Buffer.BlockCopy(publicIpReply, 0, reply, publicIpHeader.Length, publicIpReply.Length);
-            Buffer.BlockCopy(nodeInfoReply, 0, reply, publicIpHeader.Length + publicIpReply.Length, nodeInfoReply.Length);
+            // skysearch4_dll/tcp_setup.c reads 2/11 as MY_ADDR. A historical
+            // endpoint here causes every client to learn an unrelated public IP.
+            if (remote == null || remote.Address.AddressFamily != AddressFamily.InterNetwork)
+                throw new InvalidDataException("Expected an observed IPv4 bootstrap endpoint");
+            if (local == null || local.Address.AddressFamily != AddressFamily.InterNetwork || local.Port == 0)
+                throw new InvalidDataException("Expected a listening IPv4 bootstrap endpoint");
+            byte[] encoded = new byte[publicIpReply.Length - 6];
+            Buffer.BlockCopy(publicIpReply, 6, encoded, 0, encoded.Length);
+            int consumed;
+            List<SkypeField> fields = SkypeBlobCodec.Decode(encoded, out consumed);
+            if (consumed != encoded.Length) throw new InvalidDataException("Trailing bootstrap address fields");
+            SkypeField endpoint = SkypeBlobCodec.Required(fields, 2, 0x11);
+            Buffer.BlockCopy(remote.Address.GetAddressBytes(), 0, endpoint.Bytes, 0, 4);
+            WriteUInt16BigEndian(endpoint.Bytes, 4, (ushort)remote.Port);
+            // Skype 4.2 HostScanner::reply (00780AC0) consumes 0/10 as
+            // the parent port. Never advertise a port from an old capture.
+            SkypeBlobCodec.Required(fields, 0, 0x10).Number = (uint)local.Port;
+            byte[] updated = SkypeBlobCodec.Encode(fields);
+            publicIpReply = new byte[8 + updated.Length];
+            publicIpReply[0] = checked((byte)((publicIpReply.Length - 1) << 1));
+            WriteUInt16BigEndian(publicIpReply, 1, NextServerSequence());
+            publicIpReply[3] = checked((byte)(updated.Length + 2));
+            publicIpReply[4] = 0xfb;
+            publicIpReply[5] = 1;
+            WriteUInt16BigEndian(publicIpReply, 6, requestSequence);
+            Buffer.BlockCopy(updated, 0, publicIpReply, 8, updated.Length);
+            // Do not replay the captured 0x2F BCM inventory or user count.
+            // Native 006BCF60 requests its advertised revisions with 0x30;
+            // 006BCAE0 expects signed content in 4/3, not a keepalive echo.
+            // This node has no BCM documents to advertise or serve yet.
+            reply = publicIpReply;
             return true;
         }
 

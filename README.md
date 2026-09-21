@@ -4,10 +4,12 @@ An opensource Skype server created via reverse engineering, and a modification o
 ## SkyServer
 Community test server for the reconstructed Epycs/Skype client path.
 
-***Original Skype login/registration, native profiles and contacts are not implemented.***
-The installed 4.2.0.187 client uses direct IPs that bypass hosts, and native login
-requires RSA/AES processing and Skype-signed credentials. See
-[the verified stock-client status](STOCK_CLIENT_STATUS.md) for current evidence and limits.
+**Native lab status (2026-09-19): login and contact-list synchronization work in
+the isolated patched Skype 4.2 client. Directory search is under verification;
+contact invitations, native chat and full profile editing remain unfinished.**
+See [the current checkpoint](skyserver/NATIVE_CLIENT_CHECKPOINT.md) for native
+launch commands, evidence, backups and protocol notes. The instructions below
+primarily describe the reconstructed client and older probe experiments.
 
 The server has two listeners:
 

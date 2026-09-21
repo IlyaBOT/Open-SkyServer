@@ -75,6 +75,11 @@ namespace SkyServer
             return PrivateOperation(encodedBlock, credentials);
         }
 
+        internal System.Collections.Generic.List<SkypeField> RecoverCredential(byte[] credential)
+        {
+            return NativeCredentials.Recover(credential, credentials);
+        }
+
         public void SelfTest()
         {
             foreach (RSAParameters key in new[] { login, credentials })

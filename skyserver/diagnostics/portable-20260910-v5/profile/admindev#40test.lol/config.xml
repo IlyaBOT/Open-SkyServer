@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<config version="1.0" serial="840" timestamp="1789427195.136">
+<config version="1.0" serial="2303" timestamp="1789966487.11">
   <Lib>
     <Account>
       <Migration>63</Migration>
@@ -10,24 +10,28 @@
     <Call>
       <ApplyCF>1</ApplyCF>
       <DPC>41020501410203026563686F313233000003CE9C8BD5060501410203027365636F6E6440746573742E6C6F6C000003A9BAA0D506</DPC>
-      <EmergencyCountry></EmergencyCountry>
+      <EmergencyCountry>&#13;&#10;      </EmergencyCountry>
     </Call>
     <CentralStorage>
       <LastBackoff>0</LastBackoff>
       <LastFailure>0</LastFailure>
-      <LastSync>1789402298</LastSync>
+      <LastSync>1789966309</LastSync>
       <NeedSync>0</NeedSync>
       <SyncSet>
         <p>
-          <email>ad20cd6f:6</email>
-          <profile>d200b03c:6</profile>
+          <email>ad20cd6f:7</email>
+          <profile>d200b03c:7</profile>
         </p>
         <u>
-          <echo123>9db4df93:6</echo123>
-          <second.40test.2Elol>5bc9a2bc:6</second.40test.2Elol>
+          <echo123>9db4df93:7</echo123>
+          <second.40test.2Elol>ed9a75be:7</second.40test.2Elol>
         </u>
       </SyncSet>
     </CentralStorage>
+    <ContactSearch>
+      <ForceServer>1</ForceServer>
+      <UseServer>1</UseServer>
+    </ContactSearch>
     <Contacts>
       <Migration>1</Migration>
     </Contacts>
@@ -54,24 +58,24 @@
       <UILang>ru</UILang>
     </DynContent>
     <Notification>
-      <LastPoll>1789402253</LastPoll>
-      <LastSearch>1789427190</LastSearch>
+      <LastPoll>1789836244</LastPoll>
+      <LastSearch>1789966485</LastSearch>
     </Notification>
     <PM>
-      <pslut>1789360769</pslut>
+      <pslut>1789922648</pslut>
     </PM>
     <Pic>
       <DisableCookies>0</DisableCookies>
     </Pic>
     <ProfilePopulated>2</ProfilePopulated>
     <PropsManager>
-      <PermaProps>4109008B20AEF98AD50600F8010000FA010000872099F69DD50600892091BAA0D506008A2091BAA0D506008120A9BAA0D50600F5010500FC0105</PermaProps>
+      <PermaProps>4109008B20AEF98AD50600FA010000872099F69DD506008A2091BAA0D506008120A9BAA0D506008920D484BBD50600F8011E00F5010800FC010B</PermaProps>
     </PropsManager>
     <StatsSender>
       <Phase2>
-        <LastCollect>1789401916</LastCollect>
-        <ProposedDelivery>1789474076</ProposedDelivery>
-        <SendSequence>11</SendSequence>
+        <LastCollect>1789965955</LastCollect>
+        <ProposedDelivery>1789988964</ProposedDelivery>
+        <SendSequence>33</SendSequence>
       </Phase2>
     </StatsSender>
     <Video>
@@ -81,7 +85,7 @@
       <DevicePath>usb#vid_345f&#38;pid_2131&#38;mi_00#7&#38;2d60830&#38;0&#38;0000</DevicePath>
     </Video>
     <table_insert_history>
-      <d7cb87aeb08cb31e62dbb6c31ef00dd0087d6ea24676a7f99e5ebd095fb00910>1789509048 10459:21600:1789422648 59134:21600:1789422648 14447:5400:1789422648 796:28800:1789422648</d7cb87aeb08cb31e62dbb6c31ef00dd0087d6ea24676a7f99e5ebd095fb00910>
+      <_4fa8fc69a0ed080245c5c48239ba27427020f681970c6af8b968bf7ac9e7666b>1790052700 10459:21600:1789966300 59134:21600:1789966300 14447:5400:1789966300 796:28800:1789966300</_4fa8fc69a0ed080245c5c48239ba27427020f681970c6af8b968bf7ac9e7666b>
     </table_insert_history>
   </Lib>
   <UI>
@@ -91,12 +95,12 @@
     <Chat>
       <FontHeight>13</FontHeight>
       <FontName>Tahoma</FontName>
-      <FontStyle></FontStyle>
+      <FontStyle>&#13;&#10;      </FontStyle>
     </Chat>
     <ChromeEnabled>1</ChromeEnabled>
     <ContactsGrouped>1</ContactsGrouped>
     <Devices>
-      <InputName>&#208;&#156;&#208;&#184;&#208;&#186;&#209;&#128;&#208;&#190;&#209;&#132;&#208;&#190;&#208;&#189; (3- Fifine Microphone)</InputName>
+      <InputName>Line 1 (Virtual Audio Cable)</InputName>
       <OutputDevices>
         <_0>
           <Active>1</Active>
@@ -105,30 +109,36 @@
           <ProductId>283906408</ProductId>
         </_0>
         <_1>
+          <Active>0</Active>
+          <Handle></Handle>
+          <Name>&#195;&#144;&#194;&#148;&#195;&#144;&#194;&#184;&#195;&#144;&#194;&#189;&#195;&#144;&#194;&#176;&#195;&#144;&#194;&#188;&#195;&#144;&#194;&#184;&#195;&#144;&#194;&#186;&#195;&#144;&#194;&#184; (High Definition Audio Device)</Name>
+          <ProductId>283906408</ProductId>
+        </_1>
+        <_2>
           <Active>1</Active>
           <Handle>{0.0.0.00000000}.{b81d877d-6c36-4bd1-953f-e76780d32f57}</Handle>
           <Name>ASUS VG249 (NVIDIA High Definition Audio)</Name>
           <ProductId>282984607</ProductId>
-        </_1>
-        <_2>
+        </_2>
+        <_3>
           <Active>1</Active>
           <Handle>{0.0.0.00000000}.{e72d610a-1be2-4b2e-b6cf-966a6e425f30}</Handle>
           <Name>Line 1 (Virtual Audio Cable)</Name>
           <ProductId></ProductId>
-        </_2>
+        </_3>
       </OutputDevices>
       <OutputName>&#208;&#148;&#208;&#184;&#208;&#189;&#208;&#176;&#208;&#188;&#208;&#184;&#208;&#186;&#208;&#184; (High Definition Audio Device)</OutputName>
       <RecordingDevices>
         <_0>
-          <Active>1</Active>
-          <Handle>{0.0.1.00000000}.{9babe96b-bd5d-4642-a6e7-51d99462d23c}</Handle>
-          <Name>&#208;&#156;&#208;&#184;&#208;&#186;&#209;&#128;&#208;&#190;&#209;&#132;&#208;&#190;&#208;&#189; (3- Fifine Microphone)</Name>
+          <Active>0</Active>
+          <Handle></Handle>
+          <Name>&#195;&#144;&#194;&#156;&#195;&#144;&#194;&#184;&#195;&#144;&#194;&#186;&#195;&#145;&#194;&#128;&#195;&#144;&#194;&#190;&#195;&#145;&#194;&#132;&#195;&#144;&#194;&#190;&#195;&#144;&#194;&#189; (3- Fifine Microphone)</Name>
           <ProductId>826429536</ProductId>
         </_0>
         <_1>
-          <Active>1</Active>
-          <Handle>{0.0.1.00000000}.{3f185cce-3f58-4b8c-97f4-6a6cdd11d6ad}</Handle>
-          <Name>&#208;&#166;&#208;&#184;&#209;&#132;&#209;&#128;&#208;&#190;&#208;&#178;&#208;&#190;&#208;&#185; &#208;&#178;&#209;&#133;&#208;&#190;&#208;&#180; (USB3 Digital Audio)</Name>
+          <Active>0</Active>
+          <Handle></Handle>
+          <Name>&#195;&#144;&#194;&#166;&#195;&#144;&#194;&#184;&#195;&#145;&#194;&#132;&#195;&#145;&#194;&#128;&#195;&#144;&#194;&#190;&#195;&#144;&#194;&#178;&#195;&#144;&#194;&#190;&#195;&#144;&#194;&#185; &#195;&#144;&#194;&#178;&#195;&#145;&#194;&#133;&#195;&#144;&#194;&#190;&#195;&#144;&#194;&#180; (USB3 Digital Audio)</Name>
           <ProductId>878649649</ProductId>
         </_1>
         <_2>
@@ -138,11 +148,29 @@
           <ProductId></ProductId>
         </_2>
         <_3>
+          <Active>0</Active>
+          <Handle></Handle>
+          <Name>&#195;&#144;&#194;&#156;&#195;&#144;&#194;&#184;&#195;&#144;&#194;&#186;&#195;&#145;&#194;&#128;&#195;&#144;&#194;&#190;&#195;&#145;&#194;&#132;&#195;&#144;&#194;&#190;&#195;&#144;&#194;&#189; (Steam Streaming Microphone)</Name>
+          <ProductId></ProductId>
+        </_3>
+        <_4>
+          <Active>1</Active>
+          <Handle>{0.0.1.00000000}.{9babe96b-bd5d-4642-a6e7-51d99462d23c}</Handle>
+          <Name>&#208;&#156;&#208;&#184;&#208;&#186;&#209;&#128;&#208;&#190;&#209;&#132;&#208;&#190;&#208;&#189; (3- Fifine Microphone)</Name>
+          <ProductId>826429536</ProductId>
+        </_4>
+        <_5>
+          <Active>1</Active>
+          <Handle>{0.0.1.00000000}.{3f185cce-3f58-4b8c-97f4-6a6cdd11d6ad}</Handle>
+          <Name>&#208;&#166;&#208;&#184;&#209;&#132;&#209;&#128;&#208;&#190;&#208;&#178;&#208;&#190;&#208;&#185; &#208;&#178;&#209;&#133;&#208;&#190;&#208;&#180; (USB3 Digital Audio)</Name>
+          <ProductId>878649649</ProductId>
+        </_5>
+        <_6>
           <Active>1</Active>
           <Handle>{0.0.1.00000000}.{d7670877-30d0-42ca-8a93-4edea62e2995}</Handle>
           <Name>&#208;&#156;&#208;&#184;&#208;&#186;&#209;&#128;&#208;&#190;&#209;&#132;&#208;&#190;&#208;&#189; (Steam Streaming Microphone)</Name>
           <ProductId></ProductId>
-        </_3>
+        </_6>
       </RecordingDevices>
       <RingingName>&#208;&#148;&#208;&#184;&#208;&#189;&#208;&#176;&#208;&#188;&#208;&#184;&#208;&#186;&#208;&#184; (High Definition Audio Device)</RingingName>
     </Devices>
@@ -171,7 +199,7 @@
       <MyselfPanelExpanded>1</MyselfPanelExpanded>
       <PrivacyBasic>0</PrivacyBasic>
       <SmsShowNumber>0</SmsShowNumber>
-      <SoundSelectorDir></SoundSelectorDir>
+      <SoundSelectorDir>&#13;&#10;      </SoundSelectorDir>
       <Statistics>
         <stIcLastYield>0</stIcLastYield>
         <stIcRunCompletedCount>0</stIcRunCompletedCount>
@@ -218,21 +246,21 @@
       </B007>
     </Hotkeys>
     <LastForwarded>
-      <_0></_0>
-      <_1></_1>
-      <_2></_2>
-      <_3></_3>
-      <_4></_4>
+      <_0>&#13;&#10;      </_0>
+      <_1>&#13;&#10;      </_1>
+      <_2>&#13;&#10;      </_2>
+      <_3>&#13;&#10;      </_3>
+      <_4>&#13;&#10;      </_4>
     </LastForwarded>
     <MainWindow>
       <ConvListWidth>248</ConvListWidth>
     </MainWindow>
     <MainWindow40>
-      <Height>617</Height>
+      <Height>579</Height>
       <Maximized>0</Maximized>
-      <Width>932</Width>
-      <X>537</X>
-      <Y>240</Y>
+      <Width>800</Width>
+      <X>0</X>
+      <Y>453</Y>
     </MainWindow40>
     <Messages>
       <DisplayCallInfo>1</DisplayCallInfo>
