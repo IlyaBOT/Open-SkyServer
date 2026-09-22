@@ -43,6 +43,7 @@ func TestDatabaseCompatibilitySurface(t *testing.T) {
 	if err != nil || len(found) != 1 || found[0].Login != "transport.test" {
 		t.Fatalf("directory=%+v err=%v", found, err)
 	}
+	if err := db.EnsureNativeContactDocuments("native.test"); err != nil { t.Fatal(err) }
 	snapshot, err := db.GetNativeDocuments("native.test")
 	if err != nil {
 		t.Fatal(err)
