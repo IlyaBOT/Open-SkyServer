@@ -71,10 +71,25 @@ func (s *TCPProbeServer) supernodeReply(req []byte,c net.Conn)([]byte,bool){
 	if hi!=0xca||lo!=4{return nil,false};prev:=binary.BigEndian.Uint16(req[6:8]);r:=make([]byte,8+len(supernodeProbePayload));r[0]=byte((len(r)-1)<<1);binary.BigEndian.PutUint16(r[1:3],s.nextSeq());r[3]=byte(len(supernodeProbePayload)+2);r[4]=0xdb;r[5]=4;binary.BigEndian.PutUint16(r[6:8],prev);copy(r[8:],supernodeProbePayload);return r,true
 }
 func (s *TCPProbeServer) command30Reply(req []byte,c net.Conn)([]byte,bool){
-	const hexReply="D121FB0100004106000B34000CECD193D0050211750325C706940010D5B802002C01062100"
+	remote,ok:=c.RemoteAddr().(*net.TCPAddr);if !ok{return nil,false}
+	local,ok:=c.LocalAddr().(*net.TCPAddr);if !ok{return nil,false}
+	return s.buildCommand30Reply(req,remote,local)
+}
+
+func (s *TCPProbeServer) buildCommand30Reply(req []byte,remote,local *net.TCPAddr)([]byte,bool){
+	if !looksLegacyFrame(req)||req[4]!=0xf2||req[5]!=1{return nil,false}
+	if remote==nil||remote.IP.To4()==nil||remote.Port<1||remote.Port>65535{return nil,false}
+	if local==nil||local.IP.To4()==nil||local.Port<1||local.Port>65535{return nil,false}
+	const hexReply="D121FB0100004106000B34000CECD193D0050211750325C706940010D5B8020022C01062100"
 	raw:=make([]byte,len(hexReply)/2);for i:=range raw{fmt.Sscanf(hexReply[i*2:i*2+2],"%02x",&raw[i])}
-	fields,used,e:=DecodeBlob(raw[6:]);if e!=nil||used!=len(raw)-6{return nil,false};remote,ok:=c.RemoteAddr().(*net.TCPAddr);if !ok||remote.IP.To4()==nil{return nil,false};local,ok:=c.LocalAddr().(*net.TCPAddr);if !ok{return nil,false};localIP:=local.IP;if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil{localIP=s.AdvertiseIP}
-	for i:=range fields{if fields[i].Type==2&&fields[i].ID==0x11&&len(fields[i].Bytes)==6{copy(fields[i].Bytes,remote.IP.To4());binary.BigEndian.PutUint16(fields[i].Bytes[4:],uint16(remote.Port))};if fields[i].Type==0&&fields[i].ID==0x10{fields[i].Number=uint32(local.Port)}}
-	updated,e:=EncodeBlob(fields);if e!=nil{return nil,false};r:=make([]byte,8+len(updated));if len(r)>128{return nil,false};r[0]=byte((len(r)-1)<<1);binary.BigEndian.PutUint16(r[1:3],s.nextSeq());r[3]=byte(len(updated)+2);r[4]=0xfb;r[5]=1;binary.BigEndian.PutUint16(r[6:8],binary.BigEndian.Uint16(req[6:8]));copy(r[8:],updated);_ = localIP;return r,true
+	fields,used,e:=DecodeBlob(raw[6:]);if e!=nil||used!=len(raw)-6{return nil,false}
+	endpointFound:=false;portFound:=false
+	for i:=range fields{
+		if fields[i].Type==2&&fields[i].ID==0x11&&len(fields[i].Bytes)==6{copy(fields[i].Bytes,remote.IP.To4());binary.BigEndian.PutUint16(fields[i].Bytes[4:],uint16(remote.Port));endpointFound=true}
+		if fields[i].Type==0&&fields[i].ID==0x10{fields[i].Number=uint32(local.Port);portFound=true}
+	}
+	if !endpointFound||!portFound{return nil,false}
+	updated,e:=EncodeBlob(fields);if e!=nil{return nil,false};reply:=make([]byte,8+len(updated));if len(reply)>128{return nil,false}
+	reply[0]=byte((len(reply)-1)<<1);binary.BigEndian.PutUint16(reply[1:3],s.nextSeq());reply[3]=byte(len(updated)+2);reply[4]=0xfb;reply[5]=1;binary.BigEndian.PutUint16(reply[6:8],binary.BigEndian.Uint16(req[6:8]));copy(reply[8:],updated);return reply,true
 }
 func DefaultTCPPorts(authPort,apiPort int)[]int{p:=[]int{80,443,12350,12351,13392};for i:=40001;i<=40036;i++{p=append(p,i)};out:=uniquePorts(p);r:=out[:0];for _,v:=range out{if v!=authPort&&v!=apiPort{r=append(r,v)}};return r}
