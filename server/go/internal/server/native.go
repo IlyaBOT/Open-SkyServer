@@ -24,6 +24,20 @@ type NativeLoginRequest struct {
 	Metadata []Field
 }
 
+func describeFields(fields []Field) string {
+	var b strings.Builder
+	limit:=len(fields);if limit>32{limit=32}
+	for i:=0;i<limit;i++{
+		if i>0{b.WriteByte(',')}
+		f:=fields[i]
+		fmt.Fprintf(&b,"%d:%x",f.Type,f.ID)
+		if f.Bytes!=nil{fmt.Fprintf(&b,"[%d]",len(f.Bytes))}
+		if f.Children!=nil{fmt.Fprintf(&b,"{%d}",len(f.Children))}
+	}
+	if len(fields)>limit{b.WriteString(",...")}
+	return b.String()
+}
+
 func authPayload(record []byte,typ byte)([]byte,error){
 	if len(record)<5||record[0]!=typ||record[1]!=3||record[2]!=1||int(binary.BigEndian.Uint16(record[3:5]))!=len(record)-5||len(record)>16389{return nil,fmt.Errorf("invalid native auth record")}
 	return append([]byte(nil),record[5:]...),nil
@@ -45,7 +59,7 @@ func ParseNativeLogin(keyRecord,loginRecord []byte,ks *keys.Set)(*NativeLoginReq
 	if used>=len(clear){return nil,fmt.Errorf("missing client metadata")}
 	meta,used2,e:=DecodeBlob(clear[used:]);if e!=nil{return nil,e};if used+used2!=len(clear){return nil,fmt.Errorf("trailing client metadata")}
 	allowed:=map[uint32]bool{0x1399:true,0x13a3:true,0x139c:true,0x178e:true,0x1788:true,0x1789:true,0x178a:true,0x178b:true,0x178c:true,0x1792:true,0x4278:true}
-	if !allowed[opf.Number]{return nil,fmt.Errorf("unsupported native operation 0x%x",opf.Number)}
+	if !allowed[opf.Number]{return nil,fmt.Errorf("unsupported native operation 0x%x; account fields %s; metadata fields %s",opf.Number,describeFields(account),describeFields(meta))}
 	req:=&NativeLoginRequest{Username:username,PasswordDigest:append([]byte(nil),pf.Bytes...),AESKey:aesKey,Operation:opf.Number,RequestID:rid.Number,Metadata:meta}
 	if req.Operation==0x1399||req.Operation==0x13a3{pk,e:=Required(meta,4,0x21);if e!=nil{return nil,e};if len(pk.Bytes)!=128||pk.Bytes[0]&0x80==0||pk.Bytes[127]&1==0{return nil,fmt.Errorf("expected a 1024-bit odd client RSA modulus")};req.ClientPublicKey=append([]byte(nil),pk.Bytes...)}
 	return req,nil
