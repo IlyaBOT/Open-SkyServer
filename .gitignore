@@ -51,3 +51,6 @@ patcher/client/*
 
 # Legacy local helper
 /parse_proto
+
+# Local closed-beta access list
+server/csharp/allowlist.txt
