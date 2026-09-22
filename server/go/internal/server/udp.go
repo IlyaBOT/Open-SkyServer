@@ -25,8 +25,18 @@ func (s *UDPServer) Run(ctx context.Context){
 }
 func (s *UDPServer) runPort(ctx context.Context,port int){
 	ip:=net.ParseIP(s.Host);if ip==nil{log.Printf("udp invalid host %s",s.Host);return};addr:=&net.UDPAddr{IP:ip,Port:port};c,e:=net.ListenUDP("udp4",addr);if e!=nil{log.Printf("udp probe could not bind %s:%d: %v",s.Host,port,e);return};defer c.Close();go func(){<-ctx.Done();c.Close()}();log.Printf("udp probe listening on %s:%d",s.Host,port)
+	if e:=enableUDPDestination(c);e!=nil{log.Printf("udp %d: destination packet info unavailable: %v",port,e)}
 	buf:=make([]byte,65535)
-	for{n,remote,e:=c.ReadFromUDP(buf);if e!=nil{if ctx.Err()!=nil{return};continue};if s.Access!=nil&&!s.Access.Allows(remote.IP){continue};serverIP:=s.AdvertiseIP;if serverIP==nil||serverIP.To4()==nil{serverIP=ip};if serverIP==nil||serverIP.IsUnspecified(){log.Printf("udp %d: --advertise-ip required with wildcard bind",port);continue};reply,ok:=s.buildReply(remote.IP,serverIP,buf[:n]);if ok{_,_=c.WriteToUDP(reply,remote)}}
+	for{
+		n,remote,destination,e:=readUDPDatagram(c,buf)
+		if e!=nil{if ctx.Err()!=nil{return};continue}
+		if s.Access!=nil&&!s.Access.Allows(remote.IP){continue}
+		serverIP:=s.AdvertiseIP
+		if serverIP==nil||serverIP.To4()==nil{serverIP=destination}
+		if serverIP==nil||serverIP.To4()==nil||serverIP.IsUnspecified(){serverIP=ip}
+		if serverIP==nil||serverIP.To4()==nil||serverIP.IsUnspecified(){log.Printf("udp %d: destination IPv4 unavailable; use --advertise-ip",port);continue}
+		reply,ok:=s.buildReply(remote.IP,serverIP,buf[:n]);if ok{_,_=c.WriteToUDP(reply,remote)}
+	}
 }
 func ip32(ip net.IP)uint32{v:=ip.To4();if v==nil{v=net.IPv4(127,0,0,1)};return binary.BigEndian.Uint32(v)}
 func crcWords(words ...uint32)uint32{z:=uint32(0xffffffff);for _,w:=range words{z^=w;for j:=0;j<32;j++{if z&1!=0{z=(z>>1)^0xedb88320}else{z>>=1}}};return z}
