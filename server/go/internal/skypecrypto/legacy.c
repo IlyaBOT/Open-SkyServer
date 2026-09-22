@@ -5,6 +5,7 @@
 
 /* The historical source assumes a 32-bit u32 even on LP64 Unix. */
 #define u32 uint32_t
+#define __fastcall
 int debuglog(const char *format, ...) { (void)format; return 0; }
 
 /* Load the historical declarations first, then replace its GCC rotate macros
