@@ -46,8 +46,13 @@ namespace SkyServer
         private readonly List<TcpListener> listeners = new List<TcpListener>();
         private volatile bool stopped;
 
-        public TcpProbeServer(IPAddress bindAddress, int[] ports, AuthProtocolServer accountServer = null, CommunityKeys keys = null)
+        private readonly NetworkAccessPolicy access;
+        private readonly IPAddress advertisedAddress;
+        private readonly Semaphore connectionSlots = new Semaphore(128, 128);
+        public TcpProbeServer(IPAddress bindAddress, int[] ports, AuthProtocolServer accountServer = null, CommunityKeys keys = null, NetworkAccessPolicy access = null, IPAddress advertisedAddress = null)
         {
+            this.access = access ?? NetworkAccessPolicy.Open;
+            this.advertisedAddress = advertisedAddress;
             this.bindAddress = bindAddress;
             this.ports = ports;
             this.accountServer = accountServer;
@@ -98,9 +103,12 @@ namespace SkyServer
                 try
                 {
                     TcpClient client = listener.AcceptTcpClient();
-                    Thread thread = new Thread(HandleClient);
-                    thread.IsBackground = true;
-                    thread.Start(client);
+                    if (!access.Accept(client)) continue;
+                    if (!connectionSlots.WaitOne(0)) { client.Close(); continue; }
+                    ThreadPool.QueueUserWorkItem(delegate(object item) {
+                        try { HandleClient(item); }
+                        finally { connectionSlots.Release(); }
+                    }, client);
                 }
                 catch (SocketException)
                 {
@@ -260,7 +268,8 @@ namespace SkyServer
                     if (recordReply != null)
                         SendEncryptedRc4Data(stream, rc4, remote, local, "directory-record-reply",
                             SkypeNodeFrame.Encode(NextServerSequence(), recordReply));
-                    SkypeNodeCommand slotReply = NativeNodeDirectory.SlotReply(command, local);
+                    SkypeNodeCommand slotReply = NativeNodeDirectory.SlotReply(command,
+                        advertisedAddress == null ? local : new IPEndPoint(advertisedAddress, local.Port));
                     if (slotReply != null)
                         SendEncryptedRc4Data(stream, rc4, remote, local, "slot-directory-reply",
                             SkypeNodeFrame.Encode(NextServerSequence(), slotReply));
