@@ -6,6 +6,16 @@
 /* The historical source assumes a 32-bit u32 even on LP64 Unix. */
 #define u32 uint32_t
 int debuglog(const char *format, ...) { (void)format; return 0; }
+
+/* Load the historical declarations first, then replace its GCC rotate macros
+   with explicitly unsigned 32-bit operations. MSVC performed these as 32-bit
+   machine rotates; leaving signed integer constants to GCC would invoke
+   undefined shift behaviour for several IV-expansion constants. */
+#include "../../../../skypeopensource2/goodsendrelay4_dll/goodsendrelay4_dll/skype/skype_rc4.h"
+#undef rotl32
+#undef rotr32
+#define rotl32(x,r) ((uint32_t)(((uint32_t)(x) << ((r)&31)) | ((uint32_t)(x) >> ((0-(r))&31))))
+#define rotr32(x,r) ((uint32_t)(((uint32_t)(x) >> ((r)&31)) | ((uint32_t)(x) << ((0-(r))&31))))
 #include "../../../../skypeopensource2/goodsendrelay4_dll/goodsendrelay4_dll/skype/skype_rc4.c"
 #undef u32
 
