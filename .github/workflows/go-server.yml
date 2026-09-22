@@ -47,6 +47,16 @@ jobs:
           assert consumed == len(source), (consumed, len(source))
           assert result[4] == 0x41, result[:16].hex()
           PY
+          printf '\\x42\\x34\\x1e\\x8c\\x63\\x1e' | ./bin/skype_blob_worker > /tmp/blob-worker-node.out
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          result = Path("/tmp/blob-worker-node.out").read_bytes()
+          assert len(result) >= 6, result.hex()
+          consumed, = struct.unpack("<I", result[:4])
+          assert consumed == 6, consumed
+          assert result[4] == 0x41, result[:16].hex()
+          PY
       - name: Test Go server
         env:
           CGO_ENABLED: '1'
