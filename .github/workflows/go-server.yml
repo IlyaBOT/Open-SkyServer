@@ -1,0 +1,30 @@
+name: Go server
+
+on:
+  push:
+    branches: [repo-cleanup-go-server]
+  pull_request:
+    paths:
+      - 'server/go/**'
+      - 'server/native/**'
+      - 'skypeopensource2/goodsendrelay4_dll/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server/go
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+      - name: Test
+        env:
+          CGO_ENABLED: '1'
+        run: go test ./...
+      - name: Build
+        env:
+          CGO_ENABLED: '1'
+        run: go build -trimpath -o /tmp/openskyserver ./cmd/openskyserver
