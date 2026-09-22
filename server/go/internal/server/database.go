@@ -120,8 +120,7 @@ func (d *Database) AddAccount(login,display,password string)error{
 	nativeSalt,nativeHash,e:=nativeVerifier(login,password);if e!=nil{return e}
 	exists,_:=d.one("SELECT COUNT(*) FROM accounts WHERE login="+sqlQuote(login)+";")
 	var account string
-	if exists!="0" && exists!="" {account="UPDATE accounts SET display_name="+sqlQuote(display)+",password_salt="+sqlQuote(saltText)+",password_hash="+sqlQuote(hash)+",is_active=1 WHERE login="+sqlQuote(login)+";"}
-	else {account="INSERT INTO accounts(login,display_name,password_salt,password_hash,created_utc,is_active) VALUES("+sqlQuote(login)+","+sqlQuote(display)+","+sqlQuote(saltText)+","+sqlQuote(hash)+","+sqlQuote(nowText())+",1);"}
+	if exists!="0" && exists!="" { account="UPDATE accounts SET display_name="+sqlQuote(display)+",password_salt="+sqlQuote(saltText)+",password_hash="+sqlQuote(hash)+",is_active=1 WHERE login="+sqlQuote(login)+";" } else { account="INSERT INTO accounts(login,display_name,password_salt,password_hash,created_utc,is_active) VALUES("+sqlQuote(login)+","+sqlQuote(display)+","+sqlQuote(saltText)+","+sqlQuote(hash)+","+sqlQuote(nowText())+",1);"}
 	_,e=d.execute("BEGIN IMMEDIATE;"+account+"INSERT OR REPLACE INTO native_password_verifiers(login,salt,verifier) VALUES("+sqlQuote(login)+","+sqlQuote(nativeSalt)+","+sqlQuote(nativeHash)+");COMMIT;")
 	return e
 }
