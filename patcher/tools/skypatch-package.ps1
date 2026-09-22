@@ -49,10 +49,11 @@ $ProfilePath = [IO.Path]::GetFullPath($ProfilePath)
 [IO.Directory]::CreateDirectory($ProfilePath) | Out-Null
 $shared = Join-Path $ProfilePath 'shared.xml'
 $paths = @($shared)
+$accountConfigCount = 0
 foreach ($account in @(Get-ChildItem -LiteralPath $ProfilePath -Directory)) {
     if ($account.Attributes -band [IO.FileAttributes]::ReparsePoint) { continue }
     $config = Join-Path $account.FullName 'config.xml'
-    if (Test-Path -LiteralPath $config) { $paths += $config }
+    if (Test-Path -LiteralPath $config) { $paths += $config; $accountConfigCount++ }
 }
 foreach ($path in $paths) {
     $document = New-Object Xml.XmlDocument
@@ -67,6 +68,12 @@ foreach ($path in $paths) {
         [IO.File]::Copy($path,($path + '.skypatch-' + [Guid]::NewGuid().ToString('N') + '.bak'),$false)
     } else { $document.LoadXml('<config version="1.0" />') }
     if ($document.DocumentElement.Name -ne 'config') { throw 'Unexpected profile XML root.' }
+    if ($path -eq $shared) {
+        foreach ($staleName in @('HostCache','LastProbingFailed')) {
+            $stale = $document.SelectSingleNode('/config/Lib/Connection/' + $staleName)
+            if ($stale) { [void]$stale.ParentNode.RemoveChild($stale) }
+        }
+    }
     $values = if ($path -eq $shared) { @{
         'Lib/Connection/SearchServers'=($manifest.server_ip + ':12350')
         'Lib/Connection/DisableSupernode'='1'
@@ -84,4 +91,5 @@ foreach ($path in $paths) {
     $document.Save($path)
 }
 Write-Host "Patched for $($manifest.server_ip). Backup: $backup"
-if ($paths.Count -eq 1) { Write-Warning 'After first login, exit Skype and run this patcher again to configure account-scoped search.' }
+Write-Host "Configured account-scoped search in $accountConfigCount profile(s)."
+if ($accountConfigCount -eq 0) { Write-Warning 'No account config.xml exists yet. After first login, exit Skype and run this patcher again to configure account-scoped search.' }
