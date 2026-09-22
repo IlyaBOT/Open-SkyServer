@@ -1,2 +1,53 @@
+# Runtime secrets - never commit deployment authority keys
+keys/
+**/keys/
+private-keys/
+**/private-keys/
+*.private.pem
+*.private.xml
+
+# Build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.exe
+*.dll
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.obj
+*.cache
+*.pyc
+__pycache__/
+.packages/
+
+# IDE/user-local state
+.vscode/
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Runtime/diagnostic output
+diagnostics/
+artifacts/
+*.log
+*.pcap
+*.pcapng
+skyserver.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Generated public patch output and release staging
+patcher/dist/*
+!patcher/dist/.gitkeep
+patcher/client/*
+!patcher/client/.gitkeep
+!patcher/client/README.md
+
+# Legacy local helper
 /parse_proto
-/skyserver/diagnostics

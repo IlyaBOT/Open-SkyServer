@@ -1,106 +1,50 @@
 # Open-SkyServer
-An opensource Skype server created via reverse engineering, and a modification of the classic version of the Skype instant messenger client
 
-## SkyServer
-Community test server for the reconstructed Epycs/Skype client path.
+Open-source reverse engineering of the classic Skype protocol, a compatible community server, and tooling for patching supported legacy clients.
 
-**Native lab status (2026-09-19): login and contact-list synchronization work in
-the isolated patched Skype 4.2 client. Directory search is under verification;
-contact invitations, native chat and full profile editing remain unfinished.**
-See [the current checkpoint](skyserver/NATIVE_CLIENT_CHECKPOINT.md) for native
-launch commands, evidence, backups and protocol notes. The instructions below
-primarily describe the reconstructed client and older probe experiments.
+## Repository layout
 
-The server has two listeners:
+- `server/csharp/` — primary server implementation. C# / .NET Framework 4.0.
+- `server/native/` — native C helpers used by the C# implementation.
+- `server/go/` — experimental Linux-friendly Go port. It currently provides configuration/key validation, listeners and a health endpoint; protocol feature parity is still being ported.
+- `patcher/` — client patching, integrity tooling and release staging.
+- `skypeopensource2/`, `skypeproto/` — historical reverse-engineering source material retained for development.
 
-- `33033`: reconstructed Skype auth transport with DH-384 and RC4.
-- `33034`: local HTTP API for accounts, contacts, profiles, messages, and history.
+## Keys
 
-Data is stored in SQLite (`skyserver.db` next to `skyserver.exe` by default). The server expects `sqlite3.exe` in `PATH`, or a custom path in `SKYSERVER_SQLITE` / `--sqlite`.
-
-## Build
+Private deployment keys are generated locally into `server/csharp/keys/` and are ignored by Git.
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\skyserver\build.ps1 -Test
+.\server\csharp\skyserver-keygen.ps1 -ClientIntegrity -ServerIp 203.0.113.10
 ```
 
-## Demo Accounts
+The generator creates/reuses the server key set under `server/csharp/keys/` and emits the public-only patcher as `patcher/dist/skypatch.ps1`.
+
+Never commit or distribute `*.private.xml` or `*.private.pem`. Any authority key that has previously appeared in repository history must be considered compromised and rotated before an Internet-facing deployment.
+
+## C# server
+
+The production/reference implementation targets .NET Framework 4.0 and uses native C helpers.
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File skyserver\create_demo_acc.ps1
+.\server\csharp\build.ps1 -Test
+.\server\csharp\bin\Release\skyserver.exe --host 0.0.0.0 --api-host 127.0.0.1 --real-skype-probe
 ```
 
-Created accounts:
+The server checks `SKYSERVER_KEYS_DIR` / `--keys-dir` first and otherwise looks for a `keys` directory next to the executable or in the project directory.
 
-- `admindev@test.lol` / `AdminDev`, display name `Admin`
-- `second@test.lol` / `SecondTest`, display name `Test Second Accout`
+## Go server
 
-Remove them:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File skyserver\remove_demo_acc.ps1
+```bash
+cd server/go
+go build ./cmd/openskyserver
+./openskyserver --host 0.0.0.0 --port 33033 --api-host 127.0.0.1 --api-port 33034 --keys-dir ../csharp/keys
 ```
 
-## Run
+The Go implementation is an incremental port, not yet a drop-in replacement for every C# protocol handler.
 
-```powershell
-.\skyserver\bin\Release\skyserver.exe --host 127.0.0.1 --port 33033 --api-port 33034
-```
+## Patcher and releases
 
-Point the client at it:
+`patcher/client/` is intentionally empty in Git. Put a locally built/patched client there when preparing a tag/release. Proprietary Skype executables and deployment secrets are not tracked in the source repository.
 
-```powershell
-$env:SKYAUTH_HOST = "127.0.0.1"
-$env:SKYAUTH_PORT = "33033"
-$env:SKYSERVER_HOST = "127.0.0.1"
-$env:SKYSERVER_API_PORT = "33034"
-```
-
-The auth DLL sends a local RC4-protected credential frame after the reconstructed login packets. The server validates that frame against SQLite before returning the success frame expected by this repo's `skyauth4_dll`.
-
-## Stock Skype Probe (Not Native Authentication)
-
-Direct-IP redirection is now authorized for local development. See
-[IP redirection](IP_REDIRECT.md) for the reversible Windows implementation and
-[cryptographic compatibility](CRYPTO_COMPATIBILITY.md) for the remaining login work.
-
-Inspect the current IP list:
-
-```powershell
-.\skyserver\skype_ip_redirect.ps1 -Action Plan
-```
-
-Enable from an Administrator PowerShell, then start one server instance:
-
-```powershell
-.\skyserver\skype_ip_redirect.ps1 -Action Enable
-.\skyserver\bin\Release\skyserver.exe --host 0.0.0.0 --api-host 127.0.0.1 --real-skype-probe --include-hostcache-probe
-```
-
-The redirect uses temporary IPv4 loopback aliases for known Skype destinations,
-including addresses read from HostCache. It does not edit hosts or the client.
-It covers TCP and UDP for those IPs across all processes; unknown destinations
-need to be added to the list. Protocol listeners must accept the aliased addresses,
-while the custom HTTP API remains on 127.0.0.1.
-
-Inspect/undo:
-
-```powershell
-.\skyserver\skype_ip_redirect.ps1 -Action Status
-.\skyserver\skype_ip_redirect.ps1 -Action Disable
-```
-
-The ownership journal preserves pre-existing aliases and interface settings.
-Old loopback on/off entry points delegate to the journaled implementation; they
-do not guess which unjournaled addresses can be removed.
-
-Probe mode is not native Skype authentication. After the outer login records, it
-logs `auth stock unsupported` and closes without a fabricated success or a DB
-session. Native AES/RSA credentials, registration, profiles and contacts are not
-implemented. The compatibility response is sent only after DB password validation
-for the reconstructed auth DLL.
-
-HostCache bootstrap and client supernode promotion are different functions.
-Clearing HostCache does not disable promotion and can prevent bootstrap.
-The profile-editing HostCache scripts are retained as old experiments, not part
-of the current redirect procedure.
+Generated patch scripts go to `patcher/dist/`.

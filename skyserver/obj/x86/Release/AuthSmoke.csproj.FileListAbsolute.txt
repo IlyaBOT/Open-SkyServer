@@ -1,6 +1,0 @@
-J:\skypeopensource2\skyserver\bin\Release\authsmoke.exe
-J:\skypeopensource2\skyserver\bin\Release\authsmoke.pdb
-J:\skypeopensource2\skyserver\obj\x86\Release\AuthSmoke.csproj.AssemblyReference.cache
-J:\skypeopensource2\skyserver\obj\x86\Release\AuthSmoke.csproj.CoreCompileInputs.cache
-J:\skypeopensource2\skyserver\obj\x86\Release\authsmoke.exe
-J:\skypeopensource2\skyserver\obj\x86\Release\authsmoke.pdb
