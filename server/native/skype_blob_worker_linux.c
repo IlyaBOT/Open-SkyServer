@@ -27,6 +27,16 @@ int main(void) {
     size_t count = fread(input, 1, sizeof(input), stdin);
     skype_list list = { &list, 0, 0, 0 };
     if (ferror(stdin) || count == 0 || count > 16384 || (input[0] != 0x41 && input[0] != 0x42)) return 2;
+    /*
+     * 0x41 is already the normalized representation. The Go server only invokes
+     * this helper for 0x42 data, but accepting 0x41 here provides a harmless
+     * worker-protocol smoke test and mirrors the Windows helper's accepted input.
+     */
+    if (input[0] == 0x41) {
+        consumed = (u32)count;
+        if (fwrite(&consumed, 4, 1, stdout) != 1 || fwrite(input, 1, count, stdout) != count) return 8;
+        return 0;
+    }
     remaining = (u32)count;
     cursor = input;
     if (!unpack_4142((u32*)&list, &cursor, &remaining, NULL, 8, &budget)) return 3;
