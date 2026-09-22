@@ -6,6 +6,7 @@ import (
 	"crypto/rsa"
 	"encoding/binary"
 	"math/big"
+	"strings"
 	"testing"
 	"time"
 
@@ -80,5 +81,24 @@ func TestProtectedResponseRoundTrip(t *testing.T) {
 	}
 	if !bytes.Equal(clear, payload) {
 		t.Fatalf("AES response mismatch: %x", clear)
+	}
+}
+
+
+func TestDescribeFieldsIsStructuralOnly(t *testing.T) {
+	fields := []Field{
+		{Type: 3, ID: 4, Bytes: []byte("secret-user")},
+		{Type: 4, ID: 5, Bytes: []byte("0123456789abcdef")},
+		{Type: 0, ID: 2, Number: 0xdeadbeef},
+		{Type: 5, ID: 0x20, Children: []Field{{Type: 3, ID: 0x23, Bytes: []byte("private-query")}}},
+	}
+	got := describeFields(fields)
+	if got != "3:4[11],4:5[16],0:2,5:20{1}" {
+		t.Fatalf("unexpected structural description: %q", got)
+	}
+	for _, secret := range []string{"secret-user", "0123456789abcdef", "deadbeef", "private-query"} {
+		if strings.Contains(got, secret) {
+			t.Fatalf("structural description leaked value %q: %q", secret, got)
+		}
 	}
 }
