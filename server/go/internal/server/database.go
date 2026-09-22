@@ -137,7 +137,6 @@ func (d *Database) AddContact(owner,contact string)error{
 	a,e:=d.GetAccount(owner);if e!=nil{return e};if a==nil{return fmt.Errorf("owner account does not exist: %s",owner)}
 	a,e=d.GetAccount(contact);if e!=nil{return e};if a==nil{return fmt.Errorf("contact account does not exist: %s",contact)}
 	_,e=d.execute("INSERT OR IGNORE INTO contacts(owner_login,contact_login,created_utc) VALUES("+sqlQuote(owner)+","+sqlQuote(contact)+","+sqlQuote(nowText())+");")
-	if e==nil{e=d.EnsureNativeContactDocuments(owner)}
 	return e
 }
 
