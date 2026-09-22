@@ -6,6 +6,7 @@ import (
 	"crypto/subtle"
 	"encoding/binary"
 	"fmt"
+	"log"
 	"strings"
 	"time"
 	"unicode"
@@ -118,13 +119,13 @@ func NativeContactRespond(req *NativeLoginRequest,db *Database)([]byte,error){
 	var body []Field;var rev uint32
 	switch req.Operation{
 	case 0x1789:
-		n,e:=Required(req.Metadata,3,0x34);if e!=nil{return nil,e};v,e:=Required(req.Metadata,4,0x33);if e!=nil{return nil,e};c,e:=Required(req.Metadata,0,0x32);if e!=nil{return nil,e};if !utf8.Valid(n.Bytes){return nil,fmt.Errorf("invalid document name")};rev,e=db.PutNativeDocument(req.Username,string(n.Bytes),v.Bytes,c.Number);if e!=nil{return nil,e}
+		n,e:=Required(req.Metadata,3,0x34);if e!=nil{return nil,e};v,e:=Required(req.Metadata,4,0x33);if e!=nil{return nil,e};c,e:=Required(req.Metadata,0,0x32);if e!=nil{return nil,e};if !utf8.Valid(n.Bytes){return nil,fmt.Errorf("invalid document name")};name:=string(n.Bytes);rev,e=db.PutNativeDocument(req.Username,name,v.Bytes,c.Number);if e!=nil{return nil,e};log.Printf("native document put user=%q name=%q checksum=%d revision=%d",req.Username,name,c.Number,rev)
 	case 0x178a:
-		n,e:=Required(req.Metadata,3,0x34);if e!=nil{return nil,e};if !utf8.Valid(n.Bytes){return nil,fmt.Errorf("invalid document name")};rev,e=db.RemoveNativeDocument(req.Username,string(n.Bytes));if e!=nil{return nil,e}
+		n,e:=Required(req.Metadata,3,0x34);if e!=nil{return nil,e};if !utf8.Valid(n.Bytes){return nil,fmt.Errorf("invalid document name")};name:=string(n.Bytes);rev,e=db.RemoveNativeDocument(req.Username,name);if e!=nil{return nil,e};log.Printf("native document delete user=%q name=%q revision=%d",req.Username,name,rev)
 	case 0x178b,0x178c,0x1788:
 		if req.Operation==0x178b||req.Operation==0x178c{if e:=db.EnsureNativeContactDocuments(req.Username);e!=nil{return nil,e}}
 		s,e:=db.GetNativeDocuments(req.Username);if e!=nil{return nil,e};rev=s.Revision
-		if req.Operation==0x178b||req.Operation==0x178c{checks:=make([]byte,len(s.Documents)*4);for i,d:=range s.Documents{binary.BigEndian.PutUint32(checks[i*4:],d.Checksum)};body=append(body,Field{Type:4,ID:0x35,Bytes:checks})}else{c,e:=Required(req.Metadata,0,0x32);if e!=nil{return nil,e};var found *NativeDocument;for i:=range s.Documents{if s.Documents[i].Checksum==c.Number{found=&s.Documents[i];break}};if found==nil{return nil,fmt.Errorf("native document absent")};body=append(body,Field{Type:5,ID:0x37,Children:[]Field{{Type:3,ID:0x34,Bytes:[]byte(found.Name)},{Type:4,ID:0x33,Bytes:found.Body}}})}
+		if req.Operation==0x178b||req.Operation==0x178c{checks:=make([]byte,len(s.Documents)*4);for i,d:=range s.Documents{binary.BigEndian.PutUint32(checks[i*4:],d.Checksum)};body=append(body,Field{Type:4,ID:0x35,Bytes:checks});log.Printf("native document manifest user=%q operation=0x%x revision=%d documents=%d",req.Username,req.Operation,rev,len(s.Documents))}else{c,e:=Required(req.Metadata,0,0x32);if e!=nil{return nil,e};var found *NativeDocument;for i:=range s.Documents{if s.Documents[i].Checksum==c.Number{found=&s.Documents[i];break}};if found==nil{return nil,fmt.Errorf("native document absent")};body=append(body,Field{Type:5,ID:0x37,Children:[]Field{{Type:3,ID:0x34,Bytes:[]byte(found.Name)},{Type:4,ID:0x33,Bytes:found.Body}}})}
 	default:return nil,fmt.Errorf("unsupported native document operation")
 	}
 	body=append([]Field{fieldNumber(0x36,rev)},body...);enc,e:=EncodeBlob(body);if e!=nil{return nil,e};return AccountResponse(enc,req.RequestID,0x1450)
