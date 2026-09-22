@@ -9,6 +9,8 @@ on:
       - 'server/native/**'
       - 'skypeopensource2/goodsendrelay4_dll/**'
       - 'skypeopensource2/skyauth4_dll/**'
+      - 'patcher/tools/**'
+      - 'patcher/tests/**'
 
 jobs:
   build:
@@ -22,6 +24,24 @@ jobs:
         with:
           go-version: '1.22.x'
           cache: false
+      - name: Validate PowerShell patcher syntax
+        shell: pwsh
+        working-directory: .
+        run: |
+          $files = @(
+            'patcher/tools/skypatch-package.ps1',
+            'patcher/tools/New-ClientBundle.ps1',
+            'patcher/tests/Test-ClientBundle.ps1'
+          )
+          foreach ($file in $files) {
+            $tokens = $null
+            $errors = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file), [ref]$tokens, [ref]$errors)
+            if ($errors.Count) {
+              $errors | Format-List
+              throw "PowerShell syntax errors in $file"
+            }
+          }
       - name: Install compatibility toolchain
         run: |
           sudo apt-get update
