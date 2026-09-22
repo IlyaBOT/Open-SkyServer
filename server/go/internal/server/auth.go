@@ -54,7 +54,8 @@ func (s *AuthServer) handle(c net.Conn)error{
 }
 
 func looksDirect(secret,encrypted []byte)bool{
-	c,e:=newRC4(secret);if e!=nil{return false};clear:=make([]byte,len(encrypted));c.XORKeyStream(clear,encrypted);p:=[]byte{0x16,3,1};for i:=0;i<len(clear)&&i<len(p);i++{if clear[i]!=p[i]{return false}};return true
+	if len(encrypted)<3{return false}
+	c,e:=newRC4(secret);if e!=nil{return false};clear:=make([]byte,len(encrypted));c.XORKeyStream(clear,encrypted);p:=[]byte{0x16,3,1};for i:=0;i<len(p);i++{if clear[i]!=p[i]{return false}};return true
 }
 func IsAccountRecordPrefix(secret,encrypted []byte)bool{
 	if len(encrypted)<5{return false};c,e:=newRC4(secret);if e!=nil{return false};p:=make([]byte,len(encrypted));c.XORKeyStream(p,encrypted);n:=int(binary.BigEndian.Uint16(p[3:5]));return p[0]==0x16&&p[1]==3&&p[2]==1&&n>=192&&n<=16384
@@ -63,7 +64,7 @@ func IsAccountRecordPrefix(secret,encrypted []byte)bool{
 func (s *AuthServer) HandleStock(c net.Conn,dh *DHSession,first []byte,ackAlready bool)error{
 	if !ackAlready{if _,e:=c.Write(dh.ServerHash);e!=nil{return e}}
 	rc,e:=newRC4(dh.SharedSecret);if e!=nil{return e};frames,e:=readEncryptedFrames(c,rc,2,first);if e!=nil{return e};if len(frames)!=2||frames[0][0]!=0x16||frames[1][0]!=0x17||len(frames[0])<=5||len(frames[1])<=7{return fmt.Errorf("unexpected stock Skype login frame sequence")}
-	if s.Keys==nil{return fmt.Errorf("no community private keys configured")}
+	if s.Keys==nil{log.Print("auth stock: no community private keys configured; closing without a fabricated success response");return nil}
 	req,e:=ParseNativeLogin(frames[0],frames[1],s.Keys);if e!=nil{return e};valid,e:=s.DB.ValidateNativePasswordHash(req.Username,req.PasswordDigest);if e!=nil{return e};if !valid{return fmt.Errorf("native password rejected")}
 	var payload []byte
 	switch {
