@@ -80,7 +80,7 @@ func (s *TCPProbeServer) buildCommand30Reply(req []byte,remote,local *net.TCPAdd
 	if !looksLegacyFrame(req)||req[4]!=0xf2||req[5]!=1{return nil,false}
 	if remote==nil||remote.IP.To4()==nil||remote.Port<1||remote.Port>65535{return nil,false}
 	if local==nil||local.IP.To4()==nil||local.Port<1||local.Port>65535{return nil,false}
-	const hexReply="D121FB0100004106000B34000CECD193D0050211750325C706940010D5B8020022C01062100"
+	const hexReply="D121FB0100004106000B34000CECD193D0050211750325C706940010D5B802002C01062100"
 	raw:=make([]byte,len(hexReply)/2);for i:=range raw{fmt.Sscanf(hexReply[i*2:i*2+2],"%02x",&raw[i])}
 	fields,used,e:=DecodeBlob(raw[6:]);if e!=nil||used!=len(raw)-6{return nil,false}
 	endpointFound:=false;portFound:=false
