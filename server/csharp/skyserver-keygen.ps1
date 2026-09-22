@@ -96,7 +96,7 @@ if (Test-Path -LiteralPath $PatcherOutput) { [IO.File]::Replace($temp, $PatcherO
 else { [IO.File]::Move($temp, $PatcherOutput) }
 Write-Host "Public-only patcher: $PatcherOutput"
 Write-Host "Server: --keys-dir `"$OutputDirectory`""
-Write-Warning 'Legacy RSA-1536 is for compatibility testing only. Keep *.private.xml on the server; distribute only dist\skypatch.ps1. A supported binary patch profile is still required.'
+Write-Warning 'Legacy RSA-1536 is for compatibility testing only. Keep *.private.xml on the server; distribute only patcher\dist\skypatch.ps1. A supported binary patch profile is still required.'
 
 if ($ClientIntegrity) {
     if (-not (Test-Path -LiteralPath $OpenSslPath -PathType Leaf)) { throw 'OpenSSL is required for the optional client-integrity key.' }
