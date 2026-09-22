@@ -9,7 +9,7 @@ trap 'rm -rf "$TMP"' EXIT
 
 cp "$SRC/skype_basics.h" "$TMP/"
 sed -E -e 's/__asm[[:space:]]+int[[:space:]]+3/abort()/g' -e 's/__stdcall[[:space:]]+//g' "$SRC/pack-4142.c" > "$TMP/pack-4142.c"
-sed -E -e 's/__asm[[:space:]]+int[[:space:]]+3/abort()/g' -e 's/__stdcall[[:space:]]+//g' "$SRC/unpack-4142.c" > "$TMP/unpack-4142.c"
+sed -E -e 's/__asm[[:space:]]+int[[:space:]]+3/abort()/g' -e 's/__stdcall[[:space:]]+//g' -e 's/u32 ctx\[333\];/u32 ctx[333] = {0};/' "$SRC/unpack-4142.c" > "$TMP/unpack-4142.c"
 
 if ! printf 'int main(void){return 0;}\n' | gcc -m32 -x c - -o "$TMP/probe" >/dev/null 2>&1; then
   echo "32-bit GCC runtime is required for the isolated 0x42 worker." >&2
