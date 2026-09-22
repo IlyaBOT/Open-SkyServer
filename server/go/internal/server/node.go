@@ -105,6 +105,8 @@ func VerifySignedRecord(value []byte,ks *keys.Set,now time.Time)(*SignedRecord,e
 	fields,used,e:=DecodeBlob(msg[20:]);if e!=nil{return nil,e};if used!=len(msg)-20{return nil,fmt.Errorf("trailing directory record data")};return &SignedRecord{username,fields},nil
 }
 
+const locationRecordTTL = 5 * time.Minute
+
 type recordEntry struct{value []byte;expires time.Time;id uint32}
 type RecordDirectory struct{ks *keys.Set;mu sync.Mutex;records map[string]recordEntry}
 func NewRecordDirectory(ks *keys.Set)*RecordDirectory{return &RecordDirectory{ks:ks,records:map[string]recordEntry{}}}
@@ -114,7 +116,7 @@ func (d *RecordDirectory) Handle(req NodeCommand,now time.Time)(*NodeCommand,err
 	var result []Field
 	if req.Code==0xc{
 		if d.ks==nil{return nil,nil};if len(req.Fields)!=1{return nil,fmt.Errorf("unsupported directory publication fields")};v,e:=Required(req.Fields,4,0xb);if e!=nil{return nil,e};rec,e:=VerifySignedRecord(v.Bytes,d.ks,now);if e!=nil{return nil,e}
-		sum:=sha256.Sum256(v.Bytes);id:=binary.LittleEndian.Uint32(sum[:4]);d.mu.Lock();d.expire(now);if len(d.records)>=1024{if _,ok:=d.records[strings.ToLower(rec.Username)];!ok{d.mu.Unlock();return nil,fmt.Errorf("directory capacity reached")}};d.records[strings.ToLower(rec.Username)]=recordEntry{append([]byte(nil),v.Bytes...),now.Add(2*time.Minute),id};d.mu.Unlock()
+		sum:=sha256.Sum256(v.Bytes);id:=binary.LittleEndian.Uint32(sum[:4]);d.mu.Lock();d.expire(now);if len(d.records)>=1024{if _,ok:=d.records[strings.ToLower(rec.Username)];!ok{d.mu.Unlock();return nil,fmt.Errorf("directory capacity reached")}};d.records[strings.ToLower(rec.Username)]=recordEntry{append([]byte(nil),v.Bytes...),now.Add(locationRecordTTL),id};d.mu.Unlock()
 	}else{
 		if len(req.Fields)!=2&&len(req.Fields)!=3{return nil,nil};var excluded []byte;if len(req.Fields)==3{x,e:=Required(req.Fields,6,2);if e!=nil{return nil,e};excluded=x.Bytes;if len(excluded)>400||len(excluded)%4!=0{return nil,fmt.Errorf("invalid excluded identifiers")}}
 		q,e:=Required(req.Fields,5,0);if e!=nil{return nil,e};props,e:=Required(req.Fields,6,1);if e!=nil{return nil,e};if len(q.Children)!=3||len(props.Bytes)!=8||binary.LittleEndian.Uint32(props.Bytes)!=16||binary.LittleEndian.Uint32(props.Bytes[4:])!=11{return nil,nil}
