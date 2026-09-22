@@ -17,7 +17,9 @@ if ! printf 'int main(void){return 0;}\n' | gcc -m32 -x c - -o "$TMP/probe" >/de
   exit 1
 fi
 
-gcc -m32 -O2 -fno-strict-aliasing -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast   -I"$TMP" "$ROOT/server/native/skype_blob_worker_linux.c" -o "$OUT/skype_blob_worker"
+gcc -m32 -O2 -fno-pie -no-pie -fno-stack-protector -fno-strict-aliasing \
+  -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast \
+  -I"$TMP" "$ROOT/server/native/skype_blob_worker_linux.c" -o "$OUT/skype_blob_worker"
 
 cd "$ROOT/server/go"
 CGO_ENABLED=1 go build -trimpath -ldflags="-s -w" -o "$OUT/openskyserver" ./cmd/openskyserver
