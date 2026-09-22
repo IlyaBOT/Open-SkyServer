@@ -40,8 +40,11 @@ func DecodeNodeFrame(frame []byte)(NodeFrame,error){
 	if len(frame)-at<2{return out,fmt.Errorf("missing node sequence")};out.Sequence=binary.BigEndian.Uint16(frame[at:]);at+=2
 	for at<len(frame){
 		if len(out.Commands)>=64{return out,fmt.Errorf("too many node commands")}
-		bodyLen,e:=decodeNodeVarint(frame,&at);if e!=nil{return out,e};end:=at+int(bodyLen);if end>len(frame)||bodyLen==0{return out,fmt.Errorf("invalid node command length")}
-		enc,e:=decodeNodeVarint(frame,&at);if e!=nil{return out,e};cmd:=NodeCommand{Code:enc>>3,Flags:byte(enc&7)};if cmd.Flags>3{return out,fmt.Errorf("invalid node flags")}
+		bodyLen,e:=decodeNodeVarint(frame,&at);if e!=nil{return out,e}
+		enc,e:=decodeNodeVarint(frame,&at);if e!=nil{return out,e}
+		if bodyLen>uint32(len(frame)-at){return out,fmt.Errorf("invalid node command length")}
+		end:=at+int(bodyLen)
+		cmd:=NodeCommand{Code:enc>>3,Flags:byte(enc&7)};if cmd.Flags>3{return out,fmt.Errorf("invalid node flags")}
 		if cmd.Flags==2||cmd.Flags==3{if at+2>end{return out,fmt.Errorf("missing request id")};v:=binary.BigEndian.Uint16(frame[at:]);at+=2;cmd.RequestID=&v}
 		if at>=end{return out,fmt.Errorf("missing node command payload")};fields,used,e:=DecodeBlob(frame[at:end]);if e!=nil{return out,e};if used!=end-at{return out,fmt.Errorf("trailing node command fields")};cmd.Fields=fields;at=end;out.Commands=append(out.Commands,cmd)
 	}
@@ -50,7 +53,14 @@ func DecodeNodeFrame(frame []byte)(NodeFrame,error){
 func EncodeNodeFrame(seq uint16,commands ...NodeCommand)([]byte,error){
 	var body bytes.Buffer;var s [2]byte;binary.BigEndian.PutUint16(s[:],seq);body.Write(s[:])
 	for _,c:=range commands{
-		payload,e:=EncodeBlob(c.Fields);if e!=nil{return nil,e};var cb bytes.Buffer;if e:=writeVarint(&cb,c.Code<<3|uint32(c.Flags));e!=nil{return nil,e};if c.Flags==2||c.Flags==3{if c.RequestID==nil{return nil,fmt.Errorf("missing request id")};var r [2]byte;binary.BigEndian.PutUint16(r[:],*c.RequestID);cb.Write(r[:])};cb.Write(payload);if e:=writeVarint(&body,uint32(cb.Len()));e!=nil{return nil,e};body.Write(cb.Bytes())
+		payload,e:=EncodeBlob(c.Fields);if e!=nil{return nil,e}
+		hasRequest:=c.Flags==2||c.Flags==3
+		if hasRequest!=(c.RequestID!=nil){return nil,fmt.Errorf("invalid node request-id flags")}
+		bodyLen:=len(payload);if hasRequest{bodyLen+=2}
+		if e:=writeVarint(&body,uint32(bodyLen));e!=nil{return nil,e}
+		if e:=writeVarint(&body,c.Code<<3|uint32(c.Flags));e!=nil{return nil,e}
+		if hasRequest{var r [2]byte;binary.BigEndian.PutUint16(r[:],*c.RequestID);body.Write(r[:])}
+		body.Write(payload)
 	}
 	var out bytes.Buffer;if e:=writeVarint(&out,uint32(body.Len()<<1));e!=nil{return nil,e};out.Write(body.Bytes());if out.Len()>16384{return nil,fmt.Errorf("node frame too large")};return out.Bytes(),nil
 }
