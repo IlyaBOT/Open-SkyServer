@@ -34,7 +34,7 @@ func ParseNativeLogin(keyRecord,loginRecord []byte,ks *keys.Set)(*NativeLoginReq
 	exchange,used,e:=DecodeBlob(keyPayload);if e!=nil{return nil,e};if used!=len(keyPayload){return nil,fmt.Errorf("trailing key-exchange fields")}
 	f,e:=Required(exchange,4,8);if e!=nil{return nil,e};if len(f.Bytes)!=192{return nil,fmt.Errorf("expected RSA-1536 key exchange")}
 	if len(protected)<3{return nil,fmt.Errorf("short protected login record")};n:=len(protected)-2;crc:=CRC32Skype(protected[:n]);if protected[n]!=byte(crc)||protected[n+1]!=byte(crc>>8){return nil,fmt.Errorf("native login CRC mismatch")}
-	material,e:=ks.Login.PrivateOperation(f.Bytes);if e!=nil{return nil,e};defer bytes.SetLength(material,0)
+	material,e:=ks.Login.PrivateOperation(f.Bytes);if e!=nil{return nil,e};defer func(){ for i:=range material { material[i]=0 } }()
 	if material[0]!=1{return nil,fmt.Errorf("RSA session material rejected; client may trust another authority")}
 	aesKey,e:=DeriveLoginAESKey(material);if e!=nil{return nil,e};clear,e:=LoginAESCTR(aesKey,protected[:n],0);if e!=nil{return nil,e}
 	account,used,e:=DecodeBlob(clear);if e!=nil{return nil,e}
