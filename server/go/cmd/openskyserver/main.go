@@ -32,7 +32,7 @@ func main(){
 	}
 	if cfg.Command!=server.Serve{if err!=nil{log.Fatal(err)};log.Print("database command completed");return}
 	var access *server.AccessPolicy
-	if cfg.Closed{access,err=server.LoadAccess(cfg.Allowlist)}else{access=server.OpenAccess()};if err!=nil{log.Fatal(err)}
+	if cfg.Allowlist!=""{access,err=server.LoadAccess(cfg.Allowlist)}else{access=server.OpenAccess()};if err!=nil{log.Fatal(err)}
 	if ks==nil&&cfg.RealSkype{log.Print("warning: no community authority keys loaded; native account RPCs will close without fabricated success responses")}
 	ctx,cancel:=signal.NotifyContext(context.Background(),os.Interrupt,syscall.SIGTERM);defer cancel()
 	api:=&server.APIServer{DB:db,Access:access,Host:cfg.APIHost,Port:cfg.APIPort};apiSrv,err:=api.Run();if err!=nil{log.Fatal(err)};defer apiSrv.Close()
@@ -43,7 +43,7 @@ func main(){
 		tcp:=&server.TCPProbeServer{Host:cfg.Host,Ports:tcpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access,Auth:auth,Keys:ks};tcp.Run(ctx)
 		udp:=&server.UDPServer{Host:cfg.Host,Ports:udpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access};udp.Run(ctx)
 	}
-	log.Printf("network mode=%s access=%s advertised-ip=%v",cfg.Mode,map[bool]string{true:"closed (startup snapshot)",false:"open"}[cfg.Closed],cfg.AdvertiseIP)
+	log.Printf("network mode=%s access=%s advertised-ip=%v",cfg.Mode,map[bool]string{true:"closed (startup snapshot)",false:"open"}[cfg.Allowlist!=""],cfg.AdvertiseIP)
 	log.Printf("OpenSkyServer Go auth=%s api=%s db=%s",net.JoinHostPort(cfg.Host,fmt.Sprint(cfg.Port)),net.JoinHostPort(cfg.APIHost,fmt.Sprint(cfg.APIPort)),filepath.Clean(cfg.DBPath))
 	go func(){<-ctx.Done();_ = apiSrv.Shutdown(context.Background())}()
 	if err=auth.Run(ctx);err!=nil&&err!=http.ErrServerClosed{log.Fatal(err)}
