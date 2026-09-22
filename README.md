@@ -1,5 +1,7 @@
 # Open-SkyServer
 
+**Stage 4.1 status:** patched Skype 4.2 login, contact synchronization, directory search, presence, messages and call signaling are working in the C# reference implementation. Native self-registration and cross-NAT media relay remain incomplete. See `server/csharp/DEPLOYMENT.md` and `server/csharp/CALL_AUDIO.md`.
+
 Open-source reverse engineering of the classic Skype protocol, a compatible community server, and tooling for patching supported legacy clients.
 
 ## Repository layout
