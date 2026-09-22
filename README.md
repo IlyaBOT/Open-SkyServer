@@ -8,7 +8,7 @@ Open-source reverse engineering of the classic Skype protocol, a compatible comm
 
 - `server/csharp/` — primary server implementation. C# / .NET Framework 4.0.
 - `server/native/` — native C helpers used by the C# implementation.
-- `server/go/` — experimental Linux-friendly Go port. It currently provides configuration/key validation, listeners and a health endpoint; protocol feature parity is still being ported.
+- `server/go/` — Linux-oriented Stage 4.1 parity port. Auth, account RPCs, SQLite data model, HTTP API, TCP bootstrap/node transport and UDP bootstrap are implemented; live patched-client validation is still required before replacing the C# reference server.
 - `patcher/` — client patching, integrity tooling and release staging.
 - `skypeopensource2/`, `skypeproto/` — historical reverse-engineering source material retained for development.
 
@@ -37,13 +37,13 @@ The server checks `SKYSERVER_KEYS_DIR` / `--keys-dir` first and otherwise looks 
 
 ## Go server
 
-```bash
-cd server/go
-go build ./cmd/openskyserver
-./openskyserver --host 0.0.0.0 --port 33033 --api-host 127.0.0.1 --api-port 33034 --keys-dir ../csharp/keys
-```
+See server/go/README.md for the Debian build and migration procedure.
 
-The Go implementation is an incremental port, not yet a drop-in replacement for every C# protocol handler.
+    cd server/go
+    sh ./build-linux.sh
+    sudo ./bin/openskyserver --check-keys --keys-dir /etc/openskyserver/keys
+
+The Go implementation now covers the Stage 4.1 server surface, but must still pass live native-client interoperability testing before it replaces the C# reference implementation.
 
 ## Patcher and releases
 
