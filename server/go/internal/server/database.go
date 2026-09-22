@@ -10,6 +10,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"fmt"
+	"net/mail"
 	"os"
 	"os/exec"
 	"strconv"
@@ -164,6 +165,7 @@ func (d *Database) RequirePassword(login,password string)error{_,ok,e:=d.Validat
 
 func (d *Database) SetAccountEmail(login,email string)error{
 	if len(email)>254 || strings.IndexAny(email,"\x00\r\n\t ")>=0{return fmt.Errorf("invalid account email")}
+	if email!=""{parsed,e:=mail.ParseAddress(email);if e!=nil||parsed.Address!=email{return fmt.Errorf("expected an email address without a display name")}}
 	a,e:=d.GetAccount(login);if e!=nil{return e};if a==nil{return fmt.Errorf("account does not exist")}
 	_,e=d.execute("INSERT OR REPLACE INTO account_profiles(login,email) VALUES("+sqlQuote(login)+","+sqlQuote(email)+");");return e
 }
