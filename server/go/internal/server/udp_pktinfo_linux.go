@@ -3,7 +3,6 @@
 package server
 
 import (
-	"encoding/binary"
 	"fmt"
 	"net"
 	"syscall"
@@ -32,7 +31,6 @@ func readUDPDatagram(c *net.UDPConn, buf []byte) (int, *net.UDPAddr, net.IP, err
 		//   int ipi_ifindex; struct in_addr ipi_spec_dst; struct in_addr ipi_addr;
 		if len(msg.Data) < 12 { return 0, nil, nil, fmt.Errorf("short IP_PKTINFO control message") }
 		destination = net.IPv4(msg.Data[8], msg.Data[9], msg.Data[10], msg.Data[11]).To4()
-		_ = binary.NativeEndian.Uint32(msg.Data[:4]) // validate/native-size access; ifindex is informational.
 		break
 	}
 	if destination == nil {
