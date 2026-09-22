@@ -8,6 +8,7 @@ on:
       - 'server/go/**'
       - 'server/native/**'
       - 'skypeopensource2/goodsendrelay4_dll/**'
+      - 'skypeopensource2/skyauth4_dll/**'
 
 jobs:
   build:
@@ -20,11 +21,24 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.22.x'
-      - name: Test
+          cache: false
+      - name: Test Go server
         env:
           CGO_ENABLED: '1'
         run: go test ./...
-      - name: Build
+      - name: Build amd64 server
         env:
           CGO_ENABLED: '1'
         run: go build -trimpath -o /tmp/openskyserver ./cmd/openskyserver
+      - name: Install 32-bit toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-multilib libc6-dev-i386
+      - name: Build complete Debian bundle
+        run: sh ./build-linux.sh
+      - name: Inspect binaries
+        run: |
+          file ./bin/openskyserver
+          file ./bin/skype_blob_worker
+          test -x ./bin/openskyserver
+          test -x ./bin/skype_blob_worker
