@@ -24,6 +24,12 @@ internal static class ProtocolTests
     {
         try
         {
+            if (args.Length == 2 && args[0] == "--deployment-only")
+            {
+                Directory.CreateDirectory(args[1]);
+                DeploymentTests.Run(args[1]);
+                return 0;
+            }
             if (args.Length == 1 && args[0] == "--node-only")
             {
                 SkypeNodeFrameTests.Run();
@@ -33,6 +39,7 @@ internal static class ProtocolTests
             if (args.Length != 2) throw new ArgumentException("Usage: ProtocolTests.exe sqlite3.exe output-directory");
             sqlite = args[0];
             Directory.CreateDirectory(args[1]);
+            DeploymentTests.Run(args[1]);
             CommunityKeysTests.Run(args[1]);
             UdpDestinationTests.Run();
             databasePath = Path.Combine(Path.GetFullPath(args[1]), "protocol-tests.db");
