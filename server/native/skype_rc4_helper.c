@@ -8,7 +8,7 @@ int debuglog(const char *format, ...)
     return 0;
 }
 
-#include "../skypeopensource2/goodsendrelay4_dll/goodsendrelay4_dll/skype/skype_rc4.c"
+#include "../../skypeopensource2/goodsendrelay4_dll/goodsendrelay4_dll/skype/skype_rc4.c"
 
 static uint32_t read_u32_be(const unsigned char *data)
 {
