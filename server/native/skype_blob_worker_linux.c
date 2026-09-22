@@ -23,7 +23,7 @@ static void *bounded_realloc(void *ptr, size_t bytes) {
 
 int main(void) {
     unsigned char input[16385], output[65536], *cursor;
-    u32 remaining, budget = 65536, length, consumed;
+    u32 remaining, budget = 0x50000, length, consumed;
     size_t count = fread(input, 1, sizeof(input), stdin);
     skype_list list = { &list, 0, 0, 0 };
     if (ferror(stdin) || count == 0 || count > 16384 || (input[0] != 0x41 && input[0] != 0x42)) return 2;
