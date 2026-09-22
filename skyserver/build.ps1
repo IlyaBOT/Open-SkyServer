@@ -48,6 +48,7 @@ function Build-Project([string]$Project) {
     if ($LASTEXITCODE -ne 0) { throw "MSBuild failed: $Project" }
 }
 
+& (Join-Path (Split-Path -Parent $PSScriptRoot) 'skyserver_native\build.ps1')
 & (Join-Path (Split-Path -Parent $PSScriptRoot) 'skyserver_native\build_blob_worker.ps1')
 Build-Project (Join-Path $PSScriptRoot 'SkyServer.csproj')
 if ($Test) {

@@ -6,6 +6,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <PlatformTarget>x86</PlatformTarget>
     <Optimize>true</Optimize>
+    <StartupObject>ProtocolTests</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -37,6 +38,11 @@
     <Compile Include="..\NativeLoginRequest.cs"><Link>NativeLoginRequest.cs</Link></Compile>
     <Compile Include="..\CommunityKeys.cs"><Link>CommunityKeys.cs</Link></Compile>
     <Compile Include="ProtocolTests.cs" />
+    <Compile Include="DeploymentTests.cs" />
+    <Compile Include="..\Program.cs"><Link>Program.cs</Link></Compile>
+    <Compile Include="..\ApiServer.cs"><Link>ApiServer.cs</Link></Compile>
+    <Compile Include="..\SkypeHostCache.cs"><Link>SkypeHostCache.cs</Link></Compile>
+    <Compile Include="..\NetworkAccessPolicy.cs"><Link>NetworkAccessPolicy.cs</Link></Compile>
     <Compile Include="..\AuthProtocolServer.cs"><Link>AuthProtocolServer.cs</Link></Compile>
     <Compile Include="..\SkyDatabase.cs"><Link>SkyDatabase.cs</Link></Compile>
     <Compile Include="..\SkypeDh384Session.cs"><Link>SkypeDh384Session.cs</Link></Compile>
@@ -45,6 +51,10 @@
   <ItemGroup>
     <Content Include="..\..\skyserver_native\bin\x86\Release\skype_blob_worker.exe">
       <Link>skype_blob_worker.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\skyserver_native\bin\x86\Release\skype_rc4_helper.dll">
+      <Link>skype_rc4_helper.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

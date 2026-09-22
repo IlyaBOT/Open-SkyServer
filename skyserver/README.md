@@ -2,9 +2,14 @@
 
 Community test server for the reconstructed Epycs/Skype client path.
 
-**Native lab status (2026-09-19): login and contact-list synchronization work in
-the isolated patched Skype 4.2 client. Directory search is under verification;
-contact invitations, native chat and full profile editing remain unfinished.**
+**Native lab status (2026-09-22): login, contacts and search work in patched
+Skype 4.2. Presence, messages and call signaling are reported working by the
+tester. Call audio and WAN interoperability are not yet verified. Native
+self-registration is not implemented; provision accounts administratively.**
+
+Current instructions: [deployment and client packages](DEPLOYMENT.md),
+[call-audio investigation](CALL_AUDIO.md). Older instructions below describe
+the reconstructed client and probe experiments, not production deployment.
 See [the current checkpoint](NATIVE_CLIENT_CHECKPOINT.md) for native launch
 commands, evidence, backups and protocol notes. The instructions below primarily
 describe the reconstructed client and older probe experiments.

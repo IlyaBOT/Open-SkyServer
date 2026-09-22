@@ -72,3 +72,7 @@ I:\Open-SkyServer\skyserver\diagnostics\presence-build-20260921-h\skype_blob_wor
 I:\Open-SkyServer\skyserver\diagnostics\presence-build-20260921-h\skype_rc4_helper.dll
 I:\Open-SkyServer\skyserver\diagnostics\presence-build-20260921-h\skyserver.exe
 I:\Open-SkyServer\skyserver\diagnostics\presence-build-20260921-h\skyserver.pdb
+I:\Open-SkyServer\skyserver\diagnostics\deployment-build-20260922\skype_blob_worker.exe
+I:\Open-SkyServer\skyserver\diagnostics\deployment-build-20260922\skype_rc4_helper.dll
+I:\Open-SkyServer\skyserver\diagnostics\deployment-build-20260922\skyserver.exe
+I:\Open-SkyServer\skyserver\diagnostics\deployment-build-20260922\skyserver.pdb

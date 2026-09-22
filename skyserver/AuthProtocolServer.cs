@@ -30,8 +30,10 @@ namespace SkyServer
         {
         }
 
-        public AuthProtocolServer(SkyDatabase database, IPAddress bindAddress, int port, bool once, bool realSkypeProbe, CommunityKeys communityKeys)
+        private readonly NetworkAccessPolicy access;
+        public AuthProtocolServer(SkyDatabase database, IPAddress bindAddress, int port, bool once, bool realSkypeProbe, CommunityKeys communityKeys, NetworkAccessPolicy access = null)
         {
+            this.access = access ?? NetworkAccessPolicy.Open;
             this.database = database;
             this.bindAddress = bindAddress;
             this.port = port;
@@ -54,6 +56,7 @@ namespace SkyServer
                 do
                 {
                     TcpClient client = listener.AcceptTcpClient();
+                    if (!access.Accept(client)) continue;
                     lock (clientsLock)
                     {
                         if (stopped || activeClients.Count >= MaximumClients)

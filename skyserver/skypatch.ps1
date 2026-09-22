@@ -1,3 +1,5 @@
+# Legacy constant-patcher template. Packed Skype 4.2 requires the verified
+# package workflow in DEPLOYMENT.md and tools/New-ClientBundle.ps1 instead.
 [CmdletBinding()]
 param(
     [ValidateSet('Patch', 'Inspect', 'Restore')][string]$Action = 'Patch',

@@ -1,2 +1,11 @@
 /parse_proto
 /skyserver/diagnostics
+/skyserver/private-keys/
+/skyserver/dist/
+/skyserver/.packages/
+/skyserver/bin/
+/skyserver/obj/
+/skyserver/tests/bin/
+/skyserver/tests/obj/
+/skyserver_native/bin/
+/skyserver/allowlist.txt

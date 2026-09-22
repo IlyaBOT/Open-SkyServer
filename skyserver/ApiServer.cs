@@ -16,8 +16,11 @@ namespace SkyServer
         private TcpListener listener;
         private volatile bool stopped;
 
-        public ApiServer(SkyDatabase database, IPAddress bindAddress, int port)
+        private readonly NetworkAccessPolicy access;
+        private readonly Semaphore connectionSlots = new Semaphore(32, 32);
+        public ApiServer(SkyDatabase database, IPAddress bindAddress, int port, NetworkAccessPolicy access = null)
         {
+            this.access = access ?? NetworkAccessPolicy.Open;
             this.database = database;
             this.bindAddress = bindAddress;
             this.port = port;
@@ -34,7 +37,12 @@ namespace SkyServer
                 try
                 {
                     TcpClient client = listener.AcceptTcpClient();
-                    ThreadPool.QueueUserWorkItem(HandleClient, client);
+                    if (!access.Accept(client)) continue;
+                    if (!connectionSlots.WaitOne(0)) { client.Close(); continue; }
+                    ThreadPool.QueueUserWorkItem(delegate(object item) {
+                        try { HandleClient(item); }
+                        finally { connectionSlots.Release(); }
+                    }, client);
                 }
                 catch (SocketException)
                 {

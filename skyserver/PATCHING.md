@@ -1,5 +1,11 @@
 # Community keys and client patching
 
+Current Skype 4.2 package workflow (2026-09-22): see [DEPLOYMENT.md](DEPLOYMENT.md).
+`tools/New-ClientBundle.ps1` packages the verified rebuilt image with a
+hash-checked installer/restorer and account-scoped directory settings.
+The limitations below apply to the older constant-patcher template, not that
+package workflow. A changed server address requires a new signed client build.
+
 ## Status: NOT a working patch for the installed Skype yet
 
 `skyserver-keygen.ps1` works. `skypatch.ps1` implements verified, fixed-size byte

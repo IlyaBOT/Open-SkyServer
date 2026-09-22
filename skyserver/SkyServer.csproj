@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiServer.cs" />
+    <Compile Include="NetworkAccessPolicy.cs" />
     <Compile Include="AuthProtocolServer.cs" />
     <Compile Include="CommunityKeys.cs" />
     <Compile Include="SkypeBlobCodec.cs" />

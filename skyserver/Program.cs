@@ -61,17 +61,20 @@ namespace SkyServer
                 return 0;
             }
 
-            ApiServer apiServer = new ApiServer(database, options.ApiHost, options.ApiPort);
+            NetworkAccessPolicy access = options.AllowlistPath == null ? NetworkAccessPolicy.Open : NetworkAccessPolicy.Load(options.AllowlistPath);
+            Console.WriteLine("network mode: {0}; access: {1}; advertised IPv4: {2}; API bind: {3}",
+                options.Mode, options.AllowlistPath == null ? "open" : "closed (startup snapshot)", options.AdvertisedAddress, options.ApiHost);
+            ApiServer apiServer = new ApiServer(database, options.ApiHost, options.ApiPort, access);
             Thread apiThread = new Thread(apiServer.Run);
             apiThread.IsBackground = true;
             apiThread.Start();
 
             ProbeUdpServer udpProbe = null;
             TcpProbeServer tcpProbe = null;
-            AuthProtocolServer authServer = new AuthProtocolServer(database, options.AuthHost, options.AuthPort, options.Once, options.RealSkypeProbe, keys);
+            AuthProtocolServer authServer = new AuthProtocolServer(database, options.AuthHost, options.AuthPort, options.Once, options.RealSkypeProbe, keys, access);
             if (options.RealSkypeProbe)
             {
-                Console.WriteLine("stock Skype development probe: --keys-dir enables native RSA/AES password verification and a community-signed credential response. Original client acceptance is unverified; registration, profile and contacts are not implemented.");
+                Console.WriteLine("experimental Skype 4.2 service: patched authority required. Native self-registration and media relay are not implemented.");
                 Console.WriteLine("hosts redirects DNS names only. Direct-IP Skype bootstrap/login connections bypass hosts.");
                 List<IPEndPoint> hostCacheEndpoints = options.IncludeHostCacheProbe
                     ? SkypeHostCache.ReadEndpoints(options.SkypeSharedXmlPath)
@@ -89,12 +92,12 @@ namespace SkyServer
                     Console.WriteLine("skype HostCache probe listeners disabled; this does not disable the client's supernode role.");
                 }
 
-                udpProbe = new ProbeUdpServer(options.AuthHost, BuildProbePorts(options.AuthPort, hostCacheEndpoints));
+                udpProbe = new ProbeUdpServer(options.AuthHost, BuildProbePorts(options.AuthPort, hostCacheEndpoints), access, options.AdvertisedAddress);
                 Thread udpThread = new Thread(udpProbe.Run);
                 udpThread.IsBackground = true;
                 udpThread.Start();
 
-                tcpProbe = new TcpProbeServer(options.AuthHost, BuildTcpProbePorts(options.AuthPort, options.ApiPort, hostCacheEndpoints), authServer, keys);
+                tcpProbe = new TcpProbeServer(options.AuthHost, BuildTcpProbePorts(options.AuthPort, options.ApiPort, hostCacheEndpoints), authServer, keys, access, options.AdvertisedAddress);
                 Thread tcpThread = new Thread(tcpProbe.Run);
                 tcpThread.IsBackground = true;
                 tcpThread.Start();
@@ -192,6 +195,9 @@ namespace SkyServer
 
     internal sealed class ServerOptions
     {
+        public string Mode = "local";
+        public string AllowlistPath;
+        public IPAddress AdvertisedAddress;
         public IPAddress AuthHost = IPAddress.Loopback;
         public int AuthPort = 33033;
         public IPAddress ApiHost = IPAddress.Loopback;
@@ -209,6 +215,8 @@ namespace SkyServer
         public static ServerOptions Parse(string[] args)
         {
             ServerOptions options = new ServerOptions();
+            bool explicitHost = false;
+            bool closed = false;
             if (String.IsNullOrEmpty(options.SqlitePath))
             {
                 options.SqlitePath = "sqlite3";
@@ -220,8 +228,12 @@ namespace SkyServer
                 if (arg == "--host" && i + 1 < args.Length)
                 {
                     options.AuthHost = IPAddress.Parse(args[++i]);
-                    options.ApiHost = options.AuthHost;
+                    explicitHost = true;
                 }
+                else if (arg == "--mode" && i + 1 < args.Length) options.Mode = args[++i];
+                else if (arg == "--advertise-ip" && i + 1 < args.Length) options.AdvertisedAddress = IPAddress.Parse(args[++i]);
+                else if (arg == "--closed") closed = true;
+                else if (arg == "--allowlist" && i + 1 < args.Length) options.AllowlistPath = Path.GetFullPath(args[++i]);
                 else if (arg == "--port" && i + 1 < args.Length)
                 {
                     options.AuthPort = Int32.Parse(args[++i]);
@@ -296,6 +308,18 @@ namespace SkyServer
                 }
             }
 
+            if (options.Mode != "local" && options.Mode != "global") throw new ArgumentException("--mode must be local or global");
+            if (!explicitHost && options.Mode == "global") options.AuthHost = IPAddress.Any;
+            if (options.AuthPort < 1 || options.AuthPort > 65535 || options.ApiPort < 1 || options.ApiPort > 65535 || options.ApiPort == options.AuthPort)
+                throw new ArgumentException("Auth/API ports must be distinct and between 1 and 65535");
+            if (options.AdvertisedAddress != null && (options.AdvertisedAddress.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork ||
+                options.AdvertisedAddress.GetAddressBytes()[0] == 0 || options.AdvertisedAddress.GetAddressBytes()[0] >= 224))
+                throw new ArgumentException("--advertise-ip must be unicast IPv4");
+            if (options.Mode == "global" && (options.AdvertisedAddress == null || IPAddress.IsLoopback(options.AdvertisedAddress)))
+                throw new ArgumentException("Global mode requires a non-loopback --advertise-ip");
+            if (options.Mode == "global" && !IPAddress.IsLoopback(options.ApiHost))
+                throw new ArgumentException("The plaintext HTTP API must remain on loopback in global mode");
+            if (closed && options.AllowlistPath == null) throw new ArgumentException("--closed requires --allowlist FILE");
             return options;
         }
     }
