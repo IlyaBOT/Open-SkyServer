@@ -26,14 +26,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y sqlite3 gcc-multilib libc6-dev-i386
-      - name: Test Go server
-        env:
-          CGO_ENABLED: '1'
-        run: go test ./...
-      - name: Build amd64 server
-        env:
-          CGO_ENABLED: '1'
-        run: go build -trimpath -o /tmp/openskyserver ./cmd/openskyserver
       - name: Build complete Debian bundle
         run: sh ./build-linux.sh
       - name: Smoke-test 0x42 worker
@@ -55,6 +47,15 @@ jobs:
           assert consumed == len(source), (consumed, len(source))
           assert result[4] == 0x41, result[:16].hex()
           PY
+      - name: Test Go server
+        env:
+          CGO_ENABLED: '1'
+          SKYSERVER_BLOB_WORKER: ${{ github.workspace }}/server/go/bin/skype_blob_worker
+        run: go test ./...
+      - name: Build amd64 server
+        env:
+          CGO_ENABLED: '1'
+        run: go build -trimpath -o /tmp/openskyserver ./cmd/openskyserver
       - name: Inspect binaries
         run: |
           file ./bin/openskyserver
