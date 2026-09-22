@@ -38,9 +38,23 @@ jobs:
         run: sh ./build-linux.sh
       - name: Smoke-test 0x42 worker
         run: |
-          printf '\x41\x00' | ./bin/skype_blob_worker > /tmp/blob-worker.out
-          printf '\x02\x00\x00\x00\x41\x00' > /tmp/blob-worker.expected
-          cmp /tmp/blob-worker.expected /tmp/blob-worker.out
+          python3 - <<'PY' > /tmp/blob-worker.in
+          import sys
+          prefix = bytes.fromhex("42CDEFE740D72F1DC0C68880DFB77537186962B4EE3E")
+          suffix = bytes.fromhex("7D8AF308D936AF94F5A22BE0E9063FE40572BB30E1")
+          sys.stdout.buffer.write(prefix + bytes(192) + suffix)
+          PY
+          ./bin/skype_blob_worker < /tmp/blob-worker.in > /tmp/blob-worker.out
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          source = Path("/tmp/blob-worker.in").read_bytes()
+          result = Path("/tmp/blob-worker.out").read_bytes()
+          assert len(result) >= 6, result.hex()
+          consumed, = struct.unpack("<I", result[:4])
+          assert consumed == len(source), (consumed, len(source))
+          assert result[4] == 0x41, result[:16].hex()
+          PY
       - name: Inspect binaries
         run: |
           file ./bin/openskyserver
