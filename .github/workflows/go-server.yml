@@ -22,6 +22,10 @@ jobs:
         with:
           go-version: '1.22.x'
           cache: false
+      - name: Install compatibility toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sqlite3 gcc-multilib libc6-dev-i386
       - name: Test Go server
         env:
           CGO_ENABLED: '1'
@@ -30,12 +34,13 @@ jobs:
         env:
           CGO_ENABLED: '1'
         run: go build -trimpath -o /tmp/openskyserver ./cmd/openskyserver
-      - name: Install 32-bit toolchain
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc-multilib libc6-dev-i386
       - name: Build complete Debian bundle
         run: sh ./build-linux.sh
+      - name: Smoke-test 0x42 worker
+        run: |
+          printf '\x41\x00' | ./bin/skype_blob_worker > /tmp/blob-worker.out
+          printf '\x02\x00\x00\x00\x41\x00' > /tmp/blob-worker.expected
+          cmp /tmp/blob-worker.expected /tmp/blob-worker.out
       - name: Inspect binaries
         run: |
           file ./bin/openskyserver
