@@ -68,6 +68,8 @@ func decodeRecoveredBlock(block []byte)([]byte,error){
 }
 
 func IssueCredential(ks *keys.Set,username string,clientModulus []byte,now time.Time)([]byte,error){
+	if ks==nil||ks.Credentials==nil{return nil,fmt.Errorf("credentials authority is required")}
+	if now.Location()!=time.UTC||now.Before(time.Unix(0,0).UTC()){return nil,fmt.Errorf("UTC issuance time required")}
 	if username==""||strings.IndexAny(username,"\x00\r\n\t")>=0{return nil,fmt.Errorf("invalid credential username")}
 	if len(clientModulus)!=128||clientModulus[0]&0x80==0||clientModulus[127]&1==0{return nil,fmt.Errorf("expected 1024-bit client modulus")}
 	payload,e:=EncodeBlob([]Field{{Type:3,ID:0,Bytes:[]byte(username)},fieldNumber(3,0),{Type:4,ID:1,Bytes:append([]byte(nil),clientModulus...)},fieldNumber(4,unixMinutes(now.Add(30*24*time.Hour))),{Type:5,ID:2,Children:[]Field{fieldNumber(9,unixMinutes(now.Add(365*24*time.Hour)))}}});if e!=nil{return nil,e}
@@ -112,6 +114,15 @@ func NativeContactRespond(req *NativeLoginRequest,db *Database)([]byte,error){
 	default:return nil,fmt.Errorf("unsupported native document operation")
 	}
 	body=append([]Field{fieldNumber(0x36,rev)},body...);enc,e:=EncodeBlob(body);if e!=nil{return nil,e};return AccountResponse(enc,req.RequestID,0x1450)
+}
+
+func (r *NativeLoginRequest) Clear(){
+	if r==nil{return}
+	for i:=range r.PasswordDigest{r.PasswordDigest[i]=0}
+	for i:=range r.AESKey{r.AESKey[i]=0}
+	var clearFields func([]Field)
+	clearFields=func(fields []Field){for i:=range fields{for j:=range fields[i].Bytes{fields[i].Bytes[j]=0};clearFields(fields[i].Children)}}
+	clearFields(r.Metadata)
 }
 
 func validUsername(s string)bool{if s==""||len(s)>128{return false};for _,r:=range s{if unicode.IsControl(r){return false}};return true}
