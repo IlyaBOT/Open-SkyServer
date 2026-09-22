@@ -51,6 +51,7 @@ func (s *TCPProbeServer) handle(c net.Conn)error{
 			if garbage{garbage=false;continue};parsed,e:=DecodeNodeFrame(frame);if e!=nil{return e};if parsed.IsAcknowledgment{continue};ack:=false
 			for _,cmd:=range parsed.Commands{
 				if cmd.Flags==1{ack=true}
+				if cmd.Code==0xc||cmd.Code==0xe{log.Printf("node directory %s code=0x%x flags=%d fields=%s",c.RemoteAddr(),cmd.Code,cmd.Flags,describeFields(cmd.Fields))}
 				if rep,e:=s.records.Handle(cmd,time.Now().UTC());e!=nil{return e}else if rep!=nil{wire,e:=EncodeNodeFrame(s.nextSeq(),*rep);if e!=nil{return e};if e=s.sendEncrypted(c,rc,wire);e!=nil{return e}}
 				local:=c.LocalAddr().(*net.TCPAddr);lip:=local.IP;if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil{lip=s.AdvertiseIP};dir:=&net.TCPAddr{IP:lip,Port:local.Port}
 				if rep,e:=SlotReply(cmd,dir);e!=nil{return e}else if rep!=nil{wire,e:=EncodeNodeFrame(s.nextSeq(),*rep);if e!=nil{return e};if e=s.sendEncrypted(c,rc,wire);e!=nil{return e}}
