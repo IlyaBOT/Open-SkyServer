@@ -25,8 +25,12 @@ namespace SkyServer
         private volatile bool stopped;
         private readonly List<UdpClient> clients = new List<UdpClient>();
 
-        public ProbeUdpServer(IPAddress bindAddress, int[] ports)
+        private readonly NetworkAccessPolicy access;
+        private readonly IPAddress advertisedAddress;
+        public ProbeUdpServer(IPAddress bindAddress, int[] ports, NetworkAccessPolicy access = null, IPAddress advertisedAddress = null)
         {
+            this.access = access ?? NetworkAccessPolicy.Open;
+            this.advertisedAddress = advertisedAddress;
             this.bindAddress = bindAddress;
             this.ports = ports;
         }
@@ -94,9 +98,10 @@ namespace SkyServer
                     IPPacketInformation packetInfo;
                     int count = client.Client.ReceiveMessageFrom(buffer, 0, buffer.Length, ref flags, ref sender, out packetInfo);
                     IPEndPoint remote = (IPEndPoint)sender;
+                    if (!access.Allows(remote.Address)) continue;
                     byte[] data = CopyRange(buffer, 0, count);
                     IPEndPoint local = (IPEndPoint)client.Client.LocalEndPoint;
-                    IPAddress serverAddress = packetInfo.Address;
+                    IPAddress serverAddress = advertisedAddress ?? packetInfo.Address;
                     if (serverAddress == null || serverAddress.Equals(IPAddress.Any))
                     {
                         Console.WriteLine("udp probe missing destination packet information; packet ignored");
@@ -141,7 +146,7 @@ namespace SkyServer
         private IPAddress GetPreferredBindAddress(int port)
         {
             IPAddress seedAddress;
-            if (bindAddress.Equals(IPAddress.Any) && TryGetHostCacheSeedAddress(port, out seedAddress))
+            if (advertisedAddress == null && bindAddress.Equals(IPAddress.Any) && TryGetHostCacheSeedAddress(port, out seedAddress))
             {
                 return seedAddress;
             }
