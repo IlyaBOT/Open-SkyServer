@@ -1,7 +1,7 @@
 """Offline CPU analysis of the exact Skype 4.2 loader, never a client patch.
 
 Dependencies, local to this repository:
-py -3 -m pip install --only-binary=:all: --target skyserver/.packages/analysis \
+py -3 -m pip install --only-binary=:all: --target patcher/.packages/analysis \
     unicorn==2.1.4 pefile==2024.8.26
 """
 import argparse
@@ -194,7 +194,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--client", type=Path, default=Path(r"C:\Program Files (x86)\Skype\Phone\Skype.exe"))
     parser.add_argument("--seconds", type=int, default=60, choices=range(1, 121))
-    parser.add_argument("--output", type=Path, help="new static .image.bin inside skyserver/diagnostics; not a patched executable")
+    parser.add_argument("--output", type=Path, help="new static .image.bin inside patcher/diagnostics; not a patched executable")
     parser.add_argument("--checksums-image", type=Path, help="derive loader addresses from an existing static analysis image; no CPU emulation")
     args = parser.parse_args()
     if args.checksums_image:
