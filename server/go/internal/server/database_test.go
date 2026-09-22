@@ -31,17 +31,23 @@ func TestDatabaseCompatibilitySurface(t *testing.T) {
 	if err := db.SetAccountEmail("transport.test", "transport@example.test"); err != nil {
 		t.Fatal(err)
 	}
-	if err := db.AddContact("native.test", "transport.test"); err != nil {
-		t.Fatal(err)
-	}
-	contacts, err := db.GetContacts("native.test")
-	if err != nil || len(contacts) != 1 || contacts[0].Login != "transport.test" {
-		t.Fatalf("contacts=%+v err=%v", contacts, err)
-	}
+	// Directory lookup is deliberately independent of the contact graph.
+	// A user must be searchable before either side has accepted/added the other.
 	term := DirectoryTerm{Property: 0, Comparison: 0, Text: "transport.test"}
 	found, err := db.SearchNativeDirectory([]DirectoryTerm{term})
 	if err != nil || len(found) != 1 || found[0].Login != "transport.test" {
-		t.Fatalf("directory=%+v err=%v", found, err)
+		t.Fatalf("directory-before-contact=%+v err=%v", found, err)
+	}
+	contacts, err := db.GetContacts("native.test")
+	if err != nil || len(contacts) != 0 {
+		t.Fatalf("pre-add contacts=%+v err=%v", contacts, err)
+	}
+	if err := db.AddContact("native.test", "transport.test"); err != nil {
+		t.Fatal(err)
+	}
+	contacts, err = db.GetContacts("native.test")
+	if err != nil || len(contacts) != 1 || contacts[0].Login != "transport.test" {
+		t.Fatalf("contacts=%+v err=%v", contacts, err)
 	}
 	if err := db.EnsureNativeContactDocuments("native.test"); err != nil { t.Fatal(err) }
 	snapshot, err := db.GetNativeDocuments("native.test")
