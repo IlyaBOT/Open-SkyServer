@@ -6,6 +6,7 @@ import (
 	"crypto/sha256"
 	"encoding/binary"
 	"fmt"
+	"log"
 	"math/big"
 	"net"
 	"strings"
@@ -116,12 +117,12 @@ func (d *RecordDirectory) Handle(req NodeCommand,now time.Time)(*NodeCommand,err
 	var result []Field
 	if req.Code==0xc{
 		if d.ks==nil{return nil,nil};if len(req.Fields)!=1{return nil,fmt.Errorf("unsupported directory publication fields")};v,e:=Required(req.Fields,4,0xb);if e!=nil{return nil,e};rec,e:=VerifySignedRecord(v.Bytes,d.ks,now);if e!=nil{return nil,e}
-		sum:=sha256.Sum256(v.Bytes);id:=binary.LittleEndian.Uint32(sum[:4]);d.mu.Lock();d.expire(now);if len(d.records)>=1024{if _,ok:=d.records[strings.ToLower(rec.Username)];!ok{d.mu.Unlock();return nil,fmt.Errorf("directory capacity reached")}};d.records[strings.ToLower(rec.Username)]=recordEntry{append([]byte(nil),v.Bytes...),now.Add(locationRecordTTL),id};d.mu.Unlock()
+		sum:=sha256.Sum256(v.Bytes);id:=binary.LittleEndian.Uint32(sum[:4]);d.mu.Lock();d.expire(now);if len(d.records)>=1024{if _,ok:=d.records[strings.ToLower(rec.Username)];!ok{d.mu.Unlock();return nil,fmt.Errorf("directory capacity reached")}};d.records[strings.ToLower(rec.Username)]=recordEntry{append([]byte(nil),v.Bytes...),now.Add(locationRecordTTL),id};count:=len(d.records);d.mu.Unlock();log.Printf("directory stored user=%q ttl=%s records=%d",rec.Username,locationRecordTTL,count)
 	}else{
 		if len(req.Fields)!=2&&len(req.Fields)!=3{return nil,nil};var excluded []byte;if len(req.Fields)==3{x,e:=Required(req.Fields,6,2);if e!=nil{return nil,e};excluded=x.Bytes;if len(excluded)>400||len(excluded)%4!=0{return nil,fmt.Errorf("invalid excluded identifiers")}}
 		q,e:=Required(req.Fields,5,0);if e!=nil{return nil,e};props,e:=Required(req.Fields,6,1);if e!=nil{return nil,e};if len(q.Children)!=3||len(props.Bytes)!=8||binary.LittleEndian.Uint32(props.Bytes)!=16||binary.LittleEndian.Uint32(props.Bytes[4:])!=11{return nil,nil}
 		u,e:=Required(q.Children,3,0);if e!=nil{return nil,e};off,e:=Required(q.Children,0,1);if e!=nil{return nil,e};lim,e:=Required(q.Children,0,2);if e!=nil{return nil,e};username:=string(u.Bytes);if !validUsername(username)||lim.Number==0||lim.Number>100{return nil,fmt.Errorf("invalid location query")}
-		d.mu.Lock();d.expire(now);ent,ok:=d.records[strings.ToLower(username)];if off.Number==0&&ok{omit:=false;for i:=0;i<len(excluded);i+=4{omit=omit||binary.LittleEndian.Uint32(excluded[i:])==ent.id};if !omit{result=append(result,Field{Type:5,ID:0,Children:[]Field{fieldNumber(0x10,ent.id),{Type:4,ID:0xb,Bytes:append([]byte(nil),ent.value...)}}})}};d.mu.Unlock();result=append(result,fieldNumber(1,0))
+		d.mu.Lock();d.expire(now);ent,ok:=d.records[strings.ToLower(username)];count:=len(d.records);omit:=false;if off.Number==0&&ok{for i:=0;i<len(excluded);i+=4{omit=omit||binary.LittleEndian.Uint32(excluded[i:])==ent.id};if !omit{result=append(result,Field{Type:5,ID:0,Children:[]Field{fieldNumber(0x10,ent.id),{Type:4,ID:0xb,Bytes:append([]byte(nil),ent.value...)}}})}};d.mu.Unlock();log.Printf("directory lookup user=%q offset=%d limit=%d hit=%t excluded=%t records=%d",username,off.Number,lim.Number,ok,omit,count);result=append(result,fieldNumber(1,0))
 	}
 	return &NodeCommand{Code:req.Code+1,Flags:3,RequestID:req.RequestID,Fields:result},nil
 }
