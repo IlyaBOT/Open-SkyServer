@@ -42,6 +42,19 @@ func TestDatabaseCompatibilitySurface(t *testing.T) {
 	if err != nil || len(contacts) != 0 {
 		t.Fatalf("pre-add contacts=%+v err=%v", contacts, err)
 	}
+	requestID, err := db.QueueNativeContactRequest("native.test", "transport.test", 7)
+	if err != nil || requestID == 0 { t.Fatalf("queue contact request id=%d err=%v", requestID, err) }
+	pendingRequest, err := db.NextNativeContactRequest("transport.test")
+	if err != nil || pendingRequest == nil || pendingRequest.ID != requestID || pendingRequest.SenderLogin != "native.test" || pendingRequest.Flags != 7 {
+		t.Fatalf("pending contact request=%+v err=%v", pendingRequest, err)
+	}
+	if err := db.MarkNativeContactRequestDelivered("transport.test", requestID); err != nil { t.Fatal(err) }
+	pendingRequest, err = db.NextNativeContactRequest("transport.test")
+	if err != nil || pendingRequest != nil { t.Fatalf("delivered contact request=%+v err=%v", pendingRequest, err) }
+	requestID2, err := db.QueueNativeContactRequest("native.test", "transport.test", 9)
+	if err != nil || requestID2 != requestID { t.Fatalf("requeued contact request id=%d want=%d err=%v", requestID2, requestID, err) }
+	pendingRequest, err = db.NextNativeContactRequest("transport.test")
+	if err != nil || pendingRequest == nil || pendingRequest.Flags != 9 { t.Fatalf("requeued contact request=%+v err=%v", pendingRequest, err) }
 	if err := db.AddContact("native.test", "transport.test"); err != nil {
 		t.Fatal(err)
 	}

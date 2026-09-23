@@ -59,7 +59,7 @@ func ParseNativeLogin(keyRecord,loginRecord []byte,ks *keys.Set)(*NativeLoginReq
 	pf,e:=Required(account,4,5);if e!=nil{return nil,e};if len(pf.Bytes)!=16{return nil,fmt.Errorf("expected native MD5 password verifier")}
 	if used>=len(clear){return nil,fmt.Errorf("missing client metadata")}
 	meta,used2,e:=DecodeBlob(clear[used:]);if e!=nil{return nil,e};if used+used2!=len(clear){return nil,fmt.Errorf("trailing client metadata")}
-	allowed:=map[uint32]bool{0x1399:true,0x13a3:true,0x139c:true,0x178e:true,0x1788:true,0x1789:true,0x178a:true,0x178b:true,0x178c:true,0x1792:true,0x4278:true}
+	allowed:=map[uint32]bool{0x1399:true,0x13a3:true,0x139c:true,0x1780:true,0x1781:true,0x1784:true,0x178e:true,0x1788:true,0x1789:true,0x178a:true,0x178b:true,0x178c:true,0x1792:true,0x4278:true}
 	if !allowed[opf.Number]{return nil,fmt.Errorf("unsupported native operation 0x%x; account fields %s; metadata fields %s",opf.Number,describeFields(account),describeFields(meta))}
 	req:=&NativeLoginRequest{Username:username,PasswordDigest:append([]byte(nil),pf.Bytes...),AESKey:aesKey,Operation:opf.Number,RequestID:rid.Number,Metadata:meta}
 	if req.Operation==0x1399||req.Operation==0x13a3{pk,e:=Required(meta,4,0x21);if e!=nil{return nil,e};if len(pk.Bytes)!=128||pk.Bytes[0]&0x80==0||pk.Bytes[127]&1==0{return nil,fmt.Errorf("expected a 1024-bit odd client RSA modulus")};req.ClientPublicKey=append([]byte(nil),pk.Bytes...)}
@@ -109,6 +109,59 @@ func DirectoryRespond(req *NativeLoginRequest,db *Database)([]byte,error){
 	var terms []DirectoryTerm
 	for _,f:=range req.Metadata{if f.ID!=0x20{continue};if f.Type!=5||len(f.Children)!=3{return nil,fmt.Errorf("invalid directory term")};p,e:=Required(f.Children,0,0x21);if e!=nil{return nil,e};c,e:=Required(f.Children,0,0x22);if e!=nil{return nil,e};t:=DirectoryTerm{Property:p.Number,Comparison:c.Number};if p.Number==17{v,e:=Required(f.Children,0,0x23);if e!=nil{return nil,e};n:=v.Number;t.Number=&n}else{v,e:=Required(f.Children,3,0x23);if e!=nil{return nil,e};if !utf8.Valid(v.Bytes){return nil,fmt.Errorf("invalid directory text")};t.Text=string(v.Bytes)};terms=append(terms,t)}
 	matches,e:=db.SearchNativeDirectory(terms);if e!=nil{return nil,e};var result []Field;for _,a:=range matches{result=append(result,Field{Type:5,ID:0x64,Children:[]Field{{Type:3,ID:0x66,Bytes:[]byte(a.Login)},{Type:3,ID:0x65,Bytes:[]byte(a.DisplayName)}}})};b,e:=EncodeBlob(result);if e!=nil{return nil,e};return AccountResponse(b,req.RequestID,0x81b0)
+}
+
+func nativeMetadataIdentity(req *NativeLoginRequest)error{
+	f,e:=Required(req.Metadata,3,4);if e!=nil{return e};if !utf8.Valid(f.Bytes){return fmt.Errorf("invalid native metadata identity")};v:=string(f.Bytes)
+	if !validUsername(v)||v!=req.Username{return fmt.Errorf("native metadata identity mismatch")};return nil
+}
+func optionalNumber(fields []Field,id uint32)(uint32,bool,error){
+	var out *Field
+	for i:=range fields{if fields[i].ID!=id{continue};if out!=nil||fields[i].Type!=0{return 0,false,fmt.Errorf("duplicate or mistyped optional field 0/%x",id)};out=&fields[i]}
+	if out==nil{return 0,false,nil};return out.Number,true,nil
+}
+
+// NativeContactInboxRespond is an experimental reconstruction of the 4.2
+// contact-request account RPCs. Live capture identifies 0x1784 as Add Contact;
+// historical skycontact4 sends 0x1780/0x1781 and the 4.2 RE notes show that a
+// nonzero 0/2E poll result triggers the 0x1781 fetch. Acceptance/decline is a
+// separate, still-unidentified RPC and is deliberately not forged here.
+func NativeContactInboxRespond(req *NativeLoginRequest,db *Database)([]byte,error){
+	if req.Operation!=0x1780&&req.Operation!=0x1781&&req.Operation!=0x1784{return nil,fmt.Errorf("not a native contact inbox request")}
+	if e:=nativeMetadataIdentity(req);e!=nil{return nil,e}
+	var body []Field
+	switch req.Operation{
+	case 0x1784:
+		tf,e:=Required(req.Metadata,3,0x27);if e!=nil{return nil,e};sf,e:=Required(req.Metadata,3,0x26);if e!=nil{return nil,e};ff,e:=Required(req.Metadata,0,0x22);if e!=nil{return nil,e}
+		if !utf8.Valid(tf.Bytes)||!utf8.Valid(sf.Bytes){return nil,fmt.Errorf("invalid contact request identity encoding")}
+		target,sender:=string(tf.Bytes),string(sf.Bytes);if !validUsername(target)||!validUsername(sender){return nil,fmt.Errorf("invalid contact request identity")};if sender!=req.Username{return nil,fmt.Errorf("contact request sender mismatch")}
+		state,hasState,e:=optionalNumber(req.Metadata,0x0e);if e!=nil{return nil,e}
+		id,e:=db.QueueNativeContactRequest(sender,target,ff.Number);if e!=nil{return nil,e}
+		// A pending authorization is still contact-list membership for the sender.
+		// CBL projection omits remote-authorization 0/7D, so this does not forge acceptance.
+		if e=db.AddContact(sender,target);e!=nil{return nil,e}
+		if hasState{log.Printf("native contact request sender=%q target=%q flags=%d client_state=%d inbox_id=%d",sender,target,ff.Number,state,id)}else{log.Printf("native contact request sender=%q target=%q flags=%d inbox_id=%d",sender,target,ff.Number,id)}
+	case 0x1780:
+		cursor,e:=Required(req.Metadata,0,0x2d);if e!=nil{return nil,e}
+		item,e:=db.NextNativeContactRequest(req.Username);if e!=nil{return nil,e}
+		if item!=nil{body=append(body,fieldNumber(0x2e,item.ID));log.Printf("native inbox poll user=%q cursor=%d pending=%d sender=%q",req.Username,cursor.Number,item.ID,item.SenderLogin)}else{log.Printf("native inbox poll user=%q cursor=%d pending=0",req.Username,cursor.Number)}
+	case 0x1781:
+		cursor,e:=Required(req.Metadata,0,0x2d);if e!=nil{return nil,e}
+		var item *NativeContactRequest
+		if cursor.Number!=0{item,e=db.GetNativeContactRequest(req.Username,cursor.Number)}else{item,e=db.NextNativeContactRequest(req.Username)}
+		if e!=nil{return nil,e}
+		if item!=nil{
+			// Preserve the observed 0x1784 identity/flag field IDs in the fetched
+			// event. This is the smallest wire shape supported by current evidence.
+			body=append(body,fieldNumber(0x2e,item.ID),{Type:3,ID:0x26,Bytes:[]byte(item.SenderLogin)},{Type:3,ID:0x27,Bytes:[]byte(item.RecipientLogin)},fieldNumber(0x22,item.Flags))
+			if e=db.MarkNativeContactRequestDelivered(req.Username,item.ID);e!=nil{return nil,e}
+			log.Printf("native inbox fetch user=%q cursor=%d inbox_id=%d sender=%q flags=%d",req.Username,cursor.Number,item.ID,item.SenderLogin,item.Flags)
+		}else{log.Printf("native inbox fetch user=%q cursor=%d inbox_id=0",req.Username,cursor.Number)}
+	}
+	enc,e:=EncodeBlob(body);if e!=nil{return nil,e}
+	// 0x1068 is a success status accepted by the native account-manager callback.
+	// Keep this isolated so live testing can correct the status without touching storage.
+	return AccountResponse(enc,req.RequestID,0x1068)
 }
 
 func ContactDocument(contact Account)([]byte,error){return EncodeBlob([]Field{{Type:3,ID:0x10,Bytes:[]byte(contact.Login)},{Type:3,ID:0x14,Bytes:[]byte(contact.DisplayName)},fieldNumber(0x79,2)})}

@@ -73,6 +73,7 @@ func (s *AuthServer) HandleStock(c net.Conn,dh *DHSession,first []byte,ackAlread
 		var email string;email,e=s.DB.GetAccountEmail(req.Username);if e==nil{payload,e=EmailPayload(email,req.RequestID)}
 	case req.Operation==0x178e:
 		var cs []Account;cs,e=s.DB.GetContacts(req.Username);if e==nil{payload,e=ContactListsPayload(len(cs)!=0,req.RequestID)}
+	case req.Operation==0x1780||req.Operation==0x1781||req.Operation==0x1784: payload,e=NativeContactInboxRespond(req,s.DB)
 	case (req.Operation>=0x1788&&req.Operation<=0x178c)||req.Operation==0x1792: payload,e=NativeContactRespond(req,s.DB)
 	default:
 		var cred []byte;cred,e=IssueCredential(s.Keys,req.Username,req.ClientPublicKey,time.Now().UTC());if e==nil{payload,e=SuccessPayload(cred,req.RequestID)}

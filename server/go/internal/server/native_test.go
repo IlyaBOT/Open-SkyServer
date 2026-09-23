@@ -6,6 +6,8 @@ import (
 	"crypto/rsa"
 	"encoding/binary"
 	"math/big"
+	"os/exec"
+	"path/filepath"
 	"strings"
 	"testing"
 	"time"
@@ -100,5 +102,75 @@ func TestDescribeFieldsIsStructuralOnly(t *testing.T) {
 		if strings.Contains(got, secret) {
 			t.Fatalf("structural description leaked value %q: %q", secret, got)
 		}
+	}
+}
+
+
+func decodeNativeAccountResponse(t *testing.T, payload []byte) ([]Field, []Field) {
+	t.Helper()
+	header, used, err := DecodeBlob(payload)
+	if err != nil { t.Fatal(err) }
+	body, used2, err := DecodeBlob(payload[used:])
+	if err != nil { t.Fatal(err) }
+	if used+used2 != len(payload) { t.Fatal("trailing native account response bytes") }
+	return header, body
+}
+
+func TestNativeContactInboxFlow(t *testing.T) {
+	sqlite, err := exec.LookPath("sqlite3")
+	if err != nil { t.Skip("sqlite3 is not installed") }
+	db := NewDatabase(filepath.Join(t.TempDir(), "skyserver.db"), sqlite)
+	if err := db.EnsureSchema(); err != nil { t.Fatal(err) }
+	if err := db.AddAccount("native.test", "Native Test", "native-password"); err != nil { t.Fatal(err) }
+	if err := db.AddAccount("transport.test", "Transport Test", "test-password"); err != nil { t.Fatal(err) }
+
+	send := &NativeLoginRequest{Username:"native.test",Operation:0x1784,RequestID:11,Metadata:[]Field{
+		{Type:3,ID:0x27,Bytes:[]byte("transport.test")},
+		fieldNumber(0x22,7),
+		{Type:3,ID:0x26,Bytes:[]byte("native.test")},
+		{Type:3,ID:4,Bytes:[]byte("native.test")},
+		fieldNumber(0x0e,123),
+	}}
+	payload, err := NativeContactInboxRespond(send, db)
+	if err != nil { t.Fatal(err) }
+	header, body := decodeNativeAccountResponse(t, payload)
+	status, _ := Required(header,0,1); rid, _ := Required(header,0,2)
+	if status.Number != 0x1068 || rid.Number != 11 || len(body) != 0 { t.Fatalf("send response status=%x rid=%d body=%v",status.Number,rid.Number,body) }
+	contacts, err := db.GetContacts("native.test")
+	if err != nil || len(contacts)!=1 || contacts[0].Login!="transport.test" { t.Fatalf("sender contact projection=%+v err=%v",contacts,err) }
+
+	poll := &NativeLoginRequest{Username:"transport.test",Operation:0x1780,RequestID:12,Metadata:[]Field{
+		fieldNumber(0x2d,0),{Type:3,ID:4,Bytes:[]byte("transport.test")},
+	}}
+	payload, err = NativeContactInboxRespond(poll, db)
+	if err != nil { t.Fatal(err) }
+	_, body = decodeNativeAccountResponse(t, payload)
+	next, err := Required(body,0,0x2e)
+	if err != nil || next.Number==0 { t.Fatalf("poll cursor=%d err=%v",next.Number,err) }
+
+	fetch := &NativeLoginRequest{Username:"transport.test",Operation:0x1781,RequestID:13,Metadata:[]Field{
+		fieldNumber(0x2d,next.Number),{Type:3,ID:4,Bytes:[]byte("transport.test")},
+	}}
+	payload, err = NativeContactInboxRespond(fetch, db)
+	if err != nil { t.Fatal(err) }
+	_, body = decodeNativeAccountResponse(t, payload)
+	sender, err := Required(body,3,0x26)
+	if err != nil || string(sender.Bytes)!="native.test" { t.Fatalf("fetch sender=%q err=%v",sender.Bytes,err) }
+	target, err := Required(body,3,0x27)
+	if err != nil || string(target.Bytes)!="transport.test" { t.Fatalf("fetch target=%q err=%v",target.Bytes,err) }
+	flags, err := Required(body,0,0x22)
+	if err != nil || flags.Number!=7 { t.Fatalf("fetch flags=%d err=%v",flags.Number,err) }
+
+	payload, err = NativeContactInboxRespond(poll, db)
+	if err != nil { t.Fatal(err) }
+	_, body = decodeNativeAccountResponse(t, payload)
+	if len(body)!=0 { t.Fatalf("delivered request repeated: %+v",body) }
+
+	spoof := &NativeLoginRequest{Username:"native.test",Operation:0x1784,RequestID:14,Metadata:[]Field{
+		{Type:3,ID:0x27,Bytes:[]byte("transport.test")},fieldNumber(0x22,1),
+		{Type:3,ID:0x26,Bytes:[]byte("evil.test")},{Type:3,ID:4,Bytes:[]byte("native.test")},
+	}}
+	if _, err := NativeContactInboxRespond(spoof, db); err == nil || !strings.Contains(err.Error(),"sender mismatch") {
+		t.Fatalf("spoofed contact request err=%v",err)
 	}
 }

@@ -11,6 +11,7 @@ The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit 
 - reconstructed RC4 account transport and legacy Skype IV-expanded RC4 for TCP/UDP;
 - native RSA/AES login request handling and community credential issuance;
 - native account RPCs used by the Stage 4.1 client: login, account email, contact-list index, native document synchronization and directory search;
+- experimental Skype 4.2 contact-request/inbox RPCs: 0x1784 request queue plus 0x1780 poll and 0x1781 fetch;
 - the C# SQLite schema and account/contact/profile/message operations;
 - the HTTP management/message API and /healthz;
 - TCP bootstrap/node sessions, slot-directory replies, signed transient location records and transport acknowledgements;
@@ -18,7 +19,7 @@ The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit 
 - Stage 4.1 deployment controls: --mode local|global, --advertise-ip, --closed and --allowlist;
 - graceful SIGINT/SIGTERM shutdown.
 
-The same known Stage 4.1 limitations still apply: native self-registration is not implemented, and cross-NAT media relay is not implemented. Call/media behavior therefore still depends on the legacy client's direct-connect/NAT behavior.
+The same known Stage 4.1 limitations still apply: native self-registration is not implemented, contact-request acceptance/decline is not yet identified, and cross-NAT media relay is not implemented. The 0x1784/0x1780/0x1781 contact inbox wire shape is an experimental reconstruction from live 4.2 captures plus the historical skycontact4 flow and must be validated against the real client. Call/media behavior therefore still depends on the legacy client's direct-connect/NAT behavior.
 
 ## Why there are two Linux binaries
 

@@ -34,6 +34,7 @@ type Account struct { Login, DisplayName string }
 type MessageRecord struct { ID int64; SenderLogin, RecipientLogin, Body, CreatedUTC, DeliveredUTC string }
 type NativeDocument struct { Name string; Checksum uint32; Body []byte }
 type NativeDocumentSnapshot struct { Revision uint32; Documents []NativeDocument }
+type NativeContactRequest struct { ID uint32; SenderLogin, RecipientLogin string; Flags uint32; CreatedUTC, DeliveredUTC string }
 type DirectoryTerm struct { Property, Comparison uint32; Text string; Number *uint32 }
 
 func NewDatabase(path,sqlite string)*Database{ return &Database{path:path,sqlite:sqlite} }
@@ -78,6 +79,14 @@ CREATE TRIGGER IF NOT EXISTS native_documents_quota BEFORE INSERT ON native_docu
 WHEN NOT EXISTS(SELECT 1 FROM native_documents WHERE login=NEW.login AND name=NEW.name)
 AND (SELECT COUNT(*) FROM native_documents WHERE login=NEW.login)>=1024
 BEGIN SELECT RAISE(ABORT,'Native document quota reached'); END;
+CREATE TABLE IF NOT EXISTS native_contact_requests (
+ id INTEGER PRIMARY KEY AUTOINCREMENT,
+ sender_login TEXT NOT NULL, recipient_login TEXT NOT NULL,
+ request_flags INTEGER NOT NULL DEFAULT 0 CHECK(request_flags BETWEEN 0 AND 4294967295),
+ created_utc TEXT NOT NULL, delivered_utc TEXT,
+ UNIQUE(sender_login,recipient_login),
+ FOREIGN KEY(sender_login) REFERENCES accounts(login) ON DELETE CASCADE,
+ FOREIGN KEY(recipient_login) REFERENCES accounts(login) ON DELETE CASCADE);
 CREATE TABLE IF NOT EXISTS sessions (
  token TEXT PRIMARY KEY, login TEXT NOT NULL, created_utc TEXT NOT NULL, last_seen_utc TEXT NOT NULL,
  FOREIGN KEY(login) REFERENCES accounts(login) ON DELETE CASCADE);
@@ -87,6 +96,7 @@ CREATE TABLE IF NOT EXISTS messages (
  FOREIGN KEY(sender_login) REFERENCES accounts(login) ON DELETE CASCADE,
  FOREIGN KEY(recipient_login) REFERENCES accounts(login) ON DELETE CASCADE);
 CREATE INDEX IF NOT EXISTS idx_contacts_owner ON contacts(owner_login);
+CREATE INDEX IF NOT EXISTS idx_native_contact_requests_recipient ON native_contact_requests(recipient_login,delivered_utc,id);
 CREATE INDEX IF NOT EXISTS idx_messages_pair ON messages(sender_login,recipient_login,id);
 `)
 	if err!=nil{return err}
@@ -138,6 +148,33 @@ func (d *Database) AddContact(owner,contact string)error{
 	a,e=d.GetAccount(contact);if e!=nil{return e};if a==nil{return fmt.Errorf("contact account does not exist: %s",contact)}
 	_,e=d.execute("INSERT OR IGNORE INTO contacts(owner_login,contact_login,created_utc) VALUES("+sqlQuote(owner)+","+sqlQuote(contact)+","+sqlQuote(nowText())+");")
 	return e
+}
+
+func (d *Database) QueueNativeContactRequest(sender,recipient string,flags uint32)(uint32,error){
+	if sender==recipient{return 0,fmt.Errorf("cannot add self as contact")}
+	a,e:=d.GetAccount(sender);if e!=nil{return 0,e};if a==nil{return 0,fmt.Errorf("sender account does not exist: %s",sender)}
+	a,e=d.GetAccount(recipient);if e!=nil{return 0,e};if a==nil{return 0,fmt.Errorf("recipient account does not exist: %s",recipient)}
+	f:=strconv.FormatUint(uint64(flags),10);now:=sqlQuote(nowText())
+	out,e:=d.execute("BEGIN IMMEDIATE;"+
+		"INSERT OR IGNORE INTO native_contact_requests(sender_login,recipient_login,request_flags,created_utc,delivered_utc) VALUES("+sqlQuote(sender)+","+sqlQuote(recipient)+","+f+","+now+",NULL);"+
+		"UPDATE native_contact_requests SET request_flags="+f+",created_utc="+now+",delivered_utc=NULL WHERE sender_login="+sqlQuote(sender)+" AND recipient_login="+sqlQuote(recipient)+";"+
+		"SELECT id FROM native_contact_requests WHERE sender_login="+sqlQuote(sender)+" AND recipient_login="+sqlQuote(recipient)+"; COMMIT;")
+	if e!=nil{return 0,e};v,e:=strconv.ParseUint(strings.TrimSpace(out),10,32);return uint32(v),e
+}
+func parseNativeContactRequestRow(row string)(*NativeContactRequest,error){
+	if row==""{return nil,nil};p:=strings.Split(row,"\t");if len(p)!=6{return nil,fmt.Errorf("invalid native contact request row")}
+	id,e:=strconv.ParseUint(p[0],10,32);if e!=nil{return nil,e};sb,e:=hex.DecodeString(p[1]);if e!=nil{return nil,e};rb,e:=hex.DecodeString(p[2]);if e!=nil{return nil,e};flags,e:=strconv.ParseUint(p[3],10,32);if e!=nil{return nil,e}
+	if !utf8.Valid(sb)||!utf8.Valid(rb){return nil,fmt.Errorf("invalid native contact request identity")}
+	return &NativeContactRequest{ID:uint32(id),SenderLogin:string(sb),RecipientLogin:string(rb),Flags:uint32(flags),CreatedUTC:p[4],DeliveredUTC:p[5]},nil
+}
+func (d *Database) NextNativeContactRequest(recipient string)(*NativeContactRequest,error){
+	row,e:=d.one("SELECT id,hex(sender_login),hex(recipient_login),request_flags,created_utc,COALESCE(delivered_utc,'') FROM native_contact_requests WHERE recipient_login="+sqlQuote(recipient)+" AND delivered_utc IS NULL ORDER BY id LIMIT 1;");if e!=nil{return nil,e};return parseNativeContactRequestRow(row)
+}
+func (d *Database) GetNativeContactRequest(recipient string,id uint32)(*NativeContactRequest,error){
+	row,e:=d.one("SELECT id,hex(sender_login),hex(recipient_login),request_flags,created_utc,COALESCE(delivered_utc,'') FROM native_contact_requests WHERE recipient_login="+sqlQuote(recipient)+" AND id="+strconv.FormatUint(uint64(id),10)+" LIMIT 1;");if e!=nil{return nil,e};return parseNativeContactRequestRow(row)
+}
+func (d *Database) MarkNativeContactRequestDelivered(recipient string,id uint32)error{
+	_,e:=d.execute("UPDATE native_contact_requests SET delivered_utc=COALESCE(delivered_utc,"+sqlQuote(nowText())+") WHERE recipient_login="+sqlQuote(recipient)+" AND id="+strconv.FormatUint(uint64(id),10)+";");return e
 }
 
 func (d *Database) ValidatePassword(login,password string)(*Account,bool,error){
