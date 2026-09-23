@@ -153,7 +153,7 @@ func NativeContactInboxRespond(req *NativeLoginRequest,db *Database)([]byte,erro
 		if item!=nil{
 			// Preserve the observed 0x1784 identity/flag field IDs in the fetched
 			// event. This is the smallest wire shape supported by current evidence.
-			body=append(body,fieldNumber(0x2e,item.ID),{Type:3,ID:0x26,Bytes:[]byte(item.SenderLogin)},{Type:3,ID:0x27,Bytes:[]byte(item.RecipientLogin)},fieldNumber(0x22,item.Flags))
+			body=append(body,fieldNumber(0x2e,item.ID),Field{Type:3,ID:0x26,Bytes:[]byte(item.SenderLogin)},Field{Type:3,ID:0x27,Bytes:[]byte(item.RecipientLogin)},fieldNumber(0x22,item.Flags))
 			if e=db.MarkNativeContactRequestDelivered(req.Username,item.ID);e!=nil{return nil,e}
 			log.Printf("native inbox fetch user=%q cursor=%d inbox_id=%d sender=%q flags=%d",req.Username,cursor.Number,item.ID,item.SenderLogin,item.Flags)
 		}else{log.Printf("native inbox fetch user=%q cursor=%d inbox_id=0",req.Username,cursor.Number)}
