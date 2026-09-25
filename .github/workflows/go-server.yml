@@ -1,0 +1,94 @@
+name: Go server
+
+on:
+  push:
+    branches: [repo-cleanup-go-server]
+  pull_request:
+    paths:
+      - 'server/go/**'
+      - 'server/native/**'
+      - 'skypeopensource2/goodsendrelay4_dll/**'
+      - 'skypeopensource2/skyauth4_dll/**'
+      - 'patcher/tools/**'
+      - 'patcher/tests/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server/go
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+          cache: false
+      - name: Validate PowerShell patcher syntax
+        shell: pwsh
+        working-directory: .
+        run: |
+          $files = @(
+            'patcher/tools/skypatch-package.ps1',
+            'patcher/tools/New-ClientBundle.ps1',
+            'patcher/tests/Test-ClientBundle.ps1'
+          )
+          foreach ($file in $files) {
+            $tokens = $null
+            $errors = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path $file), [ref]$tokens, [ref]$errors)
+            if ($errors.Count) {
+              $errors | Format-List
+              throw "PowerShell syntax errors in $file"
+            }
+          }
+      - name: Install compatibility toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sqlite3 gcc-multilib libc6-dev-i386
+      - name: Build complete Debian bundle
+        run: sh ./build-linux.sh
+      - name: Smoke-test 0x42 worker
+        run: |
+          python3 - <<'PY' > /tmp/blob-worker.in
+          import sys
+          prefix = bytes.fromhex("42CDEFE740D72F1DC0C68880DFB77537186962B4EE3E")
+          suffix = bytes.fromhex("7D8AF308D936AF94F5A22BE0E9063FE40572BB30E1")
+          sys.stdout.buffer.write(prefix + bytes(192) + suffix)
+          PY
+          ./bin/skype_blob_worker < /tmp/blob-worker.in > /tmp/blob-worker.out
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          source = Path("/tmp/blob-worker.in").read_bytes()
+          result = Path("/tmp/blob-worker.out").read_bytes()
+          assert len(result) >= 6, result.hex()
+          consumed, = struct.unpack("<I", result[:4])
+          assert consumed == len(source), (consumed, len(source))
+          assert result[4] == 0x41, result[:16].hex()
+          PY
+          printf '\x42\x34\x1e\x8c\x63\x1e' | ./bin/skype_blob_worker > /tmp/blob-worker-node.out
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct
+          result = Path("/tmp/blob-worker-node.out").read_bytes()
+          assert len(result) >= 6, result.hex()
+          consumed, = struct.unpack("<I", result[:4])
+          assert consumed == 6, consumed
+          assert result[4] == 0x41, result[:16].hex()
+          PY
+      - name: Test Go server
+        env:
+          CGO_ENABLED: '1'
+          SKYSERVER_BLOB_WORKER: ${{ github.workspace }}/server/go/bin/skype_blob_worker
+        run: go test ./...
+      - name: Build amd64 server
+        env:
+          CGO_ENABLED: '1'
+        run: go build -trimpath -o /tmp/openskyserver ./cmd/openskyserver
+      - name: Inspect binaries
+        run: |
+          file ./bin/openskyserver
+          file ./bin/skype_blob_worker
+          test -x ./bin/openskyserver
+          test -x ./bin/skype_blob_worker

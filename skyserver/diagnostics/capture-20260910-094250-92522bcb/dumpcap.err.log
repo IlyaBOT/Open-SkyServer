@@ -1,6 +1,0 @@
-Capturing on 3 interfaces
-File: I:\SkypeReverse\skypeopensource2\skyserver\diagnostics\capture-20260910-094250-92522bcb\skype.pcapng
-Packets captured: 6163
-Packets received/dropped on interface 'Ethernet 2': 6138/6709 (pcap:5312/dumpcap:1396/flushed:1/ps_ifdrop:0) (47.8%)
-Packets received/dropped on interface 'happ-tun': 0/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (0.0%)
-Packets received/dropped on interface 'Adapter for loopback traffic capture': 25/1 (pcap:0/dumpcap:0/flushed:1/ps_ifdrop:0) (96.2%)

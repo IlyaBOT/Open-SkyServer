@@ -2927,7 +2927,7 @@ void Skype_RC4_Expand_IV_udp (RC4_context * const rc4, const u32 iv, const u32 f
 	//	__asm int 3;
 	//	Expand_IVb (key, iv);	// not implemented yet
 		debuglog("not implemented yet\n");
-		return -1;
+		return;
 	}
 	for (i = 0, j = 0x03020100; i < 256; i += 4, j += 0x04040404) dword(rc4->s+i, 0) = j;
 	for (i = 0, j = 0; i < 256; i++)
