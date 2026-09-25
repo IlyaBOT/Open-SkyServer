@@ -11,7 +11,7 @@ The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit 
 - reconstructed RC4 account transport and legacy Skype IV-expanded RC4 for TCP/UDP;
 - native RSA/AES login request handling and community credential issuance;
 - native account RPCs used by the Stage 4.1 client: login, account email, contact-list index, native document synchronization and directory search;
-- experimental Skype 4.2 contact-request/inbox RPCs: 0x1784 request queue plus 0x1780 poll and 0x1781 fetch;
+- experimental Skype 4.2 contact-request queue (0x1784) and inbox poll (0x1780); an empty 0x1781 fetch is supported, but pending inbox-event delivery is not yet implemented;
 - the C# SQLite schema and account/contact/profile/message operations;
 - the HTTP management/message API and /healthz;
 - TCP bootstrap/node sessions, slot-directory replies, signed transient location records and transport acknowledgements;
@@ -19,7 +19,18 @@ The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit 
 - Stage 4.1 deployment controls: --mode local|global, --advertise-ip, --closed and --allowlist;
 - graceful SIGINT/SIGTERM shutdown.
 
-The same known Stage 4.1 limitations still apply: native self-registration is not implemented, contact-request acceptance/decline is not yet identified, and cross-NAT media relay is not implemented. The 0x1784/0x1780/0x1781 contact inbox wire shape is an experimental reconstruction from live 4.2 captures plus the historical skycontact4 flow and must be validated against the real client. Call/media behavior therefore still depends on the legacy client's direct-connect/NAT behavior.
+The same known Stage 4.1 limitations still apply: native self-registration is not implemented, contact-request acceptance/decline is not yet identified, and cross-NAT media relay is not implemented. A pending 0x1781 fetch currently fails explicitly rather than returning an invented event or marking the request delivered. Native contact authorization is **not** end-to-end. Call/media behavior still depends on the legacy client's direct-connect/NAT behavior.
+
+## Skype 4.2 notification RE checkpoint
+
+Read-only Ghidra analysis of the installed patched 4.2.0.187 executable (SHA-256 `603E4A1612403448C1DCEAFA469B92C23282F2DBA0F35FA2517A57C7AFA895B0`) found:
+
+- Callback `00696D90` rejects statuses other than `0x1450` for `0x1780`/`0x1781`. For `0x1780` it tests `0/2E` for nonzero and then issues `0x1781` with `0/2D` equal to the client's `Lib/Notification/LastID`.
+- The `0x1781` response uses `0/2F` as an event count and indexed `5/20` event records. The client reads nested `0/22`, `0/21`, `0/28`, `0/3B`, `0/25`, `0/2A`, `3/26`, and optionally `4/24`. The previous flat `0/2E,3/26,3/27,0/22` response was not consumed by this parser. Field semantics and required signing still need evidence before constructing a nonempty event.
+- `00697570` consumes a notification `0/0F` high-water mark. If it exceeds the local mark, it schedules `00695D20`, which issues `0x1780` only when the mark exceeds `Lib/Notification/LastID`. This explains why storing a request alone does not cause an online recipient to poll. The transport and wire envelope that delivers this notification remain to be identified; `0x2B08` may be related but is not yet proven.
+- `00696D90` advances `Lib/Notification/LastID` only after processing event records, so receiving a TCP fetch is not evidence of delivery. The database row ID is not the protocol cursor.
+
+The first live interoperability milestone is a real recipient `0x1780` after a server notification, followed by a captured `0x1781` exchange and actual contact-request UI. Unit tests only establish the current server-side invariants, not that milestone.
 
 ## Why there are two Linux binaries
 

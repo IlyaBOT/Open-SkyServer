@@ -144,27 +144,23 @@ func TestNativeContactInboxFlow(t *testing.T) {
 	}}
 	payload, err = NativeContactInboxRespond(poll, db)
 	if err != nil { t.Fatal(err) }
-	_, body = decodeNativeAccountResponse(t, payload)
+	header, body = decodeNativeAccountResponse(t, payload)
+	status,_ = Required(header,0,1)
+	if status.Number!=0x1450 { t.Fatalf("poll callback rejects status %x",status.Number) }
 	next, err := Required(body,0,0x2e)
-	if err != nil || next.Number==0 { t.Fatalf("poll cursor=%d err=%v",next.Number,err) }
+	if err != nil || next.Number!=1 { t.Fatalf("poll pending flag=%d err=%v",next.Number,err) }
 
 	fetch := &NativeLoginRequest{Username:"transport.test",Operation:0x1781,RequestID:13,Metadata:[]Field{
-		fieldNumber(0x2d,next.Number),{Type:3,ID:4,Bytes:[]byte("transport.test")},
+		fieldNumber(0x2d,0x3b9aca28),{Type:3,ID:4,Bytes:[]byte("transport.test")},
 	}}
-	payload, err = NativeContactInboxRespond(fetch, db)
-	if err != nil { t.Fatal(err) }
-	_, body = decodeNativeAccountResponse(t, payload)
-	sender, err := Required(body,3,0x26)
-	if err != nil || string(sender.Bytes)!="native.test" { t.Fatalf("fetch sender=%q err=%v",sender.Bytes,err) }
-	target, err := Required(body,3,0x27)
-	if err != nil || string(target.Bytes)!="transport.test" { t.Fatalf("fetch target=%q err=%v",target.Bytes,err) }
-	flags, err := Required(body,0,0x22)
-	if err != nil || flags.Number!=7 { t.Fatalf("fetch flags=%d err=%v",flags.Number,err) }
+	if _,err = NativeContactInboxRespond(fetch, db); err == nil || !strings.Contains(err.Error(),"not implemented") { t.Fatalf("unverified inbox event accepted: %v",err) }
 
 	payload, err = NativeContactInboxRespond(poll, db)
 	if err != nil { t.Fatal(err) }
 	_, body = decodeNativeAccountResponse(t, payload)
-	if len(body)!=0 { t.Fatalf("delivered request repeated: %+v",body) }
+	if len(body)!=1 { t.Fatalf("unacknowledged request disappeared: %+v",body) }
+	stillPending,err:=db.NextNativeContactRequest("transport.test")
+	if err!=nil||stillPending==nil||stillPending.DeliveredUTC!="" { t.Fatalf("fetch incorrectly acknowledged request: %+v err=%v",stillPending,err) }
 
 	spoof := &NativeLoginRequest{Username:"native.test",Operation:0x1784,RequestID:14,Metadata:[]Field{
 		{Type:3,ID:0x27,Bytes:[]byte("transport.test")},fieldNumber(0x22,1),
@@ -173,4 +169,12 @@ func TestNativeContactInboxFlow(t *testing.T) {
 	if _, err := NativeContactInboxRespond(spoof, db); err == nil || !strings.Contains(err.Error(),"sender mismatch") {
 		t.Fatalf("spoofed contact request err=%v",err)
 	}
+
+	if err := db.MarkNativeContactRequestDelivered("transport.test", stillPending.ID); err != nil { t.Fatal(err) }
+	payload, err = NativeContactInboxRespond(fetch, db)
+	if err != nil { t.Fatal(err) }
+	header, body = decodeNativeAccountResponse(t, payload)
+	status, _ = Required(header,0,1)
+	count, err := Required(body,0,0x2f)
+	if err != nil || status.Number!=0x1450 || len(body)!=1 || count.Number!=0 { t.Fatalf("empty fetch status=%x body=%+v err=%v",status.Number,body,err) }
 }

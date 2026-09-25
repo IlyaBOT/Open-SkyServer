@@ -144,24 +144,23 @@ func NativeContactInboxRespond(req *NativeLoginRequest,db *Database)([]byte,erro
 	case 0x1780:
 		cursor,e:=Required(req.Metadata,0,0x2d);if e!=nil{return nil,e}
 		item,e:=db.NextNativeContactRequest(req.Username);if e!=nil{return nil,e}
-		if item!=nil{body=append(body,fieldNumber(0x2e,item.ID));log.Printf("native inbox poll user=%q cursor=%d pending=%d sender=%q",req.Username,cursor.Number,item.ID,item.SenderLogin)}else{log.Printf("native inbox poll user=%q cursor=%d pending=0",req.Username,cursor.Number)}
+		if item!=nil{body=append(body,fieldNumber(0x2e,1));log.Printf("native inbox poll user=%q cursor=%d pending=%d sender=%q",req.Username,cursor.Number,item.ID,item.SenderLogin)}else{log.Printf("native inbox poll user=%q cursor=%d pending=0",req.Username,cursor.Number)}
 	case 0x1781:
 		cursor,e:=Required(req.Metadata,0,0x2d);if e!=nil{return nil,e}
-		var item *NativeContactRequest
-		if cursor.Number!=0{item,e=db.GetNativeContactRequest(req.Username,cursor.Number)}else{item,e=db.NextNativeContactRequest(req.Username)}
+		// 0/2D is the client's Lib/Notification/LastID cursor, not our SQLite row ID.
+		item,e:=db.NextNativeContactRequest(req.Username)
 		if e!=nil{return nil,e}
 		if item!=nil{
-			// Preserve the observed 0x1784 identity/flag field IDs in the fetched
-			// event. This is the smallest wire shape supported by current evidence.
-			body=append(body,fieldNumber(0x2e,item.ID),Field{Type:3,ID:0x26,Bytes:[]byte(item.SenderLogin)},Field{Type:3,ID:0x27,Bytes:[]byte(item.RecipientLogin)},fieldNumber(0x22,item.Flags))
-			if e=db.MarkNativeContactRequestDelivered(req.Username,item.ID);e!=nil{return nil,e}
-			log.Printf("native inbox fetch user=%q cursor=%d inbox_id=%d sender=%q flags=%d",req.Username,cursor.Number,item.ID,item.SenderLogin,item.Flags)
-		}else{log.Printf("native inbox fetch user=%q cursor=%d inbox_id=0",req.Username,cursor.Number)}
+			return nil,fmt.Errorf("native inbox event 0x1781 is not implemented: user=%q cursor=%d inbox_id=%d",req.Username,cursor.Number,item.ID)
+		}
+		body=append(body,fieldNumber(0x2f,0))
+		log.Printf("native inbox fetch user=%q cursor=%d pending=0",req.Username,cursor.Number)
 	}
 	enc,e:=EncodeBlob(body);if e!=nil{return nil,e}
-	// 0x1068 is a success status accepted by the native account-manager callback.
-	// Keep this isolated so live testing can correct the status without touching storage.
-	return AccountResponse(enc,req.RequestID,0x1068)
+	// Skype 4.2 inbox callback 00696D90 only processes poll/fetch with 0x1450.
+	// The separate 0x1784 submission callback has not yet been characterized.
+	status:=uint32(0x1450);if req.Operation==0x1784{status=0x1068}
+	return AccountResponse(enc,req.RequestID,status)
 }
 
 func ContactDocument(contact Account)([]byte,error){return EncodeBlob([]Field{{Type:3,ID:0x10,Bytes:[]byte(contact.Login)},{Type:3,ID:0x14,Bytes:[]byte(contact.DisplayName)},fieldNumber(0x79,2)})}
