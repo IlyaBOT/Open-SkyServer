@@ -36,7 +36,10 @@ func TestStage41ConfigParity(t *testing.T) {
 
 func TestAccessPolicyParity(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "allowlist.txt")
-	if err := os.WriteFile(path, []byte("# exact and subnet\n127.0.0.1\n192.168.7.128/25 # friends\n"), 0600); err != nil { t.Fatal(err) }
+	if err := os.WriteFile(path, []byte("# exact and subnet
+127.0.0.1
+192.168.7.128/25 # friends
+"), 0600); err != nil { t.Fatal(err) }
 	p, err := LoadAccess(path)
 	if err != nil { t.Fatal(err) }
 	if !p.Allows(net.ParseIP("127.0.0.1")) || !p.Allows(net.ParseIP("192.168.7.255")) || p.Allows(net.ParseIP("192.168.7.127")) || p.Allows(net.ParseIP("::1")) {
@@ -46,6 +49,7 @@ func TestAccessPolicyParity(t *testing.T) {
 	p, err = LoadAccess(path)
 	if err != nil { t.Fatal(err) }
 	if p.Allows(net.ParseIP("127.0.0.1")) { t.Fatal("empty closed allowlist must deny localhost") }
-	if err := os.WriteFile(path, []byte("192.168.0.1/33\n"), 0600); err != nil { t.Fatal(err) }
+	if err := os.WriteFile(path, []byte("192.168.0.1/33
+"), 0600); err != nil { t.Fatal(err) }
 	if _, err := LoadAccess(path); err == nil { t.Fatal("invalid CIDR accepted") }
 }
