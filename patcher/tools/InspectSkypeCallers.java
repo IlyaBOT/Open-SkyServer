@@ -32,8 +32,10 @@ public class InspectSkypeCallers extends GhidraScript {
             count++;
         }
         Function function = getFunctionContaining(target);
-        if (function == null && at != null && "PUSH".equals(at.getMnemonicString()) &&
-                "EBP".equals(at.getDefaultOperandRepresentation(0))) {
+        if (function == null && at != null && target.equals(at.getAddress()) &&
+                "PUSH".equals(at.getMnemonicString()) &&
+                ("EBP".equals(at.getDefaultOperandRepresentation(0)) ||
+                 "ESI".equals(at.getDefaultOperandRepresentation(0)))) {
             function = createFunction(target, null);
             println("CREATED FUNCTION " + (function == null ? "failed" : function.getEntryPoint()));
         }

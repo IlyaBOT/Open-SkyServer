@@ -33,6 +33,8 @@ Read-only Ghidra analysis of the installed patched 4.2.0.187 executable (SHA-256
 
 The first live interoperability milestone is a real recipient `0x1780` after a server notification, followed by a captured `0x1781` exchange and actual contact-request UI. Unit tests only establish the current server-side invariants, not that milestone.
 
+Client-written `u/<login>` contact documents now update the SQL contact membership in the same transaction as the document. The document's `3/10` identity must match the path and refer to an active account. This makes document upload and deletion symmetric for server-side contact lists, but does not unblock the current Skype 4.2 `0x2B08` rejection or establish live cross-client synchronization.
+
 ## Why there are two Linux binaries
 
 The main server is a normal amd64 Go/cgo executable. The historical Skype 0x42 decompressor stores pointers in 32-bit u32 fields, so running it inside the 64-bit server process would truncate pointers.

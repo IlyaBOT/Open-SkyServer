@@ -6,6 +6,26 @@ import (
 	"testing"
 )
 
+func TestNativeContactDocumentUpdatesMembership(t *testing.T) {
+	sqlite, err := exec.LookPath("sqlite3")
+	if err != nil { t.Skip("sqlite3 is not installed") }
+	db := NewDatabase(filepath.Join(t.TempDir(), "skyserver.db"), sqlite)
+	if err := db.EnsureSchema(); err != nil { t.Fatal(err) }
+	if err := db.AddAccount("owner.test", "Owner", "owner-password"); err != nil { t.Fatal(err) }
+	if err := db.AddAccount("peer.test", "Peer", "peer-password"); err != nil { t.Fatal(err) }
+	body, err := ContactDocument(Account{Login: "peer.test", DisplayName: "Peer"})
+	if err != nil { t.Fatal(err) }
+	if _, err := db.PutNativeDocument("owner.test", "u/other.test", body, CRC32Skype(body)); err == nil {
+		t.Fatal("mismatched contact document accepted")
+	}
+	if _, err := db.PutNativeDocument("owner.test", "u/peer.test", body, CRC32Skype(body)); err != nil { t.Fatal(err) }
+	contacts, err := db.GetContacts("owner.test")
+	if err != nil || len(contacts) != 1 || contacts[0].Login != "peer.test" { t.Fatalf("contact membership=%+v err=%v", contacts, err) }
+	if _, err := db.RemoveNativeDocument("owner.test", "u/peer.test"); err != nil { t.Fatal(err) }
+	contacts, err = db.GetContacts("owner.test")
+	if err != nil || len(contacts) != 0 { t.Fatalf("contact persisted after document deletion: %+v err=%v", contacts, err) }
+}
+
 func TestDatabaseCompatibilitySurface(t *testing.T) {
 	sqlite, err := exec.LookPath("sqlite3")
 	if err != nil {

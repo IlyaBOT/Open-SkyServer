@@ -265,6 +265,15 @@ func validateDocument(name string,body []byte,checksum uint32)error{
 func (d *Database) PutNativeDocument(login,name string,body []byte,checksum uint32)(uint32,error){d.docMu.Lock();defer d.docMu.Unlock();return d.putNativeDocumentUnlocked(login,name,body,checksum)}
 func (d *Database) putNativeDocumentUnlocked(login,name string,body []byte,checksum uint32)(uint32,error){
 	if e:=validateDocument(name,body,checksum);e!=nil{return 0,e};s,e:=d.GetNativeDocuments(login);if e!=nil{return 0,e};replace:=false
+	contactInsert:=""
+	if strings.HasPrefix(name,"u/"){
+		contact:=strings.TrimPrefix(name,"u/")
+		fields,used,e:=DecodeBlob(body);if e!=nil{return 0,e};if used!=len(body){return 0,fmt.Errorf("trailing contact document data")}
+		identity,e:=Required(fields,3,0x10);if e!=nil{return 0,e}
+		if !utf8.Valid(identity.Bytes)||string(identity.Bytes)!=contact||contact==login{return 0,fmt.Errorf("contact document identity mismatch")}
+		a,e:=d.GetAccount(contact);if e!=nil{return 0,e};if a==nil{return 0,fmt.Errorf("contact account does not exist: %s",contact)}
+		contactInsert="INSERT OR IGNORE INTO contacts(owner_login,contact_login,created_utc) VALUES("+sqlQuote(login)+","+sqlQuote(contact)+","+sqlQuote(nowText())+");"
+	}
 	for _,doc:=range s.Documents{if doc.Name==name{replace=true}else if doc.Checksum==checksum{return 0,fmt.Errorf("native document checksum collision")}}
 	if !replace&&len(s.Documents)>=1024{return 0,fmt.Errorf("native document quota reached")}
 	enc:=base64.StdEncoding.EncodeToString(body);cs:=strconv.FormatUint(uint64(checksum),10)
@@ -272,7 +281,7 @@ func (d *Database) putNativeDocumentUnlocked(login,name string,body []byte,check
 	"UPDATE native_document_versions SET revision=revision+1 WHERE login="+sqlQuote(login)+" AND NOT EXISTS(SELECT 1 FROM native_documents WHERE login="+sqlQuote(login)+" AND name="+sqlQuote(name)+" AND checksum="+cs+" AND body="+sqlQuote(enc)+");"+
 	"UPDATE native_documents SET checksum="+cs+",body="+sqlQuote(enc)+" WHERE login="+sqlQuote(login)+" AND name="+sqlQuote(name)+";"+
 	"INSERT INTO native_documents(login,name,checksum,body) SELECT "+sqlQuote(login)+","+sqlQuote(name)+","+cs+","+sqlQuote(enc)+" WHERE NOT EXISTS(SELECT 1 FROM native_documents WHERE login="+sqlQuote(login)+" AND name="+sqlQuote(name)+");"+
-	"SELECT revision FROM native_document_versions WHERE login="+sqlQuote(login)+"; COMMIT;"
+	contactInsert+"SELECT revision FROM native_document_versions WHERE login="+sqlQuote(login)+"; COMMIT;"
 	out,e:=d.execute(q);if e!=nil{return 0,e};v,e:=strconv.ParseUint(strings.TrimSpace(out),10,32);return uint32(v),e
 }
 func (d *Database) RemoveNativeDocument(login,name string)(uint32,error){
