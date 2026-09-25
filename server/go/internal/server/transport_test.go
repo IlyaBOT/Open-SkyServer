@@ -49,6 +49,28 @@ func TestCommand30EndpointRewrite(t *testing.T) {
 	}
 }
 
+func TestCommand30HairpinAdvertiseIP(t *testing.T) {
+	request:=[]byte{0x14,0x25,0x1c,5,0xf2,1,0x25,0x1b,0x42,0x2d,3}
+	s:=&TCPProbeServer{AdvertiseIP:net.ParseIP("203.0.113.8")}
+	s.seq.Store(200)
+	remote:=&net.TCPAddr{IP:net.ParseIP("192.168.1.1"),Port:54095}
+	local:=&net.TCPAddr{IP:net.ParseIP("192.168.1.170"),Port:12350}
+	reply,ok:=s.buildCommand30Reply(request,remote,local)
+	if !ok{t.Fatal("no command-30 hairpin reply")}
+	fields,used,err:=DecodeBlob(reply[8:]);if err!=nil{t.Fatal(err)}
+	if used!=len(reply)-8{t.Fatal("trailing command-30 fields")}
+	ep,err:=Required(fields,2,0x11);if err!=nil{t.Fatal(err)}
+	if !bytes.Equal(ep.Bytes[:4],s.AdvertiseIP.To4()){t.Fatalf("hairpin endpoint IP=%v want=%v",ep.Bytes[:4],s.AdvertiseIP.To4())}
+	if got:=int(binary.BigEndian.Uint16(ep.Bytes[4:]));got!=remote.Port{t.Fatalf("hairpin endpoint port=%d want=%d",got,remote.Port)}
+
+	publicRemote:=&net.TCPAddr{IP:net.ParseIP("198.51.100.77"),Port:60483}
+	reply,ok=s.buildCommand30Reply(request,publicRemote,local)
+	if !ok{t.Fatal("no command-30 public reply")}
+	fields,_,err=DecodeBlob(reply[8:]);if err!=nil{t.Fatal(err)}
+	ep,err=Required(fields,2,0x11);if err!=nil{t.Fatal(err)}
+	if !bytes.Equal(ep.Bytes[:4],publicRemote.IP.To4()){t.Fatalf("public endpoint incorrectly rewritten: %v",ep.Bytes[:4])}
+}
+
 func TestDirectProbeNeedsCompleteHeader(t *testing.T) {
 	if looksDirect(make([]byte,48),[]byte{0}) { t.Fatal("partial RC4 header accepted") }
 }
