@@ -25,6 +25,7 @@ type Config struct{
 	KeysDir string
 	BlobWorker string
 	RealSkype bool
+	DetailedDebug bool
 	Once bool
 	Closed bool
 	Allowlist string
@@ -55,6 +56,7 @@ func ParseConfig(args []string)(Config,error){
 	case "--keys-dir":v,e:=next(&i);if e!=nil{return c,e};c.KeysDir=v
 	case "--blob-worker":v,e:=next(&i);if e!=nil{return c,e};c.BlobWorker=v
 	case "--real-skype-probe":c.RealSkype=true
+	case "--detailed-debug":c.DetailedDebug=true
 	case "--once":c.Once=true
 	case "--closed":c.Closed=true
 	case "--allowlist":v,e:=next(&i);if e!=nil{return c,e};c.Allowlist=v
