@@ -8,7 +8,7 @@ import (
 
 func TestDirectoryRecordSurvivesStaggeredLogin(t *testing.T) {
 	now := time.Unix(1_700_000_000, 0).UTC()
-	d := NewRecordDirectory(nil)
+	d := NewRecordDirectory(nil,nil)
 	d.records["peer.test"] = recordEntry{value: []byte{1, 2, 3}, expires: now.Add(locationRecordTTL), id: 42}
 	props := make([]byte, 8)
 	binary.LittleEndian.PutUint32(props, 16)

@@ -40,7 +40,7 @@ func main(){
 	if cfg.RealSkype{
 		tcpPorts:=server.DefaultTCPPorts(cfg.Port,cfg.APIPort);udpPorts:=server.DefaultUDPPorts(cfg.Port)
 		if cfg.IncludeHostCache{extra,e:=server.HostCachePorts(cfg.SharedXML);if e!=nil{log.Fatal(e)};tcpPorts=append(tcpPorts,extra...);udpPorts=append(udpPorts,extra...)}
-		tcp:=&server.TCPProbeServer{Host:cfg.Host,Ports:tcpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access,Auth:auth,Keys:ks};tcp.Run(ctx)
+		tcp:=&server.TCPProbeServer{Host:cfg.Host,Ports:tcpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access,Auth:auth,Keys:ks,DB:db};tcp.Run(ctx)
 		udp:=&server.UDPServer{Host:cfg.Host,Ports:udpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access};udp.Run(ctx)
 	}
 	log.Printf("network mode=%s access=%s advertised-ip=%v",cfg.Mode,map[bool]string{true:"closed (startup snapshot)",false:"open"}[cfg.Allowlist!=""],cfg.AdvertiseIP)

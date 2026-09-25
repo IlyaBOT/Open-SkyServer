@@ -24,11 +24,12 @@ type TCPProbeServer struct {
 	Access *AccessPolicy
 	Auth *AuthServer
 	Keys *keys.Set
+	DB *Database
 	records *RecordDirectory
 	sem chan struct{}
 	seq atomic.Uint32
 }
-func (s *TCPProbeServer) Run(ctx context.Context){s.records=NewRecordDirectory(s.Keys);s.sem=make(chan struct{},128);s.seq.Store(uint32(time.Now().UnixNano()));for _,p:=range s.Ports{go s.runPort(ctx,p)}}
+func (s *TCPProbeServer) Run(ctx context.Context){s.records=NewRecordDirectory(s.Keys,s.DB);s.sem=make(chan struct{},128);s.seq.Store(uint32(time.Now().UnixNano()));for _,p:=range s.Ports{go s.runPort(ctx,p)}}
 func (s *TCPProbeServer) nextSeq()uint16{return uint16(s.seq.Add(1))}
 func (s *TCPProbeServer) runPort(ctx context.Context,port int){
 	ln,e:=net.Listen("tcp4",net.JoinHostPort(s.Host,fmt.Sprint(port)));if e!=nil{log.Printf("tcp probe could not bind %s:%d: %v",s.Host,port,e);return};defer ln.Close();go func(){<-ctx.Done();ln.Close()}();log.Printf("tcp probe listening on %s:%d",s.Host,port)

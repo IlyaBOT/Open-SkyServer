@@ -110,14 +110,15 @@ func VerifySignedRecord(value []byte,ks *keys.Set,now time.Time)(*SignedRecord,e
 const locationRecordTTL = 6 * time.Hour
 
 type recordEntry struct{value []byte;expires time.Time;id uint32}
-type RecordDirectory struct{ks *keys.Set;mu sync.Mutex;records map[string]recordEntry}
-func NewRecordDirectory(ks *keys.Set)*RecordDirectory{return &RecordDirectory{ks:ks,records:map[string]recordEntry{}}}
+type RecordDirectory struct{ks *keys.Set;db *Database;mu sync.Mutex;records map[string]recordEntry}
+func NewRecordDirectory(ks *keys.Set,db *Database)*RecordDirectory{return &RecordDirectory{ks:ks,db:db,records:map[string]recordEntry{}}}
 func (d *RecordDirectory) expire(now time.Time){for k,v:=range d.records{if !v.expires.After(now){delete(d.records,k)}}}
 func (d *RecordDirectory) Handle(req NodeCommand,now time.Time)(*NodeCommand,error){
 	if req.Code!=0xc&&req.Code!=0xe{return nil,nil};if req.Flags!=2||req.RequestID==nil{return nil,fmt.Errorf("invalid directory request header")}
 	var result []Field
 	if req.Code==0xc{
 		if d.ks==nil{return nil,nil};if len(req.Fields)!=1{return nil,fmt.Errorf("unsupported directory publication fields")};v,e:=Required(req.Fields,4,0xb);if e!=nil{return nil,e};rec,e:=VerifySignedRecord(v.Bytes,d.ks,now);if e!=nil{return nil,e}
+		if d.db!=nil{if e:=d.db.StoreVerifiedNativeSignedRecord(rec.Username,v.Bytes);e!=nil{return nil,e}}
 		sum:=sha256.Sum256(v.Bytes);id:=binary.LittleEndian.Uint32(sum[:4]);d.mu.Lock();d.expire(now);if len(d.records)>=1024{if _,ok:=d.records[strings.ToLower(rec.Username)];!ok{d.mu.Unlock();return nil,fmt.Errorf("directory capacity reached")}};d.records[strings.ToLower(rec.Username)]=recordEntry{append([]byte(nil),v.Bytes...),now.Add(locationRecordTTL),id};count:=len(d.records);d.mu.Unlock();log.Printf("directory stored user=%q ttl=%s records=%d",rec.Username,locationRecordTTL,count)
 	}else{
 		if len(req.Fields)!=2&&len(req.Fields)!=3{return nil,nil};var excluded []byte;if len(req.Fields)==3{x,e:=Required(req.Fields,6,2);if e!=nil{return nil,e};excluded=x.Bytes;if len(excluded)>400||len(excluded)%4!=0{return nil,fmt.Errorf("invalid excluded identifiers")}}

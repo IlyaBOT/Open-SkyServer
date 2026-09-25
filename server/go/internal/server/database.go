@@ -75,6 +75,9 @@ CREATE TABLE IF NOT EXISTS native_documents (
  login TEXT NOT NULL, name TEXT NOT NULL, checksum INTEGER NOT NULL, body TEXT NOT NULL,
  PRIMARY KEY(login,name), UNIQUE(login,checksum),
  FOREIGN KEY(login) REFERENCES accounts(login) ON DELETE CASCADE);
+CREATE TABLE IF NOT EXISTS native_signed_records (
+ login TEXT PRIMARY KEY, body TEXT NOT NULL, updated_utc TEXT NOT NULL,
+ FOREIGN KEY(login) REFERENCES accounts(login) ON DELETE CASCADE);
 CREATE TRIGGER IF NOT EXISTS native_documents_quota BEFORE INSERT ON native_documents
 WHEN NOT EXISTS(SELECT 1 FROM native_documents WHERE login=NEW.login AND name=NEW.name)
 AND (SELECT COUNT(*) FROM native_documents WHERE login=NEW.login)>=1024
@@ -212,6 +215,38 @@ func (d *Database) GetContacts(owner string)([]Account,error){
 	var out []Account;for _,r:=range splitLines(rows){p:=strings.Split(r,"\t");if len(p)>=2{out=append(out,Account{p[0],p[1]})}};return out,nil
 }
 
+func (d *Database) mutualContact(owner,contact string)(bool,error){
+	row,e:=d.one("SELECT COUNT(*) FROM contacts a JOIN contacts b ON b.owner_login=a.contact_login AND b.contact_login=a.owner_login WHERE a.owner_login="+sqlQuote(owner)+" AND a.contact_login="+sqlQuote(contact)+";")
+	return row=="1",e
+}
+
+// StoreVerifiedNativeSignedRecord is called only after the directory verifies the client's signature.
+func (d *Database) StoreVerifiedNativeSignedRecord(login string,record []byte)error{
+	if len(record)<392||len(record)>8192||!bytes.Equal(record[:4],[]byte{0,0,1,4}){return fmt.Errorf("invalid native signed record envelope")}
+	a,e:=d.GetAccount(login);if e!=nil{return e};if a==nil{return fmt.Errorf("signed record account does not exist")}
+	encoded:=base64.StdEncoding.EncodeToString(record)
+	_,e=d.execute("INSERT OR REPLACE INTO native_signed_records(login,body,updated_utc) VALUES("+sqlQuote(login)+","+sqlQuote(encoded)+","+sqlQuote(nowText())+");")
+	if e!=nil{return e}
+	rows,e:=d.execute("SELECT DISTINCT owner_login FROM contacts WHERE contact_login="+sqlQuote(login)+" ORDER BY owner_login;")
+	if e!=nil{return e}
+	for _,owner:=range splitLines(rows){if e:=d.EnsureNativeContactDocuments(owner);e!=nil{return e}}
+	return nil
+}
+
+func (d *Database) getNativeSignedRecord(login string)([]byte,error){
+	encoded,e:=d.one("SELECT body FROM native_signed_records WHERE login="+sqlQuote(login)+";")
+	if e!=nil||encoded==""{return nil,e}
+	record,e:=base64.StdEncoding.DecodeString(encoded);if e!=nil{return nil,e}
+	if len(record)<392||len(record)>8192||!bytes.Equal(record[:4],[]byte{0,0,1,4}){return nil,fmt.Errorf("invalid stored signed record")}
+	return record,nil
+}
+
+func isLegacyGeneratedContactDocument(name string,body []byte)bool{
+	fields,used,e:=DecodeBlob(body);if e!=nil||used!=len(body)||len(fields)!=3{return false}
+	return fields[0].Type==3&&fields[0].ID==0x10&&string(fields[0].Bytes)==strings.TrimPrefix(name,"u/")&&
+		fields[1].Type==3&&fields[1].ID==0x14&&fields[2].Type==0&&fields[2].ID==0x79&&fields[2].Number==2
+}
+
 func validateDirectoryTerm(t DirectoryTerm)error{
 	if t.Property==17 {if t.Comparison!=0||t.Number==nil||*t.Number!=0||t.Text!=""{return fmt.Errorf("unsupported directory logical operator")};return nil}
 	if strings.TrimSpace(t.Text)==""||len([]byte(t.Text))>254{return fmt.Errorf("invalid directory query length")}
@@ -254,8 +289,14 @@ func (d *Database) GetNativeDocuments(login string)(NativeDocumentSnapshot,error
 func (d *Database) EnsureNativeContactDocuments(login string)error{
 	d.docMu.Lock();defer d.docMu.Unlock()
 	s,e:=d.GetNativeDocuments(login);if e!=nil{return e};contacts,e:=d.GetContacts(login);if e!=nil{return e}
-	have:=map[string]bool{};for _,doc:=range s.Documents{have[doc.Name]=true}
-	for _,c:=range contacts{n:="u/"+c.Login;if have[n]{continue};body,e:=ContactDocument(c);if e!=nil{return e};if _,e=d.putNativeDocumentUnlocked(login,n,body,CRC32Skype(body));e!=nil{return e};have[n]=true}
+	have:=map[string]NativeDocument{};for _,doc:=range s.Documents{have[doc.Name]=doc}
+	for _,c:=range contacts{
+		n:="u/"+c.Login
+		if doc,ok:=have[n];ok&&!isLegacyGeneratedContactDocument(n,doc.Body){continue}
+		mutual,e:=d.mutualContact(login,c.Login);if e!=nil{return e};if !mutual{continue}
+		record,e:=d.getNativeSignedRecord(c.Login);if e!=nil{return e};if len(record)!=392{continue}
+		body,e:=ContactDocument(c,record);if e!=nil{return e};if _,e=d.putNativeDocumentUnlocked(login,n,body,CRC32Skype(body));e!=nil{return e}
+	}
 	return nil
 }
 func validateDocument(name string,body []byte,checksum uint32)error{

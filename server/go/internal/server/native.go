@@ -163,7 +163,10 @@ func NativeContactInboxRespond(req *NativeLoginRequest,db *Database)([]byte,erro
 	return AccountResponse(enc,req.RequestID,status)
 }
 
-func ContactDocument(contact Account)([]byte,error){return EncodeBlob([]Field{{Type:3,ID:0x10,Bytes:[]byte(contact.Login)},{Type:3,ID:0x14,Bytes:[]byte(contact.DisplayName)},fieldNumber(0x79,2)})}
+func ContactDocument(contact Account,record []byte)([]byte,error){
+	if len(record)!=392||!bytes.Equal(record[:4],[]byte{0,0,1,4}){return nil,fmt.Errorf("expected verified 392-byte contact record")}
+	return EncodeBlob([]Field{{Type:4,ID:3,Bytes:append([]byte(nil),record...)},{Type:3,ID:0x10,Bytes:[]byte(contact.Login)},{Type:3,ID:0x14,Bytes:[]byte(contact.DisplayName)},fieldNumber(0x79,3),fieldNumber(0x7d,1)})
+}
 
 func NativeContactRespond(req *NativeLoginRequest,db *Database)([]byte,error){
 	if req.Operation==0x1792{f,e:=Required(req.Metadata,0,7);if e!=nil{return nil,e};if f.Number!=1{return nil,fmt.Errorf("unknown owner-local contact list")};cs,e:=db.GetContacts(req.Username);if e!=nil{return nil,e};var out []Field;for _,c:=range cs{out=append(out,Field{Type:5,ID:0x39,Children:[]Field{fieldNumber(1,0),{Type:3,ID:2,Bytes:[]byte(c.Login)}}})};b,e:=EncodeBlob(out);if e!=nil{return nil,e};return AccountResponse(b,req.RequestID,0x1450)}
