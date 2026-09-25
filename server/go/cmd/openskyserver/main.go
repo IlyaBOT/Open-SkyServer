@@ -17,6 +17,7 @@ import (
 
 func main(){
 	cfg,err:=server.ParseConfig(os.Args[1:]);if err!=nil{log.Fatal(err)}
+	server.SetDetailedDebug(cfg.DetailedDebug)
 	server.SetBlobWorker(cfg.BlobWorker)
 	var ks *keys.Set
 	if st,e:=os.Stat(cfg.KeysDir);e==nil&&st.IsDir(){ks,err=keys.Load(cfg.KeysDir);if err!=nil{log.Fatalf("keys: %v",err)};log.Printf("community login RSA-1536/e65537 modulus SHA256: %s",ks.LoginFingerprint);log.Printf("community credentials RSA-2048/e65537 modulus SHA256: %s",ks.CredentialsFingerprint)}
@@ -24,7 +25,8 @@ func main(){
 	if err:=server.EnsureDatabaseDirectory(cfg.DBPath);err!=nil{log.Fatal(err)}
 	db:=server.NewDatabase(cfg.DBPath,cfg.SQLite);if err=db.EnsureSchema();err!=nil{log.Fatal(err)}
 	switch cfg.Command{
-	case server.InitDB:fmt.Printf("database initialized: %s\n",cfg.DBPath);return
+	case server.InitDB:fmt.Printf("database initialized: %s
+",cfg.DBPath);return
 	case server.AddAccount:err=db.AddAccount(cfg.CommandArgs[0],cfg.CommandArgs[1],cfg.CommandArgs[2])
 	case server.RemoveAccount:err=db.RemoveAccount(cfg.CommandArgs[0])
 	case server.AddContact:err=db.AddContact(cfg.CommandArgs[0],cfg.CommandArgs[1])
@@ -43,7 +45,7 @@ func main(){
 		tcp:=&server.TCPProbeServer{Host:cfg.Host,Ports:tcpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access,Auth:auth,Keys:ks,DB:db};tcp.Run(ctx)
 		udp:=&server.UDPServer{Host:cfg.Host,Ports:udpPorts,AdvertiseIP:cfg.AdvertiseIP,Access:access};udp.Run(ctx)
 	}
-	log.Printf("network mode=%s access=%s advertised-ip=%v",cfg.Mode,map[bool]string{true:"closed (startup snapshot)",false:"open"}[cfg.Allowlist!=""],cfg.AdvertiseIP)
+	log.Printf("network mode=%s access=%s advertised-ip=%v detailed-debug=%t",cfg.Mode,map[bool]string{true:"closed (startup snapshot)",false:"open"}[cfg.Allowlist!=""],cfg.AdvertiseIP,cfg.DetailedDebug)
 	log.Printf("OpenSkyServer Go auth=%s api=%s db=%s",net.JoinHostPort(cfg.Host,fmt.Sprint(cfg.Port)),net.JoinHostPort(cfg.APIHost,fmt.Sprint(cfg.APIPort)),filepath.Clean(cfg.DBPath))
 	go func(){<-ctx.Done();_ = apiSrv.Shutdown(context.Background())}()
 	if err=auth.Run(ctx);err!=nil&&err!=http.ErrServerClosed{log.Fatal(err)}
