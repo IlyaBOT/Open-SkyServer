@@ -106,7 +106,8 @@ func VerifySignedRecord(value []byte,ks *keys.Set,now time.Time)(*SignedRecord,e
 	fields,used,e:=DecodeBlob(msg[20:]);if e!=nil{return nil,e};if used!=len(msg)-20{return nil,fmt.Errorf("trailing directory record data")};return &SignedRecord{username,fields},nil
 }
 
-const locationRecordTTL = 5 * time.Minute
+// Skype 4.2 does not republish its signed location within the initial minutes of a session.
+const locationRecordTTL = 6 * time.Hour
 
 type recordEntry struct{value []byte;expires time.Time;id uint32}
 type RecordDirectory struct{ks *keys.Set;mu sync.Mutex;records map[string]recordEntry}
