@@ -82,12 +82,17 @@ func (s *TCPProbeServer) buildCommand30Reply(req []byte,remote,local *net.TCPAdd
 	if !looksLegacyFrame(req)||req[4]!=0xf2||req[5]!=1{return nil,false}
 	if remote==nil||remote.IP.To4()==nil||remote.Port<1||remote.Port>65535{return nil,false}
 	if local==nil||local.IP.To4()==nil||local.Port<1||local.Port>65535{return nil,false}
+	observedIP:=remote.IP.To4()
+	if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil&&remote.IP.IsPrivate(){
+		observedIP=s.AdvertiseIP.To4()
+		if detailedDebugEnabled.Load(){log.Printf("detailed command30 hairpin correction remote=%s advertise-ip=%s observed-port=%d",remote.IP.String(),observedIP.String(),remote.Port)}
+	}
 	const hexReply="D121FB0100004106000B34000CECD193D0050211750325C706940010D5B802002C01062100"
 	raw:=make([]byte,len(hexReply)/2);for i:=range raw{fmt.Sscanf(hexReply[i*2:i*2+2],"%02x",&raw[i])}
 	fields,used,e:=DecodeBlob(raw[6:]);if e!=nil||used!=len(raw)-6{return nil,false}
 	endpointFound:=false;portFound:=false
 	for i:=range fields{
-		if fields[i].Type==2&&fields[i].ID==0x11&&len(fields[i].Bytes)==6{copy(fields[i].Bytes,remote.IP.To4());binary.BigEndian.PutUint16(fields[i].Bytes[4:],uint16(remote.Port));endpointFound=true}
+		if fields[i].Type==2&&fields[i].ID==0x11&&len(fields[i].Bytes)==6{copy(fields[i].Bytes,observedIP);binary.BigEndian.PutUint16(fields[i].Bytes[4:],uint16(remote.Port));endpointFound=true}
 		if fields[i].Type==0&&fields[i].ID==0x10{fields[i].Number=uint32(local.Port);portFound=true}
 	}
 	if !endpointFound||!portFound{return nil,false}
