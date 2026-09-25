@@ -45,6 +45,19 @@ See server/go/README.md for the Debian build and migration procedure.
 
 The Go implementation now covers the Stage 4.1 server surface, but must still pass live native-client interoperability testing before it replaces the C# reference implementation.
 
+## Demo Accounts
+
+```
+sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/bin/sqlite3 --add-account "admindev@test.lol" "Admin Dev" "AdminDev"
+```
+```
+sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/bin/sqlite3 --set-email "admindev@test.lol" "admindev@test.lol"
+```
+Created accounts:
+
+- `admindev@test.lol` / AdminDev, display name Admin
+- `second@test.lol` / SecondTest, display name Test Second Accout
+
 ## Patcher and releases
 
 `patcher/client/` is intentionally empty in Git. Put a locally built/patched client there when preparing a tag/release. Proprietary Skype executables and deployment secrets are not tracked in the source repository.
