@@ -25,8 +25,7 @@ func main(){
 	if err:=server.EnsureDatabaseDirectory(cfg.DBPath);err!=nil{log.Fatal(err)}
 	db:=server.NewDatabase(cfg.DBPath,cfg.SQLite);if err=db.EnsureSchema();err!=nil{log.Fatal(err)}
 	switch cfg.Command{
-	case server.InitDB:fmt.Printf("database initialized: %s
-",cfg.DBPath);return
+	case server.InitDB:fmt.Printf("database initialized: %s\n",cfg.DBPath);return
 	case server.AddAccount:err=db.AddAccount(cfg.CommandArgs[0],cfg.CommandArgs[1],cfg.CommandArgs[2])
 	case server.RemoveAccount:err=db.RemoveAccount(cfg.CommandArgs[0])
 	case server.AddContact:err=db.AddContact(cfg.CommandArgs[0],cfg.CommandArgs[1])
