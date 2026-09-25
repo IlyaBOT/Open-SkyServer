@@ -103,7 +103,8 @@ func VerifySignedRecord(value []byte,ks *keys.Set,now time.Time)(*SignedRecord,e
 	start:=1;if block[0]==0x4b{for start<107&&block[start]==0xbb{start++};if start>=106||block[start]!=0xba{return nil,fmt.Errorf("invalid record recovery padding")};start++}else if block[0]!=0x4a&&block[0]!=0x6a{return nil,fmt.Errorf("unsupported record recovery header")}
 	if (block[0]==0x6a)!=(len(value)>392)||107-start<=20{return nil,fmt.Errorf("invalid record recovery extent")}
 	msg:=append([]byte(nil),block[start:107]...);msg=append(msg,value[392:]...);h:=sha1.Sum(msg);if !bytes.Equal(h[:],block[107:127]){return nil,fmt.Errorf("invalid record digest")};hc:=sha1.Sum(credential);if len(msg)<20||!bytes.Equal(hc[:],msg[:20]){return nil,fmt.Errorf("invalid record credential binding")}
-	fields,used,e:=DecodeBlob(msg[20:]);if e!=nil{return nil,e};if used!=len(msg)-20{return nil,fmt.Errorf("trailing directory record data")};return &SignedRecord{username,fields},nil
+	fields,used,e:=DecodeBlob(msg[20:]);if e!=nil{return nil,e};if used!=len(msg)-20{return nil,fmt.Errorf("trailing directory record data")}
+	rec:=&SignedRecord{username,fields};logDetailedSignedRecord(rec,len(value));return rec,nil
 }
 
 // Skype 4.2 does not republish its signed location within the initial minutes of a session.
