@@ -55,7 +55,7 @@ func (s *TCPProbeServer) handle(c net.Conn)error{
 				if cmd.Flags==1{ack=true}
 				if cmd.Code==0xc||cmd.Code==0xe{log.Printf("node directory %s code=0x%x flags=%d fields=%s",c.RemoteAddr(),cmd.Code,cmd.Flags,describeFields(cmd.Fields))}
 				if detailedDebugEnabled.Load()&&cmd.Code!=0xc&&cmd.Code!=0xe{
-					log.Printf("detailed node command %s code=0x%x flags=%d fields=%s",c.RemoteAddr(),cmd.Code,cmd.Flags,describeFields(cmd.Fields))
+					log.Printf("detailed node command %s code=0x%x flags=%d fields=%s small=%s",c.RemoteAddr(),cmd.Code,cmd.Flags,describeFields(cmd.Fields),describeSmallNumbers(cmd.Fields))
 				}
 				if rep,e:=s.records.Handle(cmd,time.Now().UTC());e!=nil{return e}else if rep!=nil{if cmd.Code==0xc||cmd.Code==0xe{log.Printf("node directory %s reply=0x%x fields=%s",c.RemoteAddr(),rep.Code,describeFields(rep.Fields))};wire,e:=EncodeNodeFrame(s.nextSeq(),*rep);if e!=nil{return e};if e=s.sendEncrypted(c,rc,wire);e!=nil{return e}}
 				local:=c.LocalAddr().(*net.TCPAddr);lip:=local.IP;if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil{lip=s.AdvertiseIP};dir:=&net.TCPAddr{IP:lip,Port:local.Port}

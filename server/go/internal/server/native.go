@@ -39,6 +39,25 @@ func describeFields(fields []Field) string {
 	return b.String()
 }
 
+func describeSmallNumbers(fields []Field) string {
+	var b strings.Builder
+	count := 0
+	for _, f := range fields {
+		if f.Type != 0 || f.Number > 8 {
+			continue
+		}
+		if count > 0 {
+			b.WriteByte(',')
+		}
+		fmt.Fprintf(&b, "%x=%d", f.ID, f.Number)
+		count++
+		if count == 32 {
+			break
+		}
+	}
+	return b.String()
+}
+
 func authPayload(record []byte,typ byte)([]byte,error){
 	if len(record)<5||record[0]!=typ||record[1]!=3||record[2]!=1||int(binary.BigEndian.Uint16(record[3:5]))!=len(record)-5||len(record)>16389{return nil,fmt.Errorf("invalid native auth record")}
 	return append([]byte(nil),record[5:]...),nil

@@ -40,6 +40,18 @@ func TestDiagnosticFieldShapeOmitsValues(t *testing.T) {
 	}
 }
 
+func TestSmallNumberDiagnosticsExcludePayloadsAndLargeValues(t *testing.T) {
+	fields := []Field{
+		{Type: 0, ID: 1, Number: 3},
+		{Type: 0, ID: 2, Number: 6},
+		{Type: 0, ID: 3, Number: 987654321},
+		{Type: 3, ID: 4, Bytes: []byte("private-login")},
+	}
+	if got := describeSmallNumbers(fields); got != "1=3,2=6" {
+		t.Fatalf("unsafe numeric diagnostics: %q", got)
+	}
+}
+
 func TestNodeFramingStage41Fixtures(t *testing.T) {
 	captured := []byte{0x18,0x34,0xcd,8,0x32,0x34,0xcc,0x42,0x34,0x1e,0x8c,0x63,0x1e}
 	n, err := DecodeNodeFrame(captured)
