@@ -10,6 +10,7 @@ The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit 
 - Skype DH-384 handshake and MD5 handshake tags;
 - reconstructed RC4 account transport and legacy Skype IV-expanded RC4 for TCP/UDP;
 - native RSA/AES login request handling and community credential issuance;
+- experimental native signup RPC `0x139a`: validates registration metadata, atomically creates an account without replacing an existing login, and stores the client's native password verifier;
 - native account RPCs used by the Stage 4.1 client: login, account email, contact-list index, native document synchronization and directory search;
 - experimental Skype 4.2 contact-request queue (0x1784) and inbox poll (0x1780); an empty 0x1781 fetch is supported, but pending inbox-event delivery is not yet implemented;
 - the C# SQLite schema and account/contact/profile/message operations;
@@ -19,7 +20,9 @@ The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit 
 - Stage 4.1 deployment controls: --mode local|global, --advertise-ip, --closed and --allowlist;
 - graceful SIGINT/SIGTERM shutdown.
 
-The same known Stage 4.1 limitations still apply: native self-registration is not implemented, contact-request acceptance/decline is not yet identified, and cross-NAT media relay is not implemented. A pending 0x1781 fetch currently fails explicitly rather than returning an invented event or marking the request delivered. Native contact authorization is **not** end-to-end. Call/media behavior still depends on the legacy client's direct-connect/NAT behavior.
+The same known Stage 4.1 limitations still apply: native self-registration has server-side tests but has not been accepted by a live Skype client, contact-request acceptance/decline is not yet identified, and cross-NAT media relay is not implemented. Native registration transmits a password digest, not plaintext; such accounts support native login but cannot use the plaintext-password HTTP API. A pending 0x1781 fetch currently fails explicitly rather than returning an invented event or marking the request delivered. Native contact authorization is **not** end-to-end. Call/media behavior still depends on the legacy client's direct-connect/NAT behavior.
+
+There is no authoritative native presence registry in the Go server yet. A signed location record is a peer-routing hint with a lease, not proof of Online/Away/DND status; counting these records would also count Invisible and Offline clients. Fresh-profile avatar recovery and detailed profile fields are likewise not verified: the observed account document set contained `p/email` and `p/mood`, but no avatar or detailed-profile document. These require capture of the client's publish/fetch path before a server response can be implemented faithfully.
 
 ## Skype 4.2 notification RE checkpoint
 

@@ -139,6 +139,53 @@ func (d *Database) AddAccount(login,display,password string)error{
 	return e
 }
 
+// RegisterNativeAccount accepts the verifier sent by the stock client's signup RPC.
+// The plaintext password is unavailable, so the HTTP/API password hash is random.
+func (d *Database) RegisterNativeAccount(login, display, email string, digest []byte) error {
+	if !validUsername(login) || strings.TrimSpace(login) != login || len(display) == 0 || len(display) > 512 || !utf8.ValidString(display) || strings.IndexAny(display, "\x00\r\n\t") >= 0 || len(digest) != 16 {
+		return fmt.Errorf("invalid native registration")
+	}
+	if len(email) > 254 || strings.IndexAny(email, "\x00\r\n\t ") >= 0 {
+		return fmt.Errorf("invalid registration email")
+	}
+	if email != "" {
+		parsed, e := mail.ParseAddress(email)
+		if e != nil || parsed.Address != email {
+			return fmt.Errorf("invalid registration email")
+		}
+	}
+	apiSalt := make([]byte, 16)
+	apiHash := make([]byte, 32)
+	nativeSalt := make([]byte, 16)
+	for _, buf := range [][]byte{apiSalt, apiHash, nativeSalt} {
+		if _, e := rand.Read(buf); e != nil {
+			return e
+		}
+	}
+	nativeHash := pbkdf2SHA1(digest, nativeSalt, passwordIterations, 32)
+	defer func() {
+		for i := range nativeHash {
+			nativeHash[i] = 0
+		}
+	}()
+	q := func(v string) string { return sqlQuote(v) }
+	stmt := "BEGIN IMMEDIATE;" +
+		"INSERT INTO accounts(login,display_name,password_salt,password_hash,created_utc,is_active) " +
+		"SELECT " + q(login) + "," + q(display) + "," + q(base64.StdEncoding.EncodeToString(apiSalt)) + "," + q(base64.StdEncoding.EncodeToString(apiHash)) + "," + q(nowText()) + ",1 " +
+		"WHERE NOT EXISTS(SELECT 1 FROM accounts WHERE login=" + q(login) + " COLLATE NOCASE);" +
+		"SELECT changes();" +
+		"INSERT INTO native_password_verifiers(login,salt,verifier) SELECT " + q(login) + "," + q(base64.StdEncoding.EncodeToString(nativeSalt)) + "," + q(base64.StdEncoding.EncodeToString(nativeHash)) + " WHERE changes()=1;" +
+		"INSERT INTO account_profiles(login,email) SELECT " + q(login) + "," + q(email) + " WHERE changes()=1;COMMIT;"
+	out, e := d.execute(stmt)
+	if e != nil {
+		return e
+	}
+	if strings.TrimSpace(out) != "1" {
+		return fmt.Errorf("native registration login already exists")
+	}
+	return nil
+}
+
 func (d *Database) RemoveAccount(login string)error{_,e:=d.execute("DELETE FROM accounts WHERE login="+sqlQuote(login)+";");return e}
 
 func (d *Database) GetAccount(login string)(*Account,error){

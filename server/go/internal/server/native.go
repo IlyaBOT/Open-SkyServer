@@ -59,10 +59,10 @@ func ParseNativeLogin(keyRecord,loginRecord []byte,ks *keys.Set)(*NativeLoginReq
 	pf,e:=Required(account,4,5);if e!=nil{return nil,e};if len(pf.Bytes)!=16{return nil,fmt.Errorf("expected native MD5 password verifier")}
 	if used>=len(clear){return nil,fmt.Errorf("missing client metadata")}
 	meta,used2,e:=DecodeBlob(clear[used:]);if e!=nil{return nil,e};if used+used2!=len(clear){return nil,fmt.Errorf("trailing client metadata")}
-	allowed:=map[uint32]bool{0x1399:true,0x13a3:true,0x139c:true,0x1780:true,0x1781:true,0x1784:true,0x178e:true,0x1788:true,0x1789:true,0x178a:true,0x178b:true,0x178c:true,0x1792:true,0x4278:true}
+	allowed:=map[uint32]bool{0x1399:true,0x139a:true,0x13a3:true,0x139c:true,0x1780:true,0x1781:true,0x1784:true,0x178e:true,0x1788:true,0x1789:true,0x178a:true,0x178b:true,0x178c:true,0x1792:true,0x4278:true}
 	if !allowed[opf.Number]{return nil,fmt.Errorf("unsupported native operation 0x%x; account fields %s; metadata fields %s",opf.Number,describeFields(account),describeFields(meta))}
 	req:=&NativeLoginRequest{Username:username,PasswordDigest:append([]byte(nil),pf.Bytes...),AESKey:aesKey,Operation:opf.Number,RequestID:rid.Number,Metadata:meta}
-	if req.Operation==0x1399||req.Operation==0x13a3{pk,e:=Required(meta,4,0x21);if e!=nil{return nil,e};if len(pk.Bytes)!=128||pk.Bytes[0]&0x80==0||pk.Bytes[127]&1==0{return nil,fmt.Errorf("expected a 1024-bit odd client RSA modulus")};req.ClientPublicKey=append([]byte(nil),pk.Bytes...)}
+	if req.Operation==0x1399||req.Operation==0x139a||req.Operation==0x13a3{pk,e:=Required(meta,4,0x21);if e!=nil{return nil,e};if len(pk.Bytes)!=128||pk.Bytes[0]&0x80==0||pk.Bytes[127]&1==0{return nil,fmt.Errorf("expected a 1024-bit odd client RSA modulus")};req.ClientPublicKey=append([]byte(nil),pk.Bytes...)}
 	return req,nil
 }
 
@@ -100,6 +100,34 @@ func AccountResponse(body []byte,requestID uint32,status uint32)([]byte,error){
 	if requestID==0{return nil,fmt.Errorf("zero native response identifier")};head,e:=EncodeBlob([]Field{fieldNumber(1,status),fieldNumber(2,requestID)});if e!=nil{return nil,e};return append(head,body...),nil
 }
 func SuccessPayload(credential []byte,requestID uint32)([]byte,error){if len(credential)!=260{return nil,fmt.Errorf("expected 260-byte credential")};b,e:=EncodeBlob([]Field{fieldNumber(0x3a,2),fieldNumber(0x3c,0),{Type:4,ID:0x24,Bytes:credential},{Type:5,ID:0x32,Children:[]Field{}}});if e!=nil{return nil,e};return AccountResponse(b,requestID,0x1068)}
+func NativeRegistrationRespond(req *NativeLoginRequest, db *Database, ks *keys.Set) ([]byte, error) {
+	if req.Operation != 0x139a {
+		return nil, fmt.Errorf("not a native registration request")
+	}
+	display, e := Required(req.Metadata, 3, 0x37)
+	if e != nil {
+		return nil, e
+	}
+	email, e := Required(req.Metadata, 3, 0x20)
+	if e != nil {
+		return nil, e
+	}
+	if !utf8.Valid(display.Bytes) || !utf8.Valid(email.Bytes) {
+		return nil, fmt.Errorf("invalid registration text encoding")
+	}
+	credential, e := IssueCredential(ks, req.Username, req.ClientPublicKey, time.Now().UTC())
+	if e != nil {
+		return nil, e
+	}
+	payload, e := SuccessPayload(credential, req.RequestID)
+	if e != nil {
+		return nil, e
+	}
+	if e := db.RegisterNativeAccount(req.Username, string(display.Bytes), string(email.Bytes), req.PasswordDigest); e != nil {
+		return nil, e
+	}
+	return payload, nil
+}
 func EmailPayload(email string,requestID uint32)([]byte,error){if len(email)>254||strings.IndexAny(email,"\x00\r\n\t")>=0{return nil,fmt.Errorf("invalid account email")};b,e:=EncodeBlob([]Field{{Type:3,ID:0x20,Bytes:[]byte(email)}});if e!=nil{return nil,e};return AccountResponse(b,requestID,0x1068)}
 func ContactListsPayload(has bool,requestID uint32)([]byte,error){var f []Field;if has{f=[]Field{{Type:5,ID:0x38,Children:[]Field{fieldNumber(7,1)}}}};b,e:=EncodeBlob(f);if e!=nil{return nil,e};return AccountResponse(b,requestID,0x1450)}
 func ProtectResponse(payload,aesKey []byte)([]byte,error){if len(payload)==0||len(payload)>16382{return nil,fmt.Errorf("invalid native response size")};cipher,e:=LoginAESCTR(aesKey,payload,1);if e!=nil{return nil,e};crc:=CRC32Skype(cipher);r:=make([]byte,len(cipher)+7);r[0]=0x17;r[1]=3;r[2]=1;binary.BigEndian.PutUint16(r[3:5],uint16(len(cipher)+2));copy(r[5:],cipher);r[len(r)-2]=byte(crc);r[len(r)-1]=byte(crc>>8);return r,nil}
