@@ -43,9 +43,10 @@ func (s *TCPProbeServer) handle(c net.Conn)error{
 	_ = c.SetDeadline(time.Now().Add(10*time.Second));buf:=make([]byte,2048);n,e:=c.Read(buf);if e!=nil{return e};if !looksFallback(buf[:n]){return nil}
 	for n<48{r,e:=c.Read(buf[n:48]);n+=r;if e!=nil{return e}}
 	dh,e:=NewDHSession(buf[:n]);if e!=nil{return e};if _,e=c.Write(dh.ServerHello);e!=nil{return e};h,e:=readExact(c,8);if e!=nil{return e};if !dh.VerifyClientHash(h){return fmt.Errorf("bootstrap DH hash mismatch")};if _,e=c.Write(dh.ServerHash);e!=nil{return e}
-	var early []byte;_ = c.SetReadDeadline(time.Now().Add(500*time.Millisecond));tmp:=make([]byte,5);nn,e:=io.ReadFull(c,tmp);_ = c.SetReadDeadline(time.Now().Add(120*time.Second));if e==nil&&nn==5{early=tmp;if s.Auth!=nil&&IsAccountRecordPrefix(dh.SharedSecret,early){return s.Auth.HandleStock(c,dh,early,true)}}else if e!=nil{if ne,ok:=e.(net.Error);!ok||!ne.Timeout(){if e!=io.EOF&&e!=io.ErrUnexpectedEOF{return e}}}
+	var early []byte;_ = c.SetReadDeadline(time.Now().Add(500*time.Millisecond));tmp:=make([]byte,5);nn,e:=io.ReadFull(c,tmp);_ = c.SetReadDeadline(time.Now().Add(10*time.Second));if e==nil&&nn==5{early=tmp;if s.Auth!=nil&&IsAccountRecordPrefix(dh.SharedSecret,early){return s.Auth.HandleStock(c,dh,early,true)}}else if e!=nil{if ne,ok:=e.(net.Error);!ok||!ne.Timeout(){if e!=io.EOF&&e!=io.ErrUnexpectedEOF{return e}}}
 	rc,e:=skypecrypto.NewSession();if e!=nil{return e};defer rc.Close();hello,e:=rc.MakeServerHandshake(dh.SharedSecret);if e!=nil{return e};if _,e=c.Write(hello);e!=nil{return e}
 	first:=make([]byte,16);copy(first,early);if _,e=io.ReadFull(c,first[len(early):]);e!=nil{return e};clear,e:=rc.DecryptClientHandshake(dh.SharedSecret,first);if e!=nil{return e};if len(clear)<16||clear[6]!=0||clear[7]!=0||clear[8]!=0||clear[9]!=1||clear[10]!=0||clear[11]!=0||clear[12]!=0||clear[15]!=3{return fmt.Errorf("invalid bootstrap RC4 handshake signature")}
+	if e:=activateNodeConnection(c);e!=nil{return e}
 	fb:=&FrameBuffer{};garbage:=true;probeSent:=false
 	process:=func(frames [][]byte)error{
 		for _,frame:=range frames{
@@ -53,6 +54,9 @@ func (s *TCPProbeServer) handle(c net.Conn)error{
 			for _,cmd:=range parsed.Commands{
 				if cmd.Flags==1{ack=true}
 				if cmd.Code==0xc||cmd.Code==0xe{log.Printf("node directory %s code=0x%x flags=%d fields=%s",c.RemoteAddr(),cmd.Code,cmd.Flags,describeFields(cmd.Fields))}
+				if detailedDebugEnabled.Load()&&cmd.Code!=0xc&&cmd.Code!=0xe{
+					log.Printf("detailed node command %s code=0x%x flags=%d fields=%s",c.RemoteAddr(),cmd.Code,cmd.Flags,describeFields(cmd.Fields))
+				}
 				if rep,e:=s.records.Handle(cmd,time.Now().UTC());e!=nil{return e}else if rep!=nil{if cmd.Code==0xc||cmd.Code==0xe{log.Printf("node directory %s reply=0x%x fields=%s",c.RemoteAddr(),rep.Code,describeFields(rep.Fields))};wire,e:=EncodeNodeFrame(s.nextSeq(),*rep);if e!=nil{return e};if e=s.sendEncrypted(c,rc,wire);e!=nil{return e}}
 				local:=c.LocalAddr().(*net.TCPAddr);lip:=local.IP;if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil{lip=s.AdvertiseIP};dir:=&net.TCPAddr{IP:lip,Port:local.Port}
 				if rep,e:=SlotReply(cmd,dir);e!=nil{return e}else if rep!=nil{wire,e:=EncodeNodeFrame(s.nextSeq(),*rep);if e!=nil{return e};if e=s.sendEncrypted(c,rc,wire);e!=nil{return e}}
@@ -62,9 +66,13 @@ func (s *TCPProbeServer) handle(c net.Conn)error{
 		};return nil
 	}
 	frames,e:=fb.Append(clear[14:16]);if e!=nil{return e};if e=process(frames);e!=nil{return e}
-	for{n,e:=c.Read(buf);if e!=nil{if e==io.EOF{return nil};if ne,ok:=e.(net.Error);ok&&ne.Timeout(){return nil};return e};dec,e:=rc.Decrypt(buf[:n]);if e!=nil{return e};frames,e:=fb.Append(dec);if e!=nil{return e};if e=process(frames);e!=nil{return e}}
+	for{if e:=c.SetReadDeadline(time.Now().Add(120*time.Second));e!=nil{return e};n,e:=c.Read(buf);if e!=nil{if e==io.EOF{return nil};if ne,ok:=e.(net.Error);ok&&ne.Timeout(){return nil};return e};dec,e:=rc.Decrypt(buf[:n]);if e!=nil{return e};frames,e:=fb.Append(dec);if e=process(frames);e!=nil{return e}}
 }
-func (s *TCPProbeServer) sendEncrypted(c net.Conn,rc *skypecrypto.Session,clear []byte)error{enc,e:=rc.Encrypt(clear);if e!=nil{return e};_,e=c.Write(enc);return e}
+func activateNodeConnection(c net.Conn)error{
+	if e:=c.SetWriteDeadline(time.Time{});e!=nil{return e}
+	return c.SetReadDeadline(time.Now().Add(120*time.Second))
+}
+func (s *TCPProbeServer) sendEncrypted(c net.Conn,rc *skypecrypto.Session,clear []byte)error{enc,e:=rc.Encrypt(clear);if e!=nil{return e};if e=c.SetWriteDeadline(time.Now().Add(10*time.Second));e!=nil{return e};_,e=c.Write(enc);return e}
 
 func looksLegacyFrame(p []byte)bool{if len(p)<9{return false};return int(p[0]>>1)+1==len(p)&&int(p[3])==len(p)-6&&p[8]==0x42}
 func (s *TCPProbeServer) supernodeReply(req []byte,c net.Conn)([]byte,bool){
@@ -82,12 +90,17 @@ func (s *TCPProbeServer) buildCommand30Reply(req []byte,remote,local *net.TCPAdd
 	if !looksLegacyFrame(req)||req[4]!=0xf2||req[5]!=1{return nil,false}
 	if remote==nil||remote.IP.To4()==nil||remote.Port<1||remote.Port>65535{return nil,false}
 	if local==nil||local.IP.To4()==nil||local.Port<1||local.Port>65535{return nil,false}
+	observedIP:=remote.IP.To4()
+	if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil&&remote.IP.IsPrivate(){
+		observedIP=s.AdvertiseIP.To4()
+		if detailedDebugEnabled.Load(){log.Printf("detailed command30 hairpin correction remote=%s advertise-ip=%s observed-port=%d",remote.IP.String(),observedIP.String(),remote.Port)}
+	}
 	const hexReply="D121FB0100004106000B34000CECD193D0050211750325C706940010D5B802002C01062100"
 	raw:=make([]byte,len(hexReply)/2);for i:=range raw{fmt.Sscanf(hexReply[i*2:i*2+2],"%02x",&raw[i])}
 	fields,used,e:=DecodeBlob(raw[6:]);if e!=nil||used!=len(raw)-6{return nil,false}
 	endpointFound:=false;portFound:=false
 	for i:=range fields{
-		if fields[i].Type==2&&fields[i].ID==0x11&&len(fields[i].Bytes)==6{copy(fields[i].Bytes,remote.IP.To4());binary.BigEndian.PutUint16(fields[i].Bytes[4:],uint16(remote.Port));endpointFound=true}
+		if fields[i].Type==2&&fields[i].ID==0x11&&len(fields[i].Bytes)==6{copy(fields[i].Bytes,observedIP);binary.BigEndian.PutUint16(fields[i].Bytes[4:],uint16(remote.Port));endpointFound=true}
 		if fields[i].Type==0&&fields[i].ID==0x10{fields[i].Number=uint32(local.Port);portFound=true}
 	}
 	if !endpointFound||!portFound{return nil,false}

@@ -9,7 +9,7 @@ import ghidra.program.model.scalar.Scalar;
 public class InspectSkypeAccountOps extends GhidraScript {
     @Override
     public void run() throws Exception {
-        long[] targets = {0x1780, 0x1781, 0x1784, 0x1787, 0x139f, 0x2b08};
+        long[] targets = {0x139a, 0x139b, 0x139d, 0x1780, 0x1781, 0x1784, 0x1787, 0x139f, 0x2b08};
         int[] count = new int[targets.length];
         InstructionIterator instructions = currentProgram.getListing().getInstructions(true);
         while (instructions.hasNext()) {
