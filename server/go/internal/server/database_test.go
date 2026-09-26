@@ -13,6 +13,68 @@ func testSignedRecord() []byte {
 	return record
 }
 
+func TestNativeRegistrationPreservesExistingAccount(t *testing.T) {
+	sqlite, err := exec.LookPath("sqlite3")
+	if err != nil {
+		t.Skip("sqlite3 is not installed")
+	}
+	db := NewDatabase(filepath.Join(t.TempDir(), "skyserver.db"), sqlite)
+	if err := db.EnsureSchema(); err != nil {
+		t.Fatal(err)
+	}
+	digest := NativePasswordDigest("new.user", "native-pass")
+	if err := db.RegisterNativeAccount("new.user", "New User", "new@example.test", digest); err != nil {
+		t.Fatal(err)
+	}
+	if ok, err := db.ValidateNativePasswordHash("new.user", digest); err != nil || !ok {
+		t.Fatalf("native login ok=%v err=%v", ok, err)
+	}
+	if email, err := db.GetAccountEmail("new.user"); err != nil || email != "new@example.test" {
+		t.Fatalf("email=%q err=%v", email, err)
+	}
+	if _, ok, err := db.ValidatePassword("new.user", "native-pass"); err != nil || ok {
+		t.Fatalf("API unexpectedly accepts native-only password: ok=%v err=%v", ok, err)
+	}
+	other := NativePasswordDigest("new.user", "attacker-pass")
+	if err := db.RegisterNativeAccount("NEW.USER", "Changed", "other@example.test", other); err == nil {
+		t.Fatal("case-insensitive duplicate registered")
+	}
+	if ok, err := db.ValidateNativePasswordHash("new.user", digest); err != nil || !ok {
+		t.Fatalf("original verifier changed: ok=%v err=%v", ok, err)
+	}
+	if email, err := db.GetAccountEmail("new.user"); err != nil || email != "new@example.test" {
+		t.Fatalf("original email changed: %q err=%v", email, err)
+	}
+	if account, err := db.GetAccount("NEW.USER"); err != nil || account != nil {
+		t.Fatalf("duplicate account=%+v err=%v", account, err)
+	}
+}
+
+func TestNativeRegistrationRejectsMalformedInput(t *testing.T) {
+	sqlite, err := exec.LookPath("sqlite3")
+	if err != nil {
+		t.Skip("sqlite3 is not installed")
+	}
+	db := NewDatabase(filepath.Join(t.TempDir(), "skyserver.db"), sqlite)
+	if err := db.EnsureSchema(); err != nil {
+		t.Fatal(err)
+	}
+	for _, tc := range []struct {
+		login, display, email string
+		digest                []byte
+	}{
+		{"", "Display", "x@example.test", make([]byte, 16)},
+		{"bad\nname", "Display", "x@example.test", make([]byte, 16)},
+		{"valid.user", "", "x@example.test", make([]byte, 16)},
+		{"valid.user", "Display", "invalid-email", make([]byte, 16)},
+		{"valid.user", "Display", "x@example.test", make([]byte, 15)},
+	} {
+		if err := db.RegisterNativeAccount(tc.login, tc.display, tc.email, tc.digest); err == nil {
+			t.Fatalf("accepted malformed registration %+v", tc)
+		}
+	}
+}
+
 func TestNativeContactDocumentUpdatesMembership(t *testing.T) {
 	sqlite, err := exec.LookPath("sqlite3")
 	if err != nil { t.Skip("sqlite3 is not installed") }

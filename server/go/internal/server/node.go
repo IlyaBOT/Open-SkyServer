@@ -114,6 +114,17 @@ type recordEntry struct{value []byte;expires time.Time;id uint32}
 type RecordDirectory struct{ks *keys.Set;db *Database;mu sync.Mutex;records map[string]recordEntry}
 func NewRecordDirectory(ks *keys.Set,db *Database)*RecordDirectory{return &RecordDirectory{ks:ks,db:db,records:map[string]recordEntry{}}}
 func (d *RecordDirectory) expire(now time.Time){for k,v:=range d.records{if !v.expires.After(now){delete(d.records,k)}}}
+func (d *RecordDirectory) restore(username string,now time.Time)error{
+	if d.ks==nil||d.db==nil{return nil}
+	key:=strings.ToLower(username)
+	d.mu.Lock();d.expire(now);_,cached:=d.records[key];d.mu.Unlock();if cached{return nil}
+	value,updated,e:=d.db.getFreshNativeSignedRecord(username,now,locationRecordTTL);if e!=nil{return e};if len(value)==0{return nil}
+	rec,e:=VerifySignedRecord(value,d.ks,now);if e!=nil{log.Printf("directory ignored stored record user=%q: %v",username,e);return nil}
+	if !strings.EqualFold(rec.Username,username){log.Printf("directory ignored stored record for mismatched user=%q",username);return nil}
+	sum:=sha256.Sum256(value);candidate:=recordEntry{append([]byte(nil),value...),updated.Add(locationRecordTTL),binary.LittleEndian.Uint32(sum[:4])}
+	d.mu.Lock();d.expire(now);if _,ok:=d.records[key];!ok&&len(d.records)<1024{d.records[key]=candidate;log.Printf("directory restored user=%q expires=%s",rec.Username,candidate.expires.UTC().Format(time.RFC3339))};d.mu.Unlock()
+	return nil
+}
 func (d *RecordDirectory) Handle(req NodeCommand,now time.Time)(*NodeCommand,error){
 	if req.Code!=0xc&&req.Code!=0xe{return nil,nil};if req.Flags!=2||req.RequestID==nil{return nil,fmt.Errorf("invalid directory request header")}
 	var result []Field
@@ -125,6 +136,7 @@ func (d *RecordDirectory) Handle(req NodeCommand,now time.Time)(*NodeCommand,err
 		if len(req.Fields)!=2&&len(req.Fields)!=3{return nil,nil};var excluded []byte;if len(req.Fields)==3{x,e:=Required(req.Fields,6,2);if e!=nil{return nil,e};excluded=x.Bytes;if len(excluded)>400||len(excluded)%4!=0{return nil,fmt.Errorf("invalid excluded identifiers")}}
 		q,e:=Required(req.Fields,5,0);if e!=nil{return nil,e};props,e:=Required(req.Fields,6,1);if e!=nil{return nil,e};if len(q.Children)!=3||len(props.Bytes)!=8||binary.LittleEndian.Uint32(props.Bytes)!=16||binary.LittleEndian.Uint32(props.Bytes[4:])!=11{return nil,nil}
 		u,e:=Required(q.Children,3,0);if e!=nil{return nil,e};off,e:=Required(q.Children,0,1);if e!=nil{return nil,e};lim,e:=Required(q.Children,0,2);if e!=nil{return nil,e};username:=string(u.Bytes);if !validUsername(username)||lim.Number==0||lim.Number>100{return nil,fmt.Errorf("invalid location query")}
+		if e:=d.restore(username,now);e!=nil{return nil,e}
 		d.mu.Lock();d.expire(now);ent,ok:=d.records[strings.ToLower(username)];count:=len(d.records);omit:=false;if off.Number==0&&ok{for i:=0;i<len(excluded);i+=4{omit=omit||binary.LittleEndian.Uint32(excluded[i:])==ent.id};if !omit{result=append(result,Field{Type:5,ID:0,Children:[]Field{fieldNumber(0x10,ent.id),{Type:4,ID:0xb,Bytes:append([]byte(nil),ent.value...)}}})}};d.mu.Unlock();log.Printf("directory lookup user=%q offset=%d limit=%d hit=%t excluded=%t records=%d",username,off.Number,lim.Number,ok,omit,count);result=append(result,fieldNumber(1,0))
 	}
 	return &NodeCommand{Code:req.Code+1,Flags:3,RequestID:req.RequestID,Fields:result},nil

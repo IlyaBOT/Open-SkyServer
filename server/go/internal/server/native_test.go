@@ -56,6 +56,38 @@ func TestCommunityCredentialRoundTrip(t *testing.T) {
 	}
 }
 
+func TestNativeRegistrationResponse(t *testing.T) {
+	sqlite, err := exec.LookPath("sqlite3")
+	if err != nil { t.Skip("sqlite3 is not installed") }
+	db := NewDatabase(filepath.Join(t.TempDir(), "skyserver.db"), sqlite)
+	if err := db.EnsureSchema(); err != nil { t.Fatal(err) }
+	set := &keys.Set{Credentials: testKey(t, 2048)}
+	modulus := make([]byte, 128)
+	if _, err := rand.Read(modulus); err != nil { t.Fatal(err) }
+	modulus[0] |= 0x80
+	modulus[127] |= 1
+	req := &NativeLoginRequest{
+		Username: "registered.user", PasswordDigest: NativePasswordDigest("registered.user", "test-password"),
+		ClientPublicKey: modulus, Operation: 0x139a, RequestID: 73,
+		Metadata: []Field{{Type: 3, ID: 0x37, Bytes: []byte("Registered User")}, {Type: 3, ID: 0x20, Bytes: []byte("registered@example.test")}},
+	}
+	payload, err := NativeRegistrationRespond(req, db, set)
+	if err != nil { t.Fatal(err) }
+	header, body := decodeNativeAccountResponse(t, payload)
+	status, err := Required(header, 0, 1)
+	if err != nil || status.Number != 0x1068 { t.Fatalf("status=%+v err=%v", status, err) }
+	id, err := Required(header, 0, 2)
+	if err != nil || id.Number != 73 { t.Fatalf("id=%+v err=%v", id, err) }
+	credential, err := Required(body, 4, 0x24)
+	if err != nil { t.Fatal(err) }
+	fields, err := RecoverCredential(set, credential.Bytes)
+	if err != nil { t.Fatal(err) }
+	user, err := Required(fields, 3, 0)
+	if err != nil || string(user.Bytes) != req.Username { t.Fatalf("credential user=%q err=%v", user.Bytes, err) }
+	if ok, err := db.ValidateNativePasswordHash(req.Username, req.PasswordDigest); err != nil || !ok { t.Fatalf("registered verifier ok=%v err=%v", ok, err) }
+	if _, err := NativeRegistrationRespond(req, db, set); err == nil { t.Fatal("duplicate registration accepted") }
+}
+
 func TestProtectedResponseRoundTrip(t *testing.T) {
 	key := make([]byte, 32)
 	if _, err := rand.Read(key); err != nil {
