@@ -34,6 +34,8 @@ On 2026-09-26 two native clients reproduced a delayed Invisible transition: Admi
 
 The node TCP handler also retained its 10-second handshake write deadline for the entire connection; live server logs showed later node replies failing with `i/o timeout`. The active node path now clears that deadline, bounds each encrypted reply write, and refreshes its idle read deadline after traffic. This fixes a concrete transport failure, but whether it shortens the observed Invisible propagation delay requires a fresh two-client test with the updated binary. Offline transition and an accurate global online count remain unverified.
 
+On a server-only restart with both native clients still running, the first peer lookup returned `hit=false` because the location directory was only in memory. The verified records already exist in `native_signed_records` with an `updated_utc` timestamp. A cache miss now reloads a record only within the original six-hour lease, rechecks its signature and credential expiry, and preserves the remaining lease instead of starting a new one. This restores routing hints after restart; it does not promote a contact to Online or prove that its endpoint is reachable. The fresh-client behavior after deploying this change still needs a live check.
+
 ## Skype 4.2 notification RE checkpoint
 
 Read-only Ghidra analysis of the installed patched 4.2.0.187 executable (SHA-256 `603E4A1612403448C1DCEAFA469B92C23282F2DBA0F35FA2517A57C7AFA895B0`) found:

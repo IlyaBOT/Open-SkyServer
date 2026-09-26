@@ -281,11 +281,19 @@ func (d *Database) StoreVerifiedNativeSignedRecord(login string,record []byte)er
 }
 
 func (d *Database) getNativeSignedRecord(login string)([]byte,error){
-	encoded,e:=d.one("SELECT body FROM native_signed_records WHERE login="+sqlQuote(login)+";")
+	encoded,e:=d.one("SELECT body FROM native_signed_records WHERE login="+sqlQuote(login)+" COLLATE NOCASE;")
 	if e!=nil||encoded==""{return nil,e}
 	record,e:=base64.StdEncoding.DecodeString(encoded);if e!=nil{return nil,e}
 	if len(record)<392||len(record)>8192||!bytes.Equal(record[:4],[]byte{0,0,1,4}){return nil,fmt.Errorf("invalid stored signed record")}
 	return record,nil
+}
+
+func (d *Database) getFreshNativeSignedRecord(login string,now time.Time,ttl time.Duration)([]byte,time.Time,error){
+	stamp,e:=d.one("SELECT updated_utc FROM native_signed_records WHERE login="+sqlQuote(login)+" COLLATE NOCASE;")
+	if e!=nil||stamp==""{return nil,time.Time{},e}
+	updated,e:=time.Parse(time.RFC3339Nano,stamp);if e!=nil{return nil,time.Time{},fmt.Errorf("invalid signed record timestamp: %w",e)}
+	if now.Before(updated)||!now.Before(updated.Add(ttl)){return nil,time.Time{},nil}
+	record,e:=d.getNativeSignedRecord(login);return record,updated,e
 }
 
 func isLegacyGeneratedContactDocument(name string,body []byte)bool{
