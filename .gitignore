@@ -54,3 +54,4 @@ patcher/client/*
 
 # Local closed-beta access list
 server/csharp/allowlist.txt
+server/go/openskyserver
