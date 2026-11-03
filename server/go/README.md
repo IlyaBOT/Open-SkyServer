@@ -2,6 +2,9 @@
 
 Linux-oriented port of the Open-SkyServer C# reference implementation.
 
+For the current WAN topology, explicit hairpin configuration and outstanding
+relay stages, see [WAN_CHECKPOINT.md](WAN_CHECKPOINT.md).
+
 The current Go tree is a **Stage 4.1 parity candidate**. It builds and its unit tests run on Linux, but native Skype 4.2 interoperability must still be validated against the same patched client used for the C# reference server before the C# implementation can be retired.
 
 ## Implemented

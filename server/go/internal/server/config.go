@@ -20,6 +20,7 @@ type Config struct{
 	APIHost string
 	APIPort int
 	AdvertiseIP net.IP
+	HairpinSources []net.IP
 	DBPath string
 	SQLite string
 	KeysDir string
@@ -51,6 +52,7 @@ func ParseConfig(args []string)(Config,error){
 	case "--api-host":v,e:=next(&i);if e!=nil{return c,e};ip:=net.ParseIP(v);if ip==nil||ip.To4()==nil{return c,fmt.Errorf("--api-host must be an IPv4 address")};c.APIHost=ip.To4().String();apiSet=true
 	case "--api-port":v,e:=next(&i);if e!=nil{return c,e};n,e:=strconv.Atoi(v);if e!=nil{return c,e};c.APIPort=n
 	case "--advertise-ip":v,e:=next(&i);if e!=nil{return c,e};ip:=net.ParseIP(v);if ip==nil||ip.To4()==nil{return c,fmt.Errorf("--advertise-ip must be an IPv4 address")};c.AdvertiseIP=ip.To4()
+	case "--hairpin-source":v,e:=next(&i);if e!=nil{return c,e};ip:=net.ParseIP(v);if ip==nil||ip.To4()==nil||!ip.IsPrivate(){return c,fmt.Errorf("--hairpin-source must be an exact private IPv4 address")};c.HairpinSources=append(c.HairpinSources,ip.To4())
 	case "--db":v,e:=next(&i);if e!=nil{return c,e};c.DBPath=v
 	case "--sqlite":v,e:=next(&i);if e!=nil{return c,e};c.SQLite=v
 	case "--keys-dir":v,e:=next(&i);if e!=nil{return c,e};c.KeysDir=v
@@ -72,6 +74,7 @@ func ParseConfig(args []string)(Config,error){
 	}}
 	if c.Mode!="local"&&c.Mode!="global"{return c,fmt.Errorf("--mode must be local or global")}
 	if c.AdvertiseIP!=nil{v:=c.AdvertiseIP.To4();if v==nil||v[0]==0||v[0]>=224{return c,fmt.Errorf("--advertise-ip must be unicast IPv4")}}
+	if len(c.HairpinSources)>0&&(c.AdvertiseIP==nil||!c.AdvertiseIP.IsGlobalUnicast()||c.AdvertiseIP.IsPrivate()||c.AdvertiseIP.IsLoopback()){return c,fmt.Errorf("--hairpin-source requires a public --advertise-ip")}
 	if c.Mode=="global"{if !hostSet{c.Host="0.0.0.0"};if !apiSet{c.APIHost="127.0.0.1"};if c.AdvertiseIP==nil||c.AdvertiseIP.IsLoopback(){return c,fmt.Errorf("global mode requires --advertise-ip with a concrete non-loopback IPv4 address")};api:=net.ParseIP(c.APIHost);if api==nil||!api.IsLoopback(){return c,fmt.Errorf("global mode requires loopback --api-host")}}
 	if c.Port<1||c.Port>65535||c.APIPort<1||c.APIPort>65535||c.Port==c.APIPort{return c,fmt.Errorf("auth/API ports must be distinct and between 1 and 65535")}
 	if c.Closed&&c.Allowlist==""{return c,fmt.Errorf("--closed requires --allowlist")}

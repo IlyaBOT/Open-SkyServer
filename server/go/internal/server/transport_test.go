@@ -96,7 +96,7 @@ func TestCommand30EndpointRewrite(t *testing.T) {
 
 func TestCommand30HairpinAdvertiseIP(t *testing.T) {
 	request:=[]byte{0x14,0x25,0x1c,5,0xf2,1,0x25,0x1b,0x42,0x2d,3}
-	s:=&TCPProbeServer{AdvertiseIP:net.ParseIP("203.0.113.8")}
+	s:=&TCPProbeServer{AdvertiseIP:net.ParseIP("203.0.113.8"),HairpinSources:[]net.IP{net.ParseIP("192.168.1.1")}}
 	s.seq.Store(200)
 	remote:=&net.TCPAddr{IP:net.ParseIP("192.168.1.1"),Port:54095}
 	local:=&net.TCPAddr{IP:net.ParseIP("192.168.1.170"),Port:12350}
@@ -114,6 +114,16 @@ func TestCommand30HairpinAdvertiseIP(t *testing.T) {
 	fields,_,err=DecodeBlob(reply[8:]);if err!=nil{t.Fatal(err)}
 	ep,err=Required(fields,2,0x11);if err!=nil{t.Fatal(err)}
 	if !bytes.Equal(ep.Bytes[:4],publicRemote.IP.To4()){t.Fatalf("public endpoint incorrectly rewritten: %v",ep.Bytes[:4])}
+	for _,clientIP:=range []string{"192.168.1.101","10.0.0.2"}{
+		lanRemote:=&net.TCPAddr{IP:net.ParseIP(clientIP),Port:54095}
+		reply,ok=s.buildCommand30Reply(request,lanRemote,local);if !ok{t.Fatal("no LAN endpoint reply")}
+		fields,_,err=DecodeBlob(reply[8:]);if err!=nil{t.Fatal(err)};ep,err=Required(fields,2,0x11);if err!=nil{t.Fatal(err)}
+		if !bytes.Equal(ep.Bytes[:4],lanRemote.IP.To4()){t.Fatalf("LAN client incorrectly rewritten: %s -> %v",clientIP,ep.Bytes[:4])}
+	}
+	s.HairpinSources=nil
+	reply,ok=s.buildCommand30Reply(request,remote,local);if !ok{t.Fatal("no unconfigured-router reply")}
+	fields,_,err=DecodeBlob(reply[8:]);if err!=nil{t.Fatal(err)};ep,err=Required(fields,2,0x11);if err!=nil{t.Fatal(err)}
+	if !bytes.Equal(ep.Bytes[:4],remote.IP.To4()){t.Fatal("hairpin rewrite must be opt-in")}
 }
 
 func TestDirectProbeNeedsCompleteHeader(t *testing.T) {

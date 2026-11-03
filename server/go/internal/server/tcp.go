@@ -21,6 +21,7 @@ type TCPProbeServer struct {
 	Host string
 	Ports []int
 	AdvertiseIP net.IP
+	HairpinSources []net.IP
 	Access *AccessPolicy
 	Auth *AuthServer
 	Keys *keys.Set
@@ -91,7 +92,7 @@ func (s *TCPProbeServer) buildCommand30Reply(req []byte,remote,local *net.TCPAdd
 	if remote==nil||remote.IP.To4()==nil||remote.Port<1||remote.Port>65535{return nil,false}
 	if local==nil||local.IP.To4()==nil||local.Port<1||local.Port>65535{return nil,false}
 	observedIP:=remote.IP.To4()
-	if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil&&remote.IP.IsPrivate(){
+	if s.AdvertiseIP!=nil&&s.AdvertiseIP.To4()!=nil&&isHairpinSource(remote.IP,s.HairpinSources){
 		observedIP=s.AdvertiseIP.To4()
 		if detailedDebugEnabled.Load(){log.Printf("detailed command30 hairpin correction remote=%s advertise-ip=%s observed-port=%d",remote.IP.String(),observedIP.String(),remote.Port)}
 	}
@@ -106,5 +107,10 @@ func (s *TCPProbeServer) buildCommand30Reply(req []byte,remote,local *net.TCPAdd
 	if !endpointFound||!portFound{return nil,false}
 	updated,e:=EncodeBlob(fields);if e!=nil{return nil,false};reply:=make([]byte,8+len(updated));if len(reply)>128{return nil,false}
 	reply[0]=byte((len(reply)-1)<<1);binary.BigEndian.PutUint16(reply[1:3],s.nextSeq());reply[3]=byte(len(updated)+2);reply[4]=0xfb;reply[5]=1;binary.BigEndian.PutUint16(reply[6:8],binary.BigEndian.Uint16(req[6:8]));copy(reply[8:],updated);return reply,true
+}
+func isHairpinSource(ip net.IP,sources []net.IP)bool{
+	if !ip.IsPrivate(){return false}
+	for _,source:=range sources{if ip.Equal(source){return true}}
+	return false
 }
 func DefaultTCPPorts(authPort,apiPort int)[]int{p:=[]int{80,443,12350,12351,13392};for i:=40001;i<=40036;i++{p=append(p,i)};out:=uniquePorts(p);r:=out[:0];for _,v:=range out{if v!=authPort&&v!=apiPort{r=append(r,v)}};return r}

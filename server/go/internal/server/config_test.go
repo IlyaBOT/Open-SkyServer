@@ -26,12 +26,23 @@ func TestStage41ConfigParity(t *testing.T) {
 		{"--advertise-ip", "not-an-ip"},
 		{"--advertise-ip", "0.0.0.0"},
 		{"--advertise-ip", "224.0.0.1"},
+		{"--hairpin-source", "192.168.1.1"},
+		{"--advertise-ip", "192.168.1.170", "--hairpin-source", "192.168.1.1"},
+		{"--advertise-ip", "169.254.1.170", "--hairpin-source", "192.168.1.1"},
+		{"--advertise-ip", "203.0.113.8", "--hairpin-source", "198.51.100.2"},
+		{"--advertise-ip", "203.0.113.8", "--hairpin-source", "192.168.1.0/24"},
 		{"--mode", "global", "--advertise-ip", "127.0.0.1"},
 		{"--mode", "global", "--advertise-ip", "203.0.113.8", "--api-host", "0.0.0.0"},
 	}
 	for _, args := range reject {
 		if _, err := ParseConfig(args); err == nil { t.Fatalf("accepted invalid config: %v", args) }
 	}
+}
+
+func TestHairpinSourcesRequireExactRouterAddresses(t *testing.T){
+	cfg,err:=ParseConfig([]string{"--mode","global","--advertise-ip","203.0.113.8","--hairpin-source","192.168.1.1","--hairpin-source","10.0.0.1"})
+	if err!=nil{t.Fatal(err)}
+	if len(cfg.HairpinSources)!=2||!cfg.HairpinSources[0].Equal(net.ParseIP("192.168.1.1"))||!cfg.HairpinSources[1].Equal(net.ParseIP("10.0.0.1")){t.Fatalf("hairpin sources=%v",cfg.HairpinSources)}
 }
 
 func TestAccessPolicyParity(t *testing.T) {

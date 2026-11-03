@@ -11,6 +11,8 @@ on:
       - 'skypeopensource2/skyauth4_dll/**'
       - 'patcher/tools/**'
       - 'patcher/tests/**'
+      - 'patcher/Patch-Skype.*'
+      - 'patcher/Launch-Skype.ps1'
 
 jobs:
   build:
@@ -31,7 +33,12 @@ jobs:
           $files = @(
             'patcher/tools/skypatch-package.ps1',
             'patcher/tools/New-ClientBundle.ps1',
-            'patcher/tests/Test-ClientBundle.ps1'
+            'patcher/tests/Test-ClientBundle.ps1',
+            'patcher/Patch-Skype.ps1',
+            'patcher/Launch-Skype.ps1',
+            'patcher/tools/New-CommunityPatch.ps1',
+            'patcher/tools/New-PublicPatchBundle.ps1',
+            'patcher/tests/Test-PublicPatch.ps1'
           )
           foreach ($file in $files) {
             $tokens = $null
@@ -42,6 +49,9 @@ jobs:
               throw "PowerShell syntax errors in $file"
             }
           }
+      - name: Test public client patch recipes
+        working-directory: .
+        run: python3 -m unittest discover -s patcher/tests -p 'test_client_patch.py' -v
       - name: Install compatibility toolchain
         run: |
           sudo apt-get update
