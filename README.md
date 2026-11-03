@@ -60,6 +60,13 @@ Created accounts:
 
 ## Patcher and releases
 
+The simplified user workflow is `patcher/Patch-Skype.cmd`: select the exact
+original Skype 4.2.0.187 EXE to create a portable patched client and a desktop
+shortcut. The operator prepares its server-specific public recipe with
+`patcher/tools/New-CommunityPatch.ps1`. Existing profile, key-generation and
+debug tools remain available. See [patcher/README.md](patcher/README.md) and the
+[WAN checkpoint](server/go/WAN_CHECKPOINT.md) for the current deployment boundary.
+
 `patcher/client/` is intentionally empty in Git. Put a locally built/patched client there when preparing a tag/release. Proprietary Skype executables and deployment secrets are not tracked in the source repository.
 
 Generated patch scripts go to `patcher/dist/`.
