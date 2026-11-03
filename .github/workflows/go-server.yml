@@ -2,7 +2,7 @@ name: Go server
 
 on:
   push:
-    branches: [repo-cleanup-go-server]
+    branches: [main]
   pull_request:
     paths:
       - 'server/go/**'

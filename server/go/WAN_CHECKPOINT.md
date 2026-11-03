@@ -1,6 +1,6 @@
 # WAN interoperability checkpoint
 
-Updated 2026-11-04. Development branch: `fix-detailed-vcard-endpoints`.
+Updated 2026-11-04. PR #6 has been merged into `main`.
 
 ## Current boundary
 
@@ -9,9 +9,9 @@ have live evidence. Two clients on one Windows host exchanged native text over
 a direct peer TCP connection. These tests do not establish cross-NAT delivery,
 offline native delivery or audio relay. The HTTP message API is a separate path.
 
-The GitHub default branch and PR #6 differ: the development branch contains
-registration, node deadline fixes and restored signed records after restart.
-Review the branch, not only the top-level README's older parity description.
+The main branch includes registration, node deadline fixes, restored signed
+records after restart and the public delta patcher. The root README contains
+the current setup instructions; this report retains the protocol evidence.
 
 The operator confirmed that the Debian server is powered off during this pass.
 SSH to its LAN address timed out. No WAN login or relay claim follows from the
