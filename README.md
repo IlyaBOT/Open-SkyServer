@@ -1,46 +1,60 @@
 # Open-SkyServer
 
-Свой сервер для классического Skype. Сейчас работаем с клиентом **Skype 4.2.0.187 для Windows**: разбираем протокол, восстанавливаем серверную часть и проверяем её на настоящем клиенте.
-
-Основная работа идёт над сервером на Go для Linux. Версия на C# остаётся в репозитории как референс. Клиент подключается к нашей сети после замены адресов и публичных ключей. Одного изменения `hosts` для этого недостаточно.
-
-## Что уже работает
-
-| Возможность | Состояние |
+| English | Русский |
 | --- | --- |
-| Вход и регистрация из Skype | Проверены на Go-сервере, включая вход из нового локального профиля. |
-| Поиск пользователей | Работает через серверный справочник. |
-| Загрузка списка контактов | Проверена для существующих контактных документов. Полный цикл запроса, принятия и отклонения ещё не закончен. |
-| Текстовые сообщения | Два клиента на одном ПК обменивались сообщениями напрямую по P2P. Доставка через разные NAT и серверная очередь пока не подтверждены. |
-| Статусы | Обновляются между контактами, но есть задержки, особенно при переходе в "Невидимый" и "Не в сети". |
-| Звонки | Наблюдали вызов и принятие звонка. Работу звука пока не подтвердили, полноценного media relay нет. |
-| Профиль и аватар | Часть полей восстанавливается с сервера. Полная синхронизация профиля и загрузка аватара в новый профиль пока не работают. |
-| Счётчик онлайна | Пока не восстановлен. Он должен учитывать Online, Away и DND, исключая Invisible и Offline. |
+| [Read in English](README.md) | [Читать на русском](README-ru.md) |
 
-Главная текущая задача - связь между клиентами в разных сетях. Успешный локальный чат ещё не означает, что готова работа через Интернет. Подробности и план следующего теста есть в [WAN_CHECKPOINT.md](server/go/WAN_CHECKPOINT.md).
+A community server for classic Skype. We currently work with **Skype 4.2.0.187 for Windows**: reverse engineering its protocol, rebuilding the server side, and testing it with the real client.
 
-## Подключить клиент
+Most development focuses on the Go server for Linux. The C# version remains in the repository as a reference. The client connects to our network after its server addresses and public keys are replaced. Editing `hosts` alone is not enough.
 
-Нужны Windows, Windows PowerShell 5.1, Python 3 и оригинальный `Skype.exe` версии 4.2.0.187. При первом запуске патчера понадобится Интернет для загрузки двух Python-модулей. Они устанавливаются в папку патчера.
+## Current Progress
 
-1. Получите ZIP-патчер у владельца сервера. Он должен быть собран для адреса и ключей этого сервера. В исходниках готового `community.patch.json` нет.
-2. Распакуйте архив в обычную папку, доступную для записи.
-3. Запустите `Patch-Skype.cmd` и выберите оригинальный `Skype.exe`. Можно просто перетащить EXE на этот CMD-файл.
-4. Дождитесь окончания обработки и откройте ярлык **Skype 4.2.0.187 Patched** на рабочем столе.
+| Feature | Status |
+| --- | --- |
+| Sign-in and registration from Skype | Tested with the Go server, including sign-in from a fresh local profile. |
+| User search | Works through the server directory. |
+| Contact list loading | Tested with existing contact documents. The full request, accept, and reject flow is not finished yet. |
+| Text messages | Two clients on the same PC exchanged messages directly over P2P. Delivery across different NATs and a server-side queue have not been confirmed. |
+| Presence | Updates between contacts, but with delays, especially when switching to "Invisible" or "Offline". |
+| Calls | Call initiation and acceptance have been observed. Audio has not been confirmed, and a complete media relay is not available. |
+| Profile and avatar | Some fields are restored from the server. Full profile synchronization and avatar loading into a fresh profile do not work yet. |
+| Online counter | Not restored yet. It should count Online, Away, and DND, excluding Invisible and Offline. |
 
-Патчер создаёт отдельную папку с клиентом, резервной копией `Skype.exe.bak` и новым профилем. Выбранный исходный файл он не меняет. Ярлык запускает клиент через помощник, который настраивает сервер поиска и отслеживает появление настроек аккаунта после первого входа. Файлы настроек обновляются автоматически; подхватывает ли Skype эти изменения уже в первом сеансе, ещё нужно проверить.
+The main task now is connecting clients in different networks. A working local chat does not mean Internet connectivity is ready. See [WAN_CHECKPOINT.md](server/go/WAN_CHECKPOINT.md) for details and the next test plan.
 
-Поддерживается только оригинальный EXE с этим SHA-256:
+## Connect a Client
+
+### Ready-to-Run Portable Archive
+
+If the server operator provides an `OpenSky-Skype-4.2.0.187-Portable-*.zip` archive, no installation or patching is needed. Extract the entire archive into a normal writable folder and run `Start-Skype.cmd`. Windows 10/11 and Windows PowerShell 5.1 are required; Python is not. On first launch, a **Skype 4.2.0.187 Patched** desktop shortcut is created unless one already exists.
+
+Sign in with your account on our server. The archive contains no saved login, other users' history, or private keys. Your profile lives in the `profile` folder next to the client. Do not share that folder after using it: distribute the original ZIP instead. Launch through the CMD file or its desktop shortcut, not `Skype.exe` directly: the helper selects the isolated profile and maintains directory-search settings.
+
+The server address and public keys are already embedded in the client. Each archive only works with the network it was built for. It does not change `hosts`, routes, the firewall, or an installed Skype. Server-side limitations, including unfinished support for different NATs, still apply.
+
+### Patch Your Own EXE
+
+You need Windows, Windows PowerShell 5.1, Python 3, and an original `Skype.exe` version 4.2.0.187. The patcher's first run requires Internet access to download two Python modules. They are installed inside the patcher folder.
+
+1. Get a ZIP patch package from the server operator. It must be built for that server's address and keys. The source checkout does not include a ready-made `community.patch.json`.
+2. Extract the archive into a normal writable folder.
+3. Run `Patch-Skype.cmd` and select the original `Skype.exe`. You can also drag the EXE onto that CMD file.
+4. Wait for patching to finish, then open the **Skype 4.2.0.187 Patched** desktop shortcut.
+
+The patcher creates a separate folder containing the client, an exact `Skype.exe.bak` backup, and a fresh profile. It does not modify the selected source file. The shortcut starts the client through a helper that configures directory search and watches for account settings after the first sign-in. Settings files are updated automatically; whether Skype picks up these changes during the first session still needs verification.
+
+Only the original EXE with this SHA-256 is supported:
 
 ```text
 A2E175CE7C9888C125E2B3D4C2343229832BA0D0CD8A8A1CE120CE92624E856C
 ```
 
-Другие сборки 4.2, а также Skype 4.4 и 5.5 этим патчером не поддерживаются. Готовые пакеты не публикуются автоматически вместе с исходниками. Как собрать свой пакет, описано ниже и в [документации патчера](patcher/README.md).
+Other 4.2 builds, Skype 4.4, and Skype 5.5 are not supported by this patcher. Ready-made packages are not published automatically with the source. Instructions for building your own package are below and in the [patcher documentation](patcher/README.md).
 
-## Поднять сервер
+## Set Up the Server
 
-Ниже пример для Debian или Ubuntu на x86-64. Нужны Go 1.22 или новее, GCC с поддержкой 32-битной сборки и SQLite CLI. Проверьте `go version`: в старых дистрибутивах пакет Go может оказаться слишком старым.
+The example below targets Debian or Ubuntu on x86-64. You need Go 1.22 or newer, GCC with 32-bit build support, and the SQLite CLI. Check `go version`: older distributions may ship an outdated Go package.
 
 ```sh
 sudo apt update
@@ -51,28 +65,28 @@ cd Open-SkyServer/server/go
 sh ./build-linux.sh
 ```
 
-Сборка создаёт два файла: `bin/openskyserver` и `bin/skype_blob_worker`. Второй - отдельный 32-битный декодер списков протокола. Для работы клиента нужны оба.
+The build produces two files: `bin/openskyserver` and `bin/skype_blob_worker`. The latter is a separate 32-bit decoder for protocol lists. Both are needed for the client to work.
 
-### Ключи и база
+### Keys and Database
 
-Серверу нужны ключи той же сети, под которую собран клиентский патч. Для новой сети сначала создайте их на Windows по инструкции "Подготовить патчер" ниже. Если сервер уже существует, используйте его ключи.
+The server must use the keys for the same network as the client patch. For a new network, generate them on Windows first by following "Prepare a Patch Package" below. For an existing server, reuse its keys.
 
 ```sh
 sudo install -d -m 700 /etc/openskyserver/keys /var/lib/openskyserver
 ```
 
-Перенесите в `/etc/openskyserver/keys` четыре файла: `login.private.xml`, `login.public.xml`, `credentials.private.xml`, `credentials.public.xml`. Закройте доступ к приватным файлам для остальных пользователей. Ключ `client-integrity` нужен на машине сборки патчера, переносить его на сервер не требуется.
+Copy these four files into `/etc/openskyserver/keys`: `login.private.xml`, `login.public.xml`, `credentials.private.xml`, and `credentials.public.xml`. Restrict access to the private files. The `client-integrity` key is only needed on the patcher build machine; it does not need to be copied to the server.
 
-Проверьте ключи и создайте базу:
+Check the keys and initialize the database:
 
 ```sh
 sudo ./bin/openskyserver --check-keys --keys-dir /etc/openskyserver/keys
 sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/bin/sqlite3 --init-db
 ```
 
-### Два тестовых аккаунта
+### Two Test Accounts
 
-Для быстрой проверки контактов создайте две учётки и сразу добавьте их друг другу. Команды выполняются из `server/go` и используют ту же базу, что и сервер:
+For a quick contact test, create two accounts and add them to each other's contact lists. Run these commands from `server/go`, using the same database as the server:
 
 ```sh
 sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/bin/sqlite3 \
@@ -91,29 +105,29 @@ sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/
   --add-contact "second@test.lol" "admindev@test.lol"
 ```
 
-| Логин | Пароль для теста |
+| Login | Test Password |
 | --- | --- |
 | admindev@test.lol | AdminDev |
 | second@test.lol | SecondTest |
 
-Это публичные тестовые пароли, не используйте их для обычных аккаунтов. Повторный `--add-account` меняет пароль и имя существующей учётки. Взаимное добавление через базу удобно для проверки общения, но отдельно нужно проверять и штатный запрос в контакты из клиента.
+These are public test credentials, not passwords for regular accounts. Running `--add-account` again changes the existing account's password and display name. Adding mutual contacts through the database is useful for testing communication, but the normal contact-request flow from the client needs separate testing.
 
-После теста учётки можно удалить:
+You can remove the accounts after testing:
 
 ```sh
 sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/bin/sqlite3 --remove-account "admindev@test.lol"
 sudo ./bin/openskyserver --db /var/lib/openskyserver/skyserver.db --sqlite /usr/bin/sqlite3 --remove-account "second@test.lol"
 ```
 
-Также можно зарегистрироваться из Skype. У созданных таким способом аккаунтов нет пароля в формате HTTP API: вход в клиент работает, а вход по обычному паролю через API для них не поддерживается.
+You can also register from Skype. Accounts created this way do not have a password in the HTTP API's format: client sign-in works, but plain-password API sign-in is not supported for them.
 
-### Запуск для тестов через Интернет
+### Start the Server for Internet Testing
 
-Наш тестовый сервер имеет внешний адрес `176.101.124.66` и адрес в LAN `192.168.1.170`. Для своей установки замените внешний IP в команде и пересоберите клиентский патч под него.
+Our test server uses public address `176.101.124.66` and LAN address `192.168.1.170`. For your own deployment, replace the public IP in the command and rebuild the client patch for it.
 
-Создайте `/etc/openskyserver/allowlist.txt` и запишите туда внешние IP тестеров, по одному на строку. Поддерживаются IPv4, подсети CIDR и комментарии с `#`. Пустой файл запрещает все подключения. После изменения списка нужно перезапустить сервер.
+Create `/etc/openskyserver/allowlist.txt` and list testers' public IPs, one per line. IPv4 addresses, CIDR subnets, and `#` comments are supported. An empty file denies all connections. Restart the server after changing the list.
 
-Из папки `server/go`:
+From `server/go`:
 
 ```sh
 sudo ./bin/openskyserver \
@@ -125,24 +139,24 @@ sudo ./bin/openskyserver \
   --blob-worker ./bin/skype_blob_worker
 ```
 
-За роутером направьте порты на машину сервера. Внешний и внутренний номера портов должны совпадать:
+If the server is behind a router, forward these ports to it. External and internal port numbers must match:
 
-| Протокол | Порты |
+| Protocol | Ports |
 | --- | --- |
 | TCP | 80, 443, 12350, 12351, 13392, 33033, 40001-40036 |
 | UDP | 12350, 12351, 13392, 33033, 40001-40036 |
 
-HTTP API слушает `127.0.0.1:33034`. Его не нужно открывать или пробрасывать наружу. Порты 80 и 443 здесь используются старым протоколом Skype, это не веб-сайт.
+The HTTP API listens on `127.0.0.1:33034`. Do not expose or forward it to the Internet. Ports 80 and 443 carry the legacy Skype protocol here, not a website.
 
-Если клиент из той же LAN обращается к внешнему IP сервера, роутеру нужен NAT loopback. Параметр `--hairpin-source` используйте только для конкретного адреса маршрутизатора, подменяющего источник соединения. Без него сервер сохраняет адрес, с которого реально пришёл клиент. Сам `--mode global` не добавляет relay и не гарантирует прохождение NAT.
+Clients on the same LAN that use the public server IP need router NAT loopback. Use `--hairpin-source` only for the specific router address that replaces the connection's source address. Without it, the server preserves the client's observed source address. The `--mode global` flag does not add a relay or guarantee NAT traversal.
 
-Для тестов только в LAN укажите `--mode local --host 0.0.0.0 --advertise-ip 192.168.1.170` и используйте клиентский патч для этого LAN-адреса.
+For LAN-only testing, use `--mode local --host 0.0.0.0 --advertise-ip 192.168.1.170` and a client patch built for that LAN address.
 
-## Подготовить патчер
+## Prepare a Patch Package
 
-Это делает владелец сервера на Windows. Нужны Python 3, Windows PowerShell 5.1 и OpenSSL. По умолчанию используется OpenSSL из Git for Windows; другой путь можно передать через `-OpenSslPath`.
+The server operator does this on Windows. Python 3, Windows PowerShell 5.1, and OpenSSL are required. OpenSSL from Git for Windows is used by default; pass `-OpenSslPath` to select another executable.
 
-Из корня репозитория, для новой сети:
+From the repository root, for a new network:
 
 ```powershell
 .\patcher\tools\New-CommunityPatch.ps1 `
@@ -153,24 +167,36 @@ HTTP API слушает `127.0.0.1:33034`. Его не нужно открыва
   -GenerateKeys
 ```
 
-Для существующего сервера укажите каталог с его ключами и уберите `-GenerateKeys`. Полные существующие связки ключей используются повторно. Если меняете адрес сервера, пакет нужно собрать заново. Выходная папка должна быть новой.
+For an existing server, point to its key directory and omit `-GenerateKeys`. Complete existing key sets are reused. Changing the server address requires rebuilding the package. The output folder must be new.
 
-Скрипт создаёт папку `community` и архив `community.zip`. Пользователям передаётся ZIP: в нём инструменты и публичные изменения для точного оригинального EXE. Приватных ключей, профилей и полного клиента Skype в пакете нет. Резервные копии ключей храните отдельно. Если ключи когда-либо попадали в публичную историю Git, перед открытым развёртыванием замените их и пересоберите клиентские пакеты.
+The script creates a `community` folder and a `community.zip` archive. Distribute the ZIP: it contains tools and public changes for the exact original EXE. It contains no private keys, profiles, or complete Skype client. Store key backups separately. If keys ever appeared in public Git history, replace them and rebuild the client packages before a public deployment.
 
-## Отладка
+### Build a Ready-to-Run Portable Client
 
-Чтобы получить подробный журнал, добавьте `--detailed-debug` к команде запуска сервера. В Linux вывод можно сохранить через `2>&1 | tee skyserver.log`. Сначала проверьте сообщения о загрузке ключей и открытии портов: ошибка привязки порта может оставить часть сервисов недоступной.
+If you already have a folder created by `Patch-Skype.ps1`, you can package a full ZIP that needs neither Python nor installation on the user's machine:
 
-Для проверки протокола используем два отдельных профиля Skype. Локальная проверка помогает воспроизвести ошибку, а для WAN нужен второй ПК в другой сети, например через мобильный Интернет. Проверяйте по очереди вход, поиск, добавление контакта, статусы, сообщения и звонок. Записывайте время каждого действия, чтобы сопоставить его с журналом.
+```powershell
+.\patcher\tools\New-PortableClientBundle.ps1 `
+  -ClientDirectory .\patcher\client\Skype-4.2.0.187-WAN `
+  -OutputDirectory .\patcher\dist\OpenSky-Skype-4.2.0.187-Portable
+```
 
-Если установлен Wireshark, список интерфейсов можно получить так:
+The output directory must be new. A ZIP and its `.sha256` file are created alongside it. The builder verifies the EXE and original `.bak`, includes only explicitly listed files, and creates clean settings. Even if the source folder has been used to sign in, its profile, databases, logs, and keys are not copied into the archive. This is a complete client package, not the ZIP patcher described above. Binaries and generated archives stay out of Git.
+
+## Debugging
+
+Add `--detailed-debug` to the server command for verbose logging. On Linux, save output with `2>&1 | tee skyserver.log`. Check key-loading and port-binding messages first: a port-binding failure can leave some services unavailable.
+
+We use two isolated Skype profiles to test the protocol. Local testing helps reproduce bugs, but WAN testing needs a second PC on another network, such as a mobile connection. Test sign-in, search, contact requests, presence, messaging, and calls in that order. Record the time of each action so it can be matched to the logs.
+
+If Wireshark is installed, list interfaces with:
 
 ```powershell
 & 'C:\Program Files\Wireshark\dumpcap.exe' -D
 Get-Process Skype | Select-Object Id, Path
 ```
 
-Захват конкретного клиента делает [Capture-SkypeTraffic.ps1](patcher/tools/Capture-SkypeTraffic.ps1). Передайте его PID, NPF-идентификатор интерфейса из `dumpcap -D`, путь к `profile\shared.xml` и IP сервера:
+Use [Capture-SkypeTraffic.ps1](patcher/tools/Capture-SkypeTraffic.ps1) to capture a specific client's traffic. Supply its PID, the NPF interface ID from `dumpcap -D`, the path to `profile\shared.xml`, and the server IP:
 
 ```powershell
 .\patcher\tools\Capture-SkypeTraffic.ps1 `
@@ -179,31 +205,31 @@ Get-Process Skype | Select-Object Id, Path
   -ServerIp 176.101.124.66 -Seconds 60
 ```
 
-Замените PID, интерфейс и путь своими значениями. Для сообщений и звонков собирайте трафик с обеих сторон. Журналы, захваты и базы могут содержать данные аккаунтов, не добавляйте их в публичный репозиторий.
+Replace the PID, interface, and path with your own values. For messaging and calls, capture traffic at both ends. Logs, captures, and databases may contain account data; do not add them to the public repository.
 
-Проверки Go-сервера после сборки, из `server/go`:
+After building the Go server, run from `server/go`:
 
 ```sh
 SKYSERVER_BLOB_WORKER="$PWD/bin/skype_blob_worker" go test ./...
 ```
 
-Проверки патчера из корня репозитория:
+Run patcher checks from the repository root:
 
 ```powershell
 python -m unittest discover -s patcher/tests -p test_client_patch.py -v
 powershell -NoProfile -ExecutionPolicy Bypass -File .\patcher\tests\Test-PublicPatch.ps1
 ```
 
-Инструменты для отдельных лабораторных профилей, просмотра статусов и сборки клиента остались в `patcher/tools`. C#-референс собирается через `server/csharp/build.ps1 -Test`; требования к Visual Studio и нативным помощникам описаны в [инструкции C#-сервера](server/csharp/DEPLOYMENT.md).
+Tools for isolated lab profiles, presence inspection, and client builds remain in `patcher/tools`. Build the C# reference with `server/csharp/build.ps1 -Test`; Visual Studio and native helper requirements are covered in the [C# server deployment guide](server/csharp/DEPLOYMENT.md).
 
-## Где что лежит
+## Repository Layout
 
-- [server/go](server/go/README.md) - сервер для Linux и подробности реализации.
-- [server/csharp](server/csharp/README.md) - C#-референс и прежние эксперименты.
-- `server/native` - нативные помощники протокола.
-- [patcher](patcher/README.md) - пользовательский патчер и инструменты сборки.
-- `skypeopensource2`, `skypeproto` - исходные материалы и старые исследования протокола.
-- [WAN_CHECKPOINT.md](server/go/WAN_CHECKPOINT.md) - подтверждённые результаты и оставшиеся этапы WAN.
-- [CALL_AUDIO.md](server/csharp/CALL_AUDIO.md) - разбор отсутствующего звука и план проверки звонков.
+- [server/go](server/go/README.md) - Linux server and implementation details.
+- [server/csharp](server/csharp/README.md) - C# reference and earlier experiments.
+- `server/native` - native protocol helpers.
+- [patcher](patcher/README.md) - user-facing patcher and build tools.
+- `skypeopensource2`, `skypeproto` - source material and earlier protocol research.
+- [WAN_CHECKPOINT.md](server/go/WAN_CHECKPOINT.md) - verified results and remaining WAN work.
+- [CALL_AUDIO.md](server/csharp/CALL_AUDIO.md) - analysis of missing call audio and the call test plan.
 
-Некоторые старые отчёты описывают состояние на дату эксперимента. Текущий статус собран в этом README и WAN checkpoint. Бинарники Skype, ключи, базы и профили в исходниках не хранятся.
+Some older reports describe the state at the time of an experiment. The current overview is in this README and the WAN checkpoint. Skype binaries, keys, databases, and profiles are not included in the source checkout.

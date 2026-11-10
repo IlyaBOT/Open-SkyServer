@@ -70,6 +70,38 @@ Generate a server-specific public patcher with:
 
 Private keys never belong in this directory.
 
+## Ready-to-run portable ZIP
+
+To ship an already patched client without requiring Python or an installed Skype
+on the destination PC, package a directory produced by `Patch-Skype.ps1`:
+
+```powershell
+.\patcher\tools\New-PortableClientBundle.ps1 `
+  -ClientDirectory .\patcher\client\Skype-4.2.0.187-WAN `
+  -OutputDirectory .\patcher\dist\OpenSky-Skype-4.2.0.187-Portable
+```
+
+The new output directory, `.zip` and `.zip.sha256` must not already exist.
+The builder verifies the copied EXE, original `.bak` and public metadata with
+the repository launcher. It includes only nine named files and creates fresh
+bootstrap settings; it never copies the source profile, arbitrary scripts,
+logs, databases or private keys. No signing authority is changed.
+
+Users extract the entire ZIP into a writable local directory and run
+`Start-Skype.cmd`. Windows PowerShell 5.1 is required, Python is not. The helper
+creates an optional desktop shortcut without replacing an existing one and
+displays launch errors instead of silently hiding them. Its isolated profile
+becomes private after use, so redistribute the original ZIP, not a used folder.
+The package targets the server embedded in its EXE; server-side WAN and relay
+limitations still apply.
+
+Offline integration check with a real portable client (does not launch Skype):
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\patcher\tests\Test-PortableClientBundle.ps1 `
+  -ClientDirectory .\patcher\client\Skype-4.2.0.187-WAN
+```
+
 `Start-Skype42Lab.ps1`, `Set-Skype42LabDirectory.ps1`, `Get-Skype42Presence.ps1`,
 `Build-Skype42Lab.py` and the key generator remain available for isolated profiles,
 protocol debugging and custom builds. The older full-client bundle/restore
