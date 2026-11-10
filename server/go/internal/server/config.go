@@ -27,6 +27,8 @@ type Config struct{
 	BlobWorker string
 	RealSkype bool
 	DetailedDebug bool
+	EnableSkyHome bool
+	SkyHomeDir string
 	Once bool
 	Closed bool
 	Allowlist string
@@ -59,6 +61,8 @@ func ParseConfig(args []string)(Config,error){
 	case "--blob-worker":v,e:=next(&i);if e!=nil{return c,e};c.BlobWorker=v
 	case "--real-skype-probe":c.RealSkype=true
 	case "--detailed-debug":c.DetailedDebug=true
+	case "--enable-skyhome":c.EnableSkyHome=true
+	case "--skyhome-dir":v,e:=next(&i);if e!=nil{return c,e};c.SkyHomeDir=v
 	case "--once":c.Once=true
 	case "--closed":c.Closed=true
 	case "--allowlist":v,e:=next(&i);if e!=nil{return c,e};c.Allowlist=v
@@ -78,6 +82,7 @@ func ParseConfig(args []string)(Config,error){
 	if c.Mode=="global"{if !hostSet{c.Host="0.0.0.0"};if !apiSet{c.APIHost="127.0.0.1"};if c.AdvertiseIP==nil||c.AdvertiseIP.IsLoopback(){return c,fmt.Errorf("global mode requires --advertise-ip with a concrete non-loopback IPv4 address")};api:=net.ParseIP(c.APIHost);if api==nil||!api.IsLoopback(){return c,fmt.Errorf("global mode requires loopback --api-host")}}
 	if c.Port<1||c.Port>65535||c.APIPort<1||c.APIPort>65535||c.Port==c.APIPort{return c,fmt.Errorf("auth/API ports must be distinct and between 1 and 65535")}
 	if c.Closed&&c.Allowlist==""{return c,fmt.Errorf("--closed requires --allowlist")}
+	if c.EnableSkyHome&&strings.TrimSpace(c.SkyHomeDir)==""{return c,fmt.Errorf("--enable-skyhome requires --skyhome-dir")}
 	return c,nil
 }
 

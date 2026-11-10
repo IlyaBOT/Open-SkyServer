@@ -35,8 +35,10 @@ func main(){
 	var access *server.AccessPolicy
 	if cfg.Allowlist!=""{access,err=server.LoadAccess(cfg.Allowlist)}else{access=server.OpenAccess()};if err!=nil{log.Fatal(err)}
 	if ks==nil&&cfg.RealSkype{log.Print("warning: no community authority keys loaded; native account RPCs will close without fabricated success responses")}
+	var skyHome *server.SkyHome
+	if cfg.EnableSkyHome{skyHome,err=server.NewSkyHome(cfg.SkyHomeDir,access);if err!=nil{log.Fatal(err)};log.Printf("experimental inert SkyHome enabled on API port %d: /skyhome/ /incalladwidget/",cfg.APIPort)}
 	ctx,cancel:=signal.NotifyContext(context.Background(),os.Interrupt,syscall.SIGTERM);defer cancel()
-	api:=&server.APIServer{DB:db,Access:access,Host:cfg.APIHost,Port:cfg.APIPort};apiSrv,err:=api.Run();if err!=nil{log.Fatal(err)};defer apiSrv.Close()
+	api:=&server.APIServer{DB:db,Access:access,Host:cfg.APIHost,Port:cfg.APIPort,SkyHome:skyHome};apiSrv,err:=api.Run();if err!=nil{log.Fatal(err)};defer apiSrv.Close()
 	auth:=&server.AuthServer{DB:db,Keys:ks,Access:access,Host:cfg.Host,Port:cfg.Port,Once:cfg.Once,RealSkype:cfg.RealSkype}
 	if cfg.RealSkype{
 		tcpPorts:=server.DefaultTCPPorts(cfg.Port,cfg.APIPort);udpPorts:=server.DefaultUDPPorts(cfg.Port)

@@ -1,6 +1,6 @@
 # WAN interoperability checkpoint
 
-Updated 2026-11-04. PR #6 has been merged into `main`.
+Updated 2026-11-10. PR #6 has been merged into `main`.
 
 ## Current boundary
 
@@ -13,9 +13,46 @@ The main branch includes registration, node deadline fixes, restored signed
 records after restart and the public delta patcher. The root README contains
 the current setup instructions; this report retains the protocol evidence.
 
-The operator confirmed that the Debian server is powered off during this pass.
-SSH to its LAN address timed out. No WAN login or relay claim follows from the
-local build and patch tests in this pass.
+During the earlier offline pass the Debian server was powered off and SSH
+timed out. It has since been restarted. The second-host test below establishes
+login and existing-contact loading through the public address from the same
+LAN, not independent-network connectivity or relay support.
+
+## Second-host fresh-profile test, 2026-11-10
+
+The portable client targets `176.101.124.66` with the existing authority. The
+operator signed in as the demo account `second@test.lol` on a Windows VM at
+`192.168.1.156`; the Go server runs at `192.168.1.170`. Live server evidence:
+
+- At 09:27:00 Moscow time, native login `0x1399` succeeded. The observed source
+  was `192.168.1.1`, consistent with the router's hairpin SNAT, not the VM's
+  directly visible LAN address.
+- At 09:27:19, the client published a signed record containing internal endpoint
+  `192.168.1.156:53744`. This ties the publication to the separate test host.
+- At 09:27:48, the server logged a successful `0x178c` document manifest at
+  revision 4 with two documents. Two successful `0x1788` responses followed
+  at 09:27:48 and 09:27:50. The operator then confirmed the contact appeared.
+- Read-only database inspection found the relationship
+  `second@test.lol -> admindev@test.lol` and the persisted `p/email` and
+  `u/admindev@test.lol` documents. The contact list was delayed, not absent.
+- The manifest success was logged 48 seconds after login success. These log
+  timestamps do not distinguish client scheduling, retries, transport time and
+  server processing; per-request timing or a correlated capture is still needed
+  before attributing or fixing the delay.
+- No `p/avatar` document exists in the database, including for the second demo
+  account. The operator reported no avatar in the fresh profile. This confirms
+  that this session did not restore an avatar; its original upload trigger and
+  transfer format remain unresolved as described in the Go README.
+- A pending `0x1781` inbox fetch still failed explicitly as unimplemented.
+  Existing-contact loading does not establish new-contact acceptance support.
+  An unsupported `0x139f` account request was also observed; its purpose and its
+  relationship, if any, to the first-sync delay have not been established.
+
+At the inspection time Skype was not running on the main Windows PC and the
+directory had no fresh Admin record. There is no two-live-client presence,
+message or call result from this run. Both hosts are in the same LAN, so this
+is not a test across independent NATs. No server database or client profile was
+edited to make the contact appear.
 
 ## Address configuration
 

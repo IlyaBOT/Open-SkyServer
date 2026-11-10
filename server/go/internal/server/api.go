@@ -16,17 +16,22 @@ type APIServer struct {
 	Access *AccessPolicy
 	Host string
 	Port int
+	SkyHome *SkyHome
 	sem chan struct{}
 }
 
 func apiEncode(v string)string{return strings.ReplaceAll(url.QueryEscape(v),"+","%20")}
 func apiErr(w http.ResponseWriter,msg string){_,_=fmt.Fprintf(w,"ERR\t%s\n",apiEncode(msg))}
-func (s *APIServer) Run()(*http.Server,error){
+func (s *APIServer) handler()http.Handler{
 	s.sem=make(chan struct{},32)
 	mux:=http.NewServeMux()
+	if s.SkyHome!=nil{mux.Handle("/skyhome",s.SkyHome);mux.Handle("/skyhome/",s.SkyHome);mux.Handle("/incalladwidget",s.SkyHome);mux.Handle("/incalladwidget/",s.SkyHome)}
 	mux.HandleFunc("/healthz",func(w http.ResponseWriter,r *http.Request){w.Header().Set("Content-Type","text/plain; charset=utf-8");_,_=w.Write([]byte("ok\n"))})
 	mux.HandleFunc("/",s.handle)
-	srv:=&http.Server{Addr:net.JoinHostPort(s.Host,strconv.Itoa(s.Port)),Handler:mux,ReadHeaderTimeout:5*time.Second,ReadTimeout:10*time.Second,WriteTimeout:10*time.Second}
+	return mux
+}
+func (s *APIServer) Run()(*http.Server,error){
+	srv:=&http.Server{Addr:net.JoinHostPort(s.Host,strconv.Itoa(s.Port)),Handler:s.handler(),ReadHeaderTimeout:5*time.Second,ReadTimeout:10*time.Second,WriteTimeout:10*time.Second}
 	ln,e:=net.Listen("tcp4",srv.Addr);if e!=nil{return nil,e};log.Printf("api listening on %s",srv.Addr);go func(){if e:=srv.Serve(ln);e!=nil&&e!=http.ErrServerClosed{log.Printf("api: %v",e)}}();return srv,nil
 }
 func (s *APIServer) handle(w http.ResponseWriter,r *http.Request){
